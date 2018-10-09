@@ -1,0 +1,9 @@
+[
+    { "ListTypeID": "1", "ListTypeName": "FeaturedTitles", "Description": "Featured Titles" }, 
+    { "ListTypeID": "2", "ListTypeName": "NewItems", "Description": "New Items" }, 
+    { "ListTypeID": "3", "ListTypeName": "TopSellers", "Description": "Top Sellers" }, 
+    { "ListTypeID": "4", "ListTypeName": "BargainBin", "Description": "Bargain Bin" }, 
+    { "ListTypeID": "5", "ListTypeName": "CloseOut", "Description": "Close Out" }, 
+    { "ListTypeID": "6", "ListTypeName": "LiveAction", "Description": "Live Action" }, 
+    { "ListTypeID": "7", "ListTypeName": "Recommendations", "Description": "Recommendations" }
+]

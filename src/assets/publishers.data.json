@@ -1,0 +1,407 @@
+[
+    {
+      "PublisherID": 1,
+      "PublisherName": "20th Century Fox",
+      "Description": "20th Century Fox"
+    },
+    {
+      "PublisherID": 2,
+      "PublisherName": "AD VISION",
+      "Description": "AD VISION"
+    },
+    {
+      "PublisherID": 3,
+      "PublisherName": "ADV Films",
+      "Description": "ADV Films"
+    },
+    {
+      "PublisherID": 4,
+      "PublisherName": "ANIMEIGO",
+      "Description": "ANIMEIGO"
+    },
+    {
+      "PublisherID": 5,
+      "PublisherName": "Artisan Home Entertainment",
+      "Description": "Artisan Home Entertainment"
+    },
+    {
+      "PublisherID": 6,
+      "PublisherName": "AsiaVision",
+      "Description": "AsiaVision"
+    },
+    {
+      "PublisherID": 7,
+      "PublisherName": "BANDAI",
+      "Description": "BANDAI"
+    },
+    {
+      "PublisherID": 8,
+      "PublisherName": "Big Vision",
+      "Description": "Big Vision"
+    },
+    {
+      "PublisherID": 9,
+      "PublisherName": "BUENA VISTA",
+      "Description": "BUENA VISTA"
+    },
+    {
+      "PublisherID": 10,
+      "PublisherName": "CENTRAL PARK MEDIA",
+      "Description": "CENTRAL PARK MEDIA"
+    },
+    {
+      "PublisherID": 11,
+      "PublisherName": "CRITICAL MASS",
+      "Description": "CRITICAL MASS"
+    },
+    {
+      "PublisherID": 12,
+      "PublisherName": "Dimension",
+      "Description": "Dimension"
+    },
+    {
+      "PublisherID": 13,
+      "PublisherName": "Discovery Channel",
+      "Description": "Discovery Channel"
+    },
+    {
+      "PublisherID": 14,
+      "PublisherName": "Dragon Dynasty",
+      "Description": "Dragon Dynasty"
+    },
+    {
+      "PublisherID": 15,
+      "PublisherName": "Dreamworks",
+      "Description": "Dreamworks"
+    },
+    {
+      "PublisherID": 16,
+      "PublisherName": "First Look Pictures",
+      "Description": "First Look Pictures"
+    },
+    {
+      "PublisherID": 17,
+      "PublisherName": "Fox Network",
+      "Description": "Fox Network"
+    },
+    {
+      "PublisherID": 18,
+      "PublisherName": "FUNIMATION",
+      "Description": "FUNIMATION"
+    },
+    {
+      "PublisherID": 19,
+      "PublisherName": "GENEON",
+      "Description": "GENEON"
+    },
+    {
+      "PublisherID": 20,
+      "PublisherName": "HBO Home Video",
+      "Description": "HBO Home Video"
+    },
+    {
+      "PublisherID": 21,
+      "PublisherName": "Hollywood Records",
+      "Description": "Hollywood Records"
+    },
+    {
+      "PublisherID": 22,
+      "PublisherName": "Hudson Street",
+      "Description": "Hudson Street"
+    },
+    {
+      "PublisherID": 23,
+      "PublisherName": "Image Entertainment",
+      "Description": "Image Entertainment"
+    },
+    {
+      "PublisherID": 24,
+      "PublisherName": "Japanese Import",
+      "Description": "Japanese Import"
+    },
+    {
+      "PublisherID": 25,
+      "PublisherName": "Jive Records",
+      "Description": "Jive Records"
+    },
+    {
+      "PublisherID": 26,
+      "PublisherName": "KITTY MEDIA",
+      "Description": "KITTY MEDIA"
+    },
+    {
+      "PublisherID": 27,
+      "PublisherName": "Lions Gate",
+      "Description": "Lions Gate"
+    },
+    {
+      "PublisherID": 28,
+      "PublisherName": "Magnolia Home Ent",
+      "Description": "Magnolia Home Ent"
+    },
+    {
+      "PublisherID": 29,
+      "PublisherName": "MANGA",
+      "Description": "MANGA"
+    },
+    {
+      "PublisherID": 30,
+      "PublisherName": "MEDIA BLASTERS",
+      "Description": "MEDIA BLASTERS"
+    },
+    {
+      "PublisherID": 31,
+      "PublisherName": "MGM",
+      "Description": "MGM"
+    },
+    {
+      "PublisherID": 32,
+      "PublisherName": "Miramax Lionsgate",
+      "Description": "Miramax Lionsgate"
+    },
+    {
+      "PublisherID": 33,
+      "PublisherName": "MIYA Records",
+      "Description": "MIYA Records"
+    },
+    {
+      "PublisherID": 34,
+      "PublisherName": "New Line Video",
+      "Description": "New Line Video"
+    },
+    {
+      "PublisherID": 35,
+      "PublisherName": "NUTECH",
+      "Description": "NUTECH"
+    },
+    {
+      "PublisherID": 36,
+      "PublisherName": "Paramount Studios",
+      "Description": "Paramount Studios"
+    },
+    {
+      "PublisherID": 37,
+      "PublisherName": "PIONEER",
+      "Description": "PIONEER"
+    },
+    {
+      "PublisherID": 38,
+      "PublisherName": "RIGHT STUF",
+      "Description": "RIGHT STUF"
+    },
+    {
+      "PublisherID": 39,
+      "PublisherName": "Rogue Pictures",
+      "Description": "Rogue Pictures"
+    },
+    {
+      "PublisherID": 40,
+      "PublisherName": "Screen Gems",
+      "Description": "Screen Gems"
+    },
+    {
+      "PublisherID": 41,
+      "PublisherName": "Section23 Films",
+      "Description": "Section23 Films"
+    },
+    {
+      "PublisherID": 42,
+      "PublisherName": "Showtime",
+      "Description": "Showtime"
+    },
+    {
+      "PublisherID": 43,
+      "PublisherName": "SOFTCEL",
+      "Description": "SOFTCEL"
+    },
+    {
+      "PublisherID": 44,
+      "PublisherName": "SOFTWARE SCULPTORS",
+      "Description": "SOFTWARE SCULPTORS"
+    },
+    {
+      "PublisherID": 45,
+      "PublisherName": "Sony Pictures",
+      "Description": "Sony Pictures"
+    },
+    {
+      "PublisherID": 46,
+      "PublisherName": "Starz / Anchor Bay",
+      "Description": "Starz / Anchor Bay"
+    },
+    {
+      "PublisherID": 47,
+      "PublisherName": "STUDIO GHIBLI",
+      "Description": "STUDIO GHIBLI"
+    },
+    {
+      "PublisherID": 48,
+      "PublisherName": "Summit Entertainment",
+      "Description": "Summit Entertainment"
+    },
+    {
+      "PublisherID": 49,
+      "PublisherName": "TOKYOPOP",
+      "Description": "TOKYOPOP"
+    },
+    {
+      "PublisherID": 50,
+      "PublisherName": "Touchstone",
+      "Description": "Touchstone"
+    },
+    {
+      "PublisherID": 51,
+      "PublisherName": "TravelVideoStore",
+      "Description": "TravelVideoStore"
+    },
+    {
+      "PublisherID": 52,
+      "PublisherName": "TriStar Pictures",
+      "Description": "TriStar Pictures"
+    },
+    {
+      "PublisherID": 53,
+      "PublisherName": "TVA Films",
+      "Description": "TVA Films"
+    },
+    {
+      "PublisherID": 54,
+      "PublisherName": "United Artists",
+      "Description": "United Artists"
+    },
+    {
+      "PublisherID": 55,
+      "PublisherName": "Unitel Pictures International",
+      "Description": "Unitel Pictures International"
+    },
+    {
+      "PublisherID": 56,
+      "PublisherName": "Universal Studios",
+      "Description": "Universal Studios"
+    },
+    {
+      "PublisherID": 57,
+      "PublisherName": "Urban Vision",
+      "Description": "Urban Vision"
+    },
+    {
+      "PublisherID": 58,
+      "PublisherName": "US MANGA",
+      "Description": "US MANGA"
+    },
+    {
+      "PublisherID": 59,
+      "PublisherName": "US Renditions",
+      "Description": "US Renditions"
+    },
+    {
+      "PublisherID": 60,
+      "PublisherName": "Video Asia",
+      "Description": "Video Asia"
+    },
+    {
+      "PublisherID": 61,
+      "PublisherName": "VIZ",
+      "Description": "VIZ"
+    },
+    {
+      "PublisherID": 62,
+      "PublisherName": "Walt Disney Studio",
+      "Description": "Walt Disney Studio"
+    },
+    {
+      "PublisherID": 63,
+      "PublisherName": "Warner Home Video",
+      "Description": "Warner Home Video"
+    },
+    {
+      "PublisherID": 64,
+      "PublisherName": "Weinstein Company",
+      "Description": "Weinstein Company"
+    },
+    {
+      "PublisherID": 65,
+      "PublisherName": "Well Go USA",
+      "Description": "Well Go USA"
+    },
+    {
+      "PublisherID": 66,
+      "PublisherName": "Sentai Filmworks",
+      "Description": "Sentai Filmworks"
+    },
+    {
+      "PublisherID": 67,
+      "PublisherName": "Overture Films",
+      "Description": "Overture Films"
+    },
+    {
+      "PublisherID": 68,
+      "PublisherName": "Tai Seng",
+      "Description": "Tai Seng"
+    },
+    {
+      "PublisherID": 69,
+      "PublisherName": "Echo Bridge",
+      "Description": "Echo Bridge"
+    },
+    {
+      "PublisherID": 70,
+      "PublisherName": "Indomina",
+      "Description": "Indomina"
+    },
+    {
+      "PublisherID": 71,
+      "PublisherName": "Vivendi Entertainment",
+      "Description": "Vivendi Entertainment"
+    },
+    {
+      "PublisherID": 72,
+      "PublisherName": "Microsoft Films",
+      "Description": "Microsoft Films"
+    },
+    {
+      "PublisherID": 73,
+      "PublisherName": "Shout! Factory",
+      "Description": "Shout! Factory"
+    },
+    {
+      "PublisherID": 74,
+      "PublisherName": "Anchor Bay",
+      "Description": "Anchor Bay"
+    },
+    {
+      "PublisherID": 75,
+      "PublisherName": "Pure Flix",
+      "Description": "Pure Flix Entertainment"
+    },
+    {
+      "PublisherID": 76,
+      "PublisherName": "Tokyo Shock",
+      "Description": "Tokyo Shock"
+    },
+    {
+      "PublisherID": 77,
+      "PublisherName": "Pony Canyon",
+      "Description": "Pony Canyon"
+    },
+    {
+      "PublisherID": 78,
+      "PublisherName": "Sony Music",
+      "Description": "Sony Music"
+    },
+    {
+      "PublisherID": 79,
+      "PublisherName": "Foreign Studio",
+      "Description": "Foreign Studio"
+    },
+    {
+      "PublisherID": 80,
+      "PublisherName": "Other",
+      "Description": "Other"
+    },
+    {
+      "PublisherID": 81,
+      "PublisherName": "Nozomi",
+      "Description": "Nozomi / Lucky Penny"
+    }
+  ]

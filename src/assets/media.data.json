@@ -1,0 +1,47 @@
+[
+    {
+      "MediumID": 1,
+      "MediumName": "Blu-Ray",
+      "Description": "Blue Ray Disc"
+    },
+    {
+      "MediumID": 2,
+      "MediumName": "CD",
+      "Description": "Compact Disc"
+    },
+    {
+      "MediumID": 3,
+      "MediumName": "DVD",
+      "Description": "DVD"
+    },
+    {
+      "MediumID": 4,
+      "MediumName": "Laser Disc",
+      "Description": "Laser Disc"
+    },
+    {
+      "MediumID": 5,
+      "MediumName": "VHS",
+      "Description": "VHS Tape"
+    },
+    {
+      "MediumID": 6,
+      "MediumName": "Blu-Ray / DVD",
+      "Description": "Blu Ray / DVD Combo"
+    },
+    {
+      "MediumID": 7,
+      "MediumName": "3D",
+      "Description": "3-D Format"
+    },
+    {
+      "MediumID": 8,
+      "MediumName": "3D / Blu-Ray",
+      "Description": "3-D and Blu Ray Combo"
+    },
+    {
+      "MediumID": 9,
+      "MediumName": "CD / DVD",
+      "Description": "CD / DVD"
+    }
+  ]

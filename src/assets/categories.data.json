@@ -1,0 +1,140 @@
+[
+    {
+      "CategoryID": 1,
+      "CategoryName": "Action",
+      "Description": "Action",
+      "ImageFile": "ACTION.png"
+    },
+    {
+      "CategoryID": 2,
+      "CategoryName": "Adventure",
+      "Description": "Adventure",
+      "ImageFile": "ADVENTURE.png"
+    },
+    {
+      "CategoryID": 3,
+      "CategoryName": "Animation",
+      "Description": "Animation",
+      "ImageFile": "ANIMATION.png"
+    },
+    {
+      "CategoryID": 4,
+      "CategoryName": "Blockbuster Series",
+      "Description": "Blockbuster Series",
+      "ImageFile": "BLOCKBUSTER SERIES.png"
+    },
+    {
+      "CategoryID": 5,
+      "CategoryName": "Box Office",
+      "Description": "Box Office",
+      "ImageFile": "BOX OFFICE.png"
+    },
+    {
+      "CategoryID": 6,
+      "CategoryName": "Comedy",
+      "Description": "Comedy",
+      "ImageFile": "COMEDY.png"
+    },
+    {
+      "CategoryID": 7,
+      "CategoryName": "Drama",
+      "Description": "Drama",
+      "ImageFile": "DRAMA.png"
+    },
+    {
+      "CategoryID": 8,
+      "CategoryName": "Fantasy",
+      "Description": "Fantasy",
+      "ImageFile": "FANTASY.png"
+    },
+    {
+      "CategoryID": 9,
+      "CategoryName": "Foreign",
+      "Description": "Foreign",
+      "ImageFile": "FOREIGN.png"
+    },
+    {
+      "CategoryID": 10,
+      "CategoryName": "Hentai",
+      "Description": "Erotic Comedy, Adult Erotica, Erotic Horror",
+      "ImageFile": "HENTAI.png"
+    },
+    {
+      "CategoryID": 11,
+      "CategoryName": "Horror / Suspense",
+      "Description": "Horror / Suspense",
+      "ImageFile": "HORROR SUSPENSE.png"
+    },
+    {
+      "CategoryID": 12,
+      "CategoryName": "Martial Arts",
+      "Description": "Martial Arts",
+      "ImageFile": "MARTIAL ARTS.png"
+    },
+    {
+      "CategoryID": 13,
+      "CategoryName": "Musical",
+      "Description": "Musical",
+      "ImageFile": "MUSICAL.png"
+    },
+    {
+      "CategoryID": 14,
+      "CategoryName": "Romantic Comedy",
+      "Description": "Romantic Comedy",
+      "ImageFile": "ROMANTIC COMEDY.png"
+    },
+    {
+      "CategoryID": 15,
+      "CategoryName": "SCI FI",
+      "Description": "SCI FI",
+      "ImageFile": "SCI FI.png"
+    },
+    {
+      "CategoryID": 16,
+      "CategoryName": "Sci Fi / Action",
+      "Description": "Sci Fi / Action",
+      "ImageFile": "SCI FI ACTION.png"
+    },
+    {
+      "CategoryID": 17,
+      "CategoryName": "Sci Fi / Adventure",
+      "Description": "Sci Fi / Adventure",
+      "ImageFile": "SCI FI ADVENTURE.png"
+    },
+    {
+      "CategoryID": 18,
+      "CategoryName": "Sci Fi / Comedy",
+      "Description": "Sci Fi / Comedy",
+      "ImageFile": "SCI FI COMEDY.png"
+    },
+    {
+      "CategoryID": 19,
+      "CategoryName": "Super Heroes",
+      "Description": "Super Heroes",
+      "ImageFile": "SUPER HEROES.png"
+    },
+    {
+      "CategoryID": 20,
+      "CategoryName": "Tom Cruise",
+      "Description": "Tom Cruise",
+      "ImageFile": "TOM CRUISE.png"
+    },
+    {
+      "CategoryID": 21,
+      "CategoryName": "TV Series",
+      "Description": "TV Series",
+      "ImageFile": "TV SERIES.png"
+    },
+    {
+      "CategoryID": 22,
+      "CategoryName": "Variety",
+      "Description": "Variety",
+      "ImageFile": "VARIETY.png"
+    },
+    {
+      "CategoryID": 23,
+      "CategoryName": "War / Western",
+      "Description": "War / Western",
+      "ImageFile": "WAR WESTERN.png"
+    }
+  ]

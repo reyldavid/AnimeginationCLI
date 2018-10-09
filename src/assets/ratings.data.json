@@ -1,0 +1,27 @@
+[
+    {
+      "RatingID": 1,
+      "RatingName": "The Worst",
+      "Description": "This film should be Burned right away before it Wastes more People's Time"
+    },
+    {
+      "RatingID": 2,
+      "RatingName": "Bad",
+      "Description": "This film is to be Avoided"
+    },
+    {
+      "RatingID": 3,
+      "RatingName": "Good",
+      "Description": "This film is Worth Watching"
+    },
+    {
+      "RatingID": 4,
+      "RatingName": "Outstanding",
+      "Description": "This film is Very Good"
+    },
+    {
+      "RatingID": 5,
+      "RatingName": "The Best!",
+      "Description": "This film is among my All-Time Favorites!"
+    }
+  ]

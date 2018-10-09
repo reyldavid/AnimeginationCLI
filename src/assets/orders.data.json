@@ -1,0 +1,15 @@
+{
+    "orderID": 5,
+    "userId": "7f991660-55b1-4959-ade0-30981b878b21",
+    "shippingHandling": 0,
+    "taxes": 32.04,
+    "discounts": 36.62,
+    "totals": 361.59,
+    "orderDate": "2018-10-06T22:00:12.623",
+    "isPurchased": false,
+    "trackingNumber": "9101869008845088433254",
+    "orderType": "Cart",
+    "itemQuantity": 8,
+    "productQuantity": 5,
+    "subTotal": 366.17
+}
