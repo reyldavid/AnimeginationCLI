@@ -6,5 +6,6 @@ export enum ListingType {
     CloseOut = 5, 
     LiveAction = 6, 
     Recommendations = 7,
-    OnSale = 8
+    OnSale = 8,
+    OnSale2 = 18
 }

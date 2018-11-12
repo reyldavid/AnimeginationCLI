@@ -18,9 +18,6 @@ export class ProductSlideComponent implements OnInit {
   listTypeID: number;
 
   @Input()
-  productID: number;
-
-  @Input()
   bgc: boolean;
 
   @Output() 
@@ -31,7 +28,6 @@ export class ProductSlideComponent implements OnInit {
 
   listTypeIDparam: string;
   listType: ListType = { "ListTypeID": 0, "ListTypeName": "", "Description": "" };
-  productIDparam: string;
 
   public apiProducts: ApiProduct[];
 
@@ -52,18 +48,8 @@ export class ProductSlideComponent implements OnInit {
             this.apiProducts = apiProducts;
             this.showButtons = true;
 
-            this.GetProductListType(this.listTypeID);
+            this.GetProductListType(listTypeID);
           });
-  }
-
-  GetProductsSlideByID(listTypeID: number) {
-    this._listingService.getAnimeListing(listTypeID)
-        .subscribe((apiProducts: ApiProduct[]) => {
-          this.apiProducts = apiProducts;
-          this.showButtons = true;
-
-          this.GetProductListType(this.listTypeID);
-        });
   }
 
   GetProductListType(listTypeID: number) {
@@ -79,26 +65,16 @@ export class ProductSlideComponent implements OnInit {
       console.log('product slide init');
       this._route.paramMap.subscribe(params => {
         this.listTypeIDparam = params.get('listTypeID');
-        this.productIDparam = params.get('productID');
-        console.log('aya productID');
-        console.log(this.productIDparam);
 
         if (this.listTypeID) {
-          this.GetProductsSlideByType(this.listTypeID);
+          let typeID = this.listTypeID % 10;
+          this.GetProductsSlideByType(typeID);
         }
         else {
           if (this.listTypeIDparam) {
             this.listTypeID = Number(this.listTypeIDparam);
-            this.GetProductsSlideByType(this.listTypeID);
-          }
-          else {
-            if (this.productID) {
-              this.GetProductsSlideByID(this.productID);
-            }
-            else if (this.productIDparam) {
-              this.productID = Number(this.productIDparam);
-              this.GetProductsSlideByID(this.productID);
-            }
+            let typeID = this.listTypeID % 10;
+            this.GetProductsSlideByType(typeID);
           }
         }
       })

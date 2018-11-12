@@ -42,6 +42,7 @@ import { ProductSliceComponent } from './product-slice/product-slice.component';
 import { CardsCarouselComponent } from './cards-carousel/cards-carousel.component';
 import { ProductSlideComponent } from './product-slide/product-slide.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { SimilarsComponent } from './similars/similars.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ShippingComponent } from './shipping/shipping.component';
     ProductSliceComponent,
     CardsCarouselComponent,
     ProductSlideComponent,
-    ShippingComponent
+    ShippingComponent,
+    SimilarsComponent
   ],
   imports: [
     BrowserModule, FormsModule, 

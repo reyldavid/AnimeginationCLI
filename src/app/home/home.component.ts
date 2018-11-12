@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     liveAction: number = ListingType.LiveAction;
     recommendations: number = ListingType.Recommendations;
     onSale: number = ListingType.OnSale;
+    onSale2: number = ListingType.OnSale2;
 
     ngOnInit(): any {
         console.log('home init');
