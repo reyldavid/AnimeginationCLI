@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+html, body {
+    font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif
+}
 .body-bg-white {
     background-color: white;
     height: 100%;
@@ -7,7 +10,7 @@
 }
 
 h1, h2, h3, h4 {
-    color: #FFA80B;
+    color: #FFA80B !important;
 }
 .h1, .h2, .h3, .h4 {
     margin-top: 10px;
@@ -104,7 +107,7 @@ li > a.image-link {
     border-radius: 24px;
     font-size: 18px;
 }
-.panel-tall {
+.card-tall {
     min-height: 80px;
 }
 .list-no-bullets {
@@ -115,6 +118,61 @@ li > a.image-link {
     font-size: 18px;
 }
 
+ul.list-inline li {
+    display: inline-block;
+}
+
+tr > td {
+    font-size: 0.9rem;
+}
+
+a .card {
+    cursor: pointer;
+}
+
+.card-max {
+    max-width: 200px;
+}
+.card-max.slice {
+    max-width: 240px;
+}
+
+.image-max {
+    max-width: 170px;
+}
+.image-max.slice {
+    max-width: 210px;
+}
+
+.rating-max {
+    max-width: 140px;
+}
+
+.image-feature {
+    width: 400px;
+}
+
+.description {
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 576px) {
+}
+
+@media only screen and (min-width: 576px) {
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (min-width: 768px) {
+}
+
 @media only screen and (max-width: 992px) {
     .wide-screen-only {
         display: none;
@@ -122,7 +180,7 @@ li > a.image-link {
 
     .small-screen-image {
         max-width: 150px;
-    }
+    }    
 }
 
 @media only screen and (min-width: 992px) {
@@ -138,3 +196,10 @@ li > a.image-link {
         padding-top: 30px;
     }
 }
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (min-width: 1200px) {
+}
+
