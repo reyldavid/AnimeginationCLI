@@ -1,0 +1,17 @@
+.wrapper { 
+    width: 430px;
+}
+.hyperlink {
+    padding-top: 10px;
+}
+.hyperlink a {
+    cursor: pointer;
+    color: #0059b2 !important;
+}
+
+.details p {
+    margin-bottom: 0.4rem;
+}
+.ml-neg-1 {
+    margin-left: -10px;
+}

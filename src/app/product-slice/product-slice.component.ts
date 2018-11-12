@@ -8,46 +8,38 @@ import { ListTypeService } from '../services/listtypes.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-products-slice',
-  templateUrl: './products-slice.component.html',
-  styleUrls: ['./products-slice.component.css']
+  selector: 'app-product-slice',
+  templateUrl: './product-slice.component.html',
+  styleUrls: ['./product-slice.component.css']
 })
-export class ProductsSliceComponent implements OnInit {
+export class ProductSliceComponent implements OnInit {
 
-  @Input()
-  listTypeID: number;
-
-  @Output() 
-  productSelected: EventEmitter<ApiProduct> = new EventEmitter<ApiProduct>();
+    @Input()
+    listTypeID: number;
 
     listTypeIDparam: string;
+    apiProducts: ApiProduct[];
     listType: ListType = { "ListTypeID": 0, "ListTypeName": "", "Description": "" };
-    public apiProducts: ApiProduct[];
-    public currentProduct: ApiProduct = null;
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _listingService: ListingService, 
                 private _listTypeService: ListTypeService) { 
-                  console.log('product slice construct');
+                    console.log('product slice construct');
     }
 
     OnSelectProduct(product: ApiProduct) {
-        //this.currentProduct = product;
-        //this.productSelected.emit(product);
         console.log('product slice product ID: ' + product.ProductID);
         this._router.navigate(['/detail', { productID: product.ProductID }]);
     }
 
-    GetProductsSlice(listTypeID: number) {
+    GetProductSlice(listTypeID: number) {
         this._listingService.getAnimeListing(listTypeID)
             .subscribe((apiProducts: ApiProduct[]) => 
-                // this.apiProducts = apiProducts.slice(0, 14));
-                this.apiProducts = apiProducts);
-    }
+            {
+                this.apiProducts = apiProducts.slice(0, 1)
 
-    GetSliceList(listTypeID: number) {
-        this._listingService.getAnimeListing(listTypeID)
-            .subscribe((apiProducts: ApiProduct[]) => this.apiProducts = apiProducts);
+                this.GetProductListType(listTypeID);
+            });
     }
 
     GetProductListType(listTypeID: number) {
@@ -60,16 +52,12 @@ export class ProductsSliceComponent implements OnInit {
     ngOnInit(): any {
         console.log('product slice init');
         this._route.paramMap.subscribe(params => {
-          this.listTypeIDparam = params.get('listTypeID');
+            this.listTypeIDparam = params.get('listTypeID');
 
-          if (this.listTypeID === undefined) {
-              this.listTypeID = Number(this.listTypeIDparam);
-              this.GetSliceList(this.listTypeID);
-          }
-          else {
-              this.GetProductsSlice(this.listTypeID);
-          }
+            if (this.listTypeID === undefined) {
+                this.listTypeID = Number(this.listTypeIDparam);
+            }
+            this.GetProductSlice(this.listTypeID);
         })
-        this.GetProductListType(this.listTypeID);
     }
 }

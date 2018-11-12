@@ -1,3 +1,40 @@
-<p>
-  products-slice works!
-</p>
+<h2>{{listType?.Description}}</h2>
+
+<div class="row flex-row">
+  <ng-container *ngFor="let prod of apiProducts">
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <a (click)="OnSelectProduct(prod)">
+            <div class="card card-max">
+                <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"
+                      class="card-img-top mx-auto image-max" alt="{{prod?.ProductCode}}" />
+                <div class="card-body">
+                    <div class="card-title">{{prod?.ProductTitle}}</div>
+                    <img src="https://reydavid.blob.core.windows.net/assets/Rating {{prod?.RatingID}} Stars.png"
+                          alt="{{prod?.RatingID}} stars" class="rating-max" />
+
+                    <div>
+                        <table>
+                            <tr>
+                                <td>List Price: </td>
+                                <!--<td><s>{{prod?.UnitPrice | currency:'USD':true }} </s></td>-->
+                                <td><s>${{prod?.UnitPrice }} </s></td>
+                            </tr>
+                            <tr>
+                                <td>Your Price: </td>
+                                <!--<td><strong><span class="text-danger">{{prod?.YourPrice | currency:'USD':true }} </span></strong></td>-->
+                                <td><strong><span class="text-danger">${{prod?.YourPrice }} </span></strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </a>
+      </div>
+  </ng-container>
+</div>
+<!-- <ul class="list-inline">
+    <li *ngFor="let prod of apiProducts"
+        (click)="OnSelectProduct(prod)">
+    </li>
+</ul> -->
+

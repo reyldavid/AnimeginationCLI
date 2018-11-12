@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { ApiProduct } from '../models/product';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+    @Input()
+    productID: number;
 
-  ngOnInit() {
-  }
+    product: ApiProduct;
 
+    constructor(private _router: Router, private _route: ActivatedRoute, 
+                private _productService: ProductsService) { 
+                  console.log('product details construct');
+    }
+
+    GetProduct(productID: number) {
+        this._productService.getAnimeProduct(productID)
+            .subscribe((product: ApiProduct) => 
+            {
+                this.product = product
+            });
+    }
+
+    ngOnInit(): any {
+        console.log('product details init');
+        this._route.paramMap.subscribe(params => {
+          this.productID = Number(params.get('productID'));
+
+          this.GetProduct(this.productID);
+        })
+    }
 }

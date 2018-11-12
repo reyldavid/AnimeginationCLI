@@ -1,0 +1,26 @@
+
+div.shipping {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.25px;
+    text-align: center;
+    margin: 15px auto;
+    padding: 5px 0;
+    width: 100%;
+}
+
+div.shipping p {
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 992px) {
+    div.shipping {
+        background-color: #00afec;
+    }
+}
+@media (min-width: 992px) {
+    div.shipping {
+        font-size: 20px;
+        background: #00afec url(../../assets/ShippingBanner.png) no-repeat center;
+    }
+}

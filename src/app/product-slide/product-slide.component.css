@@ -1,0 +1,56 @@
+.card-title {
+    white-space: normal;
+    color: #0059b2;
+  }
+  
+.slide-buttons {
+    max-width: 80px;
+}
+
+.slide-prev {
+    margin-right: -40px;
+}
+
+.slide-next {
+    margin-left: -40px;
+}
+
+.slide-col {
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+ul {
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    text-align: center;
+    padding-right: 20px;
+}
+
+li:last-child {
+    padding-right: 0px;
+}
+
+.bgc-light {
+    background-color: #fff;
+}
+.bgc-gray {
+    background-color: #ececec;
+}
+
+
+/* li:nth-child(odd) {
+    background-color: yellow;
+}
+
+li:nth-child(even) {
+    background-color: blue;
+} */
+

@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <h2>{{listType?.Description}}</h2>
+
+    <div class="row flex-row">
+        <ng-container *ngFor="let prod of apiProducts">
+            <div class="col-1"></div>
+            <div class="col-5 details">
+                <div>
+                    <p class="hyperlink"><a (click)="OnSelectProduct(prod)">{{prod?.ProductTitle}}</a></p>
+
+                    <p>Publisher: {{prod.PublisherName}}</p>
+
+                    <p>Genre: {{prod.CategoryName}} </p>
+
+                    <p>Age Rating: {{prod.ProductAgeRating}} </p>
+
+                    <p>List Price: <s>${{prod?.UnitPrice }}</s></p>
+                    <p>Your Price: <strong><span class="text-danger">${{prod?.YourPrice }} </span></strong></p>
+
+                    <img src="https://reydavid.blob.core.windows.net/assets/Rating {{prod?.RatingID}} Stars.png" 
+                        alt="{{prod?.RatingID}} stars" class="rating-max" />
+                </div>
+            </div>
+            <div class="col-5">
+                <a (click)="OnSelectProduct(prod)" class="pointer ml-neg-1">
+                    <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"
+                            class="image-max slice" alt="{{prod?.ProductCode}}" />
+                </a>
+            </div>
+        </ng-container>    
+    </div>
+</div>

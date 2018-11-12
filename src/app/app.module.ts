@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { Globals } from './globals';
 import { HttpHelper } from './services/http.helper.service';
@@ -36,6 +37,11 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { CategoryListComponent } from './category-list/category-list.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { AddressSettingsComponent } from './address-settings/address-settings.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { ProductSliceComponent } from './product-slice/product-slice.component';
+import { CardsCarouselComponent } from './cards-carousel/cards-carousel.component';
+import { ProductSlideComponent } from './product-slide/product-slide.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
 @NgModule({
   declarations: [
@@ -57,10 +63,15 @@ import { AddressSettingsComponent } from './address-settings/address-settings.co
     SearchResultsComponent,
     CategoryListComponent,
     ProfileSettingsComponent,
-    AddressSettingsComponent
+    AddressSettingsComponent,
+    NavigationComponent,
+    ProductSliceComponent,
+    CardsCarouselComponent,
+    ProductSlideComponent,
+    ShippingComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule, FormsModule, 
     HttpClientModule, AppRouterModule
   ],
   providers: [

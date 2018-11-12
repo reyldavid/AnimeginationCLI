@@ -1,3 +1,45 @@
-<p>
-  login works!
-</p>
+<!--<div class="login jumbotron center-block">
+    <h2>Login</h2>
+    <form role="form" (submit)="Login($event, username.value, password.value)">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" #username class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #password class="form-control" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <a [routerLink]="['Register']">Click here to Register</a>
+    </form>
+</div>-->
+<div class="row">
+    <div class="col-sm-10 offset-sm-1">
+        <h2>Sign In</h2>
+        <form #loginForm="ngForm" role="form" 
+              (submit)="Login()">
+            <div class="form-group">
+                <label for="username">Your Animegination User Name</label>
+                <input type="text" ngControl="username" required 
+                       [(ngModel)]="loginInput.username"
+                       class="form-control" name="username" />
+            </div>
+            <div class="form-group">
+                <label for="password">Your Animegination Password</label>
+                <input type="password" ngControl="password" required 
+                       [(ngModel)]="loginInput.password"
+                       class="form-control" name="password" />
+            </div>
+            <span class="image-btn">
+                <button class="btn transparent" type="submit">
+                    <img alt="Sign In" height="50" src="https://reydavid.blob.core.windows.net/assets/login.png" />
+                </button>
+            </span>
+            <p class="pt-2 anime-color">New to Animegination?  <a routerLink="/register">Create an account</a></p>
+            <div *ngIf="isInvalidAccount" class="alert alert-danger">
+                <strong>There was a problem: </strong> Incorrect user name or password.  
+                Please correct your user name and password.
+            </div>
+        </form>
+    </div>
+</div>

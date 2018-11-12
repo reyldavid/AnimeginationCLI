@@ -1,86 +1,25 @@
-<div class="body-bg-white">
-  <div class="row">
-      <div class="col-xs-12 col-sm-3 col-lg-6">
-          <a class="navbar-brand pl-2" routerLink="">
-              <img src="https://reydavid.blob.core.windows.net/assets/Animegination-brand.PNG"
-                   alt="Animegination" height="20" />
-          </a>
-      </div>
-      <div class="col-xs-12 col-sm-9 col-lg-6">
-          <div class="input-group pt-2 px-3">
-              <input type="search" class="form-control" placeholder="Search the Store" #inSearch />
-              <span class="input-group-btn image-btn">
-                  <button class="btn btn-default" type="button" (click)="onSearch(inSearch.value)">
-                      <img src="https://reydavid.blob.core.windows.net/assets/Search2.png" alt="Search" height="32" />
-                  </button>
-              </span>
-          </div>
-      </div>
-  </div>
-  
-  <div class="body-bg-white">
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" 
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-          aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" 
-                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Features
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-              <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 1 }">Featured Titles</a>
-              <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 3 }">Top Sellers</a>
-              <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 2 }">New Items</a>
-              <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 5 }">Close Out</a>
-              <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 4 }">Bargain Bin</a>
-              <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 6 }">Live Action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" routerLink="/news">Recent News</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/genres">Shop by Category</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/contact">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/about">About Us</a>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav">
-          <li *ngIf="userFirstName" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" 
-                  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hello, <span class="anime-color">{{userFirstName}}</span><span class="caret"></span>
-              </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <a class="dropdown-item" (click)="logout()" routerLink="/login">Sign Out</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" routerLink="/orders">Your Orders</a>
-              <a class="dropdown-item" href="#" routerLink="/account">Your Account</a>
-            </div>
-          </li>
-          <li *ngIf="!userFirstName" class="nav-item">
-            <a class="nav-link" routerLink="/login">Sign in</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="nav navbar-nav pl-3">
-        <a routerLink="/cart" class="image-link">
-            <img src="https://reydavid.blob.core.windows.net/assets/menu-cart.png"
-                  alt="Shopping Cart" height="46" />
-        </a>
-      </div>
-    </nav>  
-  </div>
-
+<app-cards-carousel></app-cards-carousel>
+<app-shipping></app-shipping>
+<app-product-slide [listTypeID]="newItems" [bgc]=true></app-product-slide>
+<div class="d-block d-md-none">
+    <div>
+        <app-product-slice [listTypeID]="featuredTitles"></app-product-slice>
+    </div>
+    <div>
+        <app-product-slide [listTypeID]="onSale" [bgc]=true></app-product-slide>
+    </div>
 </div>
+<div class="d-none d-md-block">
+    <div class="d-flex align-items-center">
+        <div>
+            <app-product-slice [listTypeID]="featuredTitles"></app-product-slice>
+        </div>
+        <div class="fill-size">
+            <app-product-slide [listTypeID]="onSale" [bgc]=true></app-product-slide>
+        </div>
+    </div>
+</div>
+<app-product-slide [listTypeID]="topSellers" [bgc]=false></app-product-slide>
+<app-product-slide [listTypeID]="liveAction" [bgc]=true></app-product-slide>
+<app-product-slide [listTypeID]="closeOut" [bgc]=false></app-product-slide>
+<app-product-slide [listTypeID]="bargainBin" [bgc]=true></app-product-slide>

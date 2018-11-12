@@ -1,0 +1,48 @@
+<div [class.bgc-gray]="bgc">
+  <h2>{{listType?.Description}}</h2>
+
+  <div *ngIf="showButtons" class="row">
+    <div [id]="'prev' + listTypeID" class="slide-prev slide-col col-2 col-sm-1 d-flex align-items-center">
+      <a>
+        <img src="assets/Previous2.jpg" alt="Previous" 
+              class="slide-buttons">
+      </a>
+    </div>
+    <div [id]="'wrap' + listTypeID" class="slide-wrapper col-8 col-sm-10">
+      <ul>
+          <li *ngFor="let prod of apiProducts">
+            <a (click)="OnSelectProduct(prod)">
+              <div class="card card-max">
+                    <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"
+                          class="card-img-top mx-auto image-max" alt="{{prod?.ProductCode}}" />
+                    <div class="card-body">
+                        <div class="card-title">{{prod?.ProductTitle}}</div>
+                        <!-- <img src="https://reydavid.blob.core.windows.net/assets/Rating {{prod?.RatingID}} Stars.png"
+                              alt="{{prod?.RatingID}} stars" class="rating-max" />         -->
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>List Price: </td>
+                                    <td><s>${{prod?.UnitPrice }} </s></td>
+                                </tr>
+                                <tr>
+                                    <td>Your Price: </td>
+                                    <td><strong><span class="text-danger">${{prod?.YourPrice }} </span></strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              </a>
+          </li>
+      </ul>
+    </div>
+    <!-- <div class="BargainBin slide-next slide-col col-2 col-sm-1 d-flex align-items-center"> -->
+    <div [id]="'next' + listTypeID" class="slide-next slide-col col-2 col-sm-1 d-flex align-items-center">
+      <a>
+          <img src="assets/Next2.jpg" alt="Next" class="slide-buttons">
+      </a>
+    </div>
+  </div>
+</div>
+

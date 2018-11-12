@@ -35,17 +35,17 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.listTypeService.getAnimeListType(2).subscribe( listType => {
-    //   console.log('listType');
-    //   console.log(listType);
+    this.listTypeService.getAnimeListType(2).subscribe( listType => {
+      console.log('listType');
+      console.log(listType);
 
-    //   this.listTypeService.setListTypeCache(listType, 2);
+      this.listTypeService.setListTypeCache(listType, 2);
 
-    //   this.listTypeService.getAnimeListType(2).subscribe( listType => {
-    //     console.log('listType');
-    //     console.log(listType);
-    //   })
-    // })
+      this.listTypeService.getAnimeListType(2).subscribe( listType => {
+        console.log('listType');
+        console.log(listType);
+      })
+    })
 
     // this.productService.getAnimeProduct(1042).subscribe( products => {
     //   console.log('product');

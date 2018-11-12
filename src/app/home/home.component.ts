@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { ListingType } from '../models/listingTypes';
 
 @Component({
   selector: 'app-home',
@@ -9,31 +8,18 @@ import { LoginService } from '../services/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  public userFirstName: string;
+    featuredTitles: number = ListingType.FeaturedTitles;
+    newItems: number = ListingType.NewItems;
+    topSellers: number = ListingType.TopSellers;
+    bargainBin: number = ListingType.BargainBin;
+    closeOut: number = ListingType.CloseOut;
+    liveAction: number = ListingType.LiveAction;
+    recommendations: number = ListingType.Recommendations;
+    onSale: number = ListingType.OnSale;
 
-  constructor(private _router: Router, private _loginService: LoginService) {
-      _loginService.userLoggedIn.subscribe(firstName => this.onUserLogin(firstName));
-  }
-
-  ngOnInit(): any {
-      console.log('home init');
-      localStorage.removeItem('jwt');
-      // this._router.navigate(['Home']);
-  }
-
-  onSearch(searchText: string) {
-      console.log('onSearch ' + searchText);
-      this._router.navigate(['search', { searchText: searchText } ]);
-  }
-
-  onUserLogin(userFirstName: string) {
-      this.userFirstName = userFirstName;
-  }
-
-  logout() {
-      // Logging out means just deleting the JWT from localStorage and redirecting the user to the Login page
-      localStorage.removeItem('jwt');
-      this.userFirstName = '';
-  }
-
+    ngOnInit(): any {
+        console.log('home init');
+        console.log('home href ' + window.location.href);
+        console.log('home path ' + window.location.pathname);
+    }
 }

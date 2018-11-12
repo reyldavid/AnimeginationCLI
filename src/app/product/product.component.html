@@ -1,3 +1,83 @@
-<p>
-  product works!
-</p>
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+        <div class="panel-body panel-default">
+            <img src="https://reydavid.blob.core.windows.net/anime/{{product?.ProductCode}}.jpg"
+                 alt="{{product?.ProductCode}}" class="image-feature img-responsive" />
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6 padding-left-30">
+        <h3>{{product?.ProductTitle}}</h3>
+        <img src="https://reydavid.blob.core.windows.net/assets/Rating {{product?.RatingID}} Stars.png"
+             alt="{{product?.RatingID}} stars" class="img-responsive" />
+        <div class="padding-top-15"></div>
+        <table>
+            <tr>
+                <td>List Price: </td>
+                <!--<td><s>{{product?.UnitPrice | currency:'USD':true }} </s></td>-->
+                <td><s>${{product?.UnitPrice}} </s></td>
+            </tr>
+            <tr>
+                <td><strong>Your Price: </strong></td>
+                <!--<td><strong><span class="text-danger font-size-16">{{product?.YourPrice | currency:'USD':true }} </span></strong></td>-->
+                <td><strong><span class="text-danger font-size-16">${{product?.YourPrice }} </span></strong></td>
+            </tr>
+            <tr>
+                <td>You Save: </td>
+                <!--<td><span class="text-danger">{{product?.UnitPrice - product?.YourPrice | currency:'USD':true }} </span></td>-->
+                <td><span class="text-danger">${{ (product?.UnitPrice - product?.YourPrice).toFixed(2) }} </span></td>
+            </tr>
+        </table>
+        <div class="padding-top-15">
+            <div class="fine-print">In Stock</div>
+            <div>
+                <a href="http://www.animegination.net/Product/Details/{{product?.ProductCode}}" target="_blank">
+                    <img src="https://reydavid.blob.core.windows.net/assets/shopping-cart.png"
+                         alt="Buy in website now" style="max-width: 130px;" />
+                </a>
+            </div>
+            <div class="fine-print padding-top-15">Free US Economy Shipping at $49</div>
+            <div class="fine-print">Free Canadian Shipping at $249</div>
+            <div class="small-gray">Item: {{product?.ProductCode}}</div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 clear-both">
+        <div class="col-md-10 offset-md-1 description">
+            <h4>Description</h4>
+            <p>
+                {{product?.ProductDescription}}
+            </p>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="col-md-10">
+            <h4>Product Details</h4>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="bg-lightgray">Rated: </td>
+                    <td>{{product?.ProductAgeRating}}</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Run Time: </td>
+                    <td>{{product?.ProductLength}} minutes</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Format: </td>
+                    <td>{{product?.MediumName}}</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Category: </td>
+                    <td>{{product?.CategoryName}}</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Released: </td>
+                    <td>{{product?.ProductYearCreated}}</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Publisher: </td>
+                    <td>{{product?.PublisherName}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-12 py-3"></div>
+</div>

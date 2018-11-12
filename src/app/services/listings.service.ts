@@ -37,10 +37,10 @@ import 'rxjs/Rx';
         }
     }
 
-    getAnimeListingStatic(): Observable<Listing[]> {
+    getAnimeListingStatic(): Observable<ApiProduct[]> {
         let endpoint = 'assets/listings.data.json';
 
-        let result = this.http.get<Listing[]>(
+        let result = this.http.get<ApiProduct[]>(
             endpoint
         )
         .pipe( catchError( HttpHelper.handleError ));
@@ -48,7 +48,7 @@ import 'rxjs/Rx';
         return result;
     }
 
-    getAnimeListing(listTypeID: number): Observable<Listing[]> {
+    getAnimeListing(listTypeID: number): Observable<ApiProduct[]> {
 
         if (this.globals.localData) {
             return this.getAnimeListingStatic();
@@ -66,7 +66,7 @@ import 'rxjs/Rx';
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();
     
-                let observables = this.http.get<Listing[]>(
+                let observables = this.http.get<ApiProduct[]>(
                     endpoint, { headers: headers, observe: 'response'}
                     )
                     .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
