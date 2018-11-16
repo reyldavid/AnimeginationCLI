@@ -1,3 +1,19 @@
-<p>
-  categories works!
-</p>
+<div class="bgc-gray">
+  <h2 class="anime-orig-color">Shop by Category</h2>
+  <ul class="list-inline">
+      <li *ngFor="let category of categories"
+          (click)="OnSelectCategory(category)">
+          <a>
+              <div class="card frame card-max">
+                  <img class="card-img-top image-max" 
+                       src="https://reydavid.blob.core.windows.net/genres/{{category?.ImageFile}}"
+                       alt="{{category?.CategoryName}}" />
+                  <div class="card-body">
+                      <div class="card-title genre-title" 
+                        [class.smaller]="category?.Description.length > 20">{{category?.Description}}</div>
+                  </div>
+              </div>
+          </a>
+      </li>
+  </ul>
+</div>

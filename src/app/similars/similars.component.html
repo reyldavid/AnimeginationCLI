@@ -18,7 +18,7 @@
                     <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"
                           class="card-img-top mx-auto image-max" alt="{{prod?.ProductCode}}" />
                     <div class="card-body">
-                        <div class="card-title">{{prod?.ProductTitle}}</div>
+                        <div class="card-title blue">{{prod?.ProductTitle}}</div>
                         <!-- <img src="https://reydavid.blob.core.windows.net/assets/Rating {{prod?.RatingID}} Stars.png"
                               alt="{{prod?.RatingID}} stars" class="rating-max" />         -->
                         <div>
@@ -39,7 +39,6 @@
           </li>
       </ul>
     </div>
-    <!-- <div class="BargainBin slide-next slide-col col-2 col-sm-1 d-flex align-items-center"> -->
     <div [id]="'next' + productID" class="slide-next slide-col col-2 col-sm-1 d-flex align-items-center">
       <a>
           <img src="assets/Next2.jpg" alt="Next" class="slide-buttons">

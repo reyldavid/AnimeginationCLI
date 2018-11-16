@@ -26,7 +26,7 @@ h5.panel-title {
 }
 
 .anime-orig-color {
-    color: #FF8201;
+    color: #FF8201 !important;
 }
 .anime-color {
     color: #FFA80B;
@@ -130,6 +130,14 @@ a .card {
     cursor: pointer;
 }
 
+a .card.frame {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.6em;
+    margin-right: 0.6em;
+}
+
 .card-max {
     max-width: 200px;
 }
@@ -159,6 +167,47 @@ a .card {
 
 .pointer {
     cursor: pointer;
+}
+
+.bgc-light {
+    background-color: #fff;
+}
+.bgc-gray {
+    background-color: #ececec;
+}
+
+.slide-buttons {
+    max-width: 80px;
+}
+
+.slide-prev {
+    margin-right: -40px;
+}
+
+.slide-next {
+    margin-left: -40px;
+}
+
+.slide-col {
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.card-title.blue {
+    white-space: normal;
+    color: #0059b2;
+  }
+
+.genre-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: #FF8201;
+}
+
+.smaller {
+    font-size: 0.8em;
 }
 
 @media only screen and (max-width: 576px) {
