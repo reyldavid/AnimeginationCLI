@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category';
-import { Router } from '@angular/router';
 import { CategoryService } from '../services/categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -18,7 +18,8 @@ export class CategoriesComponent implements OnInit {
 
     OnSelectCategory(category: Category) {
         console.log('category: ' + category.Description);
-        this._router.navigate(['/genre', { categoryID: category.CategoryID }]);
+        this._router.navigate(['/genre'], { queryParams: {  categoryID: category.CategoryID } });
+        // this._router.navigate(['/genre']);
     }
 
     GetCategories() {

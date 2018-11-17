@@ -1,8 +1,8 @@
 <div class="bgc-gray">
   <h2 class="anime-orig-color">Shop by Category</h2>
   <ul class="list-inline">
-      <li *ngFor="let category of categories"
-          (click)="OnSelectCategory(category)">
+      <li *ngFor="let category of categories" 
+        [routerLink]="['/genre']" [queryParams]="{ categoryID: category?.CategoryID }">
           <a>
               <div class="card frame card-max">
                   <img class="card-img-top image-max" 
@@ -17,3 +17,4 @@
       </li>
   </ul>
 </div>
+<!-- (click)="OnSelectCategory(category)"> -->
