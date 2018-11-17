@@ -37,10 +37,11 @@ const routes: Routes = [
   { path: 'news', component: NewsFeedComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'search', component: SearchResultsComponent },
-  { path: 'genre:/categoryID/', component: CategoryListComponent },
+  { path: 'genre', component: CategoryListComponent },
   { path: 'profile', component: ProfileSettingsComponent },
   { path: 'address', component: AddressSettingsComponent }
 ]
+// { path: 'genre/:categoryID', component: CategoryListComponent },
 
 @NgModule({
   imports: [

@@ -95,7 +95,7 @@ import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dict
                 let observables = this.http.get<Category>(
                     endpoint, { headers: headers, observe: 'response'}
                     )
-                    .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+                    .pipe( map ( HttpHelper.extractFirst,), catchError( HttpHelper.handleError ));
 
                 return observables;
             }
