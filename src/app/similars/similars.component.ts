@@ -34,7 +34,7 @@ export class SimilarsComponent implements OnInit {
 
   OnSelectProduct(product: ApiProduct) {
       console.log('similars product ID: ' + product.ProductID);
-      this._router.navigate(['/detail', { productID: product.ProductID }]);
+      this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
   }
 
   GetProductsSlideByID(productID: number) {
@@ -68,6 +68,16 @@ export class SimilarsComponent implements OnInit {
       }
       this.GetProductsSlideByID(this.productID);
     })
+
+    this._route.queryParams.subscribe(params => {
+      let productID = params.productID;
+
+      if (productID) {
+        this.productID = productID;
+        this.GetProductsSlideByID(productID);
+      }
+  })
+
   }
 
   RemoveListeners(productID: string) {
