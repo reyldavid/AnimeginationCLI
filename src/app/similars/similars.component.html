@@ -25,11 +25,11 @@
                             <table>
                                 <tr>
                                     <td>List Price: </td>
-                                    <td><s>{{prod?.UnitPrice | currency:'USD':true }} </s></td>
+                                    <td><s>{{prod?.UnitPrice | currency:'USD':'symbol' }} </s></td>
                                 </tr>
                                 <tr>
                                     <td>Your Price: </td>
-                                    <td><strong><span class="text-danger">{{prod?.YourPrice | currency:'USD':true }} </span></strong></td>
+                                    <td><strong><span class="text-danger">{{prod?.YourPrice | currency:'USD':'symbol' }} </span></strong></td>
                                 </tr>
                             </table>
                         </div>

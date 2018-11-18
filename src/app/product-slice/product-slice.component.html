@@ -14,8 +14,8 @@
 
                     <p>Age Rating: {{prod.ProductAgeRating}} </p>
 
-                    <p>List Price: <s>{{prod?.UnitPrice | currency:'USD':true }}</s></p>
-                    <p>Your Price: <strong><span class="text-danger">{{prod?.YourPrice | currency:'USD':true }} </span></strong></p>
+                    <p>List Price: <s>{{prod?.UnitPrice | currency:'USD':'symbol' }}</s></p>
+                    <p>Your Price: <strong><span class="text-danger">{{prod?.YourPrice | currency:'USD':'symbol' }} </span></strong></p>
 
                     <img src="https://reydavid.blob.core.windows.net/assets/Rating {{prod?.RatingID}} Stars.png" 
                         alt="{{prod?.RatingID}} stars" class="rating-max" />

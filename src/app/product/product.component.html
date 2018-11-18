@@ -17,11 +17,11 @@
             </tr>
             <tr>
                 <td><strong>Your Price: </strong></td>
-                <td><strong><span class="text-danger font-size-16">{{product?.YourPrice | currency:'USD':true }} </span></strong></td>
+                <td><strong><span class="text-danger font-size-16">{{product?.YourPrice | currency:'USD':'symbol' }} </span></strong></td>
             </tr>
             <tr>
                 <td>You Save: </td>
-                <td><span class="text-danger">{{ (product?.UnitPrice - product?.YourPrice).toFixed(2) | currency:'USD':true }} </span></td>
+                <td><span class="text-danger">{{ (product?.UnitPrice - product?.YourPrice).toFixed(2) | currency:'USD':'symbol' }} </span></td>
             </tr>
         </table>
         <div class="padding-top-15">
