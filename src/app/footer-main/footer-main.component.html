@@ -1,0 +1,74 @@
+<div class="d-none d-sm-block">
+  <div class="row footermain">
+    <div class="col footersub">
+      <p class="p2">
+        My Account
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/login']">Log In</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/register']">Sign Up</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/settings']">Account Settings</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/orders']">Order History</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/cart']">Shopping Cart</a>
+      </p>
+    </div>
+    <div class="col footersub">
+      <p class="p2">
+        Customer Care
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/contact']">Contact Us</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/about']">About Us</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/shipping']">Shipping Info</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/returns']">Returns</a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/feedback']">Customer Feedback</a>
+      </p>
+    </div>
+    <div class="col footersub">
+      <p class="p2">
+        Popular Shopping
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/list']" [queryParams]="{ listTypeId: topSellers }">
+          Top Sellers
+        </a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/list']" [queryParams]="{ listTypeId: bargainBin }">
+          Bargain Bin
+        </a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/list']" [queryParams]="{ listTypeId: newItems }">
+          New Items
+        </a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/list']" [queryParams]="{ listTypeId: liveAction }">
+          Live Action
+        </a>
+      </p>
+      <p class="p3">
+        <a [routerLink]="['/list']" [queryParams]="{ listTypeId: closeOut }">
+          Close Out
+        </a>
+      </p>
+      </div>
+  </div>
+</div>
