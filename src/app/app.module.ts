@@ -43,6 +43,10 @@ import { CardsCarouselComponent } from './cards-carousel/cards-carousel.componen
 import { ProductSlideComponent } from './product-slide/product-slide.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { SimilarsComponent } from './similars/similars.component';
+import { FooterMainComponent } from './footer-main/footer-main.component';
+import { FooterProductComponent } from './footer-product/footer-product.component';
+import { ReturnsComponent } from './returns/returns.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { SimilarsComponent } from './similars/similars.component';
     CardsCarouselComponent,
     ProductSlideComponent,
     ShippingComponent,
-    SimilarsComponent
+    SimilarsComponent,
+    FooterMainComponent,
+    FooterProductComponent,
+    ReturnsComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule, FormsModule, 

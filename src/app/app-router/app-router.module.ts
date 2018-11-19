@@ -19,11 +19,14 @@ import { SearchResultsComponent } from '../search-results/search-results.compone
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { ProfileSettingsComponent } from '../profile-settings/profile-settings.component';
 import { AddressSettingsComponent } from '../address-settings/address-settings.component';
+import { ShippingComponent } from '../shipping/shipping.component';
+import { ReturnsComponent } from '../returns/returns.component';
+import { FeedbackComponent } from '../feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'all', component: ProductsListComponent },
+  { path: 'list', component: ProductsListComponent },
   { path: 'detail', component: ProductComponent },
   { path: 'slice/:listTypeID', component: ProductsSliceComponent },
   { path: 'about', component: AboutUsComponent },
@@ -39,7 +42,10 @@ const routes: Routes = [
   { path: 'search', component: SearchResultsComponent },
   { path: 'genre', component: CategoryListComponent },
   { path: 'profile', component: ProfileSettingsComponent },
-  { path: 'address', component: AddressSettingsComponent }
+  { path: 'address', component: AddressSettingsComponent }, 
+  { path: 'shipping', component: ShippingComponent }, 
+  { path: 'returns', component: ReturnsComponent }, 
+  { path: 'feedback', component: FeedbackComponent }
 ]
 // { path: 'genre/:categoryID', component: CategoryListComponent },
 

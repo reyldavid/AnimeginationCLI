@@ -210,6 +210,40 @@ a .card.frame {
     font-size: 0.8em;
 }
 
+.blue-dark {
+    background-color: #0461A2;
+}
+.blue-light {
+    background-color: #2878AF;
+}
+.footermain {
+    background-color: #0461A2;
+    padding-right: 3em;
+}
+.footersub {
+    color: white;
+    background-color: #2878AF;
+    padding: 1em;
+    margin: 1em 0 1.5em 3em;
+    border-radius: 15px;
+}
+
+.p2 {
+    font-size: 1em;
+    padding: 0em 1.2em;
+}
+.p3 { 
+    font-size: 0.8em;
+    padding: 0em 2em;
+    height: 1em;
+}
+.p3 a {
+    color: white;
+}
+.p3 a:hover {
+    color: #FFA80B;
+}
+
 @media only screen and (max-width: 576px) {
 }
 
