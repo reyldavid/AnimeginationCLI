@@ -26,7 +26,7 @@ export class ProductsListComponent implements OnInit {
     console.log('products list init');
 
     this._route.queryParams.subscribe(params => {
-      let listTypeId = params.listTypeId;
+      let listTypeId = params.listTypeId % 10;
 
       console.log('aya listTypeId');
       console.log(listTypeId);
@@ -36,7 +36,7 @@ export class ProductsListComponent implements OnInit {
     })
 
     this._route.paramMap.subscribe(params => {
-      let listTypeIdparam = params.get('listTypeId');
+      let listTypeIdparam = params.get('listTypeID');
   
       if (listTypeIdparam) {
         let typeID = Number(listTypeIdparam) % 10;

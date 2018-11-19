@@ -147,9 +147,11 @@ a .card.frame {
 
 .image-max {
     max-width: 170px;
+    max-height: 215px;
 }
 .image-max.slice {
     max-width: 210px;
+    max-height: 265px;
 }
 
 .rating-max {
@@ -209,7 +211,11 @@ a .card.frame {
 .smaller {
     font-size: 0.8em;
 }
-
+.link-normal {
+    color: #0066c0;
+    font-size: 14px;
+    line-height: 35px;
+}
 .blue-dark {
     background-color: #0461A2;
 }

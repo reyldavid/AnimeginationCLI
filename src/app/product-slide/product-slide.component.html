@@ -1,5 +1,9 @@
 <div [class.bgc-gray]="bgc">
-  <h2>{{listType?.Description}}</h2>
+  <h2>{{listType?.Description}}  
+      <span class="link-normal">  
+        <a [routerLink]="['/list']" [queryParams]="{ listTypeId: listTypeID }">See More</a>
+    </span>
+  </h2>
 
   <div *ngIf="showButtons" class="row">
     <div [id]="'prev' + listTypeID" class="slide-prev slide-col col-2 col-sm-1 d-flex align-items-center">
