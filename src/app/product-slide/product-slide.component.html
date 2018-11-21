@@ -1,6 +1,6 @@
 <div [class.bgc-gray]="bgc">
   <h2>{{listType?.Description}}  
-      <span class="link-normal">  
+      <span *ngIf="showButtons" class="link-normal">  
         <a [routerLink]="['/list']" [queryParams]="{ listTypeId: listTypeID }">See More</a>
     </span>
   </h2>
