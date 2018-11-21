@@ -47,6 +47,8 @@ import { FooterMainComponent } from './footer-main/footer-main.component';
 import { FooterProductComponent } from './footer-product/footer-product.component';
 import { ReturnsComponent } from './returns/returns.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { LegalComponent } from './legal/legal.component';
+import { RatingsComponent } from './ratings/ratings.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { FeedbackComponent } from './feedback/feedback.component';
     FooterMainComponent,
     FooterProductComponent,
     ReturnsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    LegalComponent,
+    RatingsComponent
   ],
   imports: [
     BrowserModule, FormsModule, 

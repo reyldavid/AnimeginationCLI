@@ -22,6 +22,8 @@ import { AddressSettingsComponent } from '../address-settings/address-settings.c
 import { ShippingComponent } from '../shipping/shipping.component';
 import { ReturnsComponent } from '../returns/returns.component';
 import { FeedbackComponent } from '../feedback/feedback.component';
+import { LegalComponent } from '../legal/legal.component';
+import { RatingsComponent } from '../ratings/ratings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -45,7 +47,9 @@ const routes: Routes = [
   { path: 'address', component: AddressSettingsComponent }, 
   { path: 'shipping', component: ShippingComponent }, 
   { path: 'returns', component: ReturnsComponent }, 
-  { path: 'feedback', component: FeedbackComponent }
+  { path: 'feedback', component: FeedbackComponent }, 
+  { path: 'legal', component: LegalComponent }, 
+  { path: 'ratings', component: RatingsComponent }
 ]
 // { path: 'genre/:categoryID', component: CategoryListComponent },
 
