@@ -8,6 +8,8 @@ export class LoginService {
     }
 
     public login(firstName: string): void {
-        this.userLoggedIn.emit(firstName);
+        if (firstName) {
+            this.userLoggedIn.emit(firstName);
+        }
     }
 }

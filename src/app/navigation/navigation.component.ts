@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-navigation',
@@ -12,13 +13,17 @@ export class NavigationComponent implements OnInit {
   public userFirstName: string;
 
   constructor(private _router: Router, 
-              private _loginService: LoginService) {
-      _loginService.userLoggedIn.subscribe(firstName => this.onUserLogin(firstName));
+              private _loginService: LoginService, 
+              private _sessionService: SessionService ) {
+      _loginService.userLoggedIn.subscribe(firstName => {
+        this.onUserLogin(firstName);
+      });
   }
 
   ngOnInit(): any {
       console.log('home init');
-      localStorage.removeItem('jwt');
+    //   localStorage.removeItem('jwt');
+        this._sessionService.clearToken();
       // this._router.navigate(['Home']);
   }
 
@@ -33,7 +38,8 @@ export class NavigationComponent implements OnInit {
 
   logout() {
       // Logging out means just deleting the JWT from localStorage and redirecting the user to the Login page
-      localStorage.removeItem('jwt');
+    //   localStorage.removeItem('jwt');
+    this._sessionService.clearToken();
       this.userFirstName = '';
   }
 

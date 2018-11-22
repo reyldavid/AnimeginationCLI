@@ -4,6 +4,7 @@ import { UserAccountsService } from '../services/userAccounts.service';
 import { TokenModel } from '../models/tokenModel';
 import { UserAccountModel } from '../models/userAccountModel';
 import { LoginService } from '../services/login.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-account-info',
@@ -29,11 +30,13 @@ export class AccountInfoComponent implements OnInit {
 
     constructor(public _router: Router, 
         private _userAccountService: UserAccountsService,
-        private _loginService: LoginService)
+        private _loginService: LoginService, 
+        private _sessionService: SessionService )
     {
         console.log('account info construct');
         // We get the JWT from localStorage
-        this.token.token = localStorage.getItem('jwt');
+        // this.token.token = localStorage.getItem('jwt');
+        this.token.token = _sessionService.UserToken;
         // We also store the decoded JSON from this JWT
         //this.decodedJwt = this.jwt && (<any>window).jwt_decode(this.jwt);
     }
@@ -41,7 +44,8 @@ export class AccountInfoComponent implements OnInit {
     logout() {
         // Method to be called when the user wants to logout
         // Logging out means just deleting the JWT from localStorage and redirecting the user to the Login page
-        localStorage.removeItem('jwt');
+        // localStorage.removeItem('jwt');
+        this._sessionService.clearToken();
         this._router.navigate(['/login']);
     }
 
