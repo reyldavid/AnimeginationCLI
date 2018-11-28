@@ -39,8 +39,9 @@ export class ProductSlideComponent implements OnInit {
 
   OnSelectProduct(product: ApiProduct) {
       console.log('product slide product ID: ' + product.ProductID);
-      this._router.navigate(['/detail', { productID: product.ProductID }]);
-  }
+      // this._router.navigate(['/detail', { productID: product.ProductID }]);
+      this._router.navigate(['/detail'], { queryParams: {  productID: product.ProductID } });
+    }
 
   GetProductsSlideByType(listTypeID: number) {
       this._listingService.getAnimeListing(listTypeID)

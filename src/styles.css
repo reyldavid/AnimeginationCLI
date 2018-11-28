@@ -283,6 +283,10 @@ a .card.frame {
     color: #FFA80B;
 }
 
+a.hand:hover {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 576px) {
 }
 

@@ -16,15 +16,18 @@ export class NavigationComponent implements OnInit {
               private _loginService: LoginService, 
               private _sessionService: SessionService ) {
       _loginService.userLoggedIn.subscribe(firstName => {
-        this.onUserLogin(firstName);
-      });
-  }
+        this.userFirstName = firstName;
+    });
+    //   localStorage.removeItem('jwt');
+    // this._sessionService.clearSession();
+    // this._router.navigate(['Home']);
+    if (_sessionService.isAuthenticated()) {
+        this.userFirstName = _sessionService.UserAccount.FirstName;
+    }
+}
 
   ngOnInit(): any {
       console.log('home init');
-    //   localStorage.removeItem('jwt');
-        this._sessionService.clearToken();
-      // this._router.navigate(['Home']);
   }
 
   onSearch(searchText: string) {
@@ -32,15 +35,22 @@ export class NavigationComponent implements OnInit {
       this._router.navigate(['search', { searchText: searchText } ]);
   }
 
-  onUserLogin(userFirstName: string) {
-      this.userFirstName = userFirstName;
-  }
-
   logout() {
       // Logging out means just deleting the JWT from localStorage and redirecting the user to the Login page
-    //   localStorage.removeItem('jwt');
-    this._sessionService.clearToken();
+      //   localStorage.removeItem('jwt');
+      this._sessionService.clearSession();
       this.userFirstName = '';
+    //   let returnUrl = window.location.pathname;
+    //   this._router.navigateByUrl(returnUrl);
+    //   this._router.navigate([returnUrl]);
+       this._router.navigate(['/home'])
+  }
+
+  login() {
+      let returnUrl = window.location.pathname;
+      let search = window.location.search;
+      returnUrl = search ? returnUrl.concat(search) : returnUrl;
+      this._router.navigate(['/login'], { queryParams: {  returnUrl: returnUrl } });
   }
 
 }

@@ -1,5 +1,8 @@
-﻿import { EventEmitter } from '@angular/core';
+﻿import { EventEmitter, Injectable } from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+  })
 export class LoginService {
     public userLoggedIn: EventEmitter<string>;
 

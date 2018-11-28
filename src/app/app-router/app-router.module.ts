@@ -24,30 +24,32 @@ import { ReturnsComponent } from '../returns/returns.component';
 import { FeedbackComponent } from '../feedback/feedback.component';
 import { LegalComponent } from '../legal/legal.component';
 import { RatingsComponent } from '../ratings/ratings.component';
+import { AuthGuardService as AuthGuard} from '../services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'list', component: ProductsListComponent },
   { path: 'detail', component: ProductComponent },
+  { path: 'detail/:productID', component: ProductComponent },
   { path: 'slice/:listTypeID', component: ProductsSliceComponent },
   { path: 'about', component: AboutUsComponent },
-  { path: 'account', component: AccountInfoComponent },
-  { path: 'settings', component: AccountSettingsComponent },
+  { path: 'account', component: AccountInfoComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'orders', component: OrdersComponent },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
   { path: 'genres', component: CategoriesComponent },
   { path: 'news', component: NewsFeedComponent },
-  { path: 'cart', component: ShoppingCartComponent },
+  { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
   { path: 'search', component: SearchResultsComponent },
   { path: 'genre', component: CategoryListComponent },
-  { path: 'profile', component: ProfileSettingsComponent },
-  { path: 'address', component: AddressSettingsComponent }, 
+  { path: 'profile', component: ProfileSettingsComponent, canActivate: [AuthGuard] },
+  { path: 'address', component: AddressSettingsComponent, canActivate: [AuthGuard] }, 
   { path: 'shipping', component: ShippingComponent }, 
   { path: 'returns', component: ReturnsComponent }, 
-  { path: 'feedback', component: FeedbackComponent }, 
+  { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] }, 
   { path: 'legal', component: LegalComponent }, 
   { path: 'ratings', component: RatingsComponent }
 ]

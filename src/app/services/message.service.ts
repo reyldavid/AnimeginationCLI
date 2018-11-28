@@ -4,7 +4,9 @@ import {Subject} from 'rxjs/Subject';
 import {TokenModel} from '../models/tokenmodel';
 import {UserAccountModel} from '../models/userAccountModel';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class MessageService { 
     private token = new Subject<any>();
     private userAccount = new Subject<any>();

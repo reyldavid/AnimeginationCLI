@@ -62,14 +62,14 @@
                       Hello, <span class="anime-color">{{userFirstName}}</span><span class="caret"></span>
                 </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <a class="dropdown-item" (click)="logout()" routerLink="/login">Sign Out</a>
+                <a class="dropdown-item hand" (click)="logout()">Sign Out</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" routerLink="/orders">Your Orders</a>
                 <a class="dropdown-item" href="#" routerLink="/account">Your Account</a>
               </div>
             </li>
             <li *ngIf="!userFirstName" class="nav-item">
-              <a class="nav-link" routerLink="/login">Sign in</a>
+              <a class="nav-link hand" (click)="login()">Sign in</a>
             </li>
           </ul>
         </div>
