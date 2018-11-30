@@ -10,6 +10,8 @@ import {UserAccountModel} from '../models/userAccountModel';
 export class MessageService { 
     private token = new Subject<any>();
     private userAccount = new Subject<any>();
+    private spinner = new Subject<any>();
+    private footer = new Subject<any>();
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -33,5 +35,21 @@ export class MessageService {
 
     clearUserAccount() {
         this.userAccount.next();
+    }
+
+    selectSpinner(show: boolean) {
+        this.spinner.next(show);
+    }
+
+    getSpinner(): Observable<boolean> {
+        return this.spinner.asObservable();
+    }
+
+    selectFooter(show: boolean) {
+        this.footer.next(show);
+    }
+
+    getFooter(): Observable<boolean> {
+        return this.footer.asObservable();
     }
 }
