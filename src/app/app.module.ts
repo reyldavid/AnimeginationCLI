@@ -18,7 +18,7 @@ import { CartService } from './services/cart.service';
 import { OrderService } from './services/orders.service';
 import { LoginService } from './services/login.service';
 import { SessionService } from './services/session.service';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthorizationGuard } from './guards/authorization.guard';
 import { AppRouterModule } from './app-router/app-router.module';
 
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -104,7 +104,7 @@ import { RatingsComponent } from './ratings/ratings.component';
     OrderService, 
     LoginService, 
     SessionService, 
-    AuthGuardService 
+    AuthorizationGuard 
   ],
   bootstrap: [AppComponent]
 })

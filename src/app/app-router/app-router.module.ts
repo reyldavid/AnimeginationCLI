@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from '../about-us/about-us.component';
 import { HomeComponent } from '../home/home.component';
@@ -24,14 +23,15 @@ import { ReturnsComponent } from '../returns/returns.component';
 import { FeedbackComponent } from '../feedback/feedback.component';
 import { LegalComponent } from '../legal/legal.component';
 import { RatingsComponent } from '../ratings/ratings.component';
-import { AuthGuardService as AuthGuard} from '../services/auth-guard.service';
+import { AuthorizationGuard as AuthGuard} from '../guards/authorization.guard';
+import { CanDeactivateGuard as DeactivateGuard } from '../guards/can-deactivate.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'list', component: ProductsListComponent },
-  { path: 'detail', component: ProductComponent },
-  { path: 'detail/:productID', component: ProductComponent },
+  { path: 'detail', component: ProductComponent, canDeactivate: [DeactivateGuard] },
+  { path: 'detail/:productID', component: ProductComponent, canDeactivate: [DeactivateGuard] },
   { path: 'slice/:listTypeID', component: ProductsSliceComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'account', component: AccountInfoComponent, canActivate: [AuthGuard] },
@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: 'returns', component: ReturnsComponent }, 
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] }, 
   { path: 'legal', component: LegalComponent }, 
-  { path: 'ratings', component: RatingsComponent }
+  { path: 'ratings', component: RatingsComponent } 
 ]
 // { path: 'genre/:categoryID', component: CategoryListComponent },
 
