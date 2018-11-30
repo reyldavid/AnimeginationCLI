@@ -16,8 +16,9 @@ export class FooterMainComponent implements OnInit {
   liveAction: number = ListingType.LiveAction;
   recommendations: number = ListingType.Recommendations;
   onSale: number = ListingType.OnSale;
-  
-  constructor() { }
+
+  constructor() {
+   }
 
   ngOnInit() {
   }

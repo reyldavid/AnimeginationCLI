@@ -87,6 +87,8 @@
       <router-outlet></router-outlet>
     </div>
   
-    <app-footer-main></app-footer-main>
+    <ng-container *ngIf="showFooter">
+      <app-footer-main></app-footer-main>
+    </ng-container>
   </div>
   

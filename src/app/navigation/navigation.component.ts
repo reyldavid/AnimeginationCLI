@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { SessionService } from '../services/session.service';
+import { MessageService } from '../services/message.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-navigation',
@@ -11,23 +13,31 @@ import { SessionService } from '../services/session.service';
 export class NavigationComponent implements OnInit {
 
   public userFirstName: string;
+  showFooter: boolean = true;
+  footerSubscription: Subscription;
 
   constructor(private _router: Router, 
               private _loginService: LoginService, 
-              private _sessionService: SessionService ) {
-      _loginService.userLoggedIn.subscribe(firstName => {
-        this.userFirstName = firstName;
-    });
-    //   localStorage.removeItem('jwt');
-    // this._sessionService.clearSession();
-    // this._router.navigate(['Home']);
-    if (_sessionService.isAuthenticated()) {
-        this.userFirstName = _sessionService.UserAccount.FirstName;
+              private _sessionService: SessionService, 
+              private _messageService: MessageService ) {
+        _loginService.userLoggedIn.subscribe(firstName => {
+            this.userFirstName = firstName;
+        });
+
+        this.footerSubscription = _messageService.getFooter().subscribe( show => {
+            this.showFooter = show;
+        })
+        //   localStorage.removeItem('jwt');
+        // this._sessionService.clearSession();
+        // this._router.navigate(['Home']);
+        if (_sessionService.isAuthenticated()) {
+            this.userFirstName = _sessionService.UserAccount.FirstName;
+        }
     }
-}
 
   ngOnInit(): any {
       console.log('home init');
+      this.showFooter = true;
   }
 
   onSearch(searchText: string) {
