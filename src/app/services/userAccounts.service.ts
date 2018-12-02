@@ -9,6 +9,7 @@ import { ServiceName } from '../models/service';
 import { TokenModel } from '../models/tokenmodel';
 import { RegisterModel } from '../models/registermodel';
 import { UserAccountModel } from '../models/userAccountModel';
+import { UserAccountReturnModel } from '../models/userAccountReturnModel';
 //import 'rxjs/Rx';
 
 @Injectable({
@@ -63,7 +64,7 @@ export class UserAccountsService {
     return observable;
   }
 
-  updateUserAccountAddress(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountModel> {
+  updateUserAccountAddress(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountReturnModel> {
     let body = JSON.stringify(userAccount);
 
     let endpoint = this.helper.getCompoundEndPoint(ServiceName.userAccount, ServiceName.address);

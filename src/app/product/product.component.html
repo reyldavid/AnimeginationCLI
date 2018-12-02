@@ -5,11 +5,11 @@
                  alt="{{product?.ProductCode}}" class="image-feature img-responsive" />
         </div>
     </div>
-    <div class="col-12 col-md-6 col-lg-6 padding-left-30">
+    <div class="col-12 col-md-6 col-lg-6 pl-3">
         <h3>{{product?.ProductTitle}}</h3>
         <img src="https://reydavid.blob.core.windows.net/assets/Rating {{product?.RatingID}} Stars.png"
              alt="{{product?.RatingID}} stars" class="img-responsive" />
-        <div class="padding-top-15"></div>
+        <div class="pt-3"></div>
         <table>
             <tr>
                 <td>List Price: </td>
@@ -24,7 +24,7 @@
                 <td><span class="text-danger">{{ (product?.UnitPrice - product?.YourPrice).toFixed(2) | currency:'USD':'symbol' }} </span></td>
             </tr>
         </table>
-        <div class="padding-top-15">
+        <div class="pt-3">
             <div class="fine-print">In Stock</div>
             <div>
                 <a href="http://www.animegination.net/Product/Details/{{product?.ProductCode}}" target="_blank">
@@ -32,12 +32,12 @@
                          alt="Buy in website now" style="max-width: 130px;" />
                 </a>
             </div>
-            <div class="fine-print padding-top-15">Free US Economy Shipping at $49</div>
+            <div class="fine-print pt-3">Free US Economy Shipping at $49</div>
             <div class="fine-print">Free Canadian Shipping at $249</div>
             <div class="small-gray">Item: {{product?.ProductCode}}</div>
         </div>
     </div>
-    <div class="col-12 col-md-6 clear-both">
+    <div class="col-12 col-md-6">
         <div class="col-md-10 offset-md-1 description">
             <h4>Description</h4>
             <p>

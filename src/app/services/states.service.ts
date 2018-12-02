@@ -6,16 +6,13 @@ import { of } from "rxjs/observable/of";
 import { map } from 'rxjs/operators';
 import { catchError } from "rxjs/operators";
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Globals } from "../globals";
 import { HttpHelper } from './http.helper.service';
 import { ServiceName } from '../models/service';
 import { States } from '../models/states';
 import { StatesCache } from '../models/dictionary';
 import 'rxjs/Rx';
-// import { Subscription } from 'rxjs/Subscription';
-// import { MessageService } from '../services/message.service';
-//import 'rxjs/add/operator/map';
 
 @Injectable({
     providedIn: 'root'
@@ -23,11 +20,18 @@ import 'rxjs/Rx';
   export class StatesService {
 
     private _animeStates = new StatesCache();
+    private _states: States[] = [];
 
     constructor(private http: HttpClient, 
         private globals: Globals, 
         private helper: HttpHelper) {
-        // private messageService: MessageService) {
+    }
+
+    get States(): States[] {
+        return this._states;
+    }
+    set States(states: States[]) {
+        this._states = states;
     }
 
     setStatesCache(data: States[]) {
@@ -53,11 +57,11 @@ import 'rxjs/Rx';
             return this.getAnimeStatesStatic();
         }
         else {
-            if (this._animeStates && this._animeStates[0]) {
+            if (this._states && this._states.length) {
 
                 console.log('aya Anime Statess cached');
                 
-                return of(this._animeStates[0]);
+                return of(this._states);
             }
             else {
                 // this.messageService.setSpinner(true);                

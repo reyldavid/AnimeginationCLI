@@ -5,7 +5,12 @@
     lastName: string,
     streetAddress: string,
     city: string,
-    state: string,
+    state: {
+        stateID: number,
+        stateCode: string,
+        stateName: string
+    },
+    stateId: number, 
     zipCode: string,
     cellPhoneNumber: string,
     homePhoneNumber: string,
@@ -15,3 +20,4 @@
     creditCardNumber: string,
     creditCardExpiration: string
 }
+
