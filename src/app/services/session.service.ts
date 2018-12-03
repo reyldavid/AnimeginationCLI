@@ -18,11 +18,11 @@ export class SessionService {
     };
 
     isAuthenticated(): boolean {
-        // We get the JWT from localStorage
-        let token = localStorage.getItem('jwt');
-        this._token = { token: token }
-        // We also store the decoded JSON from this JWT
-        //this.decodedJwt = this.jwt && (<any>window).jwt_decode(this.jwt);
+        // // We get the JWT from localStorage
+        // let token = localStorage.getItem('jwt');
+        // this._token = { token: token }
+        // // We also store the decoded JSON from this JWT
+        // //this.decodedJwt = this.jwt && (<any>window).jwt_decode(this.jwt);
 
         if (this._token && this._token.token) {
             return true
@@ -31,27 +31,25 @@ export class SessionService {
     }
 
     get UserToken(): TokenModel {
-        // We get the JWT from localStorage
-        let token = localStorage.getItem('jwt');
-        this._token = { token: token }
+        // // We get the JWT from localStorage
+        // let token = localStorage.getItem('jwt');
+        // this._token = { token: token }
 
         return this._token;
     }
 
     set UserToken(token: TokenModel) {
-        // We set the JWT into localStorage
-        localStorage.setItem('jwt', token.token);
+        // // We set the JWT into localStorage
+        // localStorage.setItem('jwt', token.token);
 
         this._token = token;
     }
 
     clearSession() {
-        // We simply remove JWT from localStorage
-        localStorage.removeItem('jwt');
+        // // We simply remove JWT from localStorage
+        // localStorage.removeItem('jwt');
 
         this._token = null;
-        this._userAccount = null;
-
         this._userAccount = {
             UserId: "", UserName: "",
             FirstName: "", LastName: "",
