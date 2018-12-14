@@ -49,7 +49,7 @@ export class UserAccountsService {
       return observable;
   }
 
-  updateUserAccountNames(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountModel> {
+  updateUserAccountNames(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountReturnModel> {
     let body = JSON.stringify(userAccount);
 
     let endpoint = this.helper.getCompoundEndPoint(ServiceName.userAccount, ServiceName.names);
