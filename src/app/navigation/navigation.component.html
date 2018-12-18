@@ -8,7 +8,8 @@
         </div>
         <div class="col-xs-12 col-sm-8 col-lg-6">
             <div class="input-group pt-2 px-3">
-                <input type="search" class="form-control" placeholder="Search the Store" #inSearch />
+                <input type="search" class="form-control" placeholder="Search the Store" 
+                    #inSearch (keyup.enter)="onSearch(inSearch.value)" />
                 <span class="input-group-btn image-btn">
                     <button class="btn btn-default" type="button" (click)="onSearch(inSearch.value)">
                         <img src="https://reydavid.blob.core.windows.net/assets/Search2.png" alt="Search" height="32" />

@@ -42,7 +42,7 @@ export class NavigationComponent implements OnInit {
 
   onSearch(searchText: string) {
       console.log('onSearch ' + searchText);
-      this._router.navigate(['search', { searchText: searchText } ]);
+      this._router.navigate(['/search'], { queryParams: { searchText: searchText } });
   }
 
   logout() {
