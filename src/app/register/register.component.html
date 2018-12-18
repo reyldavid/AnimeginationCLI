@@ -1,3 +1,117 @@
-<p>
-  register works!
-</p>
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+      <h2>Register</h2>
+      <div class="anime-color pb-3">New to Animegination? Create an account and take advantage of faster checkouts and other benefits</div>
+      <form role="form" [formGroup]="registerForm" 
+            (submit)="Register(registerForm.value, registerForm.valid)">
+          <div class="form-group">
+              <label for="username">Enter a new User Name <span class="anime-color">*</span></label>
+              <input type="text" 
+                     formControlName="username"
+                     class="form-control" id="username" />
+          </div>
+          <div class="form-group">
+              <label for="username">Your First Name <span class="anime-color">*</span></label>
+              <input type="text" 
+                     formControlName="firstname"
+                     class="form-control" id="firstname" />
+          </div>
+          <div class="form-group">
+              <label for="username">Your Last Name <span class="anime-color">*</span></label>
+              <input type="text" 
+                     formControlName="lastname"
+                     class="form-control" id="lastname" />
+          </div>
+          <div class="form-group">
+              <label for="username">Your Email Address <span class="anime-color">*</span></label>
+              <input type="email"  
+                     formControlName="email"
+                     class="form-control" id="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+              <label for="address">Street Address <span class="anime-color">*</span></label>
+              <input type="text" 
+                     formControlName="address"
+                     class="form-control" id="address" />
+          </div>
+          <div class="form-group">
+            <label for="city">City <span class="anime-color">*</span></label>
+            <input type="text" 
+                   formControlName="city"
+                   class="form-control" id="city" />
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Zip Code <span class="anime-color">*</span></label>
+            <input type="text" placeholder="5-digit zip code"
+                   formControlName="zipcode"
+                   class="form-control" id="zipcode" />
+          </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <!-- <states [defaultState]="currentState" (select)="selectState($event)"></states> -->
+          <select formControlName="state" 
+            class="form-control" id="state">
+              <option *ngFor="let state of states" 
+                  value={{state.StateID}} >
+                      {{state.StateName}}
+              </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cellphone">Cell Phone</label>
+          <input type="text"  placeholder="555-555-5555"
+                 formControlName="cellphone"
+                 class="form-control" id="cellphone" />
+        </div>
+        <div class="form-group">
+          <label for="homephone">Other Phone</label>
+          <input type="text" placeholder="555 555-5555"
+                 formControlName="homephone"
+                 class="form-control" id="homephone" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Enter a new Password <span class="anime-color">*</span></label>
+          <input type="password" placeholder="at least 6 characters, 1 uppercase, 1 lowercase, and 1 number" 
+                 formControlName="password"
+                 class="form-control" id="password" />
+        </div>
+        <div class="form-group">
+            <label for="password">Re-Enter your Password <span class="anime-color">*</span></label>
+            <input type="password" placeholder="password must match" 
+                  formControlName="confirmPassword"
+                  class="form-control" id="confirmPassword" />
+        </div>
+
+        <div class="checkbox pt-2">
+            <label>
+              <input type="checkbox" value="" /> Yes, please sign me up for Animegination exclusive offers and promotions</label>
+        </div>
+        <span class="image-btn">
+            <button class="btn transparent pb-3" type="submit" 
+                [disabled]="!registerForm.valid || registerForm.errors?.passwordsDontMatch || registerForm.errors?.passwordNotStrong">
+                <img alt="Sign In" height="50" src="https://reydavid.blob.core.windows.net/assets/register.png" />
+            </button>
+        </span>
+          <!--
+          <div class="padding-bottom-15"></div>
+          <div *ngIf="!username.valid && username.errors.required" class="alert alert-danger">
+              <strong>User Name is required</strong>
+          </div>
+          <div *ngIf="username.dirty && !username.valid && username.errors.minlength" class="alert alert-danger">
+              <strong>User Name is too short. Please lengthen it to 6 characters or more</strong>
+          </div>
+          -->
+          <div class="pb-3"></div>
+          <div *ngIf="isSuccess" class="alert alert-success">
+              <strong>Success! </strong> Your Registration was successful.
+          </div>
+          <div *ngIf="isFailure" class="alert alert-danger">
+              <strong>There was a problem: </strong> Your Registration failed.
+              <div *ngIf="errorMessage">
+                {{ errorMessage }}
+              </div>
+          </div>
+      </form>
+  </div>
+</div>

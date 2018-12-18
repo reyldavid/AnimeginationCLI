@@ -238,10 +238,35 @@ export class AboutUsComponent implements OnInit {
   //   })
   // })
 
-  // this.accountService.createUser(registerModel2).subscribe( user => {
-  //     console.log('user created sakura');
+    let registerModel4: RegisterModel = {
+      UserId: "d7aecc80-9046-47d0-9fce-b2a8049c1d74",
+      Username: "ayaueto2",
+      RoleName: "Admin",
+      Password: "Chikush0",
+      ConfirmPassword: "Chikush0",  
+      FirstName: "aya2",
+      LastName: "ueto2",
+      Address: "69 Aodori",
+      City: "Ikebukuro",
+      StateId: 8,
+      ZipCode: "94506",
+      CellPhone: "9259842851",
+      HomePhone: "9255556971",
+      Email: "ayaueto2@comcast.net",
+      CreditCardType: "VISA",
+      CreditCardNumber: "1234567890123456",
+      CreditCardExpiration: "03/24"
+  }
+
+  // this.accountService.createUser(registerModel4).subscribe( user => {
+  //     console.log('user created ayaueto2');
   //     console.log(user);
   //   })
+
+  // this.userAccountService.createUserAccount(registerModel4).subscribe( token => {
+  //   console.log('user account created ayaueto2');
+  //   console.log(token);
+  // })
 
   // this.userAccountService.createUserAccount(registerModel2).subscribe( token => {
   //   console.log('user account created sakura');
