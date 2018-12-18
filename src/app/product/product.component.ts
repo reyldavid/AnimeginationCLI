@@ -46,4 +46,8 @@ export class ProductComponent implements OnInit {
             }
         })
     }
+
+    AddToCart(product: ApiProduct) {
+        this._router.navigate(['/cart']);
+    }
 }

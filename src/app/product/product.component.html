@@ -26,12 +26,16 @@
         </table>
         <div class="pt-3">
             <div class="fine-print">In Stock</div>
-            <div>
+            <button class="btn btn-default bgc-light" (click)="AddToCart(product)">
+                <img src="https://reydavid.blob.core.windows.net/assets/shopping-cart.png"
+                        alt="Buy in website now" style="max-width: 130px;" />
+            </button>
+            <!-- <div>
                 <a href="http://www.animegination.net/Product/Details/{{product?.ProductCode}}" target="_blank">
                     <img src="https://reydavid.blob.core.windows.net/assets/shopping-cart.png"
                          alt="Buy in website now" style="max-width: 130px;" />
                 </a>
-            </div>
+            </div> -->
             <div class="fine-print pt-3">Free US Economy Shipping at $49</div>
             <div class="fine-print">Free Canadian Shipping at $249</div>
             <div class="small-gray">Item: {{product?.ProductCode}}</div>
