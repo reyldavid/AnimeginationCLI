@@ -1,0 +1,8 @@
+.spinner {
+    width: 80px;
+    background-color: transparent;
+    border: none;
+}
+.modal-tiny {
+    max-width: 100px;
+}

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { Globals } from './globals';
 import { HttpHelper } from './services/http.helper.service';
@@ -52,6 +53,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { LegalComponent } from './legal/legal.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -86,11 +88,12 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     FeedbackComponent,
     LegalComponent,
     RatingsComponent,
-    CartItemComponent
+    CartItemComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
-    HttpClientModule, AppRouterModule
+    HttpClientModule, AppRouterModule, AngularFontAwesomeModule
   ],
   providers: [
     Globals, 
