@@ -35,12 +35,12 @@
                 Features
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 1 }">Featured Titles</a>
-                <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 3 }">Top Sellers</a>
-                <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 2 }">New Items</a>
-                <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 5 }">Close Out</a>
-                <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 4 }">Bargain Bin</a>
-                <a class="dropdown-item" href="#" routerLink="/slice/{ listTypeID: 6 }">Live Action</a>
+                <a class="dropdown-item" href="#" routerLink="/slice/1">Featured Titles</a>
+                <a class="dropdown-item" href="#" routerLink="/slice/3">Top Sellers</a>
+                <a class="dropdown-item" href="#" routerLink="/slice/2">New Items</a>
+                <a class="dropdown-item" href="#" routerLink="/slice/5">Close Out</a>
+                <a class="dropdown-item" href="#" routerLink="/slice/4">Bargain Bin</a>
+                <a class="dropdown-item" href="#" routerLink="/slice/6">Live Action</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" routerLink="/news">Recent News</a>
               </div>
@@ -91,5 +91,7 @@
     <ng-container *ngIf="showFooter">
       <app-footer-main></app-footer-main>
     </ng-container>
+
+    <app-spinner></app-spinner>
   </div>
   

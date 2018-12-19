@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
                         this.loginService.login(userAccount.FirstName);
 
                         this.messageService.selectUserAccount(userAccount);
+                        this.messageService.setSpinner(false);
 
                         // this.router.navigate(['/account']);
                         this.router.navigateByUrl(this.returnUrl);
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
                       } else {
                         console.log('account info get user error: ' + error);
                       }
+                      this.messageService.setSpinner(false);
                     }
                   )
                 }
@@ -78,7 +80,8 @@ export class LoginComponent implements OnInit {
               } else {
                 console.log('user login error: ' + error);
               }
-        });
+              this.messageService.setSpinner(false);
+            });
     }
 
     ngOnInit(): any {

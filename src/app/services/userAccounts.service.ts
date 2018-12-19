@@ -10,6 +10,7 @@ import { TokenModel } from '../models/tokenmodel';
 import { RegisterModel } from '../models/registermodel';
 import { UserAccountModel } from '../models/userAccountModel';
 import { UserAccountReturnModel } from '../models/userAccountReturnModel';
+import { MessageService } from '../services/message.service';
 //import 'rxjs/Rx';
 
 @Injectable({
@@ -18,10 +19,13 @@ import { UserAccountReturnModel } from '../models/userAccountReturnModel';
 export class UserAccountsService {
 
   constructor(private http: HttpClient, 
-    private helper: HttpHelper) {
+    private helper: HttpHelper, 
+    private messageService: MessageService ) {
   }
 
   getUserAccount(token: TokenModel): Observable<UserAccountModel> {
+      this.messageService.setSpinner(true);
+
       let endpoint = this.helper.getEndPoint(ServiceName.userAccount);
 
       let header: HttpHeaders = this.helper.getSecureContentHeaders(token);
@@ -35,6 +39,8 @@ export class UserAccountsService {
   }
 
   createUserAccount(registerModel: RegisterModel): Observable<TokenModel> {
+      this.messageService.setSpinner(true);
+
       let body = JSON.stringify(registerModel);
 
       let endpoint = this.helper.getEndPoint(ServiceName.userAccount);
@@ -50,6 +56,8 @@ export class UserAccountsService {
   }
 
   updateUserAccountNames(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountReturnModel> {
+    this.messageService.setSpinner(true);
+
     let body = JSON.stringify(userAccount);
 
     let endpoint = this.helper.getCompoundEndPoint(ServiceName.userAccount, ServiceName.names);
@@ -65,6 +73,8 @@ export class UserAccountsService {
   }
 
   updateUserAccountAddress(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountReturnModel> {
+    this.messageService.setSpinner(true);
+    
     let body = JSON.stringify(userAccount);
 
     let endpoint = this.helper.getCompoundEndPoint(ServiceName.userAccount, ServiceName.address);

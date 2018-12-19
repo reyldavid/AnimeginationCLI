@@ -4,6 +4,7 @@ import { ApiProduct } from '../models/product';
 import { ListType } from '../models/listtype';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-products-list',
@@ -19,7 +20,8 @@ export class ProductsListComponent implements OnInit {
   constructor(private _router: Router, 
       private _route: ActivatedRoute, 
       private _listingService: ListingService, 
-      private _listTypeService: ListTypeService ) {
+      private _listTypeService: ListTypeService, 
+      private _messageService: MessageService ) {
    }
 
   ngOnInit(): any {
@@ -32,7 +34,7 @@ export class ProductsListComponent implements OnInit {
       console.log(listTypeId);
 
       this.GetProductListType(listTypeId);
-      this.GetProducts(listTypeId);
+      // this.GetProducts(listTypeId);
     })
 
     this._route.paramMap.subscribe(params => {
@@ -42,7 +44,7 @@ export class ProductsListComponent implements OnInit {
         let typeID = Number(listTypeIdparam) % 10;
 
         this.GetProductListType(typeID);
-        this.GetProducts(typeID);
+        // this.GetProducts(typeID);
       }
     })
   }
@@ -52,7 +54,7 @@ export class ProductsListComponent implements OnInit {
         .subscribe((apiProducts: ApiProduct[]) => {
           this.products = apiProducts;
   
-          this.GetProductListType(listTypeId);
+          this._messageService.setSpinner(false);
         });
   }
 
@@ -61,6 +63,8 @@ export class ProductsListComponent implements OnInit {
         .subscribe((listType: ListType) => {
           this.listType = listType;
           this.title = listType.Description;
+
+          this.GetProducts(listType.ListTypeID);
         });
   }
   

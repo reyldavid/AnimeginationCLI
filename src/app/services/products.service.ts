@@ -17,7 +17,7 @@ import { TokenModel } from '../models/tokenmodel';
 import { ApiProductCache, ApiProductsCache } from '../models/dictionary';
 import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
-// import { MessageService } from '../services/message.service';
+import { MessageService } from '../services/message.service';
 //import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -33,8 +33,8 @@ import 'rxjs/Rx';
 
     constructor(private http: HttpClient, 
         private globals: Globals, 
-        private helper: HttpHelper) {
-        // private messageService: MessageService) {
+        private helper: HttpHelper, 
+        private messageService: MessageService ) {
     }
 
     setProductsCache(data: ApiProduct[]) {
@@ -86,7 +86,7 @@ import 'rxjs/Rx';
                 return of(this._animeProducts[0]);
             }
             else {
-                // this.messageService.setSpinner(true);                
+                this.messageService.setSpinner(true);                
                 let endpoint = this.helper.getEndPoint(ServiceName.product);
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();
@@ -116,7 +116,7 @@ import 'rxjs/Rx';
                 return of(this._animeProduct[productID]);
             }
             else {
-                // this.messageService.setSpinner(true);                
+                this.messageService.setSpinner(true);
                 let endpoint = this.helper.getEndPoint(ServiceName.product, productID);
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();

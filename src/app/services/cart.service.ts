@@ -12,6 +12,7 @@ import { ServiceName } from '../models/service';
 import { CartItem } from '../models/cartItemModel';
 import { CartType } from '../models/carttype';
 import { TokenModel } from '../models/tokenmodel';
+import { MessageService } from './message.service';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,8 @@ import { TokenModel } from '../models/tokenmodel';
 
     constructor(private http: HttpClient, 
         private globals: Globals, 
-        private helper: HttpHelper) {
+        private helper: HttpHelper, 
+        private messageService: MessageService ) {
     }
 
     getCartItemsStatic(): Observable<CartItem[]> {
@@ -40,7 +42,7 @@ import { TokenModel } from '../models/tokenmodel';
             return this.getCartItemsStatic();
         }
         else {
-            // this.messageService.setSpinner(true);
+            this.messageService.setSpinner(true);
             let endpoint = this.helper.getSearchEndPoint(ServiceName.cartItems, cartType);
 
             let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);

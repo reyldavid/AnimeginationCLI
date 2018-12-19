@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiProduct } from '../models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SimilarsService } from '../services/similars.service';

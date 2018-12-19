@@ -15,7 +15,7 @@ import { ApiProduct } from '../models/product';
 import { ListingCache } from '../models/dictionary';
 import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
-// import { MessageService } from '../services/message.service';
+import { MessageService } from '../services/message.service';
 //import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -27,8 +27,8 @@ import 'rxjs/Rx';
 
     constructor(private http: HttpClient, 
         private globals: Globals, 
-        private helper: HttpHelper) {
-        // private messageService: MessageService) {
+        private helper: HttpHelper, 
+        private messageService: MessageService) {
     }
 
     setListingCache(data: Listing[], id: number) {
@@ -61,7 +61,7 @@ import 'rxjs/Rx';
                 return of(this._animeListing[listTypeID]);
             }
             else {
-                // this.messageService.setSpinner(true);                
+                this.messageService.setSpinner(true);                
                 let endpoint = this.helper.getEndPoint(ServiceName.listings, listTypeID);
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();

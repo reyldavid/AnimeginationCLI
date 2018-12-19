@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../services/categories.service';
 import { Category } from '../models/category';
 import { ApiProduct } from '../models/product';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-category-list',
@@ -16,7 +17,8 @@ export class CategoryListComponent implements OnInit {
 
   constructor(private _router: Router, 
       private _route: ActivatedRoute, 
-      private _categoryService: CategoryService ) {
+      private _categoryService: CategoryService, 
+      private _messageService: MessageService ) {
    }
 
   ngOnInit(): any {
@@ -51,6 +53,8 @@ export class CategoryListComponent implements OnInit {
       .subscribe(
         (products: ApiProduct[]) => {
           this.products = products;              
+
+          this._messageService.setSpinner(false);
       });
   }
 }

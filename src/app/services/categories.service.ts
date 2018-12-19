@@ -6,7 +6,7 @@ import { of } from "rxjs/observable/of";
 import { map } from 'rxjs/operators';
 import { catchError } from "rxjs/operators";
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Globals } from "../globals";
 import { HttpHelper } from './http.helper.service';
 import { ServiceName } from '../models/service';
@@ -15,7 +15,7 @@ import { Category } from '../models/category';
 import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dictionary';
 // import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
-// import { MessageService } from '../services/message.service';
+import { MessageService } from '../services/message.service';
 //import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -29,8 +29,8 @@ import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dict
 
     constructor(private http: HttpClient, 
         private globals: Globals, 
-        private helper: HttpHelper) {
-        // private messageService: MessageService) {
+        private helper: HttpHelper, 
+        private messageService: MessageService) {
     }
 
     setCategoryCache(data: Category, categoryId: number) {
@@ -87,7 +87,7 @@ import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dict
                 return of(this._animeCategory[categoryId]);
             }
             else {
-                // this.messageService.setSpinner(true);                
+                this.messageService.setSpinner(true);                
                 let endpoint = this.helper.getEndPoint(ServiceName.category, categoryId);
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();
@@ -115,7 +115,7 @@ import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dict
                 return of(this._animeCategories[0]);
             }
             else {
-                // this.messageService.setSpinner(true);                
+                this.messageService.setSpinner(true);                
                 let endpoint = this.helper.getEndPoint(ServiceName.category);
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();
@@ -143,7 +143,7 @@ import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dict
                 return of(this._animeCategoryList[categoryId]);
             }
             else {
-                // this.messageService.setSpinner(true);                
+                this.messageService.setSpinner(true);                
                 let endpoint = this.helper.getEndPoint(ServiceName.categoryList, categoryId);
 
                 let headers: HttpHeaders = this.helper.getContentHeaders();

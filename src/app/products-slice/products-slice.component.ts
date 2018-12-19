@@ -5,6 +5,7 @@ import { EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
+import { MessageService } from '../services/message.service';
 declare var $: any;
 
 @Component({
@@ -27,7 +28,8 @@ export class ProductsSliceComponent implements OnInit {
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _listingService: ListingService, 
-                private _listTypeService: ListTypeService) { 
+                private _listTypeService: ListTypeService, 
+                private _messageService: MessageService ) { 
                   console.log('product slice construct');
     }
 
@@ -40,20 +42,29 @@ export class ProductsSliceComponent implements OnInit {
 
     GetProductsSlice(listTypeID: number) {
         this._listingService.getAnimeListing(listTypeID)
-            .subscribe((apiProducts: ApiProduct[]) => 
+            .subscribe((apiProducts: ApiProduct[]) => {
                 // this.apiProducts = apiProducts.slice(0, 14));
-                this.apiProducts = apiProducts);
+                this.apiProducts = apiProducts;
+
+                this._messageService.setSpinner(false);
+            })
     }
 
     GetSliceList(listTypeID: number) {
         this._listingService.getAnimeListing(listTypeID)
-            .subscribe((apiProducts: ApiProduct[]) => this.apiProducts = apiProducts);
+            .subscribe((apiProducts: ApiProduct[]) => {
+                this.apiProducts = apiProducts;
+
+                this._messageService.setSpinner(false);
+            }) 
     }
 
     GetProductListType(listTypeID: number) {
         this._listTypeService.getAnimeListType(listTypeID)
             .subscribe((listType: ListType) => {
                 this.listType = listType;
+
+                this.GetSliceList(this.listTypeID);
             });
     }
 
@@ -62,14 +73,29 @@ export class ProductsSliceComponent implements OnInit {
         this._route.paramMap.subscribe(params => {
           this.listTypeIDparam = params.get('listTypeID');
 
-          if (this.listTypeID === undefined) {
+        //   if (this.listTypeID === undefined || isNaN(this.listTypeID)) {
+        //       this.listTypeID = Number(this.listTypeIDparam);
+        //       this.GetSliceList(this.listTypeID);
+        //   }
+        //   else {
+        //       this.GetProductsSlice(this.listTypeID);
+        //   }
+            if (this.listTypeIDparam) {
               this.listTypeID = Number(this.listTypeIDparam);
-              this.GetSliceList(this.listTypeID);
-          }
-          else {
-              this.GetProductsSlice(this.listTypeID);
-          }
+              this.GetProductListType(this.listTypeID);
+            }
         })
-        this.GetProductListType(this.listTypeID);
+        // this.GetProductListType(this.listTypeID);
+
+        // this._route.queryParams.subscribe(params => {
+        //     if (params.listTypeId) {
+        //         this.listTypeID = params.listTypeId;
+      
+        //         console.log('aya listTypeId');
+        //         console.log(this.listTypeID);
+          
+        //         this.GetProductListType(this.listTypeID);
+        //         }
+        // })      
     }
 }

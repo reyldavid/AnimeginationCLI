@@ -14,7 +14,7 @@ import { RegisterModel } from '../models/registermodel';
 import { UserReturnModel } from '../models/userReturnModel';
 // import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
-// import { MessageService } from '../services/message.service';
+import { MessageService } from '../services/message.service';
 //import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -23,11 +23,13 @@ import { UserReturnModel } from '../models/userReturnModel';
   export class AccountService {
 
     constructor(private http: HttpClient, 
-        private helper: HttpHelper) {
-        // private messageService: MessageService) {
+        private helper: HttpHelper, 
+        private messageService: MessageService) {
     }
 
     userLogin(username: string, password: string): Observable<TokenModel> {
+        this.messageService.setSpinner(true);
+
         let body = JSON.stringify({ username, password });
 
         let endpoint = this.helper.getCompoundEndPoint(ServiceName.account, ServiceName.login);
@@ -43,6 +45,8 @@ import { UserReturnModel } from '../models/userReturnModel';
     }
 
     createUser(registerModel: RegisterModel): Observable<UserReturnModel> {
+        this.messageService.setSpinner(true);
+        
         let body = JSON.stringify(registerModel);
 
         let endpoint = this.helper.getCompoundEndPoint(ServiceName.account, ServiceName.create);

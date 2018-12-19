@@ -37,12 +37,16 @@ export class MessageService {
         this.userAccount.next();
     }
 
-    selectSpinner(show: boolean) {
+    setSpinner(show: boolean) {
         this.spinner.next(show);
     }
 
     getSpinner(): Observable<boolean> {
         return this.spinner.asObservable();
+    }
+
+    clearSpinner() {
+        this.spinner.next();
     }
 
     selectFooter(show: boolean) {

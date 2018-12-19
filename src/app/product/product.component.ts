@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { ApiProduct } from '../models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-product',
@@ -16,7 +17,8 @@ export class ProductComponent implements OnInit {
     product: ApiProduct;
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
-                private _productService: ProductsService) { 
+                private _productService: ProductsService, 
+                private _messageService: MessageService ) { 
                   console.log('product details construct');
     }
 
@@ -24,7 +26,9 @@ export class ProductComponent implements OnInit {
         this._productService.getAnimeProduct(productID)
             .subscribe((product: ApiProduct) => 
             {
-                this.product = product
+                this.product = product;
+
+                this._messageService.setSpinner(false);
             });
     }
 

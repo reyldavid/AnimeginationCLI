@@ -41,6 +41,8 @@ export class AddressSettingsComponent implements OnInit {
 
       this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
           this.addressInput = userAccount;
+
+          this._messageService.setSpinner(false);
         })
 
   }
@@ -88,11 +90,14 @@ export class AddressSettingsComponent implements OnInit {
               this.isSuccess = true;
               this.isFailure = false;
               this.isDirty = false;
+
+              this._messageService.setSpinner(false);
             }, 
         (error: string) => {
           this.isSuccess = false;
           this.isFailure = true;
           console.log("Updating user address: ", error);
+          this._messageService.setSpinner(false);
         })  
       }
     }

@@ -46,7 +46,9 @@ export class AccountInfoComponent implements OnInit {
 
         this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
             this.userAccount = userAccount;
+            
             this._loginService.login(userAccount.FirstName);
+            this._messageService.setSpinner(false);
       })
 
     }

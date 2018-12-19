@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category';
 import { CategoryService } from '../services/categories.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-categories',
@@ -13,7 +14,8 @@ export class CategoriesComponent implements OnInit {
     public categories: Category[];
 
     constructor(private _categoryService: CategoryService,
-        private _router: Router) {
+        private _router: Router, 
+        private _messageService: MessageService ) {
     }
 
     OnSelectCategory(category: Category) {
@@ -26,7 +28,9 @@ export class CategoriesComponent implements OnInit {
         this._categoryService.getAnimeCategories()
             .subscribe(
               (categories: Category[]) => {
-                this.categories = categories;              
+                this.categories = categories;
+
+                this._messageService.setSpinner(false);
               });
     }
 

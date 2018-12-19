@@ -4,6 +4,9 @@ import { LoginService } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 import { MessageService } from '../services/message.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Globals } from '../globals';
+// import { $ } from 'protractor';
+declare var $: any;
 
 @Component({
   selector: 'app-navigation',
@@ -15,11 +18,13 @@ export class NavigationComponent implements OnInit {
   public userFirstName: string;
   showFooter: boolean = true;
   footerSubscription: Subscription;
+  spinnerSubscription: Subscription;
 
   constructor(private _router: Router, 
               private _loginService: LoginService, 
               private _sessionService: SessionService, 
-              private _messageService: MessageService ) {
+              private _messageService: MessageService, 
+              private _globals: Globals ) {
         _loginService.userLoggedIn.subscribe(firstName => {
             this.userFirstName = firstName;
         });
@@ -33,6 +38,19 @@ export class NavigationComponent implements OnInit {
         if (_sessionService.isAuthenticated()) {
             this.userFirstName = _sessionService.UserAccount.FirstName;
         }
+
+        this.spinnerSubscription = _messageService.getSpinner().subscribe( show => {
+            if (show) {
+                $('#spinner').modal({ show: true });
+            }
+            else {
+                $('#spinner').modal('hide');
+                setTimeout(function() {
+                    $('#spinner').modal('hide');
+                }, _globals.spinnerDelay);
+            }
+        })
+
     }
 
   ngOnInit(): any {

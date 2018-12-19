@@ -117,7 +117,9 @@ export class RegisterComponent implements OnInit {
           .subscribe(token => {
             this.sessionService.UserToken = token;
             this.loginService.login(sessionAccount.FirstName);
+
             this.messageService.selectUserAccount(sessionAccount);
+            this.messageService.setSpinner(false);
 
             this.isSuccess = true;
             this.isFailure = false;
@@ -127,13 +129,15 @@ export class RegisterComponent implements OnInit {
             this.isSuccess = false;
             this.isFailure = true;
             this.setErrorMessage(error);
+            this.messageService.setSpinner(false);
             console.log("Error creating user account: ", error);
-          })  
+          })
       }, 
       (error) => {
         this.isSuccess = false;
         this.isFailure = true;
         this.setErrorMessage(error);
+        this.messageService.setSpinner(false);
         console.log("Error creating ASPNet user: ", error);
       })
     }

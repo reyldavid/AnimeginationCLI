@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiProduct } from '../models/product';
 import { SearchService } from '../services/search.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-search-results',
@@ -17,7 +18,8 @@ export class SearchResultsComponent implements OnInit {
 
   constructor(private _router: Router, 
       private _route: ActivatedRoute, 
-      private _searchService: SearchService ) {
+      private _searchService: SearchService, 
+      private _messageService: MessageService ) {
    }
 
   ngOnInit(): any {
@@ -51,10 +53,10 @@ export class SearchResultsComponent implements OnInit {
 
           this.showResults = true;
           this.products = apiProducts;
-
           this.count = apiProducts.length;
 
           this._searchService.setSearchCache(apiProducts, searchText);
+          this._messageService.setSpinner(false);
         });
   }
 

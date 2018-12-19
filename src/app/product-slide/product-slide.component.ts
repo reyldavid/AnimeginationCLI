@@ -5,6 +5,7 @@ import { EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
+import { MessageService } from '../services/message.service';
 declare var $: any;
 
 @Component({
@@ -33,7 +34,8 @@ export class ProductSlideComponent implements OnInit {
 
   constructor(private _router: Router, private _route: ActivatedRoute, 
               private _listingService: ListingService, 
-              private _listTypeService: ListTypeService) { 
+              private _listTypeService: ListTypeService, 
+              private _messageService: MessageService ) { 
                 console.log('product slider construct');
   }
 
@@ -54,12 +56,14 @@ export class ProductSlideComponent implements OnInit {
   }
 
   GetProductListType(listTypeID: number) {
-        this._listTypeService.getAnimeListType(listTypeID)
-            .subscribe((listType: ListType) => {
-                this.listType = listType;
+      this._listTypeService.getAnimeListType(listTypeID)
+          .subscribe((listType: ListType) => {
+              this.listType = listType;
 
-                this.SetupListeners();
-              });
+              this.SetupListeners();
+
+              this._messageService.setSpinner(false);
+          });
   }
 
   ngOnInit(): any {
