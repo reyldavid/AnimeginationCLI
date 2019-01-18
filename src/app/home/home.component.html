@@ -1,25 +1,41 @@
-<app-cards-carousel></app-cards-carousel>
-<app-shipping></app-shipping>
-<app-product-slide [listTypeID]="newItems" [bgc]=true></app-product-slide>
-<div class="d-block d-md-none">
-    <div>
-        <app-product-slice [listTypeID]="featuredTitles"></app-product-slice>
-    </div>
-    <div>
-        <app-product-slide [listTypeID]="onSale" [bgc]=true></app-product-slide>
-    </div>
+<div class="child">
+    <app-cards-carousel></app-cards-carousel>
 </div>
-<div class="d-none d-md-block">
-    <div class="d-flex align-items-center">
+<div class="child">
+    <app-shipping></app-shipping>
+</div>
+<div class="child">
+    <app-product-slide [listTypeID]="newItems" [bgc]=true></app-product-slide>
+</div>
+<div class="child">
+    <div class="d-block d-md-none">
         <div>
             <app-product-slice [listTypeID]="featuredTitles"></app-product-slice>
         </div>
-        <div class="fill-size">
-            <app-product-slide [listTypeID]="onSale2" [bgc]=true></app-product-slide>
+        <div>
+            <app-product-slide [listTypeID]="onSale" [bgc]=true></app-product-slide>
+        </div>
+    </div>
+    <div class="d-none d-md-block">
+        <div class="d-flex align-items-center">
+            <div>
+                <app-product-slice [listTypeID]="featuredTitles"></app-product-slice>
+            </div>
+            <div class="fill-size">
+                <app-product-slide [listTypeID]="onSale2" [bgc]=true></app-product-slide>
+            </div>
         </div>
     </div>
 </div>
-<app-product-slide [listTypeID]="topSellers" [bgc]=false></app-product-slide>
-<app-product-slide [listTypeID]="liveAction" [bgc]=true></app-product-slide>
-<app-product-slide [listTypeID]="closeOut" [bgc]=false></app-product-slide>
-<app-product-slide [listTypeID]="bargainBin" [bgc]=true></app-product-slide>
+<div class="child">
+    <app-product-slide [listTypeID]="topSellers" [bgc]=false></app-product-slide>
+</div>
+<div class="child">
+    <app-product-slide [listTypeID]="liveAction" [bgc]=true></app-product-slide>
+</div>
+<div class="child">
+    <app-product-slide [listTypeID]="closeOut" [bgc]=false></app-product-slide>
+</div>
+<div class="child">
+    <app-product-slide [listTypeID]="bargainBin" [bgc]=true></app-product-slide>
+</div>
