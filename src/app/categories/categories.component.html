@@ -1,7 +1,7 @@
 <div class="bgc-gray">
-  <h2 class="anime-orig-color">Shop by Category</h2>
+  <h2 class="child anime-orig-color">Shop by Category</h2>
   <ul class="list-inline">
-      <li *ngFor="let category of categories" 
+      <li *ngFor="let category of categories" class="li-child"
         [routerLink]="['/genre']" [queryParams]="{ categoryID: category?.CategoryID }">
           <a>
               <div class="card frame card-max">

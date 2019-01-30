@@ -1,8 +1,8 @@
-<h2>{{listType?.Description}}</h2>
+<h2 class="child">{{listType?.Description}}</h2>
 
 <div class="row flex-row">
   <ng-container *ngFor="let prod of apiProducts">
-    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+    <div class="child col-6 col-sm-4 col-md-3 col-lg-2">
         <a (click)="OnSelectProduct(prod)">
             <div class="card card-max">
                 <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"

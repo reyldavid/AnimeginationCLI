@@ -29,6 +29,8 @@ export class ProductComponent implements OnInit {
                 this.product = product;
 
                 this._messageService.setSpinner(false);
+                
+                window.scrollTo(0,0);
             });
     }
 

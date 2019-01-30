@@ -1,8 +1,8 @@
 <div class="bgc-gray">
-  <h2><span class="h4">Category:  </span>{{category}}</h2>
+  <h2 class="child"><span class="h4">Category:  </span>{{category}}</h2>
 
   <ul class="list-inline">
-      <li *ngFor="let prod of products" 
+      <li *ngFor="let prod of products" class="li-child"
         [routerLink]="['/detail']" [queryParams]="{ productID: prod?.ProductID }">
           <a>
             <div class="card frame card-max">
