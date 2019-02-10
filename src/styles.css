@@ -9,12 +9,16 @@ html, body {
     width: 100%;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     color: #FFA80B !important;
 }
 .h1, .h2, .h3, .h4 {
     margin-top: 10px;
     color: #FFA80B;
+}
+
+input[type="number"] {
+    padding-left: 1em;
 }
 
 .inline {
@@ -100,6 +104,9 @@ a .card.frame {
 }
 .card-max.slice {
     max-width: 240px;
+}
+.card-max-cart {
+    max-width: 120px;
 }
 
 .image-max {
@@ -250,6 +257,22 @@ a .card.frame {
 }
 
 a.hand:hover {
+    cursor: pointer;
+}
+
+.alert-content {
+    color: #007600;
+}
+
+.fa-check-circle {
+    color: #007600;
+}
+
+a.anchor {
+    color: #007bff !important;
+}
+a.anchor:hover {
+    text-decoration: underline !important;
     cursor: pointer;
 }
 

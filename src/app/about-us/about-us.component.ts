@@ -11,6 +11,7 @@ import { UserAccountModel } from '../models/userAccountModel';
 import { CartService } from '../services/cart.service';
 import { CartType } from '../models/carttype';
 import { OrderService } from '../services/orders.service';
+import { SessionService } from '../services/session.service';
 // import { ApiProduct } from '../models/product';
 // import { ListType } from '../models/listtype';
 
@@ -29,23 +30,24 @@ export class AboutUsComponent implements OnInit {
               private accountService: AccountService, 
               private userAccountService: UserAccountsService, 
               private cartService: CartService, 
-              private orderService: OrderService ) { 
+              private orderService: OrderService, 
+              private sessionService: SessionService ) { 
 
     }
 
   ngOnInit() {
 
-    this.listTypeService.getAnimeListType(2).subscribe( listType => {
-      console.log('listType');
-      console.log(listType);
+    // this.listTypeService.getAnimeListType(2).subscribe( listType => {
+    //   console.log('listType');
+    //   console.log(listType);
 
-      this.listTypeService.setListTypeCache(listType, 2);
+    //   this.listTypeService.setListTypeCache(listType, 2);
 
-      this.listTypeService.getAnimeListType(2).subscribe( listType => {
-        console.log('listType');
-        console.log(listType);
-      })
-    })
+    //   this.listTypeService.getAnimeListType(2).subscribe( listType => {
+    //     console.log('listType');
+    //     console.log(listType);
+    //   })
+    // })
 
     // this.productService.getAnimeProduct(1042).subscribe( products => {
     //   console.log('product');
@@ -293,10 +295,12 @@ export class AboutUsComponent implements OnInit {
   //   console.log('user login naegino');
   //   console.log(token);
 
-  //   this.cartService.getCartItems(token, CartType.shoppingCart).subscribe( items => {
-  //     console.log('cart items');
-  //     console.log(items);
-  //   })
+    let token = this.sessionService.UserToken;
+
+    this.cartService.getCartItems(token, CartType.shoppingCart).subscribe( items => {
+      console.log('cart items');
+      console.log(items);
+    })
 
   //   this.orderService.getOrderTotals(token, CartType.shoppingCart).subscribe( orders => {
   //     console.log('order totals');
