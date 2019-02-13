@@ -13,6 +13,7 @@ import { CartType } from '../models/carttype';
 import { TokenModel } from '../models/tokenmodel';
 import { Order } from '../models/orderModel';
 import { MessageService } from '../services/message.service';
+import { OrderItem } from '../models/orderItemModel';
 
 @Injectable({
     providedIn: 'root'
@@ -50,6 +51,68 @@ import { MessageService } from '../services/message.service';
             let observables = this.http.get<Order>(
                 endpoint, { headers: headers, observe: 'response'}
                 )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
+
+    getOrderById(token: TokenModel, id: number): Observable<Order[]> {
+
+        if (this.globals.localData) {
+            // return this.getOrdersStatic();
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let endpoint = this.helper.getCompoundEndPoint(ServiceName.orders, ServiceName.id, id);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let observables = this.http.get<Order[]>(
+                endpoint, { headers: headers, observe: 'response'}
+                )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
+
+    getOrderItemById(token: TokenModel, id: number): Observable<OrderItem> {
+
+        if (this.globals.localData) {
+            // return this.getOrdersStatic();
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let endpoint = this.helper.getCompoundEndPoint(ServiceName.orderItems, ServiceName.id, id);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let observables = this.http.get<OrderItem>(
+                endpoint, { headers: headers, observe: 'response'}
+                )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
+
+    updateOrderItem(token: TokenModel, orderItem: OrderItem): Observable<OrderItem> {
+
+        if (this.globals.localData) {
+            // return this.getOrdersStatic();
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let body = JSON.stringify(orderItem);
+
+            let endpoint = this.helper.getEndPoint(ServiceName.orderItems);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let observables = this.http.post<OrderItem>(
+                    endpoint, body, 
+                    { headers: headers, observe: 'response'} )
                 .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
 
             return observables;
