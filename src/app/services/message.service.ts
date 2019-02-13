@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {Subject} from 'rxjs/Subject';
 import {TokenModel} from '../models/tokenmodel';
 import {UserAccountModel} from '../models/userAccountModel';
+import { OrderItem } from '../models/orderItemModel';
+import { Order } from '../models/orderModel';
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +14,7 @@ export class MessageService {
     private userAccount = new Subject<any>();
     private spinner = new Subject<any>();
     private footer = new Subject<any>();
+    private cartItem = new Subject<any>();
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -55,5 +58,21 @@ export class MessageService {
 
     getFooter(): Observable<boolean> {
         return this.footer.asObservable();
+    }
+
+    clearFooter() {
+        this.footer.next();
+    }
+
+    setCartItem(cartItem: OrderItem) {
+        this.cartItem.next();
+    }
+
+    getCartItem(): Observable<OrderItem> {
+        return this.cartItem.asObservable();
+    }
+
+    clearCartItem() {
+        this.cartItem.next();
     }
 }

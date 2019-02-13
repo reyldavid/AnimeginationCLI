@@ -77,7 +77,8 @@ export class HttpHelper {
         let endpoint = environment.proxyUrl + requestUrl + segment;
 
         if (environment.useNgProxy) {
-            endpoint = '/v1/' + service + '/' + id;
+            endpoint = '/v1/' + service;
+            endpoint = id ? endpoint + '/' + id : endpoint;
         }
         console.log('service: ' + service + '    endpoint: ' + endpoint);
         return endpoint;
@@ -95,13 +96,15 @@ export class HttpHelper {
         return endpoint;
     }
 
-    public getCompoundEndPoint(service: ServiceName, secondary: ServiceName) {
+    public getCompoundEndPoint(service: ServiceName, secondary: ServiceName, id?: number) {
         let segment = service + '/' + secondary;
+        segment = id ? segment + '/' + id : segment;
         let requestUrl = environment.useAzure ? environment.azureHostUrl : environment.localHostUrl;
         let endpoint = environment.proxyUrl + requestUrl + segment;
 
         if (environment.useNgProxy) {
             endpoint = '/v1/' + segment;
+            endpoint = id ? endpoint + '/' + id : endpoint;
         }
         console.log('service: ' + segment + '    endpoint: ' + endpoint);
         return endpoint;
