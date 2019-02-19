@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
   { path: 'genres', component: CategoriesComponent },
   { path: 'news', component: NewsFeedComponent },
-  { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard], canDeactivate: [DeactivateGuard] },
   { path: 'search', component: SearchResultsComponent },
   { path: 'genre', component: CategoryListComponent },
   { path: 'profile', component: ProfileSettingsComponent, canActivate: [AuthGuard] },

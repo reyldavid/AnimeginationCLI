@@ -95,6 +95,9 @@ export class SimilarsComponent implements OnInit {
       var slidePrev = document.getElementById(prevId);
       let prodClassPrev = "prod".concat(this.productID.toString());
 
+      if (slidePrev == null) {
+        return;
+      }
       let classesPrev = slidePrev.className.split(" ").filter(function(c) {
         return c.lastIndexOf("prod", 0) !== 0;
       });
@@ -140,6 +143,10 @@ export class SimilarsComponent implements OnInit {
     let nextId = "next" + this.productID.toString();
     var slideNext = document.getElementById(nextId);
     let prodClassNext = "prod".concat(this.productID.toString());
+
+    if (slideNext == null) {
+      return;
+    }
 
     let classesNext = slideNext.className.split(" ").filter(function(c) {
       return c.lastIndexOf("prod", 0) !== 0;

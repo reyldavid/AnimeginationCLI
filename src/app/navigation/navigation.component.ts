@@ -16,7 +16,7 @@ declare var $: any;
 export class NavigationComponent implements OnInit {
 
   public userFirstName: string;
-  showFooter: boolean = true;
+  showFooter: boolean= true;
   footerSubscription: Subscription;
   spinnerSubscription: Subscription;
 
@@ -29,9 +29,9 @@ export class NavigationComponent implements OnInit {
             this.userFirstName = firstName;
         });
 
-        this.footerSubscription = _messageService.getFooter().subscribe( show => {
-            this.showFooter = show;
-        })
+        // this.footerSubscription = _messageService.getFooter().subscribe( show => {
+        //     this.showFooter = show;
+        // })
         //   localStorage.removeItem('jwt');
         // this._sessionService.clearSession();
         // this._router.navigate(['Home']);
@@ -55,7 +55,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): any {
       console.log('home init');
-      this.showFooter = true;
+    //   this.showFooter = true;
   }
 
   onSearch(searchText: string) {
