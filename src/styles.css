@@ -3,6 +3,11 @@
 html, body {
     font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif
 }
+
+.row {
+    margin-right: 0px !important;
+}
+
 .body-bg-white {
     background-color: white;
     height: 100%;
@@ -213,11 +218,15 @@ a .card.frame {
     padding: 2em 3em !important;
 }
 .footerright { 
-    padding: 2em 0em !important;
+    padding: 2em 0em!important;
 }
 .footercontent {
     background-color: #2878AF;
     padding: 2em;
+    border-radius: 15px;
+}
+.footeraside {
+    background-color: #2878AF;
     border-radius: 15px;
 }
 .p2 {
@@ -346,6 +355,12 @@ a.anchor:hover {
 }
 
 @media only screen and (min-width: 768px) {
+    .footerright { 
+        padding: 2em 3em 2em 0em !important;
+    }
+    .footeraside {
+        padding: 2em 0em;
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -369,6 +384,9 @@ a.anchor:hover {
     }
     .wide-screen-top-padding {
         padding-top: 30px;
+    }
+    .footeraside {
+        padding: 2em;
     }
 }
 

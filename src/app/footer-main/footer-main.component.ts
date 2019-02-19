@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListingType } from '../models/listingTypes';
+import { MessageService } from '../services/message.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-footer-main',
@@ -16,8 +18,14 @@ export class FooterMainComponent implements OnInit {
   liveAction: number = ListingType.LiveAction;
   recommendations: number = ListingType.Recommendations;
   onSale: number = ListingType.OnSale;
+  footerSubscription: Subscription;
+  show: boolean = true;
 
-  constructor() {
+  constructor(private messageService: MessageService) {
+
+        this.footerSubscription = messageService.getFooter().subscribe( show => {
+            this.show = show;
+        })
    }
 
   ngOnInit() {
