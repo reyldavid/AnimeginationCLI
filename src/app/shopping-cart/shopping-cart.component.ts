@@ -58,18 +58,26 @@ export class ShoppingCartComponent implements OnInit {
   getTotals() {
     this.orderService.getOrderTotals(this.sessionService.UserToken, CartType.shoppingCart)
       .subscribe( orders => {
-        console.log('order totals');
-        console.log(orders);
-        this.order = orders[0];
 
-        this.isFreeShipping = this.order.subTotal > 0 && 
-            this.order.shippingHandling == 0 ? true : false;
-
-        this.isDiscount = this.order.discounts > 0 ? true : false;
-
-        this.address.city = this.sessionService.UserAccount.City;
-        this.address.state = this.sessionService.UserAccount.State;
-
+        if (orders.length) {
+          console.log('order totals');
+          console.log(orders);
+          this.order = orders[0];
+  
+          this.isFreeShipping = this.order.subTotal > 0 && 
+              this.order.shippingHandling == 0 ? true : false;
+  
+          this.isDiscount = this.order.discounts > 0 ? true : false;
+  
+          this.address.city = this.sessionService.UserAccount.City;
+          this.address.state = this.sessionService.UserAccount.State;  
+        }
+        else {
+          this.isFreeShipping = false;
+          this.isDiscount = false;
+          this.address.city = "";
+          this.address.state = "";  
+        }
         this.messageService.setSpinner(false);
     })
   }
