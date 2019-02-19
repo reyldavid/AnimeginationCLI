@@ -26,6 +26,14 @@
         </table>
         <div class="pt-3">
             <div class="fine-print">In Stock</div>
+
+            <div>Quantity: 
+                <input type="number" min="1" max="10" step="1" 
+                    value={{quantity}} 
+                    (change)="updateQuantity($event.target.value)" 
+                >
+            </div>
+
             <button class="btn btn-default bgc-light" (click)="AddToCart(product)">
                 <img src="https://reydavid.blob.core.windows.net/assets/shopping-cart.png"
                         alt="Buy in website now" style="max-width: 130px;" />

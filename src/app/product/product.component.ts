@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
     productID: number;
 
     product: ApiProduct;
+    quantity: number = 1;
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _productService: ProductsService, 
@@ -65,7 +66,7 @@ export class ProductComponent implements OnInit {
         let cartItem: AddItem = {
           orderType: CartType.shoppingCart, 
           productID: product.ProductID,
-          quantity: 1, 
+          quantity: this.quantity, 
           unitPrice: product.YourPrice
         }
 
@@ -81,5 +82,9 @@ export class ProductComponent implements OnInit {
       else {
         this._router.navigate(['/login']);
       }
+    }
+
+    updateQuantity(quantity: number) {
+      this.quantity = quantity;
     }
 }

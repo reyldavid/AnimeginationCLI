@@ -285,6 +285,10 @@ a.anchor:hover {
     cursor: pointer;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 @keyframes init_children {
     0%    {
         opacity: 0.2;
