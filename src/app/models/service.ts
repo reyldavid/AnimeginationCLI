@@ -17,5 +17,6 @@ export enum ServiceName {
     cartItems = 'cartitems', 
     orders = 'orders',
     orderItems = 'orderitems',
-    id = 'id'
+    id = 'id',
+    move = 'move'
 }

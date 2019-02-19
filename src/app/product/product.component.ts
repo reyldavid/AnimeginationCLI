@@ -3,6 +3,10 @@ import { ApiProduct } from '../models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
 import { MessageService } from '../services/message.service';
+import { AddItem } from '../models/addItemModel';
+import { CartType } from '../models/carttype';
+import { CartService } from '../services/cart.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +22,9 @@ export class ProductComponent implements OnInit {
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _productService: ProductsService, 
-                private _messageService: MessageService ) { 
+                private _messageService: MessageService, 
+                private _cartServce: CartService, 
+                private _sessionService: SessionService ) { 
                   console.log('product details construct');
     }
 
@@ -54,6 +60,26 @@ export class ProductComponent implements OnInit {
     }
 
     AddToCart(product: ApiProduct) {
-        this._router.navigate(['/cart']);
+
+      if (this._sessionService.isAuthenticated()) {
+        let cartItem: AddItem = {
+          orderType: CartType.shoppingCart, 
+          productID: product.ProductID,
+          quantity: 1, 
+          unitPrice: product.YourPrice
+        }
+
+        this._cartServce.addCartItem(this._sessionService.UserToken, cartItem).subscribe(item => {
+          console.log(item);
+          this._router.navigate(['/cart']);
+        }, (error: string) => {
+          console.log(error);
+          this._router.navigate(['/cart']);
+          this._messageService.setSpinner(false);
+        })
+      }
+      else {
+        this._router.navigate(['/login']);
+      }
     }
 }

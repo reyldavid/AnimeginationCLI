@@ -118,4 +118,30 @@ import { OrderItem } from '../models/orderItemModel';
             return observables;
         }
     }
+
+    deleteOrderItem(token: TokenModel, id: number): Observable<OrderItem> {
+
+        let endpoint = this.helper.getEndPoint(ServiceName.orderItems, id);
+        let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+        let observables = this.http.delete<OrderItem>(
+            endpoint, { headers: headers, observe: 'response'} )
+            .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+        return observables;
+    }
+
+    moveOrderItem(token: TokenModel, id: number, cartType: string) {
+
+        this.messageService.setSpinner(true);
+        let endpoint = this.helper.getComplexEndPoint(ServiceName.orderItems, ServiceName.move, id, cartType);
+
+        let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+        let observables = this.http.get<OrderItem>(
+                endpoint, { headers: headers, observe: 'response'} )
+            .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+        return observables;
+    }
 }

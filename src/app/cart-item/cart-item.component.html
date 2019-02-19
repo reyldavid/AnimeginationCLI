@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="col-11 col-lg-7">
+    <div class="col-11 col-lg-6">
         <div class="row">
-            <div class="col-4 col-sm-12 col-md-4" style="border: 2px solid green">
+            <div class="col-4 col-sm-12 col-md-4">
                 <div (click)="OnSelectProduct(cartItem)" class="panel-body panel-default pointer">
                     <img src="https://reydavid.blob.core.windows.net/anime/{{cartItem?.productCode}}.jpg"
                         alt="{{cartItem?.productCode}}" class="card-max-cart img-responsive" />
                 </div>
             </div>
-            <div class="col-8 col-sm-12 col-md-8" style="border: 2px solid blue">
+            <div class="col-8 col-sm-12 col-md-8">
                 <h5 (click)="OnSelectProduct(cartItem)" class="pointer">{{cartItem?.productTitle}}</h5>
                 <div>{{cartItem?.mediumName}}</div>
                 <div>{{cartItem?.categoryName}}</div>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="col-11 col-lg-5" style="border: 2px solid gold">
+    <div class="col-11 col-lg-5">
         <div class="row d-none d-lg-block pt-4"></div>
         <div class="row">
             <div class="col-6">
@@ -42,11 +42,11 @@
         </div>
         <div class="d-flex justify-content-center pt-2">
             <div class="px-2">
-                <a class="anchor" (click)="hello()">Save for Later</a> 
+                <a class="anchor" (click)="moveItem(cartItem)">Save for Later</a> 
             </div>
             <div class="px-2">|</div>
             <div class="px-2">
-                <a class="anchor" (click)="hello()">Delete</a>
+                <a class="anchor" (click)="deleteItem(cartItem)">Delete</a>
             </div>
         </div>
         <div class="row d-block d-lg-none pb-4"></div>

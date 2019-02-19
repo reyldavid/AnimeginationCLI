@@ -29,11 +29,15 @@ export class ShoppingCartComponent implements OnInit {
               private messageService: MessageService ) { 
 
       this.cartItemSubscription = messageService.getCartItem().subscribe( cartItem => {
-        this.getTotals();
+        this.getCartItems();
       });
   }
 
   ngOnInit() {
+    this.getCartItems();
+  }
+
+  getCartItems() {
     if (this.sessionService.isAuthenticated()) {
 
       this.cartService.getCartItems(this.sessionService.UserToken, CartType.shoppingCart)

@@ -26,7 +26,7 @@
                                 Order Subtotal
                             </div>
                             <div class="col-4 col-lg-5 text-right font-weight-bold">
-                                {{order?.subTotal | currency:'USD':true}}
+                                {{order?.subTotal | currency:'USD':'symbol'}}
                             </div>
                         </div>
                         <div class="row pb-2">
@@ -34,7 +34,7 @@
                                 Discounts
                             </div>
                             <div class="col-5 col-lg-6 text-right text-danger font-weight-bold">
-                                <span *ngIf="isDiscount">({{order?.discounts | currency:'USD':true}})</span>
+                                <span *ngIf="isDiscount">({{order?.discounts | currency:'USD':'symbol'}})</span>
                             </div>
                         </div>
                         <div class="row pb-2">
@@ -50,7 +50,7 @@
                                 Shipping
                             </div>
                             <div class="col-5 col-lg-6 text-right font-weight-bold">
-                                {{order?.shippingHandling | currency:'USD':true}}
+                                {{order?.shippingHandling | currency:'USD':'symbol'}}
                             </div>
                         </div>
                         <div class="row pb-2">
@@ -58,7 +58,7 @@
                                 Tax
                             </div>
                             <div class="col-5 col-lg-6 text-right font-weight-bold">
-                                {{order?.taxes | currency:'USD':true}}
+                                {{order?.taxes | currency:'USD':'symbol'}}
                             </div>
                         </div>
                         <div class="row pb-2">
@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-4 col-lg-6 text-right">
                                 <strong class="text-danger font-size-16">
-                                    {{order?.totals | currency:'USD':true}}
+                                    {{order?.totals | currency:'USD':'symbol'}}
                                 </strong>
                             </div>
                         </div>
@@ -104,3 +104,6 @@
     </div>
 </div>
 
+<div class="row">
+    <app-footer-product></app-footer-product>
+</div>

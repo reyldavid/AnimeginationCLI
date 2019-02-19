@@ -13,6 +13,8 @@ import { CartItem } from '../models/cartItemModel';
 import { CartType } from '../models/carttype';
 import { TokenModel } from '../models/tokenmodel';
 import { MessageService } from './message.service';
+import { AddItem } from '../models/addItemModel';
+import { OrderItem } from '../models/orderItemModel';
 
 @Injectable({
     providedIn: 'root'
@@ -49,6 +51,28 @@ import { MessageService } from './message.service';
 
             let observables = this.http.get<CartItem>(
                 endpoint, { headers: headers, observe: 'response'}
+                )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
+
+    addCartItem(token: TokenModel, cartItem: AddItem): Observable<OrderItem> {
+
+        if (this.globals.localData) {
+            // return this.getCartItemsStatic();
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let endpoint = this.helper.getEndPoint(ServiceName.cartItems);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let body = JSON.stringify(cartItem);
+
+            let observables = this.http.put<OrderItem>(
+                endpoint, body, { headers: headers, observe: 'response'}
                 )
                 .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
 

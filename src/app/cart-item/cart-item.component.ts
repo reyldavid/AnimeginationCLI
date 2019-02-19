@@ -6,6 +6,8 @@ import { MessageService } from '../services/message.service';
 import { SessionService } from '../services/session.service';
 import { Subscription } from 'rxjs/Subscription';
 import { OrderService } from '../services/orders.service';
+import { CartType } from '../models/carttype';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -21,7 +23,8 @@ export class CartItemComponent implements OnInit {
                private route: ActivatedRoute, 
                private messageService: MessageService,
                private sessionService: SessionService,  
-               private orderService: OrderService ) { 
+               private orderService: OrderService, 
+               private cartService: CartService ) { 
     }
 
   ngOnInit() {
@@ -33,15 +36,13 @@ export class CartItemComponent implements OnInit {
     this.router.navigate(['/detail'], { queryParams: {  productID: cartItem.productID } });
   }
 
-  updateQuantity(quantity, cartItem) {
-    console.log("aya " + quantity);
-    console.log("ueto " + cartItem.orderID);
+  updateQuantity(quantity: number, cartItem: CartItem) {
 
       this.orderService.getOrderItemById(this.sessionService.UserToken, cartItem.orderItemID)
         .subscribe( orderItem => {
           console.log('order item: ');
-          orderItem.quantity = quantity;
           console.log(orderItem);
+          orderItem.quantity = quantity;
 
           this.orderService.updateOrderItem(this.sessionService.UserToken, orderItem)
             .subscribe( response => {
@@ -59,6 +60,47 @@ export class CartItemComponent implements OnInit {
         console.log(error);
         this.messageService.setSpinner(false);
       });
+    }
+    
+    deleteItem(cartItem) {
+
+      this.orderService.deleteOrderItem(this.sessionService.UserToken, cartItem.orderItemID)
+        .subscribe( orderItem => {
+          console.log('order item: ');
+          console.log(orderItem);
+          this.messageService.setCartItem( orderItem );
+        },  
+        (error: string) => {
+          console.log(error);
+          this.messageService.setSpinner(false);
+        })
+    }
+
+    moveItem(cartItem: CartItem) {
+
+      this.orderService.moveOrderItem(this.sessionService.UserToken, 
+        cartItem.orderItemID, CartType.wishList)
+          .subscribe( item => {
+            console.log('cart item: ');
+            console.log(item);
+            this.updateWishList();
+            this.messageService.setCartItem( item );
+        },  
+        (error: string) => {
+          console.log(error);
+          this.updateWishList();
+          this.messageService.setCartItem( cartItem );
+        })
+    }  
+
+  updateWishList() {
+    if (this.sessionService.isAuthenticated()) {
+
+      this.cartService.getCartItems(this.sessionService.UserToken, CartType.wishList)
+        .subscribe( items => {
+          console.log('wish list');
+          console.log(items);
+      })
+    }
   }
-  
 }

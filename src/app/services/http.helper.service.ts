@@ -110,6 +110,18 @@ export class HttpHelper {
         return endpoint;
     }
 
+    public getComplexEndPoint(service: ServiceName, secondary: ServiceName, id: number, type: string) {
+        let segment = service + '/' + secondary + '/' + id + '/' + type;
+        let requestUrl = environment.useAzure ? environment.azureHostUrl : environment.localHostUrl;
+        let endpoint = environment.proxyUrl + requestUrl + segment;
+
+        if (environment.useNgProxy) {
+            endpoint = '/v1/' + segment;
+        }
+        console.log('service: ' + segment + '    endpoint: ' + endpoint);
+        return endpoint;
+    }
+
     // public getDatesQueryParameters(appId?: string) {
 
     //     let startEpoch = this.dateService.startDate.getTime().toString();
