@@ -23,6 +23,7 @@ export class BuyListComponent implements OnInit {
   isDiscount: boolean = false;
   cartItemSubscription: Subscription;
   cartType: CartType = CartType.shoppingCart;
+  isEmpty: boolean = true;
 
   constructor( private sessionService: SessionService, 
               private cartService: CartService, 
@@ -39,6 +40,7 @@ export class BuyListComponent implements OnInit {
   }
 
   getCartItems() {
+    this.isEmpty = true;
     if (this.sessionService.isAuthenticated()) {
 
       this.cartService.getCartItems(this.sessionService.UserToken, CartType.shoppingCart)
@@ -60,6 +62,7 @@ export class BuyListComponent implements OnInit {
           console.log('order totals');
           console.log(order);
           this.order = order;
+          this.isEmpty = false;
   
           this.isFreeShipping = this.order.subTotal > 0 && 
               this.order.shippingHandling == 0 ? true : false;
@@ -70,13 +73,18 @@ export class BuyListComponent implements OnInit {
           this.address.state = this.sessionService.UserAccount.State;  
         }
         else {
+          this.isEmpty = true;
           this.isFreeShipping = false;
           this.isDiscount = false;
           this.address.city = "";
           this.address.state = "";  
         }
         this.messageService.setSpinner(false);
-    })
+      },  
+      (error: string) => {
+        console.log(error);
+        this.messageService.setSpinner(false);
+  })
   }
   
 }

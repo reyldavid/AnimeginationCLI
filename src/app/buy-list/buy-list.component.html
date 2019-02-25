@@ -1,11 +1,11 @@
 <h2 class="inline pr-3">Shopping Cart</h2>
 
-<div *ngIf="!order">
+<div *ngIf="isEmpty">
     <div class="pt-3"></div>
     <h3>Your Shopping Cart is Empty</h3>
     <div class="pb-3"></div>
 </div>
-<div *ngIf="order">
+<div *ngIf="!isEmpty">
     <div class="inline" *ngIf="order?.orderID">
         {{order?.productQuantity}} Products, {{order?.itemQuantity}} Items
     </div>

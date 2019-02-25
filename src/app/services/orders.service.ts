@@ -121,6 +121,7 @@ import { OrderItem } from '../models/orderItemModel';
 
     deleteOrderItem(token: TokenModel, id: number): Observable<OrderItem> {
 
+        this.messageService.setSpinner(true);
         let endpoint = this.helper.getEndPoint(ServiceName.orderItems, id);
         let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 

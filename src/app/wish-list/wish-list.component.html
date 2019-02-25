@@ -1,6 +1,6 @@
-<h2 *ngIf="order" class="inline pr-3">Saved for Later</h2>
+<h2 *ngIf="!isEmpty" class="inline pr-3">Saved for Later</h2>
 
-<div *ngIf="order">
+<div *ngIf="!isEmpty">
     <div class="inline">
         {{order?.productQuantity}} Products
     </div>

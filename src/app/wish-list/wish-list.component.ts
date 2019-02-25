@@ -19,6 +19,7 @@ export class WishListComponent implements OnInit {
   order: Order;
   cartItemSubscription: Subscription;
   cartType: CartType = CartType.wishList;
+  isEmpty: boolean = true;
 
   constructor( private sessionService: SessionService, 
               private cartService: CartService, 
@@ -35,6 +36,7 @@ export class WishListComponent implements OnInit {
   }
 
   getCartItems() {
+    this.isEmpty = true;
     if (this.sessionService.isAuthenticated()) {
 
       this.cartService.getCartItems(this.sessionService.UserToken, CartType.wishList)
@@ -56,7 +58,10 @@ export class WishListComponent implements OnInit {
           console.log('order totals');
           console.log(order);
           this.order = order;
-  
+          this.isEmpty = false;  
+        }
+        else {
+          // this.order = null;
         }
         this.messageService.setSpinner(false);
     })

@@ -45,8 +45,10 @@ export class NavigationComponent implements OnInit {
             }
             else {
                 $('#spinner').modal('hide');
+                // $('.modal-backdrop').remove();
                 setTimeout(function() {
                     $('#spinner').modal('hide');
+                    $('.modal-backdrop').remove();
                 }, _globals.spinnerDelay);
             }
         })
