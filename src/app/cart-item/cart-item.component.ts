@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Product } from '../models/product';
 import { CartItem } from '../models/cartItemModel';
 import { MessageService } from '../services/message.service';
@@ -19,8 +19,13 @@ export class CartItemComponent implements OnInit {
   @Input() 
   cartItem: Product;
 
+  @Input()
+  cartType: CartType;
+  moveToType: CartType;
+
+  moveLabel: string = "";
+
   constructor( private router: Router, 
-               private route: ActivatedRoute, 
                private messageService: MessageService,
                private sessionService: SessionService,  
                private orderService: OrderService, 
@@ -28,6 +33,31 @@ export class CartItemComponent implements OnInit {
     }
 
   ngOnInit() {
+    switch(this.cartType) {
+      case CartType.shoppingCart:
+      {
+        this.moveLabel = "Save for Later";
+        this.moveToType = CartType.wishList;
+        break;
+      }
+      case CartType.wishList:
+      {
+        this.moveLabel = "Move to Cart"
+        this.moveToType = CartType.shoppingCart;
+        break;
+      }
+      case CartType.orderHistory:
+      {
+        break;
+      }
+      case CartType.recentlyVisited:
+      {
+        break;
+      }
+      default:
+      {
+      }
+    }
   }
 
   OnSelectProduct(cartItem: CartItem) {
@@ -79,28 +109,15 @@ export class CartItemComponent implements OnInit {
     moveItem(cartItem: CartItem) {
 
       this.orderService.moveOrderItem(this.sessionService.UserToken, 
-        cartItem.orderItemID, CartType.wishList)
+        cartItem.orderItemID, this.moveToType)
           .subscribe( item => {
             console.log('cart item: ');
             console.log(item);
-            this.updateWishList();
             this.messageService.setCartItem( item );
         },  
         (error: string) => {
           console.log(error);
-          this.updateWishList();
           this.messageService.setCartItem( cartItem );
         })
     }  
-
-  updateWishList() {
-    if (this.sessionService.isAuthenticated()) {
-
-      this.cartService.getCartItems(this.sessionService.UserToken, CartType.wishList)
-        .subscribe( items => {
-          console.log('wish list');
-          console.log(items);
-      })
-    }
-  }
 }

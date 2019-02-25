@@ -54,6 +54,8 @@ import { LegalComponent } from './legal/legal.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { BuyListComponent } from './buy-list/buy-list.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     LegalComponent,
     RatingsComponent,
     CartItemComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    WishListComponent,
+    BuyListComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 

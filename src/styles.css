@@ -288,6 +288,10 @@ a.anchor:hover {
 .nowrap {
     white-space: nowrap;
 }
+.partition {
+    border-top: 1px solid #dddddd;
+    padding-bottom: 1em;
+}
 
 @keyframes init_children {
     0%    {
