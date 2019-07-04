@@ -26,9 +26,16 @@ input[type="number"] {
     padding-left: 1em;
 }
 
+.bold {
+    font-weight: bold;
+}
 .inline {
     display: inline;
 }
+.bottom-border {
+    border-bottom: 1px solid #dddddd;
+}
+
 h5.panel-title {
     color: #FFA80B;
     font-size: 22px;
@@ -48,8 +55,12 @@ h5.panel-title {
     font-weight: bold;
     padding-bottom: 4px;
 }
-.small-gray {
+.tiny-gray {
     font-size: 10px;
+    color: gray;
+}
+.small-gray {
+    font-size: 0.8em;
     color: gray;
 }
 .image-btn > .btn {
@@ -178,16 +189,16 @@ a .card.frame {
 }
 
 .smaller {
-    font-size: 0.8em;
+    font-size: 0.8em !important;
 }
 .font-size-16 {
-    font-size: 1.2em;
+    font-size: 1.2em !important;
 }
 .font-size-18 {
-    font-size: 1.4em;
+    font-size: 1.4em !important;
 }
 .font-size-20 {
-    font-size: 1.6em;
+    font-size: 1.6em !important;
 }
 .link-normal {
     color: #0066c0;
@@ -291,6 +302,10 @@ a.anchor:hover {
 .partition {
     border-top: 1px solid #dddddd;
     padding-bottom: 1em;
+}
+
+.all-borders {
+    border: 1px solid red;
 }
 
 @keyframes init_children {

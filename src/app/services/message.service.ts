@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Subject} from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {TokenModel} from '../models/tokenmodel';
 import {UserAccountModel} from '../models/userAccountModel';
 import { OrderItem } from '../models/orderItemModel';
@@ -15,6 +16,8 @@ export class MessageService {
     private spinner = new Subject<any>();
     private footer = new Subject<any>();
     private cartItem = new Subject<any>();
+    private order = new Subject<Order>();
+    private returnUrl = new BehaviorSubject<string>("");
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -65,7 +68,7 @@ export class MessageService {
     }
 
     setCartItem(cartItem: OrderItem) {
-        this.cartItem.next();
+        this.cartItem.next(cartItem);
     }
 
     getCartItem(): Observable<OrderItem> {
@@ -74,5 +77,25 @@ export class MessageService {
 
     clearCartItem() {
         this.cartItem.next();
+    }
+
+    setOrder(order: Order) {
+        this.order.next(order);
+    }
+
+    getOrder(): Observable<Order> {
+        return this.order.asObservable();
+    }
+
+    clearOrder() {
+        this.order.next();
+    }
+
+    setReturnUrl(returnUrl: string) {
+        this.returnUrl.next(returnUrl);
+    }
+
+    getReturnUrl(): string {
+        return this.returnUrl.getValue();
     }
 }

@@ -6,6 +6,7 @@ import { CartItem } from '../models/cartItemModel';
 import { OrderService } from '../services/orders.service';
 import { Order } from '../models/orderModel';
 import { MessageService } from '../services/message.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,17 +23,24 @@ export class BuyListComponent implements OnInit {
   isFreeShipping: boolean = false;
   isDiscount: boolean = false;
   cartItemSubscription: Subscription;
+  orderSubscription: Subscription;
   cartType: CartType = CartType.shoppingCart;
   isEmpty: boolean = true;
 
   constructor( private sessionService: SessionService, 
               private cartService: CartService, 
               private orderService: OrderService, 
-              private messageService: MessageService ) { 
+              private messageService: MessageService, 
+              private _router: Router, 
+              private _activatedRoute: ActivatedRoute ) { 
 
       this.cartItemSubscription = messageService.getCartItem().subscribe( cartItem => {
         this.getCartItems();
       });
+
+      this.orderSubscription = messageService.getOrder().subscribe( order => {
+        this.order = order;
+      })
   }
 
   ngOnInit() {
@@ -49,42 +57,43 @@ export class BuyListComponent implements OnInit {
           console.log(items);
           this.cartProducts = items;
 
-          this.getTotals();
+          this.isEmpty = !(items && items.length > 0);
+
+          // this.getTotals();
       })
     }
   }
 
-  getTotals() {
-    this.orderService.getOrderTotals(this.sessionService.UserToken, CartType.shoppingCart)
-      .subscribe( order => {
+  // getTotals() {
+  //   this.orderService.getOrderTotals(this.sessionService.UserToken, CartType.shoppingCart)
+  //     .subscribe( order => {
 
-        if (order.orderID) {
-          console.log('order totals');
-          console.log(order);
-          this.order = order;
-          this.isEmpty = false;
+  //       if (order.orderID) {
+  //         console.log('order totals');
+  //         console.log(order);
+  //         this.order = order;
+  //         this.isEmpty = false;
   
-          this.isFreeShipping = this.order.subTotal > 0 && 
-              this.order.shippingHandling == 0 ? true : false;
+  //         this.isFreeShipping = this.order.subTotal > 0 && 
+  //             this.order.shippingHandling == 0 ? true : false;
   
-          this.isDiscount = this.order.discounts > 0 ? true : false;
+  //         this.isDiscount = this.order.discounts > 0 ? true : false;
   
-          this.address.city = this.sessionService.UserAccount.City;
-          this.address.state = this.sessionService.UserAccount.State;  
-        }
-        else {
-          this.isEmpty = true;
-          this.isFreeShipping = false;
-          this.isDiscount = false;
-          this.address.city = "";
-          this.address.state = "";  
-        }
-        this.messageService.setSpinner(false);
-      },  
-      (error: string) => {
-        console.log(error);
-        this.messageService.setSpinner(false);
-  })
-  }
-  
+  //         this.address.city = this.sessionService.UserAccount.City;
+  //         this.address.state = this.sessionService.UserAccount.State;  
+  //       }
+  //       else {
+  //         this.isEmpty = true;
+  //         this.isFreeShipping = false;
+  //         this.isDiscount = false;
+  //         this.address.city = "";
+  //         this.address.state = "";  
+  //       }
+  //       this.messageService.setSpinner(false);
+  //     },  
+  //     (error: string) => {
+  //       console.log(error);
+  //       this.messageService.setSpinner(false);
+  //   })
+  // }
 }
