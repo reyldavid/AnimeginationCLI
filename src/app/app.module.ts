@@ -19,6 +19,7 @@ import { CartService } from './services/cart.service';
 import { OrderService } from './services/orders.service';
 import { LoginService } from './services/login.service';
 import { SessionService } from './services/session.service';
+import { UtilityService } from './services/utilities.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AppRouterModule } from './app-router/app-router.module';
 
@@ -56,6 +57,9 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { BuyListComponent } from './buy-list/buy-list.component';
+import { CheckoutAddressComponent } from './checkout-address/checkout-address.component';
+import { SubtotalsComponent } from './subtotals/subtotals.component';
+import { CheckoutReviewComponent } from './checkout-review/checkout-review.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +97,10 @@ import { BuyListComponent } from './buy-list/buy-list.component';
     CartItemComponent,
     SpinnerComponent,
     WishListComponent,
-    BuyListComponent
+    BuyListComponent,
+    CheckoutAddressComponent,
+    SubtotalsComponent,
+    CheckoutReviewComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
@@ -113,6 +120,7 @@ import { BuyListComponent } from './buy-list/buy-list.component';
     OrderService, 
     LoginService, 
     SessionService, 
+    UtilityService, 
     AuthorizationGuard 
   ],
   bootstrap: [AppComponent]

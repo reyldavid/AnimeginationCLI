@@ -23,6 +23,8 @@ import { ReturnsComponent } from '../returns/returns.component';
 import { FeedbackComponent } from '../feedback/feedback.component';
 import { LegalComponent } from '../legal/legal.component';
 import { RatingsComponent } from '../ratings/ratings.component';
+import { CheckoutAddressComponent } from '../checkout-address/checkout-address.component';
+import { CheckoutReviewComponent } from '../checkout-review/checkout-review.component';
 import { AuthorizationGuard as AuthGuard} from '../guards/authorization.guard';
 import { CanDeactivateGuard as DeactivateGuard } from '../guards/can-deactivate.guard';
 
@@ -51,7 +53,9 @@ const routes: Routes = [
   { path: 'returns', component: ReturnsComponent }, 
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] }, 
   { path: 'legal', component: LegalComponent }, 
-  { path: 'ratings', component: RatingsComponent } 
+  { path: 'ratings', component: RatingsComponent }, 
+  { path: 'checkout-address', component: CheckoutAddressComponent, canActivate: [AuthGuard] }, 
+  { path: 'checkout-review', component: CheckoutReviewComponent, canActivate: [AuthGuard] } 
 ]
 // { path: 'genre/:categoryID', component: CategoryListComponent },
 
