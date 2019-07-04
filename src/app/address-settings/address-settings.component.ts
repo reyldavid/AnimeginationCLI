@@ -44,7 +44,6 @@ export class AddressSettingsComponent implements OnInit {
 
           this._messageService.setSpinner(false);
         })
-
   }
 
   ngOnInit() {
@@ -92,6 +91,11 @@ export class AddressSettingsComponent implements OnInit {
               this.isDirty = false;
 
               this._messageService.setSpinner(false);
+
+              let returnUrl = this._messageService.getReturnUrl();
+              if (returnUrl && returnUrl.length > 0) {
+                this._router.navigate([returnUrl]);
+              }
             }, 
         (error: string) => {
           this.isSuccess = false;
