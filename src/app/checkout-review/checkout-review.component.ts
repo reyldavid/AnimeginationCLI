@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserAccountsService } from '../services/userAccounts.service';
-import { TokenModel } from '../models/tokenModel';
 import { UserAccountModel } from '../models/userAccountModel';
-import { LoginService } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 import { MessageService } from '../services/message.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UtilityService } from '../services/utilities.service';
+import { OrderService } from '../services/orders.service';
 
 @Component({
   selector: 'app-checkout-review',
@@ -30,6 +28,7 @@ export class CheckoutReviewComponent implements OnInit {
   constructor( private _router: Router, 
                private _messageService: MessageService, 
                private _sessionService: SessionService, 
+               private _orderService: OrderService, 
                private _utils: UtilityService ) { 
     this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
       this.userAccount = userAccount;
@@ -45,8 +44,19 @@ export class CheckoutReviewComponent implements OnInit {
 }
 
   placeOrder() {
-    console.log('Go Place Order!');
-    // this._router.navigate(['/checkout-review']);
+    console.log('Update Order!');
+    this._sessionService.Order.trackingNumber = this._utils.getTrackingNumber();
+    this._orderService.updateOrder(this._sessionService.UserToken, this._sessionService.Order)
+      .subscribe( response => {
+        console.log('updated response: ');
+        console.log(response);
+        this._messageService.setSpinner(false);
+    },  
+    (error: string) => {
+      console.log(error);
+      this._messageService.setSpinner(false);
+    });
+    this._router.navigate(['/checkout-thankyou']);
   }
 
 }
