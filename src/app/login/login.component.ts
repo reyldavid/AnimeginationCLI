@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService } from '../services/accounts.service';
 import { TokenModel } from '../models/tokenmodel';
@@ -8,13 +8,16 @@ import { UserAccountsService } from '../services/userAccounts.service';
 import { UserAccountModel } from '../models/userAccountModel';
 import { MessageService } from '../services/message.service';
 import { LoginService } from '../services/login.service';
+import { OrderService } from '../services/orders.service';
+import { ISubscription } from 'rxjs/Subscription';
+import { CartType } from '../models/carttype';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
     constructor(private router: Router, 
         private route: ActivatedRoute, 
@@ -22,7 +25,8 @@ export class LoginComponent implements OnInit {
         private sessionService: SessionService, 
         private userAccountService: UserAccountsService, 
         private messageService: MessageService, 
-        private loginService: LoginService) { }
+        private loginService: LoginService, 
+        private orderService: OrderService ) { }
 
     token: TokenModel = { "token": "" };
     loginInput: LoginModel = { username: "", password: "" };
@@ -36,6 +40,7 @@ export class LoginComponent implements OnInit {
     };
     isInvalidAccount: boolean = false;
     returnUrl: string;
+    orderSubscription: ISubscription;
 
     Login() {
         //event.preventDefault();
@@ -56,8 +61,13 @@ export class LoginComponent implements OnInit {
                         this.messageService.selectUserAccount(userAccount);
                         this.messageService.setSpinner(false);
 
-                        // this.router.navigate(['/account']);
-                        this.router.navigateByUrl(this.returnUrl);
+                        this.orderSubscription = this.orderService.getOrderTotals(
+                          this.sessionService.UserToken, CartType.shoppingCart)
+                          .subscribe(order => {
+                            this.messageService.setOrder(order);
+                            // this.router.navigate(['/account']);
+                            this.router.navigateByUrl(this.returnUrl);
+                          })
                     },
                     (error: string) => {
                       if (error.includes("401")) {
@@ -88,5 +98,11 @@ export class LoginComponent implements OnInit {
         console.log('login init');
 
         this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
+    }
+
+    ngOnDestroy() {
+      if (this.orderSubscription) {
+        this.orderSubscription.unsubscribe();
+      }
     }
 }

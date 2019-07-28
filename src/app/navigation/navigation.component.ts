@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 import { MessageService } from '../services/message.service';
+import { OrderService } from '../services/orders.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Globals } from '../globals';
+import { Order } from '../models/orderModel';
+import { CartType } from '../models/carttype';
 // import { $ } from 'protractor';
 declare var $: any;
 
@@ -13,17 +16,22 @@ declare var $: any;
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnDestroy {
 
   public userFirstName: string;
   showFooter: boolean= true;
+  loggingIn: boolean = false;
   footerSubscription: Subscription;
   spinnerSubscription: Subscription;
+  orderSubscription: Subscription;
+  itemsSubscription: Subscription;
+  order: Order;
 
   constructor(private _router: Router, 
               private _loginService: LoginService, 
               private _sessionService: SessionService, 
-              private _messageService: MessageService, 
+              private _messageService: MessageService,
+              private _orderService: OrderService,  
               private _globals: Globals ) {
         _loginService.userLoggedIn.subscribe(firstName => {
             this.userFirstName = firstName;
@@ -53,11 +61,29 @@ export class NavigationComponent implements OnInit {
             }
         })
 
+        this.itemsSubscription = _messageService.getOrder().subscribe(order => {
+            this.order = order;
+        })
     }
 
   ngOnInit(): any {
       console.log('home init');
     //   this.showFooter = true;
+    if (this._sessionService.isAuthenticated()) {
+        this.orderSubscription = this._orderService.getOrderTotals(
+            this._sessionService.UserToken, CartType.shoppingCart)
+            .subscribe(order => {
+                this.order = order;
+        })
+    }
+}
+
+  ngOnDestroy() {
+    this.footerSubscription.unsubscribe();
+    this.spinnerSubscription.unsubscribe();
+    this.orderSubscription.unsubscribe();
+    this.itemsSubscription.unsubscribe();
+  
   }
 
   onSearch(searchText: string) {
@@ -70,6 +96,7 @@ export class NavigationComponent implements OnInit {
       //   localStorage.removeItem('jwt');
       this._sessionService.clearSession();
       this.userFirstName = '';
+      this.order = null;
     //   let returnUrl = window.location.pathname;
     //   this._router.navigateByUrl(returnUrl);
     //   this._router.navigate([returnUrl]);
@@ -77,10 +104,13 @@ export class NavigationComponent implements OnInit {
   }
 
   login() {
-      let returnUrl = window.location.pathname;
-      let search = window.location.search;
-      returnUrl = search ? returnUrl.concat(search) : returnUrl;
-      this._router.navigate(['/login'], { queryParams: {  returnUrl: returnUrl } });
+    // this.loggingIn = true;
+    let returnUrl = window.location.pathname;
+    let search = window.location.search;
+    returnUrl = search ? returnUrl.concat(search) : returnUrl;
+    if (!returnUrl.includes("/login?")) {
+        this._router.navigate(['/login'], { queryParams: {  returnUrl: returnUrl } });
+    }
   }
 
 }

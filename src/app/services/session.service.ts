@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { TokenModel } from '../models/tokenmodel';
 import { UserAccountModel } from '../models/userAccountModel';
+import { Order } from "../models/orderModel";
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +17,7 @@ export class SessionService {
         Email: "", Created: "",
         CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
     };
+    private _order: Order;
 
     isAuthenticated(): boolean {
         // // We get the JWT from localStorage
@@ -45,6 +47,13 @@ export class SessionService {
         this._token = token;
     }
 
+    get Order(): Order {
+        return this._order;
+    }
+    set Order(order: Order) {
+        this._order = order;
+    }
+
     clearSession() {
         // // We simply remove JWT from localStorage
         // localStorage.removeItem('jwt');
@@ -58,6 +67,7 @@ export class SessionService {
             Email: "", Created: "",
             CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
         };
+        this._order = null;
     }
 
     get UserAccount(): UserAccountModel {

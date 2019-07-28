@@ -70,7 +70,7 @@
               </div>
             </li>
             <li *ngIf="!userFirstName" class="nav-item">
-              <a class="nav-link hand" (click)="login()">Sign in</a>
+              <a class="nav-link hand" [class.disabled]="loggingIn" (click)="login()">Sign in</a>
             </li>
           </ul>
         </div>
@@ -79,6 +79,7 @@
           <a routerLink="/cart" class="image-link">
               <img src="https://reydavid.blob.core.windows.net/assets/menu-cart.png"
                     alt="Shopping Cart" height="46" />
+              <span class="badge badge-pill badge-anime">{{ order?.itemQuantity }}</span>
           </a>
         </div>
       </nav>  
