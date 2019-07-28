@@ -2,7 +2,7 @@
     <div class="col-12 col-sm-6 order-sm-2 col-md-6 order-md-2 col-xl-4">
         <div class="row">
             <div class="col-10 offset-1 col-lg-11 offset-lg-0">
-                <app-subtotals [actionButton]="false"></app-subtotals>
+                <app-subtotals [actionButton]="false" [marketing]="true"></app-subtotals>
             </div>
         </div> 
     </div>
@@ -68,7 +68,7 @@
                 <div>Payment Method:</div>
               </div>
               <div class="col-11 offset-1 col-lg-5 offset-lg-0">
-                <strong>Store card ending in 5678</strong>
+                <strong>Gift credit ending in 5678</strong>
               </div>
             </div>
 
@@ -97,7 +97,9 @@
             <div class="row d-flex align-items-center py-3">
               <div class="col-8 d-none d-lg-block">
                 <div class="small-gray text-right">By clicking to place your order, you agree to</div>
-                <div class="small-gray text-right">Animegination's Privacy Policy and Terms of Use</div>
+                <div class="small-gray text-right">Animegination's 
+                  <a href="privacy" target="_blank">Privacy Policy</a> and 
+                  <a href="terms-of-use" target="_blank">Terms of Use</a></div>
               </div>
               <div class="col-12 col-lg-4">
                 <button class="btn btn-block anime-button-lg font-size-16" 

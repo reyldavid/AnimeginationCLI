@@ -32,6 +32,12 @@ input[type="number"] {
 .inline {
     display: inline;
 }
+.inline-block {
+    display: inline-block;
+}
+.hidden {
+    visibility: hidden;
+}
 .bottom-border {
     border-bottom: 1px solid #dddddd;
 }
@@ -46,6 +52,10 @@ h5.panel-title {
 }
 .anime-color {
     color: #FFA80B;
+}
+.badge-anime {
+    color: white;
+    background-color: #FFA80B;
 }
 .bg-lightgray {
     background-color: #eee;
@@ -265,6 +275,17 @@ a .card.frame {
     font-size: 0.8em;
     padding: 0em 2em;
 }
+.p6 {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    padding-left: 15px;
+}
+.p6:hover {
+    color: #FFA80B;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .mailto {
     color: white;
     font-size: 1.2em;
@@ -303,7 +324,9 @@ a.anchor:hover {
     border-top: 1px solid #dddddd;
     padding-bottom: 1em;
 }
-
+.bullets-circle {
+    list-style-type: circle;
+}
 .all-borders {
     border: 1px solid red;
 }

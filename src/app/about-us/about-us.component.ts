@@ -12,6 +12,7 @@ import { CartService } from '../services/cart.service';
 import { CartType } from '../models/carttype';
 import { OrderService } from '../services/orders.service';
 import { SessionService } from '../services/session.service';
+import { MessageService } from '../services/message.service';
 // import { ApiProduct } from '../models/product';
 // import { ListType } from '../models/listtype';
 
@@ -31,6 +32,7 @@ export class AboutUsComponent implements OnInit {
               private userAccountService: UserAccountsService, 
               private cartService: CartService, 
               private orderService: OrderService, 
+              private messageService: MessageService, 
               private sessionService: SessionService ) { 
 
     }
@@ -300,6 +302,7 @@ export class AboutUsComponent implements OnInit {
     this.cartService.getCartItems(token, CartType.shoppingCart).subscribe( items => {
       console.log('cart items');
       console.log(items);
+      this.messageService.setSpinner(false);
     })
 
   //   this.orderService.getOrderTotals(token, CartType.shoppingCart).subscribe( orders => {

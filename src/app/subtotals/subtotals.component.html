@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div *ngIf="isFreeShipping">
+        <div *ngIf="isFreeShipping && showMarketing">
             <i class="fa fa-check-circle"></i>
             <span class="alert-content pb-2 pl-2">Your order qualifies for FREE Shipping</span>
         </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="row pb-2">
             <div class="col-5 offset-1 col-lg-6 offset-lg-0">
-                Tax
+                Sales Tax
             </div>
             <div class="col-5 col-lg-6 text-right font-weight-bold">
                 {{order?.taxes | currency:'USD':'symbol'}}
@@ -54,7 +54,7 @@
         </div>
         <div class="row pb-2">
             <div class="col-6 offset-1 col-lg-6 offset-lg-0">
-                <strong>Estimated Total</strong>
+                <strong>Order Total</strong>
             </div>
             <div class="col-4 col-lg-6 text-right">
                 <strong class="text-danger font-size-16">

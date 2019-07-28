@@ -16,11 +16,15 @@ import { Subscription } from 'rxjs';
 })
 export class SubtotalsComponent implements OnInit {
 
+  @Input() set marketing(showMarketing: boolean) {
+    this.showMarketing = showMarketing;
+  }
   @Input() set actionButton(showButton: boolean) {
     this.showActionButton = showButton;
   }
 
   showActionButton: boolean = false;
+  showMarketing: boolean = false;
   cartProducts: CartItem[];
   order: Order;
   address: { city: string, state: string } = 
@@ -52,6 +56,7 @@ export class SubtotalsComponent implements OnInit {
           console.log(order);
           this.order = order;
           this.messageService.setOrder(order);
+          this.sessionService.Order = order;
   
           this.isFreeShipping = this.order.subTotal > 0 && 
               this.order.shippingHandling == 0 ? true : false;
@@ -76,7 +81,6 @@ export class SubtotalsComponent implements OnInit {
   }
 
   goCheckout() {
-    // console.log('category product ID: ' + product.ProductID);
     this._router.navigate(['/checkout-address']);
     // , { queryParams: { productID: product.ProductID } });
   }  
