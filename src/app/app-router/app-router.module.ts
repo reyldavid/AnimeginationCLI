@@ -10,7 +10,8 @@ import { AccountSettingsComponent } from '../account-settings/account-settings.c
 import { ContactUsComponent } from '../contact-us/contact-us.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { OrdersComponent } from '../orders/orders.component';
+import { OrdersDetailsComponent } from '../orders-details/orders-details.component';
+import { OrdersSummaryComponent } from '../orders-summary/orders-summary.component';
 import { CategoriesComponent } from '../categories/categories.component';
 import { NewsFeedComponent } from '../news-feed/news-feed.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
@@ -25,6 +26,9 @@ import { LegalComponent } from '../legal/legal.component';
 import { RatingsComponent } from '../ratings/ratings.component';
 import { CheckoutAddressComponent } from '../checkout-address/checkout-address.component';
 import { CheckoutReviewComponent } from '../checkout-review/checkout-review.component';
+import { CheckoutThankyouComponent } from '../checkout-thankyou/checkout-thankyou.component';
+import { TermsOfUseComponent } from '../terms-of-use/terms-of-use.component';
+import { PrivacyComponent } from '../privacy/privacy.component';
 import { AuthorizationGuard as AuthGuard} from '../guards/authorization.guard';
 import { CanDeactivateGuard as DeactivateGuard } from '../guards/can-deactivate.guard';
 
@@ -41,7 +45,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'orders-details', component: OrdersDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'orders-summary', component: OrdersSummaryComponent, canActivate: [AuthGuard] },
   { path: 'genres', component: CategoriesComponent },
   { path: 'news', component: NewsFeedComponent },
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard], canDeactivate: [DeactivateGuard] },
@@ -55,7 +60,10 @@ const routes: Routes = [
   { path: 'legal', component: LegalComponent }, 
   { path: 'ratings', component: RatingsComponent }, 
   { path: 'checkout-address', component: CheckoutAddressComponent, canActivate: [AuthGuard] }, 
-  { path: 'checkout-review', component: CheckoutReviewComponent, canActivate: [AuthGuard] } 
+  { path: 'checkout-review', component: CheckoutReviewComponent, canActivate: [AuthGuard] }, 
+  { path: 'checkout-thankyou', component: CheckoutThankyouComponent, canActivate: [AuthGuard] },
+  { path: 'terms-of-use', component: TermsOfUseComponent }, 
+  { path: 'privacy', component: PrivacyComponent } 
 ]
 // { path: 'genre/:categoryID', component: CategoryListComponent },
 

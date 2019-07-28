@@ -33,7 +33,6 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { OrdersComponent } from './orders/orders.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -60,6 +59,11 @@ import { BuyListComponent } from './buy-list/buy-list.component';
 import { CheckoutAddressComponent } from './checkout-address/checkout-address.component';
 import { SubtotalsComponent } from './subtotals/subtotals.component';
 import { CheckoutReviewComponent } from './checkout-review/checkout-review.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { CheckoutThankyouComponent } from './checkout-thankyou/checkout-thankyou.component';
+import { OrdersDetailsComponent } from './orders-details/orders-details.component';
+import { OrdersSummaryComponent } from './orders-summary/orders-summary.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +78,6 @@ import { CheckoutReviewComponent } from './checkout-review/checkout-review.compo
     ContactUsComponent,
     LoginComponent,
     RegisterComponent,
-    OrdersComponent,
     CategoriesComponent,
     NewsFeedComponent,
     ShoppingCartComponent,
@@ -100,7 +103,12 @@ import { CheckoutReviewComponent } from './checkout-review/checkout-review.compo
     BuyListComponent,
     CheckoutAddressComponent,
     SubtotalsComponent,
-    CheckoutReviewComponent
+    CheckoutReviewComponent,
+    TermsOfUseComponent,
+    PrivacyComponent,
+    CheckoutThankyouComponent,
+    OrdersDetailsComponent,
+    OrdersSummaryComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 

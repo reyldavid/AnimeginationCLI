@@ -119,6 +119,28 @@ import { OrderItem } from '../models/orderItemModel';
         }
     }
 
+    updateOrder(token: TokenModel, order: Order): Observable<Order> {
+
+        if (this.globals.localData) {
+            // return this.getOrdersStatic();
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let body = JSON.stringify(order);
+
+            let endpoint = this.helper.getEndPoint(ServiceName.orders);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let observables = this.http.post<Order>(
+                    endpoint, body, 
+                    { headers: headers, observe: 'response'} )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
+
     deleteOrderItem(token: TokenModel, id: number): Observable<OrderItem> {
 
         this.messageService.setSpinner(true);

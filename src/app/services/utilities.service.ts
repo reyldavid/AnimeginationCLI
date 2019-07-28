@@ -1,13 +1,9 @@
 /**
 * Created by reynaldodavid on 6/30/2019.
 */
-import { Observable } from 'rxjs';
-import { of } from "rxjs/observable/of";
-import { map } from 'rxjs/operators';
-import { catchError } from "rxjs/operators";
 import { Injectable } from '@angular/core';
 import { Globals } from "../globals";
-import { ServiceName } from '../models/service';
+import { Order } from '../models/orderModel';
 import 'rxjs/Rx';
 
 @Injectable({
@@ -24,12 +20,12 @@ import 'rxjs/Rx';
         return formattedDate;
     }
 
-    getShippingDate(): string {
+    getShippingDate(orderDate?: string): string {
         let businessDays = this.globals.deliveryDays; // takes this many business days to deliver
         let counter = 1; // set to 1 to count from next business day
         let tmpDate = new Date();
         while ( businessDays > 0 ) {
-            tmpDate = new Date();
+            tmpDate = orderDate ? new Date(orderDate) : new Date();
             counter++;
             tmpDate.setDate( tmpDate.getDate() + counter );
             switch ( tmpDate.getDay() ){
@@ -43,6 +39,31 @@ import 'rxjs/Rx';
         let shipDate = this.formatDate(tmpDate);
         console.log("aya ship date ", shipDate)
         return shipDate;
+    }
+
+    isInTransit(orderDate: string) : boolean {
+        let today = new Date();
+        let shippingDate = this.getShippingDate(orderDate);
+        let shipDate = new Date(shippingDate);
+        return today < shipDate;
+    }
+
+    getOrderNumber(order: Order): string {
+        let orderNumber = "";
+        if (order) {
+            let prefix = this.globals.orderPrefix;
+            orderNumber = prefix.substring(0, prefix.length - order.orderID.toString().length);
+
+            orderNumber = orderNumber + order.orderID;
+        }
+        return orderNumber;
+    }
+
+    getTrackingNumber(): string {
+        let random = Math.floor(Math.random() * 1000);
+        let trackingNumber = this.globals.trackingPrefix + random;
+
+        return trackingNumber;
     }
 
 }
