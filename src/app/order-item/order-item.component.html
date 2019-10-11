@@ -1,0 +1,53 @@
+<div *ngIf="show" class="row pis40">
+  <div class="col-12 col-lg-7">
+      <div class="row">
+          <div class="col-4 col-sm-12 col-md-5 col-xl-4">
+              <div (click)="OnSelectProduct(orderItem)" class="panel-body panel-default pointer">
+                  <img src="https://reydavid.blob.core.windows.net/anime/{{product?.ProductCode}}.jpg"
+                      alt="{{product?.ProductCode}}" class="card-max-cart img-responsive" />
+              </div>
+          </div>
+          <div class="col-8 col-sm-12 col-md-7 col-xl-8">
+              <h5 (click)="OnSelectProduct(orderItem)" class="pointer nowrap">{{product?.ProductTitle}}</h5>
+              <div>{{product?.MediumName}}</div>
+              <div>{{product?.CategoryName}}</div>
+              <div>from {{product?.PublisherName}} in {{product?.ProductYearCreated}}</div>
+              <div>{{product?.ProductLength}} minutes</div>
+              <div class="tiny-gray">Item: {{product?.ProductCode}}</div>
+
+          </div>
+      </div>
+  </div>
+  <div class="col-12 col-lg-5">
+      <div class="row d-none d-lg-block pt-4"></div>
+      <div class="row">
+          <div class="col-6">
+              <div>Price: <span class="text-danger font-size-16">
+                  {{product?.YourPrice | currency:'USD':'symbol' }} </span>
+              </div>
+          </div>
+          <!-- <div class="d-block d-lg-none col-6">
+            <div class="col-6">Quantity: <span>{{quantity}}</span>
+            </div>
+          </div> -->
+          <div class="d-none d-lg-block col-6">
+                <button type="button" class="btn btn-default anime-button" 
+                    (click)="BuyAgain(product)">Buy it again</button>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-6">Quantity: <span>{{quantity}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="d-none d-lg-block col-6 offset-6">
+            <button type="button" class="btn btn-default btn-outline-anime" 
+                (click)="WriteReview(product)">Write a product review</button>
+        </div>
+      </div>
+    
+    <div class="row d-block d-lg-none pb-4"></div>
+  </div>
+  <div class="col-12 partition"></div>
+</div>
