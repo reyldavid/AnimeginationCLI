@@ -90,6 +90,21 @@ li > a.image-link {
     background-color: #FFA80B;
     min-width: 120px;
 }
+.btn-outline-anime {
+    color: #FFA80B;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #FFA80B !important;
+    min-width: 120px;
+}
+.btn-outline-anime:hover {
+    color: #212529;
+    background-color: transparent;
+    border-color: #FFA80B;
+}
+.btn-outline-anime:focus {
+    box-shadow: rgba(255, 168, 11, 0.5);
+}
 .anime-button-lg {
     color: white;
     background-color: #FFA80B;

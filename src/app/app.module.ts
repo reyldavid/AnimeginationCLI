@@ -64,6 +64,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { CheckoutThankyouComponent } from './checkout-thankyou/checkout-thankyou.component';
 import { OrdersDetailsComponent } from './orders-details/orders-details.component';
 import { OrdersSummaryComponent } from './orders-summary/orders-summary.component';
+import { OrderItemComponent } from './order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { OrdersSummaryComponent } from './orders-summary/orders-summary.componen
     PrivacyComponent,
     CheckoutThankyouComponent,
     OrdersDetailsComponent,
-    OrdersSummaryComponent
+    OrdersSummaryComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
