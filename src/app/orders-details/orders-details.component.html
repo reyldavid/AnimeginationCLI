@@ -18,7 +18,7 @@
           <div class="row bottom-border d-flex align-items-center py-3">
             <div class="col-12 col-lg-6 d-flex align-items-center">
                 <i class="fa fa-calendar fa-flip-horizontal fa-lg pr-3"></i>
-                <span class="pl-3">Ordered On:</span>
+                <span class="pl-3">Ordered Online On:</span>
                 <strong class="pl-3">{{ orderDate }}</strong>
               </div>
             <div class="col-12 col-lg-6 d-flex align-items-center">
@@ -132,5 +132,12 @@
 
           </div>
       </div>
+
+      <div class="row bottom-border d-flex align-items-center py-3">
+        <div class="col-12" *ngFor="let item of orderItems">
+            <app-order-item [orderItem]="item"></app-order-item>
+        </div>
+      </div>
+
   </div>
 </div>

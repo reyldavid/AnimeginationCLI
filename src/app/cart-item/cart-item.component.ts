@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { OrderService } from '../services/orders.service';
 import { CartType } from '../models/carttype';
 import { CartService } from '../services/cart.service';
+import { OrderItem } from '../models/orderItemModel';
 
 @Component({
   selector: 'app-cart-item',
@@ -22,6 +23,7 @@ export class CartItemComponent implements OnInit {
   @Input()
   cartType: CartType;
   moveToType: CartType;
+  orderItem: OrderItem;
 
   moveLabel: string = "";
 
@@ -69,10 +71,10 @@ export class CartItemComponent implements OnInit {
   updateQuantity(quantity: number, cartItem: CartItem) {
 
       this.orderService.getOrderItemById(this.sessionService.UserToken, cartItem.orderItemID)
-        .subscribe( orderItem => {
+        .subscribe( (orderItem: OrderItem) => {
           console.log('order item: ');
           console.log(orderItem);
-          orderItem.quantity = quantity;
+          orderItem.Quantity = quantity;
 
           this.orderService.updateOrderItem(this.sessionService.UserToken, orderItem)
             .subscribe( response => {
@@ -117,7 +119,7 @@ export class CartItemComponent implements OnInit {
         },  
         (error: string) => {
           console.log(error);
-          this.messageService.setCartItem( cartItem );
+          this.messageService.setCartItem(this.orderItem);
         })
     }  
 }

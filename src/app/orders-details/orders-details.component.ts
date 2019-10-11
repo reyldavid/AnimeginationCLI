@@ -8,6 +8,7 @@ import { UserAccountModel } from '../models/userAccountModel';
 import { Subscription } from 'rxjs/Subscription';
 import { UtilityService } from '../services/utilities.service';
 import { Globals } from '../globals';
+import { OrderItem } from '../models/orderItemModel';
 
 @Component({
   selector: 'app-orders-details',
@@ -17,6 +18,7 @@ import { Globals } from '../globals';
 export class OrdersDetailsComponent implements OnInit, OnDestroy {
 
   order: Order;
+  orderItems: OrderItem[];
   orderID: number;
   userAccount: UserAccountModel = {
     UserId: "", UserName: "",
@@ -87,12 +89,21 @@ export class OrdersDetailsComponent implements OnInit, OnDestroy {
         this.deliveryStatus = this._utils.isInTransit(this.orderDate) ? "Arriving by" : "Delivered";
         this.trackingNumber = this.order.trackingNumber;
 
-        this._messageService.setSpinner(false);
-        
-        console.log("aya order ", this.order);
+        this.getOrderItems(orderID)
 
-        window.scrollTo(0,0);
+        console.log("aya order ", this.order);
     });
+  }
+
+  getOrderItems(orderId: number) {
+    let token = this._sessionService.UserToken;
+    this._orderService.getOrderItemsById(token, orderId).subscribe((orderItems: OrderItem[]) => 
+    {
+      this.orderItems = orderItems;
+
+      this._messageService.setSpinner(false);
+      window.scrollTo(0,0);        
+    })
   }
 
 }
