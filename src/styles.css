@@ -90,6 +90,20 @@ li > a.image-link {
     background-color: #FFA80B;
     min-width: 120px;
 }
+.anime-button:hover {
+    color: #212529;
+}
+.anime-button-lg {
+    color: white;
+    background-color: #FFA80B;
+    min-width: 140px;
+    min-height: 45px;
+    border-radius: 24px;
+    font-size: 18px;
+}
+.anime-button-lg:hover {
+    color: #212529;
+}
 .btn-outline-anime {
     color: #FFA80B;
     background-color: transparent;
@@ -104,14 +118,6 @@ li > a.image-link {
 }
 .btn-outline-anime:focus {
     box-shadow: rgba(255, 168, 11, 0.5);
-}
-.anime-button-lg {
-    color: white;
-    background-color: #FFA80B;
-    min-width: 140px;
-    min-height: 45px;
-    border-radius: 24px;
-    font-size: 18px;
 }
 .card-tall {
     min-height: 80px;

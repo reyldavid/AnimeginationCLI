@@ -2,13 +2,13 @@
   <div class="col-12 col-lg-7">
       <div class="row">
           <div class="col-4 col-sm-12 col-md-5 col-xl-4">
-              <div (click)="OnSelectProduct(orderItem)" class="panel-body panel-default pointer">
+              <div (click)="OnSelectProduct()" class="panel-body panel-default pointer">
                   <img src="https://reydavid.blob.core.windows.net/anime/{{product?.ProductCode}}.jpg"
                       alt="{{product?.ProductCode}}" class="card-max-cart img-responsive" />
               </div>
           </div>
           <div class="col-8 col-sm-12 col-md-7 col-xl-8">
-              <h5 (click)="OnSelectProduct(orderItem)" class="pointer nowrap">{{product?.ProductTitle}}</h5>
+              <h5 (click)="OnSelectProduct()" class="pointer nowrap">{{product?.ProductTitle}}</h5>
               <div>{{product?.MediumName}}</div>
               <div>{{product?.CategoryName}}</div>
               <div>from {{product?.PublisherName}} in {{product?.ProductYearCreated}}</div>

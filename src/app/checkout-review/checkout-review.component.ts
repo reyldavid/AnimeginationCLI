@@ -46,10 +46,14 @@ export class CheckoutReviewComponent implements OnInit {
   placeOrder() {
     console.log('Update Order!');
     this._sessionService.Order.trackingNumber = this._utils.getTrackingNumber();
+    this._sessionService.Order.isPurchased = true;
+    this._sessionService.Order.orderType = "History";
     this._orderService.updateOrder(this._sessionService.UserToken, this._sessionService.Order)
       .subscribe( response => {
         console.log('updated response: ');
         console.log(response);
+
+        this._messageService.setOrder(null);
         this._messageService.setSpinner(false);
     },  
     (error: string) => {

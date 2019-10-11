@@ -70,6 +70,7 @@ export class AccountInfoComponent implements OnInit {
     }
 
     goOrders() {
+        this._router.navigate(['/orders-summary']);
     }
 
     goProfile() {

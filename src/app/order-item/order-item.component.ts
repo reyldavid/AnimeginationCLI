@@ -42,9 +42,9 @@ export class OrderItemComponent implements OnInit {
     ));
   }
 
-  OnSelectProduct(orderItem: OrderItem) {
-    console.log('product ID: ' + orderItem.ProductID);
-    this.router.navigate(['/detail'], { queryParams: {  productID: orderItem.ProductID } });
+  OnSelectProduct() {
+    console.log('product ID: ' + this.product.ProductID);
+    this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
   }
 
   BuyAgain(product: Product) {
