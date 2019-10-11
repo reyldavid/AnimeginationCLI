@@ -18,6 +18,7 @@ export class MessageService {
     private cartItem = new Subject<any>();
     private order = new Subject<Order>();
     private returnUrl = new BehaviorSubject<string>("");
+    private orderId = new Subject<number>();
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -97,5 +98,17 @@ export class MessageService {
 
     getReturnUrl(): string {
         return this.returnUrl.getValue();
+    }
+
+    setOrderId(orderId: number) {
+        this.orderId.next(orderId);
+    }
+
+    getOrderId(): Observable<number> {
+        return this.orderId.asObservable();
+    }
+
+    clearOrderId() {
+        this.orderId.next();
     }
 }

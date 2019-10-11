@@ -66,6 +66,8 @@ export class OrdersDetailsComponent implements OnInit, OnDestroy {
         this.orderID = params.orderID;
 
         if (this.orderID) {
+            this._messageService.setOrderId(this.orderID);
+
             this.getOrder(this.orderID);
         }
     })
