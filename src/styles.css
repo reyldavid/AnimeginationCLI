@@ -41,6 +41,9 @@ input[type="number"] {
 .bottom-border {
     border-bottom: 1px solid #dddddd;
 }
+.trbl-border {
+    border: 1px solid #dddddd;
+}
 
 h5.panel-title {
     color: #FFA80B;
@@ -350,6 +353,12 @@ a.anchor:hover {
 }
 .all-borders {
     border: 1px solid red;
+}
+
+.pis40 {
+    padding-inline-start: 40px;
+    padding-right: 40px;
+    margin-right: -15px !important;
 }
 
 @keyframes init_children {

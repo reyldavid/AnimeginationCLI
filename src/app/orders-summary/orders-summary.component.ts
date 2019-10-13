@@ -7,7 +7,6 @@ import { SessionService } from '../services/session.service';
 import { UserAccountModel } from '../models/userAccountModel';
 import { Subscription } from 'rxjs/Subscription';
 import { UtilityService } from '../services/utilities.service';
-import { Globals } from '../globals';
 import { OrderItem } from '../models/orderItemModel';
 import * as _ from 'lodash';
 
@@ -62,6 +61,7 @@ export class OrdersSummaryComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    this.accountSubscription.unsubscribe();
   }
 
   getOrder(order: Order) {

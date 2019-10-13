@@ -1,15 +1,9 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Order } from '../models/orderModel';
 import { OrderService } from '../services/orders.service';
 import { MessageService } from '../services/message.service';
 import { SessionService } from '../services/session.service';
-import { UserAccountModel } from '../models/userAccountModel';
-import { Subscription } from 'rxjs/Subscription';
-import { UtilityService } from '../services/utilities.service';
-import { Globals } from '../globals';
 import { OrderItem } from '../models/orderItemModel';
-import { CartItem } from '../models/cartItemModel';
 import { CartType } from '../models/carttype';
 import * as _ from 'lodash';
 
@@ -32,10 +26,8 @@ export class OrdersListComponent implements OnInit {
   trackingNumber: string = "";
   isEmpty: boolean = true;
 
-  constructor( private _router: Router, private _route: ActivatedRoute, 
-               private _orderService: OrderService, 
+  constructor( private _orderService: OrderService, 
                private _sessionService: SessionService, 
-               private _utils: UtilityService, 
                private _messageService: MessageService ) { 
    }
 
