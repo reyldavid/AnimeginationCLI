@@ -1,3 +1,36 @@
-<p>
-  orders-summary works!
-</p>
+<div class="w-100">
+  <div class="w-100 trbl-border">
+    <div class="highlight-marker bottom-border">
+      <div class="row pis40 py-3 font-size-18">
+          <div class="col-3">
+            <div>
+              <a class="anchor" (click)="seeDetails()">
+                {{ orderDate }}
+              </a> <br />
+              <a class="anchor" (click)="seeDetails()">
+                <span class="small-gray">{{ orderNumber }}</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-3 text-center">
+            ${{ subTotal }}
+          </div>
+          <div class="col-3 text-center">
+            {{ orderStatus }}
+          </div>
+          <div class="col-3 text-right">
+            <a class="anchor" (click)="seeDetails()">See Details ></a> 
+          </div>
+      </div>
+    </div>
+
+      <div class="bottom-border py-3">
+        <div *ngFor="let item of orderItems">
+            <app-order-item [orderItem]="item"></app-order-item>
+        </div>
+      </div>
+  </div>
+
+  <div class="w-100 py-3">
+  </div>
+</div>
