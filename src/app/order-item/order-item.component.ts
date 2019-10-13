@@ -49,6 +49,7 @@ export class OrderItemComponent implements OnInit {
 
   BuyAgain(product: Product) {
     console.log('product ID: ', product);
+    this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
   }
 
   WriteReview(product: Product) {

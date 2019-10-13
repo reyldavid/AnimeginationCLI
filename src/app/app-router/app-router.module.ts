@@ -31,6 +31,7 @@ import { TermsOfUseComponent } from '../terms-of-use/terms-of-use.component';
 import { PrivacyComponent } from '../privacy/privacy.component';
 import { AuthorizationGuard as AuthGuard} from '../guards/authorization.guard';
 import { CanDeactivateGuard as DeactivateGuard } from '../guards/can-deactivate.guard';
+import { OrdersListComponent } from '../orders-list/orders-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'orders-details', component: OrdersDetailsComponent, canActivate: [AuthGuard] },
   { path: 'orders-summary', component: OrdersSummaryComponent, canActivate: [AuthGuard] },
+  { path: 'orders-list', component: OrdersListComponent, canActivate: [AuthGuard] },
   { path: 'genres', component: CategoriesComponent },
   { path: 'news', component: NewsFeedComponent },
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard], canDeactivate: [DeactivateGuard] },
