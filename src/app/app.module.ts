@@ -20,6 +20,7 @@ import { OrderService } from './services/orders.service';
 import { LoginService } from './services/login.service';
 import { SessionService } from './services/session.service';
 import { UtilityService } from './services/utilities.service';
+import { UserNoteService } from './services/userNotes.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AppRouterModule } from './app-router/app-router.module';
 
@@ -66,6 +67,8 @@ import { OrdersDetailsComponent } from './orders-details/orders-details.componen
 import { OrdersSummaryComponent } from './orders-summary/orders-summary.component';
 import { OrderItemComponent } from './order-item/order-item.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
+import { ProductReviewComponent } from './product-review/product-review.component';
+import { UserNoteComponent } from './user-note/user-note.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +115,9 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
     OrdersDetailsComponent,
     OrdersSummaryComponent,
     OrderItemComponent,
-    OrdersListComponent
+    OrdersListComponent,
+    ProductReviewComponent,
+    UserNoteComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
@@ -132,6 +137,7 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
     OrderService, 
     LoginService, 
     SessionService, 
+    UserNoteService, 
     UtilityService, 
     AuthorizationGuard 
   ],

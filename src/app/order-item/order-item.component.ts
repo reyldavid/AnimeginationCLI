@@ -54,5 +54,6 @@ export class OrderItemComponent implements OnInit {
 
   WriteReview(product: Product) {
     console.log('product ID: ', product);
+    this.router.navigate(['/product-review'], { queryParams: {  productID: this.product.ProductID } });
   }
 }
