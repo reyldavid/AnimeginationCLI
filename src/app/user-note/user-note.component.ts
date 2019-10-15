@@ -30,7 +30,8 @@ export class UserNoteComponent implements OnInit {
     { typeID: 2, typeCode: "problem", description: "Problem with Shipment" }, 
     { typeID: 3, typeCode: "canOrder", description: "Cancel Order" }, 
     { typeID: 4, typeCode: "canItem", description: "Cancel Item" }, 
-    { typeID: 5, typeCode: "other", description: "Other" }
+    { typeID: 5, typeCode: "ran", description: "Request for Return Authorization Number" }, 
+    { typeID: 6, typeCode: "other", description: "Other" }
   ];
 
   constructor(private userNoteService: UserNoteService, 

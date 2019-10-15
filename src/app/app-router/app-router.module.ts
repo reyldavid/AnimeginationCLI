@@ -20,6 +20,7 @@ import { CategoryListComponent } from '../category-list/category-list.component'
 import { ProfileSettingsComponent } from '../profile-settings/profile-settings.component';
 import { AddressSettingsComponent } from '../address-settings/address-settings.component';
 import { ShippingComponent } from '../shipping/shipping.component';
+import { ShippingInfoComponent } from '../shipping-info/shipping-info.component';
 import { ReturnsComponent } from '../returns/returns.component';
 import { FeedbackComponent } from '../feedback/feedback.component';
 import { LegalComponent } from '../legal/legal.component';
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileSettingsComponent, canActivate: [AuthGuard] },
   { path: 'address', component: AddressSettingsComponent, canActivate: [AuthGuard] }, 
   { path: 'shipping', component: ShippingComponent }, 
+  { path: 'shipping-info', component: ShippingInfoComponent },
   { path: 'returns', component: ReturnsComponent }, 
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] }, 
   { path: 'legal', component: LegalComponent }, 

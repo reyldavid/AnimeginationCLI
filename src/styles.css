@@ -27,7 +27,7 @@ input[type="number"] {
 }
 
 .bold {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 .inline {
     display: inline;

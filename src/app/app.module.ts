@@ -69,6 +69,7 @@ import { OrderItemComponent } from './order-item/order-item.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { ProductReviewComponent } from './product-review/product-review.component';
 import { UserNoteComponent } from './user-note/user-note.component';
+import { ShippingInfoComponent } from './shipping-info/shipping-info.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { UserNoteComponent } from './user-note/user-note.component';
     OrderItemComponent,
     OrdersListComponent,
     ProductReviewComponent,
-    UserNoteComponent
+    UserNoteComponent,
+    ShippingInfoComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
