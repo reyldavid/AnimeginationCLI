@@ -1,0 +1,19 @@
+table.bordered
+{
+    width: 100%;
+    border-collapse: collapse;
+    border-width: 1px;
+    border-style: solid;
+    border-color: LightGrey;
+}
+tr.bordered th {
+    font-weight: normal;
+}
+tr.bordered td
+{    
+    font-size: 1.0em;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: LightGrey;
+    text-align: center;
+}
