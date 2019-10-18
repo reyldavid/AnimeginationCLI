@@ -87,4 +87,9 @@ export class ProductComponent implements OnInit {
     updateQuantity(quantity: number) {
       this.quantity = quantity;
     }
+
+    WriteReview() {
+      console.log('product ID: ', this.productID);
+      this._router.navigate(['/product-review'], { queryParams: {  productID: this.productID } });
+    }
 }

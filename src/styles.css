@@ -3,6 +3,9 @@
 html, body {
     font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif
 }
+body {
+    font-size: 1.1rem !important;
+}
 
 .row {
     margin-right: 0px !important;
@@ -64,7 +67,7 @@ h5.panel-title {
     background-color: #eee;
 }
 .fine-print {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     padding-bottom: 4px;
 }
@@ -134,7 +137,7 @@ ul.list-inline li {
 }
 
 tr > td {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 
 a .card {
@@ -224,6 +227,9 @@ a .card.frame {
 
 .smaller {
     font-size: 0.8em !important;
+}
+.font-size-12 {
+    font-size: 1em !important;
 }
 .font-size-16 {
     font-size: 1.2em !important;
