@@ -19,5 +19,6 @@ export enum ServiceName {
     orderItems = 'orderitems',
     id = 'id',
     move = 'move',
-    userNotes = 'userNotes'
+    userNotes = 'userNotes',
+    userFeedback = 'userFeedback'
 }
