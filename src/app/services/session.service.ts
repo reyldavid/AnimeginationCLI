@@ -18,6 +18,7 @@ export class SessionService {
         CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
     };
     private _order: Order;
+    private _isAdmin: boolean = false;
 
     isAuthenticated(): boolean {
         // // We get the JWT from localStorage
@@ -78,4 +79,11 @@ export class SessionService {
         this._userAccount = userAccount;
     }
 
+    get IsAdmin(): boolean {
+        return this._isAdmin;
+    }
+    
+    set IsAdmin(isAdmin: boolean) {
+        this._isAdmin = isAdmin;
+    }
 }

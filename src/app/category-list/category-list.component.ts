@@ -30,8 +30,10 @@ export class CategoryListComponent implements OnInit {
       console.log('aya categoryID');
       console.log(categoryID);
 
-      this.GetCategory(categoryID);
-      this.GetProducts(categoryID);
+      if (categoryID) {
+        this.GetCategory(categoryID);
+        this.GetProducts(categoryID);
+      }
     })
   }
 

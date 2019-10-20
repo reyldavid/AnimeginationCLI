@@ -71,12 +71,14 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.adminRoleSubscription = _messageService.getRoles().subscribe(roles => {
             let hasAdmin = _.includes(roles, "Admin");
             this.isAdmin = hasAdmin;
+            this._sessionService.IsAdmin = hasAdmin;
         })
 
     }
 
   ngOnInit(): any {
       this.isAdmin = false;
+      this._sessionService.IsAdmin = false;
       console.log('home init');
     //   this.showFooter = true;
     if (this._sessionService.isAuthenticated()) {
@@ -108,6 +110,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
       this.userFirstName = '';
       this.order = null;
       this.isAdmin = false;
+      this._sessionService.IsAdmin = false;
     //   let returnUrl = window.location.pathname;
     //   this._router.navigateByUrl(returnUrl);
     //   this._router.navigate([returnUrl]);

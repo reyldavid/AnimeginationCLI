@@ -22,6 +22,7 @@ import { SessionService } from './services/session.service';
 import { UtilityService } from './services/utilities.service';
 import { UserNoteService } from './services/userNotes.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { AppRouterModule } from './app-router/app-router.module';
 
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -71,6 +72,14 @@ import { ProductReviewComponent } from './product-review/product-review.componen
 import { UserNoteComponent } from './user-note/user-note.component';
 import { ShippingInfoComponent } from './shipping-info/shipping-info.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { MediumComponent } from './medium/medium.component';
+import { PublisherComponent } from './publisher/publisher.component';
+import { GenreComponent } from './genre/genre.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { ProductInfoComponent } from './product-info/product-info.component';
+import { ListingComponent } from './listing/listing.component';
+import { CustomerNoteComponent } from './customer-note/customer-note.component';
+import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +130,15 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     ProductReviewComponent,
     UserNoteComponent,
     ShippingInfoComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    MediumComponent,
+    PublisherComponent,
+    GenreComponent,
+    UserInfoComponent,
+    ProductInfoComponent,
+    ListingComponent,
+    CustomerNoteComponent,
+    UserFeedbackComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
@@ -143,7 +160,8 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     SessionService, 
     UserNoteService, 
     UtilityService, 
-    AuthorizationGuard 
+    AuthorizationGuard, 
+    AdminGuard 
   ],
   bootstrap: [AppComponent]
 })
