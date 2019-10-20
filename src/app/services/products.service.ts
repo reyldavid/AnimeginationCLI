@@ -12,7 +12,6 @@ import { HttpHelper } from './http.helper.service';
 import { environment } from '../../environments/environment';
 import { ServiceName } from '../models/service';
 import { ApiProduct } from '../models/product';
-import { ClaimModel } from '../models/claimmodel';
 import { TokenModel } from '../models/tokenmodel';
 import { ApiProductCache, ApiProductsCache } from '../models/dictionary';
 import 'rxjs/Rx';
@@ -25,7 +24,6 @@ import { MessageService } from '../services/message.service';
   })
   export class ProductsService {
 
-    claim: ClaimModel;
     token: TokenModel;
 
     private _animeProduct = new ApiProductCache();

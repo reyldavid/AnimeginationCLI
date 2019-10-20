@@ -19,6 +19,7 @@ export class MessageService {
     private order = new Subject<Order>();
     private returnUrl = new BehaviorSubject<string>("");
     private orderId = new Subject<number>();
+    private roles = new Subject<string[]>();
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -110,5 +111,15 @@ export class MessageService {
 
     clearOrderId() {
         this.orderId.next();
+    }
+
+    setRoles(roles: string[]) {
+        this.roles.next(roles);
+    }
+    getRoles(): Observable<string[]> {
+        return this.roles.asObservable();
+    }
+    clearRoles() {
+        this.roles.next();
     }
 }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService } from '../services/accounts.service';
 import { TokenModel } from '../models/tokenmodel';
 import { LoginModel } from '../models/loginmodel';
+import { ClaimModel } from '../models/claimmodel';
 import { SessionService } from '../services/session.service';
 import { UserAccountsService } from '../services/userAccounts.service';
 import { UserAccountModel } from '../models/userAccountModel';
@@ -11,6 +12,7 @@ import { LoginService } from '../services/login.service';
 import { OrderService } from '../services/orders.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { CartType } from '../models/carttype';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-login',
@@ -60,6 +62,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                         this.messageService.selectUserAccount(userAccount);
                         this.messageService.setSpinner(false);
+
+                        this.accountsService.getUserClaim(token)
+                        .subscribe((claim: ClaimModel) => {
+                          console.log("aya claim ", claim);
+                          let roles = claim.roles;
+                          this.messageService.setRoles(roles);
+                        })
 
                         this.orderSubscription = this.orderService.getOrderTotals(
                           this.sessionService.UserToken, CartType.shoppingCart)
