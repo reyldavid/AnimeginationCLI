@@ -1,5 +1,6 @@
 ﻿export interface ClaimModel {
-    UserId: string,
-    UserName: string,
-    Email: string
+    userId: string,
+    userName: string,
+    email: string, 
+    roles: string[]
 }

@@ -10,11 +10,13 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angul
 import { HttpHelper } from './http.helper.service';
 import { ServiceName } from '../models/service';
 import { TokenModel } from '../models/tokenmodel';
+import { ClaimModel } from '../models/claimmodel';
 import { RegisterModel } from '../models/registermodel';
 import { UserReturnModel } from '../models/userReturnModel';
 // import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
 import { MessageService } from '../services/message.service';
+import { tokenName } from '@angular/compiler';
 //import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -43,6 +45,23 @@ import { MessageService } from '../services/message.service';
 
         return observable;
     }
+
+  getUserClaim(token: TokenModel): Observable<ClaimModel> {
+      this.messageService.setSpinner(true);
+
+      let body = JSON.stringify( token );
+
+      let endpoint = this.helper.getCompoundEndPoint(ServiceName.jwt, ServiceName.getClaim);
+
+      let header: HttpHeaders = this.helper.getContentHeaders();
+
+      let observable = this.http.post<ClaimModel>(endpoint, body, 
+          { headers: header, observe: 'response' })
+          .pipe( map ( HttpHelper.extractData), 
+              catchError( HttpHelper.handleError ));
+
+      return observable;
+  }
 
     createUser(registerModel: RegisterModel): Observable<UserReturnModel> {
         this.messageService.setSpinner(true);
