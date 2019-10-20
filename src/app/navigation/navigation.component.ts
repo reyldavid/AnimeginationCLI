@@ -9,6 +9,7 @@ import { Globals } from '../globals';
 import { Order } from '../models/orderModel';
 import { CartType } from '../models/carttype';
 // import { $ } from 'protractor';
+import * as _ from 'lodash';
 declare var $: any;
 
 @Component({
@@ -25,7 +26,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
   spinnerSubscription: Subscription;
   orderSubscription: Subscription;
   itemsSubscription: Subscription;
+  adminRoleSubscription: Subscription;
   order: Order;
+  isAdmin: boolean = false;
 
   constructor(private _router: Router, 
               private _loginService: LoginService, 
@@ -64,9 +67,16 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.itemsSubscription = _messageService.getOrder().subscribe(order => {
             this.order = order;
         })
+
+        this.adminRoleSubscription = _messageService.getRoles().subscribe(roles => {
+            let hasAdmin = _.includes(roles, "Admin");
+            this.isAdmin = hasAdmin;
+        })
+
     }
 
   ngOnInit(): any {
+      this.isAdmin = false;
       console.log('home init');
     //   this.showFooter = true;
     if (this._sessionService.isAuthenticated()) {
@@ -83,7 +93,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.spinnerSubscription.unsubscribe();
     this.orderSubscription.unsubscribe();
     this.itemsSubscription.unsubscribe();
-  
+    this.adminRoleSubscription.unsubscribe();
   }
 
   onSearch(searchText: string) {
@@ -97,6 +107,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
       this._sessionService.clearSession();
       this.userFirstName = '';
       this.order = null;
+      this.isAdmin = false;
     //   let returnUrl = window.location.pathname;
     //   this._router.navigateByUrl(returnUrl);
     //   this._router.navigate([returnUrl]);
