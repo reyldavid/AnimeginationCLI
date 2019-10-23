@@ -51,6 +51,7 @@ export class OrdersListComponent implements OnInit {
           this.isEmpty = false;
         }
         console.log("aya orders ", this.orders);
+        this._messageService.setSpinner(false);
     });
   }
 

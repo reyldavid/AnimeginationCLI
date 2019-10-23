@@ -20,8 +20,8 @@ export class CategoriesComponent implements OnInit {
 
     OnSelectCategory(category: Category) {
         console.log('category: ' + category.Description);
-        this._router.navigate(['/genre'], { queryParams: {  categoryID: category.CategoryID } });
-        // this._router.navigate(['/genre']);
+        this._router.navigate(['/category-list'], { queryParams: {  categoryID: category.CategoryID } });
+        // this._router.navigate(['/category-list']);
     }
 
     GetCategories() {

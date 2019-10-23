@@ -356,8 +356,11 @@ a.anchor:hover {
 .bullets-circle {
     list-style-type: circle;
 }
-.all-borders {
+.all-borders-red {
     border: 1px solid red;
+}
+.all-borders-black {
+    border: 1px dashed #444444;
 }
 
 .pis40 {

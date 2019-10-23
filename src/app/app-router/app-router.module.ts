@@ -44,6 +44,8 @@ import { PublisherComponent } from '../publisher/publisher.component';
 import { ListingComponent } from '../listing/listing.component';
 import { CustomerNoteComponent } from '../customer-note/customer-note.component';
 import { UserFeedbackComponent } from '../user-feedback/user-feedback.component';
+import { MediumEditComponent } from '../medium-edit/medium-edit.component';
+import { MediumAddComponent } from '../medium-add/medium-add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -85,6 +87,8 @@ const routes: Routes = [
   { path: 'genre', component: GenreComponent, canActivate: [AdminGuard] },
   { path: 'product-info', component: ProductInfoComponent, canActivate: [AdminGuard] }, 
   { path: 'medium', component: MediumComponent, canActivate: [AdminGuard] }, 
+  { path: 'medium-edit', component: MediumEditComponent, canActivate: [AdminGuard] }, 
+  { path: 'medium-add', component: MediumAddComponent, canActivate: [AdminGuard] }, 
   { path: 'publisher', component: PublisherComponent, canActivate: [AdminGuard] }, 
   { path: 'listing', component: ListingComponent, canActivate: [AdminGuard] }, 
   { path: 'customer-note', component: CustomerNoteComponent, canActivate: [AdminGuard] }, 

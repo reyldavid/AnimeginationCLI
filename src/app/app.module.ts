@@ -80,6 +80,8 @@ import { ProductInfoComponent } from './product-info/product-info.component';
 import { ListingComponent } from './listing/listing.component';
 import { CustomerNoteComponent } from './customer-note/customer-note.component';
 import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
+import { MediumEditComponent } from './medium-edit/medium-edit.component';
+import { MediumAddComponent } from './medium-add/medium-add.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +140,9 @@ import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
     ProductInfoComponent,
     ListingComponent,
     CustomerNoteComponent,
-    UserFeedbackComponent
+    UserFeedbackComponent,
+    MediumEditComponent,
+    MediumAddComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
