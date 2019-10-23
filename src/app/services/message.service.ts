@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Subject} from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import {TokenModel} from '../models/tokenmodel';
-import {UserAccountModel} from '../models/userAccountModel';
+import { TokenModel } from '../models/tokenmodel';
+import { UserAccountModel } from '../models/userAccountModel';
 import { OrderItem } from '../models/orderItemModel';
 import { Order } from '../models/orderModel';
 
@@ -122,4 +122,5 @@ export class MessageService {
     clearRoles() {
         this.roles.next();
     }
+
 }

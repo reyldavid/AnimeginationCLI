@@ -22,5 +22,6 @@ export enum ServiceName {
     userNotes = 'userNotes',
     userFeedback = 'userFeedback', 
     jwt = "jwt", 
-    getClaim = "getclaim"
+    getClaim = "getclaim", 
+    media = "media"
 }

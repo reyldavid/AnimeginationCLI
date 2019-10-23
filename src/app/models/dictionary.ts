@@ -3,6 +3,7 @@ import { Category } from "./category";
 import { Listing } from './listing';
 import { ListType } from "./listtype";
 import { States } from "./states";
+import { Medium } from "./medium";
 
 export interface Dictionary<T> {
     [key: string]: T
@@ -35,3 +36,8 @@ export class ListingCache {
 export class StatesCache {
     key: Dictionary<States[]> = {}
 }
+
+export class MediaCache {
+    key: Dictionary<Medium[]> = {}
+}
+

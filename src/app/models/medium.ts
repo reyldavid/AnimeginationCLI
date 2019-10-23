@@ -1,5 +1,5 @@
 ﻿export interface Medium {
-    mediumid: number,
-    mediumname: string,
-    description: string
+    MediumID: number,
+    MediumName: string,
+    Description: string
 }
