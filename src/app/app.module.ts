@@ -1,12 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { BrowserModule } from '@angular/platform-browser';
+// import { HttpClientModule } from '@angular/common/http';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { Globals } from './globals';
 import { HttpHelper } from './services/http.helper.service';
 import { AppComponent } from './app.component';
+
+import { AdminModule } from './admin/admin.module';
+import { AdminRouterModule } from './admin/admin-router/admin-router.module';
 
 import { ListTypeService } from './services/listtypes.service';
 import { ProductsService } from './services/products.service';
@@ -22,7 +25,6 @@ import { SessionService } from './services/session.service';
 import { UtilityService } from './services/utilities.service';
 import { UserNoteService } from './services/userNotes.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
-import { AdminGuard } from './guards/admin.guard';
 import { AppRouterModule } from './app-router/app-router.module';
 
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -72,16 +74,6 @@ import { ProductReviewComponent } from './product-review/product-review.componen
 import { UserNoteComponent } from './user-note/user-note.component';
 import { ShippingInfoComponent } from './shipping-info/shipping-info.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
-import { MediumComponent } from './medium/medium.component';
-import { PublisherComponent } from './publisher/publisher.component';
-import { GenreComponent } from './genre/genre.component';
-import { UserInfoComponent } from './user-info/user-info.component';
-import { ProductInfoComponent } from './product-info/product-info.component';
-import { ListingComponent } from './listing/listing.component';
-import { CustomerNoteComponent } from './customer-note/customer-note.component';
-import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
-import { MediumEditComponent } from './medium-edit/medium-edit.component';
-import { MediumAddComponent } from './medium-add/medium-add.component';
 
 @NgModule({
   declarations: [
@@ -132,21 +124,12 @@ import { MediumAddComponent } from './medium-add/medium-add.component';
     ProductReviewComponent,
     UserNoteComponent,
     ShippingInfoComponent,
-    StarRatingComponent,
-    MediumComponent,
-    PublisherComponent,
-    GenreComponent,
-    UserInfoComponent,
-    ProductInfoComponent,
-    ListingComponent,
-    CustomerNoteComponent,
-    UserFeedbackComponent,
-    MediumEditComponent,
-    MediumAddComponent
+    StarRatingComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, 
-    HttpClientModule, AppRouterModule, AngularFontAwesomeModule
+    AppRouterModule,
+    AdminModule, 
+    AdminRouterModule
   ],
   providers: [
     Globals, 
@@ -164,9 +147,11 @@ import { MediumAddComponent } from './medium-add/medium-add.component';
     SessionService, 
     UserNoteService, 
     UtilityService, 
-    AuthorizationGuard, 
-    AdminGuard 
+    AuthorizationGuard
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// BrowserModule, FormsModule, ReactiveFormsModule, 
+// HttpClientModule, AngularFontAwesomeModule,
