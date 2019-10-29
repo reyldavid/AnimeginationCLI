@@ -1,3 +1,22 @@
-<p>
-  genre works!
-</p>
+<div class="row">
+    <div class="col-sm-10 offset-sm-1 pb-3">
+        <h2>Genres</h2>
+        <div class="row pt-3 pb-2">
+          <div class="col-6">
+            <span class="p6 py-3" [routerLink]="['/genre-add']">Create New</span>
+          </div>
+        </div>
+        <ng-container *ngFor="let genre of genres">
+          <div class="row p-2 my-2 all-borders-black">
+            <div class="col-3">{{genre?.CategoryName}}</div>
+            <div class="col-4">{{genre?.Description}}</div>
+            <div class="col-3">{{genre?.ImageFile}}</div>
+            <div class="col-2 d-flex justify-content-end">
+                <span class="p6 px-3" [routerLink]="['/genre-edit']" 
+                  [queryParams]="{ categoryID: genre?.CategoryID }">Edit</span> | 
+                <span class="p6 px-3" (click)="OnDeleteGenre(genre)">Delete</span> 
+            </div>
+          </div>
+        </ng-container>
+    </div>
+</div>

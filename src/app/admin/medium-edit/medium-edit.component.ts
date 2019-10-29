@@ -16,9 +16,6 @@ export class MediumEditComponent implements OnInit {
 
   mediumModel: Medium = { MediumID: 0, MediumName: "", Description: "" };
   submitted: boolean = false;
-  isSuccess: boolean = false;
-  isFailure: boolean = false;
-  errorMessage: string;
   mediumID: number;
   mediaSubscription: Subscription;
 
