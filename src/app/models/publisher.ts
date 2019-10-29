@@ -1,5 +1,5 @@
 ﻿export interface Publisher {
-    publisherid: number,
-    publishername: string,
-    description: string
+    PublisherID: number,
+    PublisherName: string,
+    Description: string
 }

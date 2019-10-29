@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Globals } from "../globals";
 import { HttpHelper } from './http.helper.service';
 import { ServiceName } from '../models/service';
-import { Medium } from '../models/medium';
-import { MediaCache } from '../models/dictionary';
+import { Publisher } from '../models/publisher';
+// import { PublishersCache } from '../models/dictionary';
 import { MessageService } from '../services/message.service';
 import { TokenModel } from '../models/tokenmodel';
 import 'rxjs/Rx';
@@ -17,9 +17,9 @@ import * as _ from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
-export class MediaService {
+export class PublishersService {
 
-  private _animeMedia: Medium[] = [];
+  private _animePublishers: Publisher[] = [];
 
   constructor(private http: HttpClient, 
     private globals: Globals, 
@@ -27,53 +27,52 @@ export class MediaService {
     private messageService: MessageService) {
   }
 
-  setMediaCache(data: Medium[]) {
-    this._animeMedia = data;
+  setPublishersCache(data: Publisher[]) {
+    this._animePublishers = data;
   }
 
-  getMediaTypes(): Observable<Medium[]> {
+  getPublishersTypes(): Observable<Publisher[]> {
     if (this.globals.localData) {
       return of(null);
     }
     else {
-      if (this._animeMedia && (this._animeMedia.length >0)) {
-          console.log('aya Anime Media cached');
-          return of(this._animeMedia);
-      }
-      else {
-          // this.messageService.setSpinner(true);
-          let endpoint = this.helper.getEndPoint(ServiceName.media);
+      // if (this._animePublishers && (this._animePublishers.length > 0)) {
+      //     console.log('aya Anime Publishers cached');
+      //     return of(this._animePublishers);
+      // }
+      // else {
+          let endpoint = this.helper.getEndPoint(ServiceName.publishers);
 
           let headers: HttpHeaders = this.helper.getContentHeaders();
 
-          let observables = this.http.get<Medium[]>(
+          let observables = this.http.get<Publisher[]>(
               endpoint, { headers: headers, observe: 'response'}
               )
               .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
 
           return observables;
-      }
+      // }
     }
   }
 
-  getMediaTypeById(mediumId: number): Observable<Medium> {
+  getPublishersTypeById(publisherId: number): Observable<Publisher> {
     if (this.globals.localData) {
       return of(null);
     }
     else {
-      if (this._animeMedia && this._animeMedia.length > 0) {
-        let media = _.find(this._animeMedia, function(item) {
-          return item.MediumID == mediumId;
+      if (this._animePublishers && this._animePublishers.length > 0) {
+        let publishers = _.find(this._animePublishers, function(item) {
+          return item.PublisherID == publisherId;
         } ) 
-        return of(media);
+        return of(publishers);
       }
       else {
     // this.messageService.setSpinner(true);
-        let endpoint = this.helper.getEndPoint(ServiceName.media, mediumId);
+        let endpoint = this.helper.getEndPoint(ServiceName.publishers, publisherId);
 
         let headers: HttpHeaders = this.helper.getContentHeaders();
 
-        let observables = this.http.get<Medium>(
+        let observables = this.http.get<Publisher>(
             endpoint, { headers: headers, observe: 'response'}
             )
             .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
@@ -83,19 +82,19 @@ export class MediaService {
     }
   }
 
-  updateMedium(token: TokenModel, medium: Medium): Observable<Medium> {
+  updatePublisher(token: TokenModel, publisher: Publisher): Observable<Publisher> {
 
       if (this.globals.localData) {
       }
       else {
           this.messageService.setSpinner(true);
-          let body = JSON.stringify(medium);
+          let body = JSON.stringify(publisher);
 
-          let endpoint = this.helper.getEndPoint(ServiceName.media);
+          let endpoint = this.helper.getEndPoint(ServiceName.publishers);
 
           let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-          let observables = this.http.post<Medium>(
+          let observables = this.http.post<Publisher>(
                   endpoint, body, 
                   { headers: headers, observe: 'response'} )
               .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
@@ -104,19 +103,19 @@ export class MediaService {
       }
   }
 
-  addMedium(token: TokenModel, mediumItem: Medium): Observable<Medium> {
+  addPublisher(token: TokenModel, publisherItem: Publisher): Observable<Publisher> {
 
     if (this.globals.localData) {
     }
     else {
         this.messageService.setSpinner(true);
-        let endpoint = this.helper.getEndPoint(ServiceName.media);
+        let endpoint = this.helper.getEndPoint(ServiceName.publishers);
 
         let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-        let body = JSON.stringify(mediumItem);
+        let body = JSON.stringify(publisherItem);
 
-        let observables = this.http.put<Medium>(
+        let observables = this.http.put<Publisher>(
             endpoint, body, { headers: headers, observe: 'response'}
             )
             .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
@@ -125,19 +124,19 @@ export class MediaService {
     }
   }
 
-  deleteMedium(token: TokenModel, medium: Medium): Observable<Medium> {
+  deletePublisher(token: TokenModel, publisher: Publisher): Observable<Publisher> {
 
     if (this.globals.localData) {
     }
     else {
         this.messageService.setSpinner(true);
-        let body = JSON.stringify(medium);
+        let body = JSON.stringify(publisher);
 
-        let endpoint = this.helper.getEndPoint(ServiceName.media, medium.MediumID);
+        let endpoint = this.helper.getEndPoint(ServiceName.publishers, publisher.PublisherID);
 
         let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-        let observables = this.http.delete<Medium>(
+        let observables = this.http.delete<Publisher>(
                 endpoint, 
                 { headers: headers, observe: 'response'} )
             .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
