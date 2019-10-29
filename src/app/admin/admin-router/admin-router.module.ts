@@ -14,6 +14,8 @@ import { PublisherComponent } from '../publisher/publisher.component';
 import { ListingComponent } from '../listing/listing.component';
 import { CustomerNoteComponent } from '../customer-note/customer-note.component';
 import { UserFeedbackComponent } from '../user-feedback/user-feedback.component';
+import { PublisherEditComponent } from '../publisher-edit/publisher-edit.component';
+import { PublisherAddComponent } from '../publisher-add/publisher-add.component';
 
 const routes: Routes = [
   { path: 'medium', component: MediumComponent, canActivate: [AdminGuard] }, 
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'user-info', component: UserInfoComponent, canActivate: [AdminGuard] },
   { path: 'product-info', component: ProductInfoComponent, canActivate: [AdminGuard] }, 
   { path: 'publisher', component: PublisherComponent, canActivate: [AdminGuard] }, 
+  { path: 'publisher-edit', component: PublisherEditComponent, canActivate: [AdminGuard] },
+  { path: 'publisher-add', component: PublisherAddComponent, canActivate: [AdminGuard] },
   { path: 'listing', component: ListingComponent, canActivate: [AdminGuard] }, 
   { path: 'customer-note', component: CustomerNoteComponent, canActivate: [AdminGuard] }, 
   { path: 'user-feedback', component: UserFeedbackComponent, canActivate: [AdminGuard] } 

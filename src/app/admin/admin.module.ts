@@ -19,6 +19,8 @@ import { ProductInfoComponent } from './product-info/product-info.component';
 import { ListingComponent } from './listing/listing.component';
 import { CustomerNoteComponent } from './customer-note/customer-note.component';
 import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
+import { PublisherAddComponent } from '../admin/publisher-add/publisher-add.component';
+import { PublisherEditComponent } from '../admin/publisher-edit/publisher-edit.component';
 
 @NgModule({
   imports: [
@@ -39,7 +41,9 @@ import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
     ProductInfoComponent,
     ListingComponent,
     CustomerNoteComponent,
-    UserFeedbackComponent
+    UserFeedbackComponent,
+    PublisherAddComponent,
+    PublisherEditComponent
   ],
   providers: [
     AdminGuard

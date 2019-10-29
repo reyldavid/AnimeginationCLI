@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { PublishersService } from '../../services/publishers.service';
+import { Publisher } from '../../models/publisher';
+import { Router } from '@angular/router';
+import { SessionService } from '../../services/session.service';
+import { TokenModel } from '../../models/tokenmodel';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-publisher',
@@ -7,9 +13,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublisherComponent implements OnInit {
 
-  constructor() { }
+  publishers: Publisher[] = [];
+
+  constructor( private router: Router,
+               private publishersService: PublishersService, 
+               private sessionService: SessionService, 
+               private messageService: MessageService ) { }
 
   ngOnInit() {
+    this.publishersService.getPublishersTypes().subscribe(publishers => {
+      this.publishers = publishers;
+      this.publishersService.setPublishersCache(publishers);
+    })
+  }
+
+  OnEditPublisher(publisher: Publisher) {
+    console.log('publisher ID: ' + publisher.PublisherID);
+    this.router.navigate(['/publisher-edit'], { queryParams: {  publisherID: publisher.PublisherID } });
+  }
+
+  OnDeletePublisher(publisher: Publisher) {
+    if (this.sessionService.isAuthenticated()) {
+      let token: TokenModel = this.sessionService.UserToken;
+
+      this.publishersService.deletePublisher(token, publisher).subscribe(item => {
+        this.messageService.setSpinner(false);
+        console.log("aya deleted publisher ", item);
+      })
+    }
   }
 
 }
+
