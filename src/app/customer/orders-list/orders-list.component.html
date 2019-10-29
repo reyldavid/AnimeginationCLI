@@ -1,0 +1,30 @@
+<div>
+    <div *ngIf="!isEmpty">
+        <div class="row pt-3">
+            <div class="col-12 col-xl-10">
+                <div class="row bottom-border">
+                <div class="col-12">
+                    <h2>Your Orders</h2>
+                </div>
+                </div>
+
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <ul class="list-no-bullets">
+                            <li *ngFor="let order of orders">
+                                <app-orders-summary [order]="order"></app-orders-summary>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isEmpty">
+        <h2>Your Orders</h2>
+        <h3>You currently have no Orders</h3>
+    <div class="pb-3"></div>
+    </div>
+</div>
+
