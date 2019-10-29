@@ -1,0 +1,18 @@
+<div *ngIf="!isEmpty">
+  <div class="partition"></div>
+  <h2 class="inline pr-3">Saved for Later</h2>
+  <div class="inline">
+        {{order?.productQuantity}} Product<span *ngIf="order?.productQuantity != 1">s</span>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-12">
+            <ul class="list-no-bullets">
+                <li *ngFor="let product of cartProducts">
+                    <app-cart-item [cartItem]="product" [cartType]="cartType"></app-cart-item>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

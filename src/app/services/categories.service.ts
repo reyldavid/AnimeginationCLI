@@ -13,6 +13,7 @@ import { ServiceName } from '../models/service';
 import { ApiProduct } from '../models/product';
 import { Category } from '../models/category';
 import { ApiProductsCache, CategoryCache, CategoriesCache } from '../models/dictionary';
+import { TokenModel } from '../models/tokenmodel';
 // import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
 import { MessageService } from '../services/message.service';
@@ -24,7 +25,7 @@ import { MessageService } from '../services/message.service';
   export class CategoryService {
 
     private _animeCategory = new CategoryCache();
-    private _animeCategories = new CategoriesCache();
+    private _animeCategories: Category[] = [];
     private _animeCategoryList = new ApiProductsCache();
 
     constructor(private http: HttpClient, 
@@ -40,9 +41,10 @@ import { MessageService } from '../services/message.service';
     }
 
     setCategoriesCache(data: Category[]) {
-        if (!this._animeCategories[0]) {
-            this._animeCategories[0] = data;
-        }
+        // if (!this._animeCategories[0]) {
+        //     this._animeCategories[0] = data;
+        // }
+        this._animeCategories = data;
     } 
 
     setCategoryListCache(data: ApiProduct[], id: number) {
@@ -112,7 +114,7 @@ import { MessageService } from '../services/message.service';
 
                 console.log('aya Anime Categories cached');
                 
-                return of(this._animeCategories[0]);
+                return of(this._animeCategories);
             }
             else {
                 this.messageService.setSpinner(true);                
@@ -158,4 +160,66 @@ import { MessageService } from '../services/message.service';
         }
     }
 
+    updateCategory(token: TokenModel, category: Category): Observable<Category> {
+
+      if (this.globals.localData) {
+      }
+      else {
+          this.messageService.setSpinner(true);
+          let body = JSON.stringify(category);
+
+          let endpoint = this.helper.getEndPoint(ServiceName.category);
+
+          let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+          let observables = this.http.post<Category>(
+                  endpoint, body, 
+                  { headers: headers, observe: 'response'} )
+              .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+          return observables;
+      }
+    }
+
+    addCategory(token: TokenModel, categoryItem: Category): Observable<Category> {
+
+        if (this.globals.localData) {
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let endpoint = this.helper.getEndPoint(ServiceName.category);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let body = JSON.stringify(categoryItem);
+
+            let observables = this.http.put<Category>(
+                endpoint, body, { headers: headers, observe: 'response'}
+                )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
+
+    deleteCategory(token: TokenModel, category: Category): Observable<Category> {
+
+        if (this.globals.localData) {
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let body = JSON.stringify(category);
+
+            let endpoint = this.helper.getEndPoint(ServiceName.category, category.CategoryID);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let observables = this.http.delete<Category>(
+                    endpoint, 
+                    { headers: headers, observe: 'response'} )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            return observables;
+        }
+    }
 }

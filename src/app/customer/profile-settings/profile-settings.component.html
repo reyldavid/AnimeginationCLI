@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-sm-10 offset-sm-1">
+        <h2>Edit Profile</h2>
+        <form #profileForm="ngForm" role="form" 
+            (submit)="Update(profileForm.value, profileForm.valid)" >
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <label class="form-control" id="username">
+                    {{profileInput.UserName}}
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="firstname">First Name <span class="anime-color">*</span></label>
+                <input type="text" ngControl="FirstName" required
+                       [(ngModel)]="profileInput.FirstName"
+                       class="form-control" id="firstname" name="firstname" />
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name <span class="anime-color">*</span></label>
+                <input type="text" ngControl="Lastname" required
+                       [(ngModel)]="profileInput.LastName"
+                       class="form-control" id="lastname" name="lastname" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email <span class="anime-color">*</span></label>
+                <input type="email" ngControl="Email" required
+                       [(ngModel)]="profileInput.Email"
+                       class="form-control" id="email" name="email" />
+            </div>
+            <div class="form-group">
+                <!--<label for="cellphone">Cell Phone: {{profileInput.CellPhone | phone}}</label>-->
+                <label for="cellphone">Cell Phone <span class="anime-color">*</span></label>
+                <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" 
+                       title="format: 555-555-5555"
+                       ngControl="Cellphone" required placeholder="555-555-5555"
+                       [(ngModel)]="profileInput.CellPhone"
+                       class="form-control" id="cellphone" name="cellphone" />
+                <!--<input type="text" ngControl="Cellphone" 
+                       [ngModel]="profileInput.CellPhone | phone" 
+                       (ngModelChange)="profileInput.CellPhone=$event"
+                       class="form-control" id="cellphone" />-->
+            </div>
+            <div class="form-group">
+                <label for="homephone">Other Phone</label>
+                <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$"
+                       title="format: 555-555-5555"
+                       ngControl="Homephone" placeholder="555-555-5555"
+                       [(ngModel)]="profileInput.HomePhone"
+                       class="form-control" id="homephone" name="homephone" />
+                <!--<input type="tel" ngControl="Homephone" required
+                       [ngModel]="profileInput.HomePhone | phone" 
+                       (ngModelChange)="profileInput.HomePhone=$event"
+                       class="form-control" id="homephone" />-->
+            </div>
+            <div>
+                <button class="btn btn-default anime-button-lg" type="submit" 
+                    [disabled]="profileForm.invalid || profileForm.pristine">Update</button>
+            </div>
+            <div class="pb-3"></div>
+            <div *ngIf="isSuccess" class="alert alert-success">
+                <strong>Success! </strong> Your Profile have been Updated.
+            </div>
+            <div *ngIf="isFailure" class="alert alert-danger">
+                <strong>There was a problem: </strong> Your Profile Update failed.
+            </div>
+        </form>
+    </div>
+</div>
