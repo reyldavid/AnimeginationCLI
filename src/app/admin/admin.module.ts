@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 import { AdminGuard } from '../guards/admin.guard';
 import { MediumComponent } from './medium/medium.component';
 import { GenreComponent } from './genre/genre.component';
@@ -8,10 +13,6 @@ import { GenreAddComponent } from '../admin/genre-add/genre-add.component';
 import { AdminRouterModule } from '../admin/admin-router/admin-router.module';
 import { MediumEditComponent } from './medium-edit/medium-edit.component';
 import { MediumAddComponent } from './medium-add/medium-add.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { PublisherComponent } from './publisher/publisher.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { ProductInfoComponent } from './product-info/product-info.component';

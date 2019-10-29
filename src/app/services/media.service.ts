@@ -144,6 +144,6 @@ export class MediaService {
 
         return observables;
     }
-}
+  }
 
 }
