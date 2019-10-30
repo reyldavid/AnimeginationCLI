@@ -3,16 +3,16 @@
         <h2>Customer Communications</h2>
         <ng-container *ngFor="let userNote of userNotes">
           <div class="row p-2 my-2 all-borders-black">
-            <div class="col-3">
+            <div class="col-8 order-1 col-md-3 order-md-1">
               <strong>{{userNote?.firstName}} {{userNote?.lastName}}</strong><br />
               {{userNote?.email}}<br />
               {{userNote?.correspondenceType}}
             </div>
-            <div class="col-7">
+            <div class="col-12 order-3 col-md-7 order-md-2">
               <strong>{{userNote?.title}}</strong><br />
               {{userNote?.note}}
             </div>
-            <div class="col-2 d-flex justify-content-end align-items-center">
+            <div class="col-4 order-2 col-md-2 order-md-3 d-flex justify-content-end align-items-center">
               <span class="p6 px-3" (click)="OnDeleteUserNote(userNote)">Delete</span> 
             </div>
           </div>

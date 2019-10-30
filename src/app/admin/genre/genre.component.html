@@ -8,10 +8,10 @@
         </div>
         <ng-container *ngFor="let genre of genres">
           <div class="row p-2 my-2 all-borders-black">
-            <div class="col-3">{{genre?.CategoryName}}</div>
-            <div class="col-4">{{genre?.Description}}</div>
-            <div class="col-3">{{genre?.ImageFile}}</div>
-            <div class="col-2 d-flex justify-content-end">
+            <div class="col-6 order-1 col-md-3 order-md-1">{{genre?.CategoryName}}</div>
+            <div class="col-8 order-3 col-md-4 order-md-2">{{genre?.Description}}</div>
+            <div class="col-6 order-2 col-md-3 order-md-3">{{genre?.ImageFile}}</div>
+            <div class="col-4 order-4 col-md-2 order-md-4 d-flex justify-content-end">
                 <span class="p6 px-3" [routerLink]="['/genre-edit']" 
                   [queryParams]="{ categoryID: genre?.CategoryID }">Edit</span> | 
                 <span class="p6 px-3" (click)="OnDeleteGenre(genre)">Delete</span> 

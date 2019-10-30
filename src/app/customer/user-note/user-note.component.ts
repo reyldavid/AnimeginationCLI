@@ -28,7 +28,7 @@ export class UserNoteComponent implements OnInit {
     { typeID: 2, typeCode: "ProblemWithShipment", description: "Problem with Shipment" }, 
     { typeID: 3, typeCode: "CancelOrder", description: "Cancel Order" }, 
     { typeID: 4, typeCode: "CancelItem", description: "Cancel Item" }, 
-    { typeID: 5, typeCode: "ReturnAuth", description: "Request for Return Authorization Number" }, 
+    { typeID: 5, typeCode: "ReturnAuthNumber", description: "Request for Return Authorization Number" }, 
     { typeID: 6, typeCode: "Other", description: "Other" }
   ];
 
