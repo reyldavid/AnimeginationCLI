@@ -1,5 +1,5 @@
 export interface UserNoteModel {
-    correspondenceType: string, 
-    title: string, 
+    correspondenceType: string,
+    title: string,
     note: string
 }

@@ -13,6 +13,7 @@ import { TokenModel } from '../models/tokenmodel';
 import { UserNoteModel } from '../models/userNoteModel';
 import { MessageService } from '../services/message.service';
 import * as _ from 'lodash';
+import { CustomerNote } from '../models/customerNote';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +26,7 @@ import * as _ from 'lodash';
         private messageService: MessageService ) {
     }
 
-    getUserNotes(token: TokenModel): Observable<UserNoteModel[]> {
+    getUserNotes(token: TokenModel): Observable<CustomerNote[]> {
 
         if (this.globals.localData) {
             // return this.getUserNotesStatic();
@@ -36,7 +37,7 @@ import * as _ from 'lodash';
 
             let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-            let observables = this.http.get<UserNoteModel[]>(
+            let observables = this.http.get<CustomerNote[]>(
                 endpoint, { headers: headers, observe: 'response'}
                 )
                 .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
@@ -88,16 +89,20 @@ import * as _ from 'lodash';
     }
 
     deleteUserNote(token: TokenModel, id: number): Observable<UserNoteModel> {
-
-        this.messageService.setSpinner(true);
-        let endpoint = this.helper.getEndPoint(ServiceName.userNotes, id);
-        let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
-
-        let observables = this.http.delete<UserNoteModel>(
-            endpoint, { headers: headers, observe: 'response'} )
-            .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
-
-        return observables;
+        if (this.globals.localData) {
+        }
+        else {
+            this.messageService.setSpinner(true);
+            let endpoint = this.helper.getEndPoint(ServiceName.userNotes, id);
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+    
+            let observables = this.http.delete<UserNoteModel>(
+                    endpoint, 
+                    { headers: headers, observe: 'response'} )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+    
+            return observables;
+        }
     }
 
 }

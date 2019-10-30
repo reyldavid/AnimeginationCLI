@@ -23,13 +23,13 @@ export class UserNoteComponent implements OnInit {
   errorMessage: string;
 
   correspondenceTypes: CorrespondenceType[] = [
-    { typeID: 0, typeCode: "thanks", description: "Thank You" },
-    { typeID: 1, typeCode: "feedback", description: "Offering Feedback" }, 
-    { typeID: 2, typeCode: "problem", description: "Problem with Shipment" }, 
-    { typeID: 3, typeCode: "canOrder", description: "Cancel Order" }, 
-    { typeID: 4, typeCode: "canItem", description: "Cancel Item" }, 
-    { typeID: 5, typeCode: "ran", description: "Request for Return Authorization Number" }, 
-    { typeID: 6, typeCode: "other", description: "Other" }
+    { typeID: 0, typeCode: "ThankYou", description: "Thank You" },
+    { typeID: 1, typeCode: "OfferingFeedback", description: "Offering Feedback" }, 
+    { typeID: 2, typeCode: "ProblemWithShipment", description: "Problem with Shipment" }, 
+    { typeID: 3, typeCode: "CancelOrder", description: "Cancel Order" }, 
+    { typeID: 4, typeCode: "CancelItem", description: "Cancel Item" }, 
+    { typeID: 5, typeCode: "ReturnAuth", description: "Request for Return Authorization Number" }, 
+    { typeID: 6, typeCode: "Other", description: "Other" }
   ];
 
   constructor(private userNoteService: UserNoteService, 
