@@ -162,6 +162,10 @@ a .card.frame {
     max-width: 120px;
 }
 
+.image-min {
+    max-width: 100px;
+    max-height: 125px;
+}
 .image-max {
     max-width: 170px;
     max-height: 215px;

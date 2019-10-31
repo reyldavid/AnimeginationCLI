@@ -1,3 +1,26 @@
-<p>
-  user-feedback works!
-</p>
+<div class="row">
+  <div class="col-sm-10 offset-sm-1 pb-3">
+      <h2>Customer Reviews</h2>
+      <ng-container *ngFor="let feedback of feedbacks">
+        <div class="row p-2 my-2 all-borders-black">
+          <div class="col-8">
+              <img src="https://reydavid.blob.core.windows.net/anime/{{feedback?.productCode}}.jpg"
+                alt="{{feedback?.productCode}}" class="float-left image-min mr-4" />
+
+              <strong>{{feedback.productTitle}}</strong><br />
+              <strong>{{feedback?.firstName}} {{feedback?.lastName}}</strong> - {{feedback?.created | date: 'MMM d, y'}}<br />
+              {{feedback?.email}}<br />
+              <img src="https://reydavid.blob.core.windows.net/assets/Rating {{feedback?.rating}} Stars.png"
+                alt="{{feedback?.rating}} stars" class="img-responsive" />
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <span class="p6 px-3" (click)="OnDeleteUserFeedback(feedback)">Delete</span> 
+          </div>
+          <div class="col-12">
+            <strong>{{feedback?.title}}</strong><br />
+            {{feedback?.feedback}}
+          </div>
+        </div>
+      </ng-container>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import { ServiceName } from '../models/service';
 import { TokenModel } from '../models/tokenmodel';
 import { FeedbackType } from '../models/feedbackType';
 import { UserFeedbackModel } from '../models/userFeedbackModel';
+import { UserFeedback } from '../models/userFeedback';
 import { MessageService } from '../services/message.service';
 import * as _ from 'lodash';
 
@@ -26,7 +27,7 @@ import * as _ from 'lodash';
         private messageService: MessageService ) {
     }
 
-    getUserFeedbacks(token: TokenModel): Observable<UserFeedbackModel[]> {
+    getUserFeedbacks(token: TokenModel): Observable<UserFeedback[]> {
 
         if (this.globals.localData) {
             // return this.getUserFeedbacksStatic();
@@ -37,7 +38,7 @@ import * as _ from 'lodash';
 
             let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-            let observables = this.http.get<UserFeedbackModel[]>(
+            let observables = this.http.get<UserFeedback[]>(
                 endpoint, { headers: headers, observe: 'response'}
                 )
                 .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
