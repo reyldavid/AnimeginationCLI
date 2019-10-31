@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UserNoteService } from '../../services/userNotes.service';
 import { UserFeedbackModel } from '../../models/userFeedbackModel';
 import { UserFeedback } from '../../models/userFeedback';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 import { TokenModel } from '../../models/tokenmodel';
 import { MessageService } from '../../services/message.service';
-import { UserFeedbackService } from 'src/app/services/userFeedback.service';
+import { UserFeedbackService } from '../../services/userFeedback.service';
+import { UtilityService } from '../../services/utilities.service';
 
 @Component({
   selector: 'app-user-feedback',
@@ -20,7 +20,8 @@ export class UserFeedbackComponent implements OnInit {
   constructor( private router: Router,
                private feedbackService: UserFeedbackService, 
                private sessionService: SessionService, 
-               private messageService: MessageService ) { }
+               private messageService: MessageService, 
+               private helper: UtilityService ) { }
 
   ngOnInit() {
     if (this.sessionService.isAuthenticated()) {

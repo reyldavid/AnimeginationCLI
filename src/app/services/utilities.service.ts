@@ -66,4 +66,8 @@ import 'rxjs/Rx';
         return trackingNumber;
     }
 
+    SplitCamelCase(camelCase: string): string {
+        let parsed = camelCase.replace(/([a-z])([A-Z])/g, "$1 $2");
+        return parsed;
+    }
 }

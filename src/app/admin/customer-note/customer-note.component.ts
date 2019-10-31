@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 import { TokenModel } from '../../models/tokenmodel';
 import { MessageService } from '../../services/message.service';
+import { UtilityService } from '../../services/utilities.service';
 
 @Component({
   selector: 'app-customer-note',
@@ -18,7 +19,8 @@ export class CustomerNoteComponent implements OnInit {
   constructor( private router: Router,
                private userNotesService: UserNoteService, 
                private sessionService: SessionService, 
-               private messageService: MessageService ) { }
+               private messageService: MessageService,
+               private helper: UtilityService ) { }
 
   ngOnInit() {
     if (this.sessionService.isAuthenticated()) {

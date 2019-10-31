@@ -4,9 +4,9 @@
         <ng-container *ngFor="let userNote of userNotes">
           <div class="row p-2 my-2 all-borders-black">
             <div class="col-8 order-1 col-md-3 order-md-1">
-              <strong>{{userNote?.firstName}} {{userNote?.lastName}}</strong><br />
+              <strong>{{userNote?.firstName}} {{userNote?.lastName}}</strong> - {{userNote?.created | date: 'MMM d, y'}}<br />
               {{userNote?.email}}<br />
-              {{userNote?.correspondenceType}}
+              {{helper.SplitCamelCase(userNote?.correspondenceType)}}
             </div>
             <div class="col-12 order-3 col-md-7 order-md-2">
               <strong>{{userNote?.title}}</strong><br />

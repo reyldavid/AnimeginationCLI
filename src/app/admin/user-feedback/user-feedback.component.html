@@ -12,7 +12,7 @@
               {{feedback?.email}}<br />
 
               <div *ngIf="feedback?.feedbackType != 'ProductReview'">
-                Type: {{SplitCamelCase(feedback?.feedbackType)}}</div>
+                Type: {{helper.SplitCamelCase(feedback?.feedbackType)}}</div>
 
               <img *ngIf="feedback?.feedbackType == 'ProductReview'" 
                 src="https://reydavid.blob.core.windows.net/assets/Rating {{feedback?.rating}} Stars.png"
