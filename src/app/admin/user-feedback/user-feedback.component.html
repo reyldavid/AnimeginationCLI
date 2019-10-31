@@ -10,7 +10,12 @@
               <strong>{{feedback.productTitle}}</strong><br />
               <strong>{{feedback?.firstName}} {{feedback?.lastName}}</strong> - {{feedback?.created | date: 'MMM d, y'}}<br />
               {{feedback?.email}}<br />
-              <img src="https://reydavid.blob.core.windows.net/assets/Rating {{feedback?.rating}} Stars.png"
+
+              <div *ngIf="feedback?.feedbackType != 'ProductReview'">
+                Type: {{SplitCamelCase(feedback?.feedbackType)}}</div>
+
+              <img *ngIf="feedback?.feedbackType == 'ProductReview'" 
+                src="https://reydavid.blob.core.windows.net/assets/Rating {{feedback?.rating}} Stars.png"
                 alt="{{feedback?.rating}} stars" class="img-responsive" />
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">

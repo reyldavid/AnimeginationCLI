@@ -48,5 +48,9 @@ export class UserFeedbackComponent implements OnInit {
     }
   }
 
-}
+  SplitCamelCase(camelCase: string): string {
+    let parsed = camelCase.replace(/([a-z])([A-Z])/g, "$1 $2");
+    return parsed;
+  }
 
+}

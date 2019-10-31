@@ -1,8 +1,8 @@
 export enum FeedbackType
 {
-    ProductReview = 'review',
-    ProductQuestion = 'question',
-    ProductInfoUpdate = 'update',
-    ProductImage = 'image',
-    ProductLowerPrice = 'price'
+    ProductReview = 'ProductReview',
+    ProductQuestion = 'ProductQuestion',
+    ProductInfoUpdate = 'ProductInfoUpdate',
+    ProductImage = 'ProductImage',
+    ProductLowerPrice = 'ProductLowerPrice'
 }
