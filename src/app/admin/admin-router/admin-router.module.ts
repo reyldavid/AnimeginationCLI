@@ -16,6 +16,7 @@ import { CustomerNoteComponent } from '../customer-note/customer-note.component'
 import { UserFeedbackComponent } from '../user-feedback/user-feedback.component';
 import { PublisherEditComponent } from '../publisher-edit/publisher-edit.component';
 import { PublisherAddComponent } from '../publisher-add/publisher-add.component';
+import { UserInfoEditComponent } from '../user-info-edit/user-info-edit.component';
 
 const routes: Routes = [
   { path: 'medium', component: MediumComponent, canActivate: [AdminGuard] }, 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'genre-edit', component: GenreEditComponent, canActivate: [AdminGuard] },
   { path: 'genre-add', component: GenreAddComponent, canActivate: [AdminGuard] },
   { path: 'user-info', component: UserInfoComponent, canActivate: [AdminGuard] },
+  { path: 'user-info-edit', component: UserInfoEditComponent, canActivate: [AdminGuard] },
   { path: 'product-info', component: ProductInfoComponent, canActivate: [AdminGuard] }, 
   { path: 'publisher', component: PublisherComponent, canActivate: [AdminGuard] }, 
   { path: 'publisher-edit', component: PublisherEditComponent, canActivate: [AdminGuard] },

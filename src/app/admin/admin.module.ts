@@ -21,6 +21,7 @@ import { CustomerNoteComponent } from './customer-note/customer-note.component';
 import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
 import { PublisherAddComponent } from '../admin/publisher-add/publisher-add.component';
 import { PublisherEditComponent } from '../admin/publisher-edit/publisher-edit.component';
+import { UserInfoEditComponent } from '../admin/user-info-edit/user-info-edit.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { PublisherEditComponent } from '../admin/publisher-edit/publisher-edit.c
     CustomerNoteComponent,
     UserFeedbackComponent,
     PublisherAddComponent,
-    PublisherEditComponent
+    PublisherEditComponent,
+    UserInfoEditComponent
   ],
   providers: [
     AdminGuard

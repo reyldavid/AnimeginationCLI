@@ -10,12 +10,12 @@ export class SessionService {
 
     private _token: TokenModel = { token: "" };
     private _userAccount: UserAccountModel = {
-        UserId: "", UserName: "",
-        FirstName: "", LastName: "",
-        Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-        CellPhone: "", HomePhone: "",
-        Email: "", Created: "",
-        CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+        userId: "", userName: "",
+        firstName: "", lastName: "",
+        address: "", city: "", state: "", stateId: 0, zipCode: "",
+        cellPhone: "", homePhone: "",
+        email: "", created: "",
+        creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
     };
     private _order: Order;
     private _isAdmin: boolean = false;
@@ -61,13 +61,14 @@ export class SessionService {
 
         this._token = null;
         this._userAccount = {
-            UserId: "", UserName: "",
-            FirstName: "", LastName: "",
-            Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-            CellPhone: "", HomePhone: "",
-            Email: "", Created: "",
-            CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+            userId: "", userName: "",
+            firstName: "", lastName: "",
+            address: "", city: "", state: "", stateId: 0, zipCode: "",
+            cellPhone: "", homePhone: "",
+            email: "", created: "",
+            creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
         };
+    
         this._order = null;
     }
 

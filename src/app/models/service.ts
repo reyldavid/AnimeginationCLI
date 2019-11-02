@@ -24,5 +24,6 @@ export enum ServiceName {
     jwt = "jwt", 
     getClaim = "getclaim", 
     media = "media",
-    publishers = "publishers"
+    publishers = "publishers",
+    all = "all"
 }
