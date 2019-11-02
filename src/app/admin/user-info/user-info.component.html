@@ -1,3 +1,23 @@
-<p>
-  user-info works!
-</p>
+<div class="row">
+  <div class="col-sm-10 offset-sm-1 pb-3">
+      <h2>Users</h2>
+      <div class="pb-3"></div>
+      <ng-container *ngFor="let user of userAccounts">
+        <div class="row p-2 my-2 all-borders-black">
+          <div class="col-5">
+            Name: <strong>{{user?.firstName}} {{user?.lastName}}</strong><br />
+            Street: <strong>{{user?.address}}</strong><br />
+            Cell: <strong>{{user?.cellPhone}}</strong>
+          </div>
+          <div class="col-5">
+            Email: <strong>{{user?.email}}</strong><br />
+            City: <strong>{{user?.city}}, {{user?.state}} {{user?.zipCode}}</strong><br />
+            Home: <strong>{{user?.homePhone}}</strong>
+          </div>
+          <div class="col-2 d-flex justify-content-end align-items-center">
+            <span class="p6 px-3" (click)="OnEditUserAccount(user)">Edit</span> 
+          </div>
+        </div>
+      </ng-container>
+  </div>
+</div>
