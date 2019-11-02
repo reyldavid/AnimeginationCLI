@@ -18,12 +18,12 @@ export class AccountInfoComponent implements OnInit {
     // They're accessible from the template
     // token: TokenModel = { token: "" };
     userAccount: UserAccountModel = {
-        UserId: "", UserName: "",
-        FirstName: "", LastName: "",
-        Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-        CellPhone: "", HomePhone: "",
-        Email: "", Created: "",
-        CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+        userId: "", userName: "",
+        firstName: "", lastName: "",
+        address: "", city: "", state: "", stateId: 0, zipCode: "",
+        cellPhone: "", homePhone: "",
+        email: "", created: "",
+        creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
     };
     response: string;
     recentPurchases: string;
@@ -47,7 +47,7 @@ export class AccountInfoComponent implements OnInit {
         this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
             this.userAccount = userAccount;
             
-            this._loginService.login(userAccount.FirstName);
+            this._loginService.login(userAccount.firstName);
             this._messageService.setSpinner(false);
       })
 

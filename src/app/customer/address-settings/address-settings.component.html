@@ -6,19 +6,19 @@
             <div class="form-group">
                 <label for="username">Full Name</label>
                 <label class="form-control" id="username">
-                    {{addressInput.FirstName}} {{addressInput.LastName}}
+                    {{addressInput.firstName}} {{addressInput.lastName}}
                 </label>
             </div>
             <div class="form-group">
                 <label for="address">Street Address <span class="anime-color">*</span></label>
                 <input type="text" ngControl="Address" required
-                       [(ngModel)]="addressInput.Address"
+                       [(ngModel)]="addressInput.address"
                        class="form-control" id="address" name="address" />
             </div>
             <div class="form-group">
                 <label for="city">City <span class="anime-color">*</span></label>
                 <input type="text" ngControl="City" required
-                       [(ngModel)]="addressInput.City"
+                       [(ngModel)]="addressInput.city"
                        class="form-control" id="city" name="city" />
             </div>
             <div class="form-group">
@@ -28,7 +28,7 @@
                   class="form-control" id="state" name="state">
                     <option *ngFor="let state of states" 
                         value={{state.StateID}} 
-                        [selected]="state.StateName == _sessionService.UserAccount.State">
+                        [selected]="state.StateName == _sessionService.UserAccount.state">
                             {{state.StateName}}
                     </option>
                 </select>
@@ -37,7 +37,7 @@
                 <label for="zipcode">Zip Code <span class="anime-color">*</span></label>
                 <input type="text" ngControl="ZipCode" required 
                        pattern="[0-9]{5}" maxlength="5" title="hint: 5-digit Zip Code"
-                       [(ngModel)]="addressInput.ZipCode"
+                       [(ngModel)]="addressInput.zipCode"
                        class="form-control" id="zipcode" name="zipcode" />
             </div>
             <div>

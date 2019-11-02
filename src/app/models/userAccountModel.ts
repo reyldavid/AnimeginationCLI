@@ -1,18 +1,18 @@
 ﻿export interface UserAccountModel {
-    UserId: string,
-    UserName: string,
-    FirstName: string,
-    LastName: string,
-    Address: string,
-    City: string,
-    State: string,
-    StateId: number;
-    ZipCode: string,
-    CellPhone: string,
-    HomePhone: string,
-    Email: string,
-    Created: string,
-    CreditCardType: string,
-    CreditCardNumber: string,
-    CreditCardExpiration: string
+    userId: string,
+    userName: string,
+    firstName: string,
+    lastName: string,
+    address: string,
+    city: string,
+    state: string,
+    stateId: number;
+    zipCode: string,
+    cellPhone: string,
+    homePhone: string,
+    email: string,
+    created: string,
+    creditCardType: string,
+    creditCardNumber: string,
+    creditCardExpiration: string
 }

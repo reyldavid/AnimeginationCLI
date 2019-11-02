@@ -28,12 +28,12 @@ export class OrdersSummaryComponent implements OnInit {
   itemQuantity: number = 0;
   subTotal: number = 0;
   userAccount: UserAccountModel = {
-    UserId: "", UserName: "",
-    FirstName: "", LastName: "",
-    Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-    CellPhone: "", HomePhone: "",
-    Email: "", Created: "",
-    CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+    userId: "", userName: "",
+    firstName: "", lastName: "",
+    address: "", city: "", state: "", stateId: 0, zipCode: "",
+    cellPhone: "", homePhone: "",
+    email: "", created: "",
+    creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
   };
   accountSubscription: Subscription;
 

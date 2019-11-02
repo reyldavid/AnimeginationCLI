@@ -33,12 +33,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     token: TokenModel = { "token": "" };
     loginInput: LoginModel = { username: "", password: "" };
     userAccount: UserAccountModel = {
-        UserId: "", UserName: "",
-        FirstName: "", LastName: "",
-        Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-        CellPhone: "", HomePhone: "",
-        Email: "", Created: "",
-        CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+      userId: "", userName: "",
+      firstName: "", lastName: "",
+      address: "", city: "", state: "", stateId: 0, zipCode: "",
+      cellPhone: "", homePhone: "",
+      email: "", created: "",
+      creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
     };
     isInvalidAccount: boolean = false;
     returnUrl: string;
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                     .subscribe((userAccount: UserAccountModel) => {
                         this.userAccount = userAccount;
                         this.sessionService.UserAccount = userAccount;
-                        this.loginService.login(userAccount.FirstName);
+                        this.loginService.login(userAccount.firstName);
 
                         this.messageService.selectUserAccount(userAccount);
                         this.messageService.setSpinner(false);

@@ -21,19 +21,19 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-tall">
-                                    <div *ngIf="userAccount.Address && userAccount.City && userAccount.ZipCode">
-                                        <strong>{{userAccount.FirstName}} {{userAccount.LastName}}</strong>
-                                        <div>{{userAccount.Address}}</div>
-                                        <div>{{userAccount.City}}</div>
-                                        <div>{{userAccount.State}} {{userAccount.ZipCode}}</div>
+                                    <div *ngIf="userAccount.address && userAccount.city && userAccount.zipCode">
+                                        <strong>{{userAccount.firstName}} {{userAccount.lastName}}</strong>
+                                        <div>{{userAccount.address}}</div>
+                                        <div>{{userAccount.city}}</div>
+                                        <div>{{userAccount.state}} {{userAccount.zipCode}}</div>
                                         <div>United States</div>
                                         <p></p>
                                     </div>
-                                    <div *ngIf="!userAccount.Address && !userAccount.City && !userAccount.ZipCode">
+                                    <div *ngIf="!userAccount.address && !userAccount.city && !userAccount.zipCode">
                                         <p>{{missingAddressBook}}</p>
                                     </div>
-                                    <div *ngIf="!userAccount.Address || !userAccount.City || !userAccount.ZipCode">
-                                        <div *ngIf="userAccount.Address || userAccount.City || userAccount.ZipCode">
+                                    <div *ngIf="!userAccount.address || !userAccount.city || !userAccount.zipCode">
+                                        <div *ngIf="userAccount.address || userAccount.city || userAccount.zipCode">
                                             <p>{{incompleteAddressBook}}</p>
                                         </div>
                                     </div>

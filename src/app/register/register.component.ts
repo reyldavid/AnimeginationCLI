@@ -99,24 +99,24 @@ export class RegisterComponent implements OnInit {
         console.log(this.registerInput);
 
         let sessionAccount = this.sessionService.UserAccount;
-        sessionAccount.UserId = this.registerInput.UserId;
-        sessionAccount.UserName = this.registerInput.Username;
-        sessionAccount.FirstName = this.registerInput.FirstName;
-        sessionAccount.LastName = this.registerInput.LastName;
-        sessionAccount.Email = this.registerInput.Email;
-        sessionAccount.Address = this.registerInput.Address;
-        sessionAccount.City = this.registerInput.City;
-        sessionAccount.ZipCode = this.registerInput.ZipCode;
-        sessionAccount.StateId = this.registerInput.StateId;
-        sessionAccount.CellPhone = this.registerInput.CellPhone;
-        sessionAccount.HomePhone = this.registerInput.HomePhone;
+        sessionAccount.userId = this.registerInput.UserId;
+        sessionAccount.userName = this.registerInput.Username;
+        sessionAccount.firstName = this.registerInput.FirstName;
+        sessionAccount.lastName = this.registerInput.LastName;
+        sessionAccount.email = this.registerInput.Email;
+        sessionAccount.address = this.registerInput.Address;
+        sessionAccount.city = this.registerInput.City;
+        sessionAccount.zipCode = this.registerInput.ZipCode;
+        sessionAccount.stateId = this.registerInput.StateId;
+        sessionAccount.cellPhone = this.registerInput.CellPhone;
+        sessionAccount.homePhone = this.registerInput.HomePhone;
 
         this.sessionService.UserAccount = sessionAccount;
 
         this.userAccountService.createUserAccount(this.registerInput)
           .subscribe(token => {
             this.sessionService.UserToken = token;
-            this.loginService.login(sessionAccount.FirstName);
+            this.loginService.login(sessionAccount.firstName);
 
             this.messageService.selectUserAccount(sessionAccount);
             this.messageService.setSpinner(false);

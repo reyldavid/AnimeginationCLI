@@ -79,8 +79,8 @@ export class BuyListComponent implements OnInit {
   
   //         this.isDiscount = this.order.discounts > 0 ? true : false;
   
-  //         this.address.city = this.sessionService.UserAccount.City;
-  //         this.address.state = this.sessionService.UserAccount.State;  
+  //         this.address.city = this.sessionService.UserAccount.city;
+  //         this.address.state = this.sessionService.UserAccount.state;  
   //       }
   //       else {
   //         this.isEmpty = true;

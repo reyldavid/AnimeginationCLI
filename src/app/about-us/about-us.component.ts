@@ -190,7 +190,7 @@ export class AboutUsComponent implements OnInit {
     CreditCardExpiration: "12/24"
   }
 
-  let userAccountModel2: UserAccountModel = {
+  let userAccountModel2 = {
     UserId: "67462d6b-e940-40e7-9b30-f5e82a7e263c",
     UserName: "sakura", 
     FirstName: "sakura",
@@ -209,7 +209,7 @@ export class AboutUsComponent implements OnInit {
     CreditCardExpiration: "12/24"
   }
 
-  let userAccountModel3: UserAccountModel = {
+  let userAccountModel3 = {
     UserId: "67462d6b-e940-40e7-9b30-f5e82a7e263c",
     UserName: "sakura", 
     FirstName: "sakura",

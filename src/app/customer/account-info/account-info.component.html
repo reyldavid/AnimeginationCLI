@@ -33,10 +33,10 @@
                     <h3 class="card-header">Profile Settings</h3>
                     <div class="card-body">
                         <div class="card-tall">
-                            <strong>{{userAccount.FirstName}} {{userAccount.LastName}}</strong>
-                            <div>{{userAccount.Email}}</div>
-                            <div *ngIf="userAccount.CellPhone">{{userAccount.CellPhone}} (Cell)</div>
-                            <div *ngIf="userAccount.HomePhone">{{userAccount.HomePhone}} (Other)</div>
+                            <strong>{{userAccount.firstName}} {{userAccount.lastName}}</strong>
+                            <div>{{userAccount.email}}</div>
+                            <div *ngIf="userAccount.cellPhone">{{userAccount.cellPhone}} (Cell)</div>
+                            <div *ngIf="userAccount.homePhone">{{userAccount.homePhone}} (Other)</div>
                             <p></p>
                         </div>
                         <button type="button" class="btn btn-default anime-button" 
@@ -49,18 +49,18 @@
                     <h3 class="card-header">Address Book</h3>
                     <div class="card-body">
                         <div class="card-tall">
-                            <div *ngIf="userAccount.Address && userAccount.City && userAccount.ZipCode">
-                                <div>{{userAccount.Address}}</div>
-                                <div>{{userAccount.City}}</div>
-                                <div>{{userAccount.State}} {{userAccount.ZipCode}}</div>
+                            <div *ngIf="userAccount.address && userAccount.city && userAccount.zipCode">
+                                <div>{{userAccount.address}}</div>
+                                <div>{{userAccount.city}}</div>
+                                <div>{{userAccount.state}} {{userAccount.zipCode}}</div>
                                 <div>United States</div>
                                 <p></p>
                             </div>
-                            <div *ngIf="!userAccount.Address && !userAccount.City && !userAccount.ZipCode">
+                            <div *ngIf="!userAccount.address && !userAccount.city && !userAccount.zipCode">
                                 <p>{{missingAddressBook}}</p>
                             </div>
-                            <div *ngIf="!userAccount.Address || !userAccount.City || !userAccount.ZipCode">
-                                <div *ngIf="userAccount.Address || userAccount.City || userAccount.ZipCode">
+                            <div *ngIf="!userAccount.address || !userAccount.city || !userAccount.zipCode">
+                                <div *ngIf="userAccount.address || userAccount.city || userAccount.zipCode">
                                     <p>{{incompleteAddressBook}}</p>
                                 </div>
                             </div>

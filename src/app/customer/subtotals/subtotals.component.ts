@@ -64,8 +64,8 @@ export class SubtotalsComponent implements OnInit {
 
     this.isDiscount = this.order.discounts > 0 ? true : false;
 
-    this.address.city = this.sessionService.UserAccount.City;
-    this.address.state = this.sessionService.UserAccount.State;
+    this.address.city = this.sessionService.UserAccount.cellPhone;
+    this.address.state = this.sessionService.UserAccount.state;
   }
 
   getOrderItems(orderId: number) {

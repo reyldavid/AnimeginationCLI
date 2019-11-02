@@ -1,4 +1,4 @@
-<h2 class="pb-3">Thanks for shopping with us, {{ userAccount.FirstName }}!</h2>
+<h2 class="pb-3">Thanks for shopping with us, {{ userAccount.firstName }}!</h2>
 
 <div class="font-size-16">
   <p>
@@ -6,7 +6,7 @@
   </p>
   <p>
     For delivery tracking information and other order details, 
-    please check out the confirmation email we're sending to <span class="bold">{{ userAccount.Email }}</span>
+    please check out the confirmation email we're sending to <span class="bold">{{ userAccount.email }}</span>
   </p>
   <p *ngIf="orderNumber">
     Order number: <span class="bold">{{ orderNumber }}</span> 

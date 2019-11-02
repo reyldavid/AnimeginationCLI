@@ -47,7 +47,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         // this._sessionService.clearSession();
         // this._router.navigate(['Home']);
         if (_sessionService.isAuthenticated()) {
-            this.userFirstName = _sessionService.UserAccount.FirstName;
+            this.userFirstName = _sessionService.UserAccount.firstName;
         }
 
         this.spinnerSubscription = _messageService.getSpinner().subscribe( show => {

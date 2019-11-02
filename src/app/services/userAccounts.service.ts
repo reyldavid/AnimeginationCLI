@@ -11,6 +11,7 @@ import { RegisterModel } from '../models/registermodel';
 import { UserAccountModel } from '../models/userAccountModel';
 import { UserAccountReturnModel } from '../models/userAccountReturnModel';
 import { MessageService } from '../services/message.service';
+import { Globals } from "../globals";
 //import 'rxjs/Rx';
 
 @Injectable({
@@ -20,7 +21,28 @@ export class UserAccountsService {
 
   constructor(private http: HttpClient, 
     private helper: HttpHelper, 
-    private messageService: MessageService ) {
+    private messageService: MessageService,
+    private globals: Globals ) {
+  }
+
+  getUserAccounts(token: TokenModel): Observable<UserAccountModel[]> {
+
+    if (this.globals.localData) {
+        // return this.getUserFeedbacksStatic();
+    }
+    else {
+        this.messageService.setSpinner(true);
+        let endpoint = this.helper.getCompoundEndPoint(ServiceName.userAccount, ServiceName.all);
+
+        let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+        let observables = this.http.get<UserAccountModel[]>(
+            endpoint, { headers: headers, observe: 'response'}
+            )
+            .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+        return observables;
+    }
   }
 
   getUserAccount(token: TokenModel): Observable<UserAccountModel> {
@@ -47,7 +69,7 @@ export class UserAccountsService {
 
       let header: HttpHeaders = this.helper.getContentHeaders();
 
-      let observable = this.http.post<TokenModel>(endpoint, body, 
+      let observable = this.http.put<TokenModel>(endpoint, body, 
           { headers: header, observe: 'response' })
           .pipe( map ( HttpHelper.extractData), 
               catchError( HttpHelper.handleError ));
@@ -64,7 +86,7 @@ export class UserAccountsService {
 
     let header: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-    let observable = this.http.put<UserAccountModel>(endpoint, body,  
+    let observable = this.http.post<UserAccountModel>(endpoint, body,  
         { headers: header, observe: 'response' })
         .pipe( map ( HttpHelper.extractData), 
             catchError( HttpHelper.handleError ));
@@ -81,7 +103,7 @@ export class UserAccountsService {
 
     let header: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-    let observable = this.http.put<UserAccountModel>(endpoint, body,  
+    let observable = this.http.post<UserAccountModel>(endpoint, body,  
         { headers: header, observe: 'response' })
         .pipe( map ( HttpHelper.extractData), 
             catchError( HttpHelper.handleError ));
@@ -89,4 +111,20 @@ export class UserAccountsService {
     return observable;
   }
 
+  updateUserAccount(token: TokenModel, userAccount: UserAccountModel): Observable<UserAccountReturnModel> {
+    this.messageService.setSpinner(true);
+
+    let body = JSON.stringify(userAccount);
+
+    let endpoint = this.helper.getEndPoint(ServiceName.userAccount);
+
+    let header: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+    let observable = this.http.post<UserAccountModel>(endpoint, body,  
+        { headers: header, observe: 'response' })
+        .pipe( map ( HttpHelper.extractData), 
+            catchError( HttpHelper.handleError ));
+
+    return observable;
+  }
 }

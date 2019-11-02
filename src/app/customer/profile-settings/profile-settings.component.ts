@@ -15,12 +15,12 @@ import { Subscription } from 'rxjs/Subscription';
 export class ProfileSettingsComponent implements OnInit {
 
   profileInput: UserAccountModel = {
-    UserId: "", UserName: "",
-    FirstName: "", LastName: "",
-    Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-    CellPhone: "", HomePhone: "",
-    Email: "", Created: "",
-    CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+    userId: "", userName: "",
+    firstName: "", lastName: "",
+    address: "", city: "", state: "", stateId: 0, zipCode: "",
+    cellPhone: "", homePhone: "",
+    email: "", created: "",
+    creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
   };
   accountSubscription: Subscription;
   isSuccess: boolean;
@@ -56,18 +56,18 @@ export class ProfileSettingsComponent implements OnInit {
   
         this._userAccountService.updateUserAccountNames(token, this.profileInput)
             .subscribe((userAccount: UserAccountReturnModel) => {
-              this.profileInput.FirstName = userAccount.firstName;
-              this.profileInput.LastName = userAccount.lastName;
-              this.profileInput.Email = userAccount.emailAddress;
-              this.profileInput.CellPhone = userAccount.cellPhoneNumber;
-              this.profileInput.HomePhone = userAccount.homePhoneNumber;
+              this.profileInput.firstName = userAccount.firstName;
+              this.profileInput.lastName = userAccount.lastName;
+              this.profileInput.email = userAccount.emailAddress;
+              this.profileInput.cellPhone = userAccount.cellPhoneNumber;
+              this.profileInput.homePhone = userAccount.homePhoneNumber;
 
               let sessionAccount = this._sessionService.UserAccount;
-              sessionAccount.FirstName = userAccount.firstName;
-              sessionAccount.LastName = userAccount.lastName;
-              sessionAccount.Email = userAccount.emailAddress;
-              sessionAccount.CellPhone = userAccount.cellPhoneNumber;
-              sessionAccount.HomePhone = userAccount.homePhoneNumber;
+              sessionAccount.firstName = userAccount.firstName;
+              sessionAccount.lastName = userAccount.lastName;
+              sessionAccount.email = userAccount.emailAddress;
+              sessionAccount.cellPhone = userAccount.cellPhoneNumber;
+              sessionAccount.homePhone = userAccount.homePhoneNumber;
 
               this._sessionService.UserAccount = sessionAccount;
 

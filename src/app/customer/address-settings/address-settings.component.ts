@@ -17,12 +17,12 @@ import { States } from '../../models/states';
 export class AddressSettingsComponent implements OnInit {
 
   addressInput: UserAccountModel = {
-    UserId: "", UserName: "",
-    FirstName: "", LastName: "",
-    Address: "", City: "", State: "", StateId: 0, ZipCode: "",
-    CellPhone: "", HomePhone: "",
-    Email: "", Created: "",
-    CreditCardType: "", CreditCardNumber: "", CreditCardExpiration: ""
+    userId: "", userName: "",
+    firstName: "", lastName: "",
+    address: "", city: "", state: "", stateId: 0, zipCode: "",
+    cellPhone: "", homePhone: "",
+    email: "", created: "",
+    creditCardType: "", creditCardNumber: "", creditCardExpiration: ""
   };
   accountSubscription: Subscription;
   isSuccess: boolean;
@@ -60,7 +60,7 @@ export class AddressSettingsComponent implements OnInit {
   }
 
   selectState(stateId: number) {
-    this.addressInput.StateId = stateId;
+    this.addressInput.stateId = stateId;
     this.isDirty = true;
   }
 
@@ -72,17 +72,17 @@ export class AddressSettingsComponent implements OnInit {
   
         this._userAccountService.updateUserAccountAddress(token, this.addressInput)
             .subscribe((userAccount: UserAccountReturnModel) => {
-              this.addressInput.Address = userAccount.streetAddress;
-              this.addressInput.City = userAccount.city;
-              this.addressInput.State = userAccount.state.stateName;
-              this.addressInput.StateId = userAccount.state.stateID;
-              this.addressInput.ZipCode = userAccount.zipCode;
+              this.addressInput.address = userAccount.streetAddress;
+              this.addressInput.city = userAccount.city;
+              this.addressInput.state = userAccount.state.stateName;
+              this.addressInput.stateId = userAccount.state.stateID;
+              this.addressInput.zipCode = userAccount.zipCode;
 
               let sessionAccount = this._sessionService.UserAccount;
-              sessionAccount.Address = userAccount.streetAddress;
-              sessionAccount.City = userAccount.city;
-              sessionAccount.State = userAccount.state.stateName;
-              sessionAccount.ZipCode = userAccount.zipCode;
+              sessionAccount.address = userAccount.streetAddress;
+              sessionAccount.city = userAccount.city;
+              sessionAccount.state = userAccount.state.stateName;
+              sessionAccount.zipCode = userAccount.zipCode;
 
               this._sessionService.UserAccount = sessionAccount;
 
