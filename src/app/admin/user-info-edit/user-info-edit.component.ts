@@ -6,6 +6,8 @@ import { UserAccountsService } from '../../services/userAccounts.service';
 import { MessageService } from '../../services/message.service';
 import { Router, ActivatedRoute, Route } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { StatesService } from '../../services/states.service';
+import { States } from '../../models/states';
 import * as _ from 'lodash';
 
 @Component({
@@ -26,16 +28,18 @@ export class UserInfoEditComponent implements OnInit {
   submitted: boolean = false;
   userID: string;
   userAccountSubscription: Subscription;
+  states: States[];
 
   constructor(private userAccountsService: UserAccountsService, 
               private sessionService: SessionService, 
               private messageService: MessageService, 
+              private statesService: StatesService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     console.log('user account edit init');
     this.route.paramMap.subscribe(params => {
-      let userIDparam = params.get('userID');
+      let userIDparam = params.get('userAccountID');
 
       if (userIDparam) {
         this.userID = userIDparam;
@@ -44,20 +48,26 @@ export class UserInfoEditComponent implements OnInit {
     })
 
     this.route.queryParams.subscribe(params => {
-        this.userID = params.userID;
+        this.userID = params.userAccountID;
         if (this.userID) {
           // this.getGenre();
         }
     })
 
+    this.statesService.getAnimeStates().subscribe(states => {
+      this.states = states;
+      this.statesService.States = states;
+    })
+
     if (this.sessionService.isAuthenticated()) {
       let token: TokenModel = this.sessionService.UserToken;
+      let __this = this;
 
       this.userAccountSubscription = this.userAccountsService
           .getUserAccounts(token).subscribe(users => {
 
             let user = _.find(users, function(item) {
-              return item.userID == this.userID;
+              return item.userId == __this.userID;
             } ) 
             this.userAccount = user;
             this.messageService.setSpinner(false);
@@ -69,13 +79,17 @@ export class UserInfoEditComponent implements OnInit {
     this.userAccountSubscription.unsubscribe();
   }
 
+  selectState(stateId: number) {
+    this.userAccount.stateId = stateId;
+  }
+
   onSubmit() {
     this.submitted = true;
 
     if (this.sessionService.isAuthenticated()) {
       let token: TokenModel = this.sessionService.UserToken;
 
-      this.userAccountsService.updateUserAccountAddress(token, this.userAccount)
+      this.userAccountsService.updateUserAccount(token, this.userAccount)
         .subscribe(user => {
           console.log("aya user ", user);
           this.messageService.setSpinner(false);
@@ -88,5 +102,3 @@ export class UserInfoEditComponent implements OnInit {
   }
 
 }
-
-

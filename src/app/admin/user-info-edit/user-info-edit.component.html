@@ -1,3 +1,108 @@
-<p>
-  user-info-edit works!
-</p>
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+
+  <h2>Edit user: {{ userAccount?.userName }}</h2>
+  <h3>{{ userAccount?.email }}</h3>
+  <div class="py-1"></div>
+
+  <form (submit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+          <label for="userFirstName">First Name <span class="anime-color">*</span></label>
+          <input type="text" required
+                name="userFirstName"
+                class="form-control" id="userFirstName" 
+                [(ngModel)]="userAccount.firstName" />
+      </div>
+      <div class="form-group">
+        <label for="userLastName">Last Name <span class="anime-color">*</span></label>
+        <input type="text" required
+              name="userLastName"
+              class="form-control" id="userLastName" 
+              [(ngModel)]="userAccount.lastName" />
+      </div>
+      <div class="form-group">
+          <label for="address">Address <span class="anime-color">*</span></label>
+          <input type="text" required
+                name="address"
+                class="form-control" id="address" 
+                [(ngModel)]="userAccount.address" />
+      </div>
+      <div class="form-group">
+          <label for="city">City <span class="anime-color">*</span></label>
+          <input type="text" required
+                name="city"
+                class="form-control" id="city" 
+                [(ngModel)]="userAccount.city" />
+      </div>
+      <div class="form-group">
+        <label for="zipCode">Zip Code<span class="anime-color">*</span></label>
+        <input type="text" required
+              name="zipCode"
+              class="form-control" id="zipCode" 
+              [(ngModel)]="userAccount.zipCode" />
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select (change)="selectState($event.target.value)" 
+          class="form-control" id="state" name="state">
+            <option *ngFor="let state of states" 
+                value={{state.StateID}} 
+                [selected]="state.StateID == userAccount.stateId">
+                    {{state.StateName}}
+            </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cellPhone">Cell Phone<span class="anime-color">*</span></label>
+        <input type="text" required
+              name="cellPhone"
+              class="form-control" id="cellPhone" 
+              [(ngModel)]="userAccount.cellPhone" />
+      </div>
+      <div class="form-group">
+        <label for="homePhone">Home Phone<span class="anime-color">*</span></label>
+        <input type="text" required
+              name="homePhone"
+              class="form-control" id="homePhone" 
+              [(ngModel)]="userAccount.homePhone" />
+      </div>
+      <div class="form-group">
+        <label for="creditCardType">Credit Card Type<span class="anime-color">*</span></label>
+        <input type="text" required
+              name="creditCardType"
+              class="form-control" id="creditCardType" 
+              [(ngModel)]="userAccount.creditCardType" />
+      </div>
+      <div class="form-group">
+        <label for="creditCardExpiration">Credit Card Expiration<span class="anime-color">*</span></label>
+        <input type="text" required
+              name="creditCardExpiration"
+              class="form-control" id="creditCardExpiration" 
+              [(ngModel)]="userAccount.creditCardExpiration" />
+      </div>
+      <div class="form-group">
+        <label for="creditCardNumber">Credit Card Number<span class="anime-color">*</span></label>
+        <input type="text" required
+              name="creditCardNumber"
+              class="form-control" id="creditCardNumber" 
+              [(ngModel)]="userAccount.creditCardNumber" />
+      </div>
+
+      <div class="py-3">
+        <button class="btn btn-block anime-button-lg font-size-16" 
+            type="submit"
+            [disabled]="!userForm.valid">Submit
+          </button>
+      </div>
+
+      <div>User Account Model</div>
+      {{ userForm.value | json }}
+      {{ userForm.valid }}
+
+      <div class="pb-3"></div>
+      <div *ngIf="submitted && !userForm.valid" class="alert alert-success pb-3">
+          Your message was successfully submitted.  Thank you.
+      </div>
+    </form>
+  </div> 
+</div>
