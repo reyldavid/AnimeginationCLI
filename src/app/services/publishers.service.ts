@@ -8,7 +8,7 @@ import { Globals } from "../globals";
 import { HttpHelper } from './http.helper.service';
 import { ServiceName } from '../models/service';
 import { Publisher } from '../models/publisher';
-// import { PublishersCache } from '../models/dictionary';
+import { PublisherCache } from '../models/dictionary';
 import { MessageService } from '../services/message.service';
 import { TokenModel } from '../models/tokenmodel';
 import 'rxjs/Rx';
@@ -19,7 +19,8 @@ import * as _ from 'lodash';
 })
 export class PublishersService {
 
-  private _animePublishers: Publisher[] = [];
+  private _animePublishers = new PublisherCache();
+  private _publishers: Publisher[] = [];
 
   constructor(private http: HttpClient, 
     private globals: Globals, 
@@ -28,19 +29,31 @@ export class PublishersService {
   }
 
   setPublishersCache(data: Publisher[]) {
-    this._animePublishers = data;
+    if (!this._animePublishers[0]) {
+      this._animePublishers[0] = data;
+      this._publishers = data;
+    }
+    // this._animePublishers = data;
   }
 
-  getPublishersTypes(): Observable<Publisher[]> {
+  get Publishers(): Publisher[] {
+    return this._publishers;
+  }
+
+  set Publishers(publishers: Publisher[]) {
+    this._publishers = publishers;
+  }
+
+  getPublishers(): Observable<Publisher[]> {
     if (this.globals.localData) {
       return of(null);
     }
     else {
-      // if (this._animePublishers && (this._animePublishers.length > 0)) {
-      //     console.log('aya Anime Publishers cached');
-      //     return of(this._animePublishers);
-      // }
-      // else {
+      if (this._publishers && (this._publishers.length > 0)) {
+          console.log('aya Anime Publishers cached');
+          return of(this._publishers);
+      }
+      else {
           let endpoint = this.helper.getEndPoint(ServiceName.publishers);
 
           let headers: HttpHeaders = this.helper.getContentHeaders();
@@ -51,16 +64,16 @@ export class PublishersService {
               .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
 
           return observables;
-      // }
+      }
     }
   }
 
-  getPublishersTypeById(publisherId: number): Observable<Publisher> {
+  getPublisherById(publisherId: number): Observable<Publisher> {
     if (this.globals.localData) {
       return of(null);
     }
     else {
-      if (this._animePublishers && this._animePublishers.length > 0) {
+      if (this._publishers && this._publishers.length > 0) {
         let publishers = _.find(this._animePublishers, function(item) {
           return item.PublisherID == publisherId;
         } ) 

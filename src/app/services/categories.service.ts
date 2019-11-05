@@ -27,6 +27,7 @@ import { MessageService } from '../services/message.service';
     private _animeCategory = new CategoryCache();
     private _animeCategories: Category[] = [];
     private _animeCategoryList = new ApiProductsCache();
+    private _categories: Category[];
 
     constructor(private http: HttpClient, 
         private globals: Globals, 
@@ -45,12 +46,20 @@ import { MessageService } from '../services/message.service';
         //     this._animeCategories[0] = data;
         // }
         this._animeCategories = data;
+        this._categories = data;
     } 
 
     setCategoryListCache(data: ApiProduct[], id: number) {
         if (!this._animeCategoryList[id.toString()]) {
             this._animeCategoryList[id.toString()] = data;
         }
+    }
+
+    get Categories(): Category[] {
+        return this._categories;
+    }
+    set Categories(categories: Category[]) {
+        this._categories = categories;
     }
 
     getAnimeCategoryStatic(): Observable<Category[]> {

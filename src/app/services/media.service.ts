@@ -19,7 +19,8 @@ import * as _ from 'lodash';
 })
 export class MediaService {
 
-  private _animeMedia: Medium[] = [];
+  private _animeMedia = new MediaCache();
+  private _media: Medium[] = [];
 
   constructor(private http: HttpClient, 
     private globals: Globals, 
@@ -28,17 +29,35 @@ export class MediaService {
   }
 
   setMediaCache(data: Medium[]) {
-    this._animeMedia = data;
+    if (!this._animeMedia[0]) {
+      this._animeMedia[0] = data;
+      this._media = data;
+    }
   }
+
+  get Media(): Medium[] {
+    return this._media;
+  }
+  set Media(media: Medium[]) {
+    this._media = media;
+  }
+
+
+            // if (this._animeCategory && this._animeCategory[categoryId]) {
+
+            //     console.log('aya Anime Category cached');
+                
+            //     return of(this._animeCategory[categoryId]);
+            // }
 
   getMediaTypes(): Observable<Medium[]> {
     if (this.globals.localData) {
       return of(null);
     }
     else {
-      if (this._animeMedia && (this._animeMedia.length >0)) {
+      if (this._media && (this._media.length > 0)) {
           console.log('aya Anime Media cached');
-          return of(this._animeMedia);
+          return of(this._media);
       }
       else {
           // this.messageService.setSpinner(true);
@@ -61,7 +80,7 @@ export class MediaService {
       return of(null);
     }
     else {
-      if (this._animeMedia && this._animeMedia.length > 0) {
+      if (this._animeMedia && this._animeMedia[mediumId]) {
         let media = _.find(this._animeMedia, function(item) {
           return item.MediumID == mediumId;
         } ) 
