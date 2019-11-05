@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+
+  <h2>Edit product: {{ product.productcode }}</h2>
+  <div class="py-1"></div>
+
+  <form (submit)="onSubmit()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="productcode">Code <span class="anime-color">*</span></label>
+      <input type="text" required
+            name="productcode"
+            class="form-control" id="productcode" 
+            [(ngModel)]="product.productcode" />
+    </div>
+    <div class="form-group">
+          <label for="producttitle">Title <span class="anime-color">*</span></label>
+          <input type="text" required
+                name="producttitle"
+                class="form-control" id="producttitle" 
+                [(ngModel)]="product.producttitle" />
+      </div>
+      <div class="form-group">
+        <label for="productdescription">Description <span class="anime-color">*</span></label>
+        <textarea rows="10" required
+              name="productdescription"
+              class="form-control" id="productdescription" 
+              [(ngModel)]="product.productdescription">
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label for="unitprice">Unit Price <span class="anime-color">*</span></label>
+        <input type="number" min="0" max="1000" required
+              name="unitprice"
+              class="form-control" id="unitprice" 
+              [(ngModel)]="product.unitprice" />
+      </div>
+      <div class="form-group">
+        <label for="yourprice">Your Price <span class="anime-color">*</span></label>
+        <input type="number" min="0" max="1000" required
+              name="yourprice"
+              class="form-control" id="yourprice" 
+              [(ngModel)]="product.yourprice" />
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <select (change)="selectGenre($event.target.value)" 
+          class="form-control" id="genre" name="genre">
+            <option *ngFor="let genre of genres" 
+                value={{genre.CategoryID}} 
+                [selected]="genre.CategoryID == product.categoryid">
+                    {{genre.CategoryName}}
+            </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="productagerating">Age Rating <span class="anime-color">*</span></label>
+        <input type="text" required
+              name="productagerating"
+              class="form-control" id="productagerating" 
+              [(ngModel)]="product.productagerating" />
+      </div>
+      <div class="form-group">
+        <label for="productlength">Length <span class="anime-color">*</span></label>
+        <input type="number" min="1" max="600" required
+              name="productlength"
+              class="form-control" id="productlength" 
+              [(ngModel)]="product.productlength" />
+      </div>
+      <div class="form-group">
+        <label for="productyearcreated">Year Created <span class="anime-color">*</span></label>
+        <input type="number" min="1950" max="2050" required
+              name="productyearcreated"
+              class="form-control" id="productyearcreated" 
+              [(ngModel)]="product.productyearcreated" />
+      </div>
+      <div class="form-group">
+        <label for="medium">Medium</label>
+        <select (change)="selectMedium($event.target.value)" 
+          class="form-control" id="medium" name="medium">
+            <option *ngFor="let medium of media" 
+                value={{medium.MediumID}} 
+                [selected]="medium.MediumID == product.mediumid">
+                    {{medium.MediumName}}
+            </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="publisher">Publisher</label>
+        <select (change)="selectPublisher($event.target.value)" 
+          class="form-control" id="publisher" name="publisher">
+            <option *ngFor="let publisher of publishers" 
+                value={{publisher.PublisherID}} 
+                [selected]="publisher.PublisherID == product.publisherid">
+                    {{publisher.PublisherName}}
+            </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ratingid">Rating <span class="anime-color">*</span></label>
+        <input type="number" min="0" max="5" step="1" required
+              name="ratingid"
+              class="form-control" id="ratingid" 
+              [(ngModel)]="product.ratingid" />
+      </div>
+
+      <div class="py-3">
+        <button class="btn btn-block anime-button-lg font-size-16" 
+            type="submit"
+            [disabled]="!productForm.valid">Submit
+          </button>
+      </div>
+
+      <div>Product Model</div>
+      {{ productForm.value | json }}
+      {{ productForm.valid }}
+
+      <div class="pb-3"></div>
+      <div *ngIf="submitted && !productForm.valid" class="alert alert-success pb-3">
+          Your message was successfully submitted.  Thank you.
+      </div>
+    </form>
+  </div> 
+</div>
