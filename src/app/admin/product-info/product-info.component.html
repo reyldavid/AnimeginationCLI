@@ -1,3 +1,27 @@
-<p>
-  product-info works!
-</p>
+<div class="bgc-gray vertical-scroll">
+  <h2 class="child anime-orig-color">Products</h2>
+  <div class="row pt-3 pb-2">
+    <div class="col-6">
+      <span class="p6 py-3" [routerLink]="['/product-info-add']">Create New</span>
+    </div>
+  </div>
+  <ul class="list-inline">
+      <li *ngFor="let product of products" class="li-child"
+        [routerLink]="['/product-info-edit']" [queryParams]="{ productID: product?.ProductID }">
+          <a>
+              <div class="card frame card-max">
+                  <img class="card-img-top image-max" 
+                       src="https://reydavid.blob.core.windows.net/anime/{{product?.ProductCode}}.jpg"
+                       alt="{{product?.ProductCode}}" />
+                  <div class="card-body">
+                      <div class="card-title bold anime-color">{{product?.ProductTitle}}</div>
+                      <div>{{product?.MediumName}} ({{product?.ProductYearCreated}})</div>
+                      <div>{{product?.ProductLength}} minutes</div>
+                      <div class="tiny-gray">Item: {{product?.ProductCode}}</div>
+                      <div class="p6 pt-2" (click)="OnDeleteProduct(product)">Delete</div>
+                  </div>
+              </div>
+          </a>
+      </li>
+  </ul>
+</div>
