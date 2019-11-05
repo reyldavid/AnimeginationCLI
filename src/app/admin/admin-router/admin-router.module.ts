@@ -17,6 +17,8 @@ import { UserFeedbackComponent } from '../user-feedback/user-feedback.component'
 import { PublisherEditComponent } from '../publisher-edit/publisher-edit.component';
 import { PublisherAddComponent } from '../publisher-add/publisher-add.component';
 import { UserInfoEditComponent } from '../user-info-edit/user-info-edit.component';
+import { ProductInfoEditComponent } from '../product-info-edit/product-info-edit.component';
+import { ProductInfoAddComponent } from '../product-info-add/product-info-add.component';
 
 const routes: Routes = [
   { path: 'medium', component: MediumComponent, canActivate: [AdminGuard] }, 
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'user-info', component: UserInfoComponent, canActivate: [AdminGuard] },
   { path: 'user-info-edit', component: UserInfoEditComponent, canActivate: [AdminGuard] },
   { path: 'product-info', component: ProductInfoComponent, canActivate: [AdminGuard] }, 
+  { path: 'product-info-edit', component: ProductInfoEditComponent, canActivate: [AdminGuard] },
+  { path: 'product-info-add', component: ProductInfoAddComponent, canActivate: [AdminGuard] },
   { path: 'publisher', component: PublisherComponent, canActivate: [AdminGuard] }, 
   { path: 'publisher-edit', component: PublisherEditComponent, canActivate: [AdminGuard] },
   { path: 'publisher-add', component: PublisherAddComponent, canActivate: [AdminGuard] },

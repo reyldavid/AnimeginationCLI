@@ -43,7 +43,7 @@ export class PublisherEditComponent implements OnInit {
           // this.getPublisher();
         }
     })
-    this.publishersSubscription = this.publishersService.getPublishersTypeById(this.publisherID).subscribe(item => {
+    this.publishersSubscription = this.publishersService.getPublisherById(this.publisherID).subscribe(item => {
       this.publisherModel = item;
     })
   }

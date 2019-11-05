@@ -21,7 +21,7 @@ export class PublisherComponent implements OnInit {
                private messageService: MessageService ) { }
 
   ngOnInit() {
-    this.publishersService.getPublishersTypes().subscribe(publishers => {
+    this.publishersService.getPublishers().subscribe(publishers => {
       this.publishers = publishers;
       this.publishersService.setPublishersCache(publishers);
     })

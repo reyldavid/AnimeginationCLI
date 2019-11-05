@@ -183,6 +183,11 @@ a .card.frame {
     width: 400px;
 }
 
+.vertical-scroll {
+    overflow-y: scroll;
+    height: 640px;
+}
+
 .description {
     max-height: 340px;
     overflow-y: auto;
