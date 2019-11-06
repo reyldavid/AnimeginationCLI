@@ -26,6 +26,7 @@ import { ProductInfoEditComponent } from '../admin/product-info-edit/product-inf
 import { ListingEditComponent } from '../admin/listing-edit/listing-edit.component';
 import { ListingAddComponent } from '../admin/listing-add/listing-add.component';
 import { ProductInfoAddComponent } from '../admin/product-info-add/product-info-add.component';
+import { ListTypeComponent } from '../admin/list-type/list-type.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { ProductInfoAddComponent } from '../admin/product-info-add/product-info-
     ProductInfoEditComponent,
     ListingEditComponent,
     ListingAddComponent,
-    ProductInfoAddComponent
+    ProductInfoAddComponent,
+    ListTypeComponent
   ],
   providers: [
     AdminGuard

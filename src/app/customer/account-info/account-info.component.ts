@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAccountsService } from '../../services/userAccounts.service';
 import { TokenModel } from '../../models/tokenModel';
@@ -6,14 +6,18 @@ import { UserAccountModel } from '../../models/userAccountModel';
 import { LoginService } from '../../services/login.service';
 import { SessionService } from '../../services/session.service';
 import { MessageService } from '../../services/message.service';
+import { OrderService } from '../../services/orders.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Order } from 'src/app/models/orderModel';
+import { CartType } from 'src/app/models/carttype';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
   styleUrls: ['./account-info.component.css']
 })
-export class AccountInfoComponent implements OnInit {
+export class AccountInfoComponent implements OnInit, OnDestroy {
     // Here we define this component's instance variables
     // They're accessible from the template
     // token: TokenModel = { token: "" };
@@ -30,10 +34,13 @@ export class AccountInfoComponent implements OnInit {
     missingAddressBook: string;
     incompleteAddressBook: string;
     accountSubscription: Subscription;
+    ordersSubscription: Subscription;
+    hasPurchaseHistory: boolean;
 
     constructor(public _router: Router, 
         private _userAccountService: UserAccountsService,
         private _loginService: LoginService, 
+        private _orderService: OrderService, 
         private _sessionService: SessionService, 
         private _messageService: MessageService )
     {
@@ -49,8 +56,7 @@ export class AccountInfoComponent implements OnInit {
             
             this._loginService.login(userAccount.firstName);
             this._messageService.setSpinner(false);
-      })
-
+        })
     }
 
     logout() {
@@ -67,6 +73,12 @@ export class AccountInfoComponent implements OnInit {
         this.missingAddressBook = 'We have no default address on file for this account';
         this.incompleteAddressBook = "The default address on file is incomplete";
         this.userAccount = this._sessionService.UserAccount;
+        this.getOrderHistory();
+    }
+
+    ngOnDestroy() {
+        this.accountSubscription.unsubscribe();
+        this.ordersSubscription.unsubscribe();
     }
 
     goOrders() {
@@ -79,5 +91,22 @@ export class AccountInfoComponent implements OnInit {
 
     goAddress() {
         this._router.navigate(['/address']);
+    }
+
+    getOrderHistory() {
+        let token = this._sessionService.UserToken;
+        this.ordersSubscription = this._orderService.getOrders(token)
+            .subscribe((orders: Order[]) => 
+        {
+            let history = _.filter(orders, function(order) {
+              return order.OrderType.toLowerCase() == CartType.orderHistory.toLowerCase();
+            });
+            if (history.length > 0) {
+              this.hasPurchaseHistory = true;
+              this.recentPurchases = "You have made ".concat(history.length, 
+                " purchases in the past. \n You can view your Purchase History here") ;
+            }
+            this._messageService.setSpinner(false);
+        });
     }
 }

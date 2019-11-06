@@ -19,6 +19,7 @@ import { PublisherAddComponent } from '../publisher-add/publisher-add.component'
 import { UserInfoEditComponent } from '../user-info-edit/user-info-edit.component';
 import { ProductInfoEditComponent } from '../product-info-edit/product-info-edit.component';
 import { ProductInfoAddComponent } from '../product-info-add/product-info-add.component';
+import { ListTypeComponent } from '../list-type/list-type.component';
 
 const routes: Routes = [
   { path: 'medium', component: MediumComponent, canActivate: [AdminGuard] }, 
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'publisher-add', component: PublisherAddComponent, canActivate: [AdminGuard] },
   { path: 'listing', component: ListingComponent, canActivate: [AdminGuard] }, 
   { path: 'customer-note', component: CustomerNoteComponent, canActivate: [AdminGuard] }, 
-  { path: 'user-feedback', component: UserFeedbackComponent, canActivate: [AdminGuard] } 
+  { path: 'user-feedback', component: UserFeedbackComponent, canActivate: [AdminGuard] },
+  { path: 'list-type', component: ListTypeComponent, canActivate: [AdminGuard] } 
 ]
 
 @NgModule({

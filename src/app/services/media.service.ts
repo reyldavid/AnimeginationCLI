@@ -42,7 +42,6 @@ export class MediaService {
     this._media = media;
   }
 
-
             // if (this._animeCategory && this._animeCategory[categoryId]) {
 
             //     console.log('aya Anime Category cached');
