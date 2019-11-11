@@ -60,6 +60,16 @@ export class HttpHelper {
         return headers;
     }
 
+    public getProxyHeaders(): HttpHeaders {
+
+        let headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .set('X-Requested-With', 'XMLHttpRequest');
+
+        return headers;
+    }
+
     public getSecureContentHeaders(token: TokenModel): HttpHeaders {
 
         let headers = new HttpHeaders()
@@ -74,7 +84,8 @@ export class HttpHelper {
     public getEndPoint(service: ServiceName, id?: number) {
         let segment = id ? service + '/' + id : service;
         let requestUrl = environment.useAzure ? environment.azureHostUrl : environment.localHostUrl;
-        let endpoint = environment.proxyUrl + requestUrl + segment;
+        // let endpoint = environment.proxyUrl + requestUrl + segment;
+        let endpoint = requestUrl + segment;
 
         if (environment.useNgProxy) {
             endpoint = '/v1/' + service;
@@ -87,7 +98,8 @@ export class HttpHelper {
     public getSearchEndPoint(service: ServiceName, searchText: string) {
         let segment = service + '/' + searchText;
         let requestUrl = environment.useAzure ? environment.azureHostUrl : environment.localHostUrl;
-        let endpoint = environment.proxyUrl + requestUrl + segment;
+        // let endpoint = environment.proxyUrl + requestUrl + segment;
+        let endpoint = requestUrl + segment;
 
         if (environment.useNgProxy) {
             endpoint = '/v1/' + service + '/' + searchText;
@@ -100,7 +112,8 @@ export class HttpHelper {
         let segment = service + '/' + secondary;
         segment = id ? segment + '/' + id : segment;
         let requestUrl = environment.useAzure ? environment.azureHostUrl : environment.localHostUrl;
-        let endpoint = environment.proxyUrl + requestUrl + segment;
+        // let endpoint = environment.proxyUrl + requestUrl + segment;
+        let endpoint = requestUrl + segment;
 
         if (environment.useNgProxy) {
             endpoint = '/v1/' + segment;
@@ -113,7 +126,8 @@ export class HttpHelper {
     public getComplexEndPoint(service: ServiceName, secondary: ServiceName, id: number, type: string) {
         let segment = service + '/' + secondary + '/' + id + '/' + type;
         let requestUrl = environment.useAzure ? environment.azureHostUrl : environment.localHostUrl;
-        let endpoint = environment.proxyUrl + requestUrl + segment;
+        // let endpoint = environment.proxyUrl + requestUrl + segment;
+        let endpoint = requestUrl + segment;
 
         if (environment.useNgProxy) {
             endpoint = '/v1/' + segment;

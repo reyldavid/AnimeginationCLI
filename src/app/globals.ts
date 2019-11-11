@@ -8,4 +8,7 @@ export class Globals {
     orderPrefix: string = "W109-852036";
     // trackingPrefix: string = "78553924";
     trackingPrefix: string = "91018690088450";
+    rssFeedUrl: string ="http://www.animenewsnetwork.com/all/rss.xml";
+    rss2JsonServiceUrl: string ="https://rss2json.com/api.json?rss_url=";
+    // proxyServerUrl: string = "https://cors-anywhere.herokuapp.com/";
 }

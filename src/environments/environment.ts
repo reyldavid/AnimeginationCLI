@@ -6,7 +6,7 @@ export const environment = {
   useAzure: true, 
   production: false,
   useNgProxy: false,
-  proxyUrl: '',
+  proxyUrl: 'https://cors-anywhere.herokuapp.com/',
   requestUrl: 'https://animegination2.azurewebsites.net/api/',
   localHostUrl: 'http://localhost:65164/api/',
   azureHostUrl: 'https://animegination2.azurewebsites.net/api/'
