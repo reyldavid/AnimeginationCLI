@@ -20,6 +20,15 @@ import 'rxjs/Rx';
         return formattedDate;
     }
 
+    formatCalendarDate(inDate: string): string {
+        const months = ["January", "February", "March", "April", "May", "June", 
+            "July", "August", "September", "October", "November", "December"];
+        let rawDate = new Date(inDate);
+        let formatted = months[rawDate.getMonth()] + " " + rawDate.getDate() 
+            + ", " + rawDate.getFullYear();
+        return formatted;
+    }
+
     getShippingDate(orderDate?: string): string {
         let businessDays = this.globals.deliveryDays; // takes this many business days to deliver
         let counter = 1; // set to 1 to count from next business day
@@ -70,4 +79,5 @@ import 'rxjs/Rx';
         let parsed = camelCase.replace(/([a-z])([A-Z])/g, "$1 $2");
         return parsed;
     }
+
 }
