@@ -55,6 +55,8 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { ShippingInfoComponent } from './shipping-info/shipping-info.component';
 import { CustomerModule } from './customer/customer.module';
+import { FeedCardComponent } from './feed-card/feed-card.component';
+import { StripHtmlTagsPipe } from './strip-html-tags/strip-html-tags.pipe';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { CustomerModule } from './customer/customer.module';
     SpinnerComponent,
     TermsOfUseComponent,
     PrivacyComponent,
-    ShippingInfoComponent
+    ShippingInfoComponent,
+    FeedCardComponent,
+    StripHtmlTagsPipe
   ],
   imports: [
     AppRouterModule,
