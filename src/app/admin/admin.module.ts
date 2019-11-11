@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { AdminGuard } from '../guards/admin.guard';
 import { MediumComponent } from './medium/medium.component';
@@ -33,7 +34,7 @@ import { ListTypeComponent } from '../admin/list-type/list-type.component';
     CommonModule,
     BrowserModule, FormsModule, ReactiveFormsModule, 
     HttpClientModule, AngularFontAwesomeModule,
-    AdminRouterModule
+    AdminRouterModule, DpDatePickerModule
   ],
   declarations: [
     GenreComponent,
@@ -63,6 +64,7 @@ import { ListTypeComponent } from '../admin/list-type/list-type.component';
   exports: [
     BrowserModule, FormsModule, ReactiveFormsModule, 
     HttpClientModule, AngularFontAwesomeModule,
+    DpDatePickerModule,
     GenreComponent,
     GenreEditComponent, 
     GenreAddComponent,
