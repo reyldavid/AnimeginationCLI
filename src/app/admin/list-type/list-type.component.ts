@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ListTypeService } from '../../services/listtypes.service';
 import { ListType } from '../../models/listtype';
 import { Router } from '@angular/router';
-import { SessionService } from '../../services/session.service';
 import { MessageService } from '../../services/message.service';
 
 @Component({

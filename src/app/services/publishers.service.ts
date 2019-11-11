@@ -143,8 +143,6 @@ export class PublishersService {
     }
     else {
         this.messageService.setSpinner(true);
-        let body = JSON.stringify(publisher);
-
         let endpoint = this.helper.getEndPoint(ServiceName.publishers, publisher.PublisherID);
 
         let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
