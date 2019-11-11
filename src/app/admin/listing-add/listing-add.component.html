@@ -1,3 +1,92 @@
-<p>
-  listing-add works!
-</p>
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+
+  <h2>Add New</h2>
+  <div class="py-1"></div>
+
+  <form (submit)="onSubmit(); listingForm.reset()" #listingForm="ngForm">
+
+      <div class="form-group">
+          <label for="listType">List Type</label>
+          <!-- <select (change)="selectListType($event.target.value)"  -->
+          <select [(ngModel)]="listing.ListTypeID" 
+            class="form-control" id="listType" name="listType">
+              <option *ngFor="let listType of listTypes" 
+                  value={{listType.ListTypeID}} 
+                  [selected]="listing.ListingTypeID == listType.ListTypeID">
+                      {{listType.Description}}
+              </option>
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rank">Position <span class="anime-color">*</span></label>
+        <input type="number" min="1" max="20" step="1" required
+              name="rank"
+              class="form-control" id="rank" 
+              [(ngModel)]="listing.Rank" />
+      </div>
+
+      <div class="form-group">
+          <label for="product">Product</label>
+          <!-- <select (change)="selectProduct($event.target.value)"  -->
+          <select [(ngModel)]="listing.ProductID" 
+            class="form-control" id="product" name="product">
+              <option *ngFor="let product of products" 
+                  value={{product.ProductID}} 
+                  [selected]="listing.ProductID == product.ProductID">
+                      {{product.ProductTitle}}
+              </option>
+          </select>
+      </div>
+
+      <!-- <div class="form-group">
+          <div class="control-mb">Effective Date <span class="anime-color">*</span></div>
+          <div>
+            <dp-date-picker #effectiveDatePicker 
+              name="effectiveDatePicker" [mode]="'day'"
+              [config]="datePickerConfig" 
+              (onChange)="onEffectiveDateChange($event)" 
+              required>
+            </dp-date-picker>
+            <button class="hidden" (click)="open()"></button> 
+            <button class="hidden" (click)="close()"></button>
+          </div>
+      </div> -->
+
+      <div class="form-group">
+        <label for="effectivDatePicker">Effective Date <span class="anime-color">*</span></label>
+        <input name="effectivDatePicker" required 
+              class="form-control" id="effectivDatePicker" 
+              [theme]="'dp-material'" 
+              [dpDayPicker]="datePickerConfig"
+              [(ngModel)]="dateEffective" />
+      </div>
+
+      <div class="form-group">
+        <label for="expirationDatePicker">Expiration Date <span class="anime-color">*</span></label>
+        <input name="expirationDatePicker" required 
+              class="form-control" id="expirationDatePicker" 
+              [theme]="'dp-material'" 
+              [dpDayPicker]="datePickerConfig"
+              [(ngModel)]="dateExpiration" />
+      </div>
+
+      <div class="py-3">
+          <button class="btn btn-block anime-button-lg font-size-16" 
+            type="submit"
+            [disabled]="!listingForm.valid">Submit
+          </button>
+      </div>
+
+      <div>Listing Model</div>
+      {{ listingForm.value | json }}
+      {{ listingForm.valid }}
+
+      <div class="pb-3"></div>
+      <div *ngIf="submitted && !listingForm.valid" class="alert alert-success pb-3">
+          Your message was successfully submitted.  Thank you.
+      </div>
+    </form>
+  </div> 
+</div>
