@@ -1,0 +1,5 @@
+<div class="pb-2">
+    <div class="p6" (click)="openLinkInBrowser()">{{feed.title}}</div>
+    <div class="pl-3">{{feed.description | stripHtmlTags}}</div>
+    <div class="pl-4 small-gray">Posted on: {{feed.pubDate | date:'full'}}</div>
+</div>
