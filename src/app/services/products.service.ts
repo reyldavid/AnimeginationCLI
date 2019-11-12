@@ -14,18 +14,18 @@ import { ServiceName } from '../models/service';
 import { ApiProduct, Product } from '../models/product';
 import { TokenModel } from '../models/tokenmodel';
 import { ApiProductCache, ApiProductsCache } from '../models/dictionary';
-import 'rxjs/Rx';
 // import { Subscription } from 'rxjs/Subscription';
 import { MessageService } from '../services/message.service';
 import { MediaService } from '../services/media.service';
 import { CategoryService } from '../services/categories.service';
 import { PublishersService } from '../services/publishers.service';
 //import 'rxjs/add/operator/map';
-import * as _ from 'lodash';
 import { Medium } from '../models/medium';
 import { Category } from '../models/category';
 import { Publisher } from '../models/publisher';
 import { reject } from 'q';
+import 'rxjs/Rx';
+import * as _ from 'lodash';
 
 @Injectable({
     providedIn: 'root'
@@ -50,6 +50,10 @@ import { reject } from 'q';
         if (!this._animeProducts[0]) {
             this._animeProducts[0] = data;
         }
+        let __this = this;
+        _.map(data, function(prod: ApiProduct) {
+            __this._animeProduct[prod.ProductID] = prod;
+        })
     }
 
     setProductCache(data: ApiProduct, id:number) {
