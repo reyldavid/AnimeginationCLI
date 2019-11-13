@@ -26,6 +26,7 @@ import { SessionService } from './services/session.service';
 import { UtilityService } from './services/utilities.service';
 import { UserNoteService } from './services/userNotes.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { ProductsResolve } from './guards/products-resolve.guard';
 import { AppRouterModule } from './app-router/app-router.module';
 
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -113,7 +114,8 @@ import { StripHtmlTagsPipe } from './strip-html-tags/strip-html-tags.pipe';
     SessionService, 
     UserNoteService, 
     UtilityService, 
-    AuthorizationGuard
+    AuthorizationGuard, 
+    ProductsResolve
   ],
   bootstrap: [AppComponent]
 })

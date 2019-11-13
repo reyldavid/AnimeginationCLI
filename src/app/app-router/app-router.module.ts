@@ -22,13 +22,15 @@ import { PrivacyComponent } from '../privacy/privacy.component';
 import { AuthorizationGuard as AuthGuard} from '../guards/authorization.guard';
 import { CanDeactivateGuard as DeactivateGuard } from '../guards/can-deactivate.guard';
 import { AdminGuard } from '../guards/admin.guard';
+import { ProductsResolve } from '../guards/products-resolve.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'list', component: ProductsListComponent },
   { path: 'detail', component: ProductComponent, canDeactivate: [DeactivateGuard] },
-  { path: 'detail/:productID', component: ProductComponent, canDeactivate: [DeactivateGuard] },
+  { path: 'detail/:productID', component: ProductComponent, 
+            resolve: { product: ProductsResolve }, canDeactivate: [DeactivateGuard] },
   { path: 'slice/:listTypeID', component: ProductsSliceComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },

@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Globals } from '../globals';
 import { Order } from '../models/orderModel';
 import { CartType } from '../models/carttype';
+import { ProductsService } from '../services/products.service';
 // import { $ } from 'protractor';
 import * as _ from 'lodash';
 declare var $: any;
@@ -35,7 +36,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
               private _sessionService: SessionService, 
               private _messageService: MessageService,
               private _orderService: OrderService,  
+              private _productsService: ProductsService,
               private _globals: Globals ) {
+        
+        console.log("navigation construct");
         _loginService.userLoggedIn.subscribe(firstName => {
             this.userFirstName = firstName;
         });
@@ -74,12 +78,17 @@ export class NavigationComponent implements OnInit, OnDestroy {
             this._sessionService.IsAdmin = hasAdmin;
         })
 
-    }
+        _productsService.getAnimeProducts().subscribe(products => {
+            _productsService.setProductsCache(products);
+      
+            console.log("aya products cached");
+        })
+  }
 
   ngOnInit(): any {
       this.isAdmin = false;
       this._sessionService.IsAdmin = false;
-      console.log('home init');
+      console.log('navigation init');
     //   this.showFooter = true;
     if (this._sessionService.isAuthenticated()) {
         this.orderSubscription = this._orderService.getOrderTotals(

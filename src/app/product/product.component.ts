@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { ApiProduct } from '../models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
@@ -20,12 +20,14 @@ export class ProductComponent implements OnInit {
 
     product: ApiProduct;
     quantity: number = 1;
+    loaded: boolean = false;
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _productService: ProductsService, 
                 private _messageService: MessageService, 
                 private _cartServce: CartService, 
-                private _sessionService: SessionService ) { 
+                private _sessionService: SessionService,
+                private _cdr: ChangeDetectorRef ) { 
                   console.log('product details construct');
     }
 
@@ -35,9 +37,11 @@ export class ProductComponent implements OnInit {
             {
                 this.product = product;
 
-                this._messageService.setSpinner(false);
+                this.loaded = true;
+                this._cdr.detectChanges();
                 
                 window.scrollTo(0,0);
+                this._messageService.setSpinner(false);
             });
     }
 
