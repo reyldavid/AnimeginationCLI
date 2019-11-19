@@ -5,6 +5,7 @@ import { ListType } from "./listtype";
 import { States } from "./states";
 import { Medium } from "./medium";
 import { Publisher } from "./publisher";
+import { Recommendation } from "./recommendation";
 
 export interface Dictionary<T> {
     [key: string]: T
@@ -44,4 +45,8 @@ export class MediaCache {
 
 export class PublisherCache {
     key: Dictionary<Publisher[]> = {}
+}
+
+export class RecommendsCache {
+    key: Dictionary<Recommendation[]> = {}
 }

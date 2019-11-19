@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-10 offset-sm-1 pb-3">
+        <h2>Recommendations</h2>
+        <div class="row pt-3 pb-2">
+          <div class="col-6">
+            <span class="p6 py-3" [routerLink]="['/recommend-add']">Create New</span>
+          </div>
+        </div>
+        <ng-container *ngFor="let recommend of recommends">
+          <div class="row p-2 my-2 all-borders-black">
+            <div class="col-9 bold">{{recommend?.title}}</div>
+            <div class="col-3 bold">{{recommend?.ratingId}} stars</div>
+            <div class="col-12 font-italic">{{recommend?.recommendation}}</div>
+            <div class="col-4">by {{recommend?.reviewer}}</div>
+            <div class="col-8">{{recommend?.reviewerEmployer}}</div>
+            <!-- <div class="col-3 d-flex justify-content-end">
+                <span class="p6 px-3" [routerLink]="['/recommend-edit']" 
+                  [queryParams]="{ recommendID: recommend?.RecommendID }">Edit</span> | 
+                <span class="p6 px-3" (click)="OnDeleteRecommend(recommend)">Delete</span> 
+            </div> -->
+          </div>
+        </ng-container>
+    </div>
+</div>

@@ -25,5 +25,6 @@ export enum ServiceName {
     getClaim = "getclaim", 
     media = "media",
     publishers = "publishers",
-    all = "all"
+    all = "all",
+    recommendation = "recommends"
 }
