@@ -58,6 +58,7 @@ import { ShippingInfoComponent } from './shipping-info/shipping-info.component';
 import { CustomerModule } from './customer/customer.module';
 import { FeedCardComponent } from './feed-card/feed-card.component';
 import { StripHtmlTagsPipe } from './strip-html-tags/strip-html-tags.pipe';
+import { ReydavidComponent } from './reydavid/reydavid.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { StripHtmlTagsPipe } from './strip-html-tags/strip-html-tags.pipe';
     PrivacyComponent,
     ShippingInfoComponent,
     FeedCardComponent,
-    StripHtmlTagsPipe
+    StripHtmlTagsPipe,
+    ReydavidComponent
   ],
   imports: [
     AppRouterModule,

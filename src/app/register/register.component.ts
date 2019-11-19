@@ -158,3 +158,48 @@ export class RegisterComponent implements OnInit {
     }
   }
 }
+
+  // this.accountService.userLogin('megumi', 'Chikush0').subscribe( token => {
+  //   console.log('user login');
+  //   console.log(token);
+  // })
+
+  //   let registerModel1: RegisterModel = {
+  //     UserId: "97547f76-b0c3-40af-9105-b71be7822182",
+  //     Username: "reydavid",
+  //     RoleName: "Admin",
+  //     Password: "Chikush0",
+  //     ConfirmPassword: "Chikush0",  
+  //     FirstName: "rey",
+  //     LastName: "david",
+  //     Address: "69 Aodori",
+  //     City: "Ikebukuro",
+  //     StateId: 8,
+  //     ZipCode: "94551",
+  //     CellPhone: "9259842849",
+  //     HomePhone: "9255556969",
+  //     Email: "rdavid47@comcast.net",
+  //     CreditCardType: "VISA",
+  //     CreditCardNumber: "1234567890123456",
+  //     CreditCardExpiration: "12/26"
+  // }
+
+  // let userAccountModel2 = {
+  //   UserId: "67462d6b-e940-40e7-9b30-f5e82a7e263c",
+  //   UserName: "sakura", 
+  //   FirstName: "sakura",
+  //   LastName: "yokomine",
+  //   Address: "69 San choome",
+  //   City: "Asakusa",
+  //   State: "CA", 
+  //   StateId: 8,
+  //   ZipCode: "94551",
+  //   CellPhone: "9259843950",
+  //   HomePhone: "4086906969",
+  //   Email: "sakura@animegination.net",
+  //   Created: "", 
+  //   CreditCardType: "VISA",
+  //   CreditCardNumber: "1234567890123456",
+  //   CreditCardExpiration: "12/24"
+  // }
+

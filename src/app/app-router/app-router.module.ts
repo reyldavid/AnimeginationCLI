@@ -23,6 +23,7 @@ import { AuthorizationGuard as AuthGuard} from '../guards/authorization.guard';
 import { CanDeactivateGuard as DeactivateGuard } from '../guards/can-deactivate.guard';
 import { AdminGuard } from '../guards/admin.guard';
 import { ProductsResolve } from '../guards/products-resolve.guard';
+import { ReydavidComponent } from '../reydavid/reydavid.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,7 +47,8 @@ const routes: Routes = [
   { path: 'legal', component: LegalComponent }, 
   { path: 'ratings', component: RatingsComponent }, 
   { path: 'terms-of-use', component: TermsOfUseComponent }, 
-  { path: 'privacy', component: PrivacyComponent }
+  { path: 'privacy', component: PrivacyComponent }, 
+  { path: 'reydavid', component: ReydavidComponent }
 ]
 // { path: 'genre/:categoryID', component: CategoryListComponent },
 

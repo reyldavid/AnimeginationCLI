@@ -9,8 +9,8 @@ import { ListTypeService } from '../../services/listtypes.service';
 import { ListType } from '../../models/listtype';
 import { ListingType } from '../../models/listingTypes';
 import { ProductsService } from '../../services/products.service';
-import * as _ from 'lodash';
 import { Product, ApiProduct } from 'src/app/models/product';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-listing-add',
