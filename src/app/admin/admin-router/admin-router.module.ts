@@ -22,6 +22,8 @@ import { ProductInfoAddComponent } from '../product-info-add/product-info-add.co
 import { ListTypeComponent } from '../list-type/list-type.component';
 import { ListingEditComponent } from '../listing-edit/listing-edit.component';
 import { ListingAddComponent } from '../listing-add/listing-add.component';
+import { RecommendationsComponent } from '../recommendations/recommendations.component';
+import { RecommendAddComponent } from '../recommend-add/recommend-add.component';
 
 const routes: Routes = [
   { path: 'medium', component: MediumComponent, canActivate: [AdminGuard] }, 
@@ -43,7 +45,9 @@ const routes: Routes = [
   { path: 'listing-add', component: ListingAddComponent, canActivate: [AdminGuard] }, 
   { path: 'customer-note', component: CustomerNoteComponent, canActivate: [AdminGuard] }, 
   { path: 'user-feedback', component: UserFeedbackComponent, canActivate: [AdminGuard] },
-  { path: 'list-type', component: ListTypeComponent, canActivate: [AdminGuard] } 
+  { path: 'list-type', component: ListTypeComponent, canActivate: [AdminGuard] },
+  { path: 'recommends', component: RecommendationsComponent, canActivate: [AdminGuard] },
+  { path: 'recommend-add', component: RecommendAddComponent, canActivate: [AdminGuard] }
 ]
 
 @NgModule({

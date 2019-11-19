@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-sm-10 offset-sm-1">
+
+    <h2>Add New</h2>
+    <div class="py-1"></div>
+
+    <!-- <form (submit)="onSubmit(); recommendForm.reset()" #recommendForm="ngForm"> -->
+    <form (submit)="onSubmit(); recommendForm.reset()" #recommendForm="ngForm">
+        <div class="form-group">
+            <label for="title">Title <span class="anime-color">*</span></label>
+            <input type="text" required
+                  name="title"
+                  class="form-control" id="title" 
+                  [(ngModel)]="recommendModel.title" />
+        </div>
+        <div class="form-group">
+            <label for="ratingId">Rating <span class="anime-color">*</span></label>
+            <input type="number" required min="1" max="5" step="1"
+                  name="ratingId"
+                  class="form-control" id="ratingId" 
+                  [(ngModel)]="recommendModel.ratingId" />
+        </div>
+        <div class="form-group">
+            <label for="recommendation">Recommendation <span class="anime-color">*</span></label>
+            <textarea rows="5" required
+                name="recommendation"
+                class="form-control" id="recommendation" 
+                [(ngModel)]="recommendModel.recommendation">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label for="reviewer">Reviewer <span class="anime-color">*</span></label>
+            <input type="text" required
+                  name="reviewer"
+                  class="form-control" id="reviewer" 
+                  [(ngModel)]="recommendModel.reviewer" />
+        </div>
+        <div class="form-group">
+            <label for="reviewerEmployer">Reviewer's Employer </label>
+            <input type="text" 
+                  name="reviewerEmployer"
+                  class="form-control" id="reviewerEmployer" 
+                  [(ngModel)]="recommendModel.reviewerEmployer" />
+        </div>
+        <div class="form-group">
+            <label for="employerUrl">Employer URL </label>
+            <input type="text" 
+                  name="employerUrl"
+                  class="form-control" id="employerUrl" 
+                  [(ngModel)]="recommendModel.employerUrl" />
+        </div>
+
+      <div class="form-group">
+        <label for="reviewDatePicker">Review Date <span class="anime-color">*</span></label>
+        <input name="reviewDatePicker" required 
+              class="form-control" id="reviewDatePicker" 
+              [theme]="'dp-material'" 
+              [dpDayPicker]="datePickerConfig"
+              [(ngModel)]="reviewDate" />
+      </div>
+
+      <div class="py-3">
+          <button class="btn btn-block anime-button-lg font-size-16" 
+            type="submit"
+            [disabled]="!recommendForm.valid">Submit
+          </button>
+      </div>
+
+      <div>Recommendation Model</div>
+      {{ recommendForm.value | json }}
+      {{ recommendForm.valid }}
+
+      <div class="pb-3"></div>
+      <div *ngIf="submitted && !recommendForm.valid" class="alert alert-success pb-3">
+          Your message was successfully submitted.  Thank you.
+      </div>
+    </form>
+  </div> 
+</div>

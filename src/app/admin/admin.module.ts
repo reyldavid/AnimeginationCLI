@@ -28,6 +28,9 @@ import { ListingEditComponent } from '../admin/listing-edit/listing-edit.compone
 import { ListingAddComponent } from '../admin/listing-add/listing-add.component';
 import { ProductInfoAddComponent } from '../admin/product-info-add/product-info-add.component';
 import { ListTypeComponent } from '../admin/list-type/list-type.component';
+import { RecommendationsComponent } from '../admin/recommendations/recommendations.component';
+import { RecommendAddComponent } from '../admin/recommend-add/recommend-add.component';
+import { RecommendEditComponent } from '../admin/recommend-edit/recommend-edit.component';
 
 @NgModule({
   imports: [
@@ -56,7 +59,10 @@ import { ListTypeComponent } from '../admin/list-type/list-type.component';
     ListingEditComponent,
     ListingAddComponent,
     ProductInfoAddComponent,
-    ListTypeComponent
+    ListTypeComponent,
+    RecommendationsComponent,
+    RecommendAddComponent,
+    RecommendEditComponent
   ],
   providers: [
     AdminGuard
@@ -76,7 +82,8 @@ import { ListTypeComponent } from '../admin/list-type/list-type.component';
     ProductInfoComponent,
     ListingComponent,
     CustomerNoteComponent,
-    UserFeedbackComponent
+    UserFeedbackComponent,
+    RecommendationsComponent
   ]
 })
 export class AdminModule { }
