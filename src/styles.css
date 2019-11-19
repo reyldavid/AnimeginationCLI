@@ -59,6 +59,9 @@ h5.panel-title {
 .anime-color {
     color: #FFA80B;
 }
+.anime-background {
+    background-color: #FFA80B;
+}
 .badge-anime {
     color: white;
     background-color: #FFA80B;
@@ -181,6 +184,32 @@ a .card.frame {
 
 .image-feature {
     width: 400px;
+}
+.image-resume {
+    margin-top: 30px;
+    width: 350px;
+}
+.thumbnail1 {
+    width: 60px;
+}
+.thumbnail2 {
+    width: 80px;
+}
+.thumbnail3 {
+    width: 100px;
+}
+.plus {
+    width: 70px;
+    padding: 0 25px;
+}
+.stars-label {
+    vertical-align: middle;
+    min-width:90px;
+}
+
+.spanhalf .image-linkedin {
+    float: right;
+    height: 100px;
 }
 
 .vertical-scroll {
@@ -370,6 +399,9 @@ a.anchor:hover {
 }
 .all-borders-black {
     border: 1px dashed #444444;
+}
+.all-borders-gray {
+    border: 1px solid gray;
 }
 
 .pis40 {

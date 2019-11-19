@@ -1,0 +1,260 @@
+<div class="row">
+    <div class="child col-12 col-md-6 col-lg-5 offset-lg-1 order-1">
+      <div class="panel-body panel-default">
+          <img src="https://reydavid.blob.core.windows.net/assets/ReyDavid2018.jpg"
+                alt="Rey David" class="image-resume img-responsive" />
+      </div>
+    </div>
+    <div class="child col-12 col-md-6 col-lg-6 pl-3 order-2">
+        <h3>REY DAVID</h3>
+        <h4>Senior Software Engineer / Software Architect</h4>
+        <img src="https://reydavid.blob.core.windows.net/assets/Rating 5 Stars.png"
+             alt="5 stars" class="img-responsive" />
+        <div class="pt-3"></div>
+        <table>
+            <tr>
+                <td>List Price: </td>
+                <td><s>{{ 999999 | currency: 'USD':true }} </s></td>
+            </tr>
+            <tr>
+                <td><strong>Your Price: </strong></td>
+                <td><strong><span class="text-danger font-size-16 pl-2">Add to Cart for Pricing Info </span></strong></td>
+            </tr>
+        </table>
+        <div class="pt-3">
+            <div class="fine-print alert-content">Only 1 left in stock - Order soon!</div>
+
+            <div>Quantity: 
+                <input type="number" min="1" max="10" step="1" value=1>
+            </div>
+
+            <button class="btn btn-default bgc-light" data-toggle="modal" data-target="#buyMeModal">
+                <img src="https://reydavid.blob.core.windows.net/assets/shopping-cart.png"
+                        alt="Buy in website now" style="max-width: 130px;" />
+            </button>
+            <div class="fine-print pt-3">Free US Economy Shipping at $49</div>
+            <div class="fine-print">This item is available for shipping only in the Northern California East Bay</div>
+            <div class="tiny-gray">Item: reydavid</div>
+        </div>
+        <div class="pt-3">
+            <div class="pb-2">Share your thoughts on this item with other customers</div>
+            <div>
+                <button type="button" class="btn btn-default btn-outline-anime font-size-12 bold" 
+                    (click)="WriteReview()">Write a Review</button>
+            </div>
+        </div>
+        <div class="p-3"></div>
+    </div>
+    <div class="child col-12 col-md-6 order-3">
+        <div class="col-md-10 offset-md-1">
+            <h4>Description</h4>
+            <p>
+                {{description}}
+            </p>
+            <div class="d-none d-lg-block pb-1"></div>
+            <h5>Need technical Tips and Tricks?</h5>
+            <div class="spanhalf">
+                <a href="https://www.linkedin.com/in/reyldavid/" target="_blank">
+                    <img src="http://reydavid.blob.core.windows.net/assets/LinkedIn3.png" 
+                        alt="Linked In" class="image-linkedin img-responsive" />
+                </a>
+                <p>
+                    Visit Rey David's Developers Blog at <a href='http://davidsdotnetlines.blogspot.com' 
+                    target='_blank'>http://DavidsDotNetLines.BlogSpot.com</a> 
+                    for tips and tricks on Angular, Asp.Net, SQL Server, IIS and Https, 
+                    Windows 8 App development, and much more. 
+                    <a href='http://davidsdotnetlines.blogspot.com' target='_blank'>Check it out now.</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="child col-12 col-md-6 order-4">
+        <div class="col-md-10">
+            <h4>Product Details</h4>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="bg-lightgray">Product Dimensions: </td>
+                    <td>Height: 5 ft 7 in</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Product Availability: </td>
+                    <td>Currently unavailable</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Most recent golf score: </td>
+                    <td>83 strokes on a Par 71</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Software Dev Experience: </td>
+                    <td>30 years</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Address: </td>
+                    <td>60 Windsor Court, Danville, CA 94506</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Phone: </td>
+                    <td>(925)915-0230</td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Email: </td>
+                    <td><a href="mailto:rdavid47@comcast.net">rdavid47@comcast.net</a></td>
+                </tr>
+                <tr>
+                    <td class="bg-lightgray">Overall Rating: </td>
+                    <td>
+                      <img src="https://reydavid.blob.core.windows.net/assets/Rating 5 Stars.png"
+                        alt="5 stars" class="img-responsive" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="child col-12 col-lg-5 order-6 order-lg-5">
+        <div class="col-lg-10 offset-lg-1">
+            <h4>Customer Reviews</h4>
+            <div class="font-size-16 pt-1">16 customer ratings</div>
+            <div>
+                <div class="inline-block pr-3">
+                    <img src="https://reydavid.blob.core.windows.net/assets/Rating 5 Stars.png"
+                    alt="5 stars" class="img-responsive" />
+                </div>
+                <div class="inline font-size-16">4.94 out of 5</div>
+            </div>
+
+            <div class="pt-2">
+                <div class="row py-1 my-1">
+                    <div class="col-2 text-truncate stars-label">
+                        5 stars
+                    </div>
+                    <div class="col-7 all-borders-gray">
+                        <div class="bar47"></div>
+                    </div>
+                    <div class="col-2 text-center align-middle">
+                        100%
+                    </div>
+                </div>
+                <div class="row py-1 my-1">
+                    <div class="col-2 text-truncate stars-label">
+                        4 stars
+                    </div>
+                    <div class="col-7 all-borders-gray">
+                        <div class="bar03"></div>
+                    </div>
+                    <div class="col-2 text-center align-middle">
+                        0%
+                    </div>
+                </div>
+                <div class="row py-1 my-1">
+                    <div class="col-2 text-truncate stars-label">
+                        3 stars
+                    </div>
+                    <div class="col-7 all-borders-gray">
+                    </div>
+                    <div class="col-2 text-center align-middle">
+                        0%
+                    </div>
+                </div>
+                <div class="row py-1 my-1">
+                    <div class="col-2 text-truncate stars-label">
+                        2 stars
+                    </div>
+                    <div class="col-7 all-borders-gray">
+                    </div>
+                    <div class="col-2 text-center align-middle">
+                        0%
+                    </div>
+                </div>
+                <div class="row py-1 my-1">
+                    <div class="col-2 text-truncate stars-label">
+                        1 star
+                    </div>
+                    <div class="col-7 all-borders-gray">
+                    </div>
+                    <div class="col-2 text-center align-middle">
+                        0%
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="child col-12 col-lg-7 order-5 order-lg-6">
+        <h4>Frequently Bought Together</h4>
+        <div class="pt-3">
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/ReyDavid2018.jpg"
+                    alt="Rey David" class="thumbnail3 img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Plus.jpg"
+                    alt="Plus" class="plus img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Angular.png"
+                    alt="Angular" class="thumbnail3 img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Plus.jpg"
+                    alt="Plus" class="plus img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/DotNet.jpg"
+                    alt="Microsoft .Net" class="thumbnail2 img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Plus.jpg"
+                    alt="Plus" class="plus img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/AspNet.png"
+                    alt="ASP.Net" class="thumbnail3 img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Plus.jpg"
+                    alt="Plus" class="plus img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/SqlServer2.png"
+                    alt="SQL Server" class="thumbnail3 img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Plus.jpg"
+                    alt="Plus" class="plus img-responsive" />
+            </div>
+            <div class="inline-block pb-3">
+                <img src="https://reydavid.blob.core.windows.net/assets/Windows.png"
+                    alt="Windows" class="thumbnail1 img-responsive" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="buyMeModal" tabindex="-1" role="dialog" 
+        aria-labelledby="buyMeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="buyMeModalLabel">Add to Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>To complete your order, please contact Rey David by phone 
+                    at (925)915-0230 or by email at 
+                    <a href="mailto:rdavid47@comast.net">rdavid47@comast.net</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-similars [productID]="1291"></app-similars>
+
+<app-footer-product></app-footer-product>
