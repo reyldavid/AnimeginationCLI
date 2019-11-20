@@ -59,6 +59,7 @@ import { CustomerModule } from './customer/customer.module';
 import { FeedCardComponent } from './feed-card/feed-card.component';
 import { StripHtmlTagsPipe } from './strip-html-tags/strip-html-tags.pipe';
 import { ReydavidComponent } from './reydavid/reydavid.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ReydavidComponent } from './reydavid/reydavid.component';
     ShippingInfoComponent,
     FeedCardComponent,
     StripHtmlTagsPipe,
-    ReydavidComponent
+    ReydavidComponent,
+    ReviewComponent
   ],
   imports: [
     AppRouterModule,

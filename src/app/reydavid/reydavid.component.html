@@ -114,13 +114,13 @@
     <div class="child col-12 col-lg-5 order-6 order-lg-5">
         <div class="col-lg-10 offset-lg-1">
             <h4>Customer Reviews</h4>
-            <div class="font-size-16 pt-1">16 customer ratings</div>
+            <div class="font-size-16 pt-1">{{ratingsCount}} customer ratings</div>
             <div>
                 <div class="inline-block pr-3">
                     <img src="https://reydavid.blob.core.windows.net/assets/Rating 5 Stars.png"
                     alt="5 stars" class="img-responsive" />
                 </div>
-                <div class="inline font-size-16">4.94 out of 5</div>
+                <div class="inline font-size-16">{{ratingsAverage}} out of 5</div>
             </div>
 
             <div class="pt-2">
@@ -128,22 +128,22 @@
                     <div class="col-2 text-truncate stars-label">
                         5 stars
                     </div>
-                    <div class="col-7 all-borders-gray">
+                    <div class="col-7 all-borders-gray px-0">
                         <div class="bar47"></div>
                     </div>
                     <div class="col-2 text-center align-middle">
-                        100%
+                        94%
                     </div>
                 </div>
                 <div class="row py-1 my-1">
                     <div class="col-2 text-truncate stars-label">
                         4 stars
                     </div>
-                    <div class="col-7 all-borders-gray">
+                    <div class="col-7 all-borders-gray px-0">
                         <div class="bar03"></div>
                     </div>
                     <div class="col-2 text-center align-middle">
-                        0%
+                        6%
                     </div>
                 </div>
                 <div class="row py-1 my-1">
@@ -230,6 +230,12 @@
         </div>
     </div>
 
+</div>
+
+<div class="child row pt-4 px-lg-5">
+    <div *ngFor="let recommend of recommends" class="col-12 col-lg-6">
+        <app-review [review]="recommend"></app-review>
+    </div>
 </div>
 
 <div class="modal fade" id="buyMeModal" tabindex="-1" role="dialog" 
