@@ -1,0 +1,25 @@
+<div class="pb-4">
+  <div>
+      <div class="inline-block pr-3">
+          <img src="https://reydavid.blob.core.windows.net/assets/User.png"
+          alt="User" class="thumbnail0" />
+      </div>
+      <div class="inline">
+        <span class="font-size-16 bold">{{recommendation?.reviewer}}</span>
+        <span>, {{recommendation?.reviewerEmployer}}</span>
+      </div>
+  </div>
+  <div>
+      <div class="inline-block pr-3">
+          <img src="https://reydavid.blob.core.windows.net/assets/Rating {{recommendation?.ratingId}} Stars.png"
+          alt="User" class="img-responsive" />
+      </div>
+      <div class="inline font-size-16">{{recommendation?.created | date: 'MMM d, y'}}</div>
+  </div>
+  <div class="bold">
+    {{recommendation?.title}}
+  </div>
+  <div class="font-italic">
+    {{recommendation?.recommendation}}
+  </div>
+</div>
