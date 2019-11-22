@@ -4,7 +4,7 @@ html, body {
     font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif
 }
 body {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
 }
 
 .row {
@@ -32,6 +32,9 @@ input[type="number"] {
 .bold {
     font-weight: bold !important;
 }
+.normal {
+    font-style: normal;
+}
 .inline {
     display: inline;
 }
@@ -40,6 +43,9 @@ input[type="number"] {
 }
 .hidden {
     visibility: hidden;
+}
+.nodisplay {
+    display: none !important;
 }
 .bottom-border {
     border-bottom: 1px solid #dddddd;
@@ -75,7 +81,7 @@ h5.panel-title {
     padding-bottom: 4px;
 }
 .tiny-gray {
-    font-size: 10px;
+    font-size: 12px;
     color: gray;
 }
 .small-gray {
@@ -269,17 +275,14 @@ a .card.frame {
 .smaller {
     font-size: 0.8em !important;
 }
-.font-size-12 {
+.font-em-10 {
     font-size: 1em !important;
 }
-.font-size-16 {
+.font-em-12 {
     font-size: 1.2em !important;
 }
-.font-size-18 {
+.font-em-14 {
     font-size: 1.4em !important;
-}
-.font-size-20 {
-    font-size: 1.6em !important;
 }
 .link-normal {
     color: #0066c0;

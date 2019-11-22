@@ -5,7 +5,7 @@
           alt="User" class="thumbnail0" />
       </div>
       <div class="inline">
-        <span class="font-size-16 bold">{{recommendation?.reviewer}}</span>
+        <span class="font-em-10 bold">{{recommendation?.reviewer}}</span>
         <span>, {{recommendation?.reviewerEmployer}}</span>
       </div>
   </div>
@@ -14,12 +14,21 @@
           <img src="https://reydavid.blob.core.windows.net/assets/Rating {{recommendation?.ratingId}} Stars.png"
           alt="User" class="img-responsive" />
       </div>
-      <div class="inline font-size-16">{{recommendation?.created | date: 'MMM d, y'}}</div>
+      <div class="inline font-em-10">{{recommendation?.created | date: 'MMM d, y'}}</div>
   </div>
   <div class="bold">
     {{recommendation?.title}}
   </div>
   <div class="font-italic">
     {{recommendation?.recommendation}}
+    <div class="inline pull-right pb-2">
+        <button type="button" [class.nodisplay]="helpful" class="btn btn-default btn-outline-anime inline mx-2" 
+            (click)="OnHelpful()">Helpful</button>
+        <i [class.nodisplay]="!thanks" class="fa fa-check"></i>
+        <span [class.nodisplay]="!thanks" class="alert-content normal px-2">Thank you for your feedback!</span>
+        <button type="button" [class.nodisplay]="notHelpful" class="btn btn-default btn-outline-anime inline mx-2" 
+          (click)="OnNotHelpful()">Not Helpful</button>
+    </div>
   </div>
+
 </div>

@@ -9,6 +9,9 @@ import { Recommendation } from '../models/recommendation';
 export class ReviewComponent implements OnInit {
 
   recommendation: Recommendation;
+  helpful: boolean = false;
+  notHelpful: boolean = false;
+  thanks: boolean = false;
 
   @Input() set review(review: Recommendation) {
     this.recommendation = review;
@@ -18,6 +21,20 @@ export class ReviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  OnHelpful() {
+    if (!this.notHelpful) {
+      this.helpful = true;
+    }
+    this.thanks = true;
+  }
+
+  OnNotHelpful() {
+    if (!this.helpful) {
+      this.notHelpful = true;
+    }
+    this.thanks = true;
   }
 
 }
