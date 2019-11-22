@@ -57,7 +57,7 @@
                 <strong>Order Total</strong>
             </div>
             <div class="col-4 col-lg-6 text-right">
-                <strong class="text-danger font-size-16">
+                <strong class="text-danger font-em-10">
                     {{order?.totals | currency:'USD':'symbol'}}
                 </strong>
             </div>
@@ -65,7 +65,7 @@
     </div>
     <div class="row" *ngIf="showActionButton">
         <div class="col-10 offset-1 col-sm-11 offset-sm-1 col-md-12 offset-md-0 pb-3">
-            <button class="btn btn-block anime-button-lg font-size-16" 
+            <button class="btn btn-block anime-button-lg font-em-10" 
                     (click)="goCheckout()">Proceed to Checkout</button>
         </div>
     </div>
