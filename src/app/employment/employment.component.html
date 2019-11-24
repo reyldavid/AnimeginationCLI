@@ -1,0 +1,19 @@
+<div class="pb-3">
+
+    <div class="spanhalf">
+        <img src="http://reydavid.blob.core.windows.net/assets/{{employment?.EmployerImage}}" 
+            alt="{{employer?.EmployerName}}" class="image-logo img-responsive" />
+        <div>
+            <span class="bold">{{employment?.EmployerName}}</span>
+            <span> in {{employment?.EmployerLocation}}</span>
+        </div>
+        <div>
+          <span class="bold font-italic">{{employment?.EmploymentTitle}}</span>
+          <span class="pl-3">{{employment?.EmploymentFrom}} - {{employment?.EmploymentTo}}</span>
+        </div>
+    </div>
+
+    <ul>
+      <li *ngFor="let detail of details">{{detail}}</li>
+    </ul>
+</div>
