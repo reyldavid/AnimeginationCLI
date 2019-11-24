@@ -11,3 +11,7 @@
 .no-bullets {
     list-style-type: none;
 }
+a.card-link {
+    font-size: 1.5rem;
+    color: #FFA80B !important;
+}

@@ -60,6 +60,8 @@ import { FeedCardComponent } from './feed-card/feed-card.component';
 import { StripHtmlTagsPipe } from './strip-html-tags/strip-html-tags.pipe';
 import { ReydavidComponent } from './reydavid/reydavid.component';
 import { ReviewComponent } from './review/review.component';
+import { EmploymentService } from './services/employment.service';
+import { EmploymentComponent } from './employment/employment.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,8 @@ import { ReviewComponent } from './review/review.component';
     FeedCardComponent,
     StripHtmlTagsPipe,
     ReydavidComponent,
-    ReviewComponent
+    ReviewComponent,
+    EmploymentComponent
   ],
   imports: [
     AppRouterModule,
@@ -118,6 +121,7 @@ import { ReviewComponent } from './review/review.component';
     SessionService, 
     UserNoteService, 
     UtilityService, 
+    EmploymentService,
     AuthorizationGuard, 
     ProductsResolve
   ],

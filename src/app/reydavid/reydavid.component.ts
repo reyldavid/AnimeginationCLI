@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recommendation } from '../models/recommendation';
 import { RecommendsService } from '../services/recommend.service';
+import { EmploymentService } from '../services/employment.service';
+import { Employment } from '../models/employment';
 
 @Component({
   selector: 'app-reydavid',
@@ -10,38 +12,25 @@ import { RecommendsService } from '../services/recommend.service';
 })
 export class ReydavidComponent implements OnInit {
 
-  description: string = "A ".concat("highly accomplished Senior Software Engineer ",
-      "/ Software Architect with thirty (30) years of results-driven experience, ",
-      "with particular expertise in Angular, C#, Asp.Net Web API, ",
-      "SQL Server and Oracle, Asp.Net MVC, TypeScript, Windows 8 App development, ",
-      "and extensive work experience with Microsoft Azure, AWS, Google Cloud, ",
-      "the .NET Framework, the Entity Framework, jQuery, Docker, and high proficiency ", 
-      "in Hybrid Mobile App development, seeking a challenging opportunity ",
-      "that would utilize advanced technologies in a fast-paced environment");
-
-  blog: string = "Visit ".concat("Rey David's Developers Blog at ",
-      "<a href='http://davidsdotnetlines.blogspot.com' ",
-      "target='_blank'>http://DavidsDotNetLines.BlogSpot.com</a> ",
-      "for tips and tricks on Angular, Asp.Net, SQL Server, IIS and Https, ",
-      "Windows 8 App development, and much more. ",
-      "<a href='http://davidsdotnetlines.blogspot.com' ",
-      "target='_blank'>Check it out now.</a> ");
-
   recommends: Recommendation[] = [];
+  employments: Employment[] = [];
   ratingsCount: number = 0;
   ratingsAverage: number = 0;
 
   constructor( private router: Router, 
-      private recommendsService: RecommendsService ) { }
+      private recommendsService: RecommendsService,
+      private employmentService: EmploymentService ) { }
 
   ngOnInit() {
-    console.log("aya blog ", this.blog);
+    console.log("aya reydavid init ");
     this.recommendsService.getRecommends().subscribe(recommends => {
       this.recommends = recommends;
       this.recommendsService.setRecommendsCache(recommends);
       this.ratingsCount = recommends.length;
       this.ratingsAverage = 4.94;
     })
+
+    this.employments = this.employmentService.Employments;
   }
 
   AddToCart() {

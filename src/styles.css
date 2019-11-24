@@ -220,6 +220,11 @@ a .card.frame {
     float: right;
     height: 100px;
 }
+.spanhalf .image-logo {
+    float: left;
+    max-height: 50px;
+    padding-right: 20px;
+}
 
 .vertical-scroll {
     overflow-y: scroll;

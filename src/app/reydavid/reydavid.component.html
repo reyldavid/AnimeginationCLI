@@ -49,7 +49,7 @@
         <div class="col-md-10 offset-md-1">
             <h4>Description</h4>
             <p>
-                {{description}}
+                {{employmentService.CoverIntro}}
             </p>
             <div class="d-none d-lg-block pb-1"></div>
             <h5>Need technical Tips and Tricks?</h5>
@@ -113,8 +113,8 @@
 
     <div class="child col-12 col-lg-5 order-6 order-lg-5">
         <div class="col-lg-10 offset-lg-1">
-            <h4>Customer Reviews</h4>
-            <div class="font-em-10 pt-1">{{ratingsCount}} customer ratings</div>
+            <h4>Customer Ratings</h4>
+            <div class="font-em-10 pt-1">{{ratingsCount}} customer reviews</div>
             <div>
                 <div class="inline-block pr-3">
                     <img src="https://reydavid.blob.core.windows.net/assets/Rating 5 Stars.png"
@@ -232,14 +232,50 @@
 
 </div>
 
-<div class="child row pt-4 px-lg-5">
+<!-- <div class="child row pt-4 px-lg-5">
     <div *ngFor="let recommend of recommends" class="col-12 col-lg-6">
         <app-review [review]="recommend"></app-review>
+    </div>
+</div> -->
+
+<div class="child pt-4 px-lg-5">
+        <div class="card">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse" href="#reviews">
+                    Customer Reviews
+                </a>
+            </div>
+            <div id="reviews" class="collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <div *ngFor="let recommend of recommends" class="col-12 col-lg-6">
+                            <app-review [review]="recommend"></app-review>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="child pt-3 px-lg-5">
+    <div class="card">
+        <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#history">
+                Product History
+            </a>
+        </div>
+        <div id="history" class="collapse show">
+            <div class="card-body">
+                <div *ngFor="let employment of employments">
+                    <app-employment [experience]="employment"></app-employment>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="modal fade" id="buyMeModal" tabindex="-1" role="dialog" 
-        aria-labelledby="buyMeModalLabel" aria-hidden="true">
+    aria-labelledby="buyMeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
