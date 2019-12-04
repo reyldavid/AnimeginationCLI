@@ -5,7 +5,7 @@
             alt="{{employer?.EmployerName}}" class="image-logo img-responsive" />
         <div>
             <span class="bold">{{employment?.EmployerName}}</span>
-            <span> in {{employment?.EmployerLocation}}</span>
+            <span *ngIf="employment.EmployerLocation"> in {{employment?.EmployerLocation}}</span>
         </div>
         <div>
           <span class="bold font-italic">{{employment?.EmploymentTitle}}</span>

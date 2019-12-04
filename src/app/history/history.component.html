@@ -1,0 +1,39 @@
+<div *ngIf="showButtons" [class.bgc-gray]="bgc">
+    <div [class.child]="showButtons" class="col-12 col-md-10 offset-md-1">
+      <h4>{{title}}</h4>
+    </div>
+  
+    <div class="row">
+      <div [id]="'prev' + productID" [class.child]="showButtons" 
+          class="slide-prev slide-col col-2 col-sm-1 d-flex align-items-center">
+        <a>
+          <img src="assets/Previous2.jpg" alt="Previous" 
+                class="slide-buttons">
+        </a>
+      </div>
+      <div [id]="'wrap' + productID" [class.child]="showButtons" 
+          class="slide-wrapper col-8 col-sm-10">
+        <ul>
+            <li *ngFor="let prod of apiProducts">
+              <a (click)="OnSelectProduct(prod)">
+                <div class="card card-max p-3">
+                      <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"
+                            class="card-img-top mx-auto image-min" alt="{{prod?.ProductCode}}" />
+                      <!-- <div class="card-body">
+                          <div class="card-title blue">{{prod?.ProductTitle}}</div>
+                      </div> -->
+                  </div>
+                </a>
+            </li>
+        </ul>
+      </div>
+      <div [id]="'next' + productID" [class.child]="showButtons"
+          class="slide-next slide-col col-2 col-sm-1 d-flex align-items-center">
+        <a>
+            <img src="assets/Next2.jpg" alt="Next" class="slide-buttons">
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  

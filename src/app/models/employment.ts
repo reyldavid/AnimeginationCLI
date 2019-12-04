@@ -12,6 +12,7 @@ export interface Employment {
 
 export interface Education {
     EducationId: number,
+    SchoolImage: string,
     SchoolName: string,
     Degree: string,
     FromTo: string,

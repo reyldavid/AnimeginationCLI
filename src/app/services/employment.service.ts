@@ -45,13 +45,28 @@ import { Employment, Education } from '../models/employment';
         return this._employments;
     }
 
-    get Educations(): Education[] {
-        let educ1: Education = {
-            EducationId: 1,
-            SchoolName: "De La Salle University",
-            Degree: "BS, Computer Science",
-            FromTo: "1983 - 1987",
-            Activities: "Activities and Societies: Forensic Society (public speaking), Chess Club"
+    // get Educations(): Education[] {
+    //     let educ1: Education = {
+    //         EducationId: 1,
+    //         SchoolImage: "DLSU.png",
+    //         SchoolName: "De La Salle University",
+    //         Degree: "BS, Computer Science",
+    //         FromTo: "1983 - 1987",
+    //         Activities: "Activities and Societies: Student Council, Forensic Society (public speaking), Chess Club"
+    //     }
+    //     return [educ1];
+    // }
+    get Educations(): Employment[] {
+        let educ1: Employment = {
+            EmploymentId: 99,
+            EmployerName: "De La Salle University",
+            EmployerImage: "DLSU.png",
+            EmployerLocation: "",
+            EmploymentTitle: "BS, Computer Science",
+            EmploymentFrom: "1983",
+            EmploymentTo: "1987",
+            EmployerUrl: "www.dlsu.edu.ph",
+            Details: ["Clubs and Activities: Student Council, Forensic Society (public speaking), Chess Club"]
         }
         return [educ1];
     }

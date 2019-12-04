@@ -62,6 +62,7 @@ import { ReydavidComponent } from './reydavid/reydavid.component';
 import { ReviewComponent } from './review/review.component';
 import { EmploymentService } from './services/employment.service';
 import { EmploymentComponent } from './employment/employment.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { EmploymentComponent } from './employment/employment.component';
     StripHtmlTagsPipe,
     ReydavidComponent,
     ReviewComponent,
-    EmploymentComponent
+    EmploymentComponent,
+    HistoryComponent
   ],
   imports: [
     AppRouterModule,

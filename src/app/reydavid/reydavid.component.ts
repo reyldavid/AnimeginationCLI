@@ -14,6 +14,7 @@ export class ReydavidComponent implements OnInit {
 
   recommends: Recommendation[] = [];
   employments: Employment[] = [];
+  educations: Employment[] = [];
   ratingsCount: number = 0;
   ratingsAverage: number = 0;
 
@@ -31,6 +32,7 @@ export class ReydavidComponent implements OnInit {
     })
 
     this.employments = this.employmentService.Employments;
+    this.educations = this.employmentService.Educations;
   }
 
   AddToCart() {

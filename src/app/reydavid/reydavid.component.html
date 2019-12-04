@@ -274,6 +274,23 @@
     </div>
 </div>
 
+<div class="child pt-3 px-lg-5">
+    <div class="card">
+        <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#education">
+                Product KnowledgeBase
+            </a>
+        </div>
+        <div id="education" class="collapse show">
+            <div class="card-body">
+                <div *ngFor="let education of educations">
+                    <app-employment [experience]="education"></app-employment>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
 <div class="modal fade" id="buyMeModal" tabindex="-1" role="dialog" 
     aria-labelledby="buyMeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -298,5 +315,7 @@
 </div>
 
 <app-similars [productID]="1291"></app-similars>
+
+<app-history [productID]="3308"></app-history>
 
 <app-footer-product></app-footer-product>
