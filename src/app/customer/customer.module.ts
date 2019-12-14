@@ -28,6 +28,7 @@ import { UserNoteComponent } from './user-note/user-note.component';
 import { FooterProductComponent } from './footer-product/footer-product.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     UserNoteComponent,
     FooterProductComponent,
     StarRatingComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    HistoryComponent
   ],
   exports: [
     AccountInfoComponent,
@@ -79,7 +81,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     ProductReviewComponent,
     UserNoteComponent,
     FooterProductComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    HistoryComponent
   ]
 })
 export class CustomerModule { }
