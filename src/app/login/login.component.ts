@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                           console.log("aya claim ", claim);
                           let roles = claim.roles;
                           this.messageService.setRoles(roles);
+                          this.messageService.setHistory();
                         })
 
                         this.orderSubscription = this.orderService.getOrderTotals(

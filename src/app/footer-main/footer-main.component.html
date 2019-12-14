@@ -1,80 +1,85 @@
-<div *ngIf="show" class="d-none d-sm-block">
-  <div class="row footermain">
-    <div class="col footerwrap">
+<div *ngIf="show">
+  <app-history></app-history>
+
+  <div class="d-none d-sm-block">
+    <div class="row footermain">
+      <div class="col footerwrap">
+          <div class="footercontent">
+            <p class="p2">
+              My Account
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/login']">Log In</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/register']">Sign Up</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/account']">Account Settings</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/orders-list']">Order History</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/cart']">Shopping Cart</a>
+            </p>
+          </div>
+      </div>
+      <div class="col footerwrap">
+          <div class="footercontent">
+            <p class="p2">
+              Customer Care
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/contact']">Contact</a> and <a [routerLink]="['/about']">About</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/shipping-info']">Shipping</a> and <a [routerLink]="['/returns']">Returns</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/user-note']">Customer Feedback</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/privacy']">Privacy</a> and <a [routerLink]="['/terms-of-use']">Terms</a>
+            </p>
+            <p class="p3">
+              <a [routerLink]="['/news']">Recent News</a>
+            </p>
+          </div>
+      </div>
+      <div class="col footerwrap">
         <div class="footercontent">
           <p class="p2">
-            My Account
+            Popular Shopping
           </p>
           <p class="p3">
-            <a [routerLink]="['/login']">Log In</a>
+            <a [routerLink]="['/list']" [queryParams]="{ listTypeId: topSellers }">
+              Top Sellers
+            </a>
           </p>
           <p class="p3">
-            <a [routerLink]="['/register']">Sign Up</a>
+            <a [routerLink]="['/list']" [queryParams]="{ listTypeId: bargainBin }">
+              Bargain Bin
+            </a>
           </p>
           <p class="p3">
-            <a [routerLink]="['/account']">Account Settings</a>
+            <a [routerLink]="['/list']" [queryParams]="{ listTypeId: newItems }">
+              New Items
+            </a>
           </p>
           <p class="p3">
-            <a [routerLink]="['/orders-list']">Order History</a>
+            <a [routerLink]="['/list']" [queryParams]="{ listTypeId: liveAction }">
+              Live Action
+            </a>
           </p>
           <p class="p3">
-            <a [routerLink]="['/cart']">Shopping Cart</a>
+            <a [routerLink]="['/list']" [queryParams]="{ listTypeId: closeOut }">
+              Close Out
+            </a>
           </p>
         </div>
-    </div>
-    <div class="col footerwrap">
-        <div class="footercontent">
-          <p class="p2">
-            Customer Care
-          </p>
-          <p class="p3">
-            <a [routerLink]="['/contact']">Contact</a> and <a [routerLink]="['/about']">About</a>
-          </p>
-          <p class="p3">
-            <a [routerLink]="['/shipping-info']">Shipping</a> and <a [routerLink]="['/returns']">Returns</a>
-          </p>
-          <p class="p3">
-            <a [routerLink]="['/user-note']">Customer Feedback</a>
-          </p>
-          <p class="p3">
-            <a [routerLink]="['/privacy']">Privacy</a> and <a [routerLink]="['/terms-of-use']">Terms</a>
-          </p>
-          <p class="p3">
-            <a [routerLink]="['/news']">Recent News</a>
-          </p>
-        </div>
-    </div>
-    <div class="col footerwrap">
-      <div class="footercontent">
-        <p class="p2">
-          Popular Shopping
-        </p>
-        <p class="p3">
-          <a [routerLink]="['/list']" [queryParams]="{ listTypeId: topSellers }">
-            Top Sellers
-          </a>
-        </p>
-        <p class="p3">
-          <a [routerLink]="['/list']" [queryParams]="{ listTypeId: bargainBin }">
-            Bargain Bin
-          </a>
-        </p>
-        <p class="p3">
-          <a [routerLink]="['/list']" [queryParams]="{ listTypeId: newItems }">
-            New Items
-          </a>
-        </p>
-        <p class="p3">
-          <a [routerLink]="['/list']" [queryParams]="{ listTypeId: liveAction }">
-            Live Action
-          </a>
-        </p>
-        <p class="p3">
-          <a [routerLink]="['/list']" [queryParams]="{ listTypeId: closeOut }">
-            Close Out
-          </a>
-        </p>
       </div>
     </div>
   </div>
+
 </div>

@@ -20,6 +20,7 @@ export class MessageService {
     private returnUrl = new BehaviorSubject<string>("");
     private orderId = new Subject<number>();
     private roles = new Subject<string[]>();
+    private history = new Subject<number>();
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -121,6 +122,16 @@ export class MessageService {
     }
     clearRoles() {
         this.roles.next();
+    }
+
+    setHistory(productId?: number) {
+        this.history.next(productId);        
+    }
+    getHistory(): Observable<number> {
+        return this.history.asObservable();
+    }
+    clearHistory() {
+        this.history.next();
     }
 
 }

@@ -77,7 +77,7 @@ export class ProductComponent implements OnInit {
         this._cartServce.addCartItem(this._sessionService.UserToken, cartItem).subscribe(item => {
           console.log(item);
           this._router.navigate(['/cart']);
-        }, (error: string) => {
+        }, (error) => {
           console.log(error);
           this._router.navigate(['/cart']);
           this._messageService.setSpinner(false);
