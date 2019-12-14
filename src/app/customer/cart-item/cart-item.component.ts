@@ -64,8 +64,10 @@ export class CartItemComponent implements OnInit {
 
   OnSelectProduct(cartItem: CartItem) {
     console.log('product slide product ID: ' + cartItem.productID);
-    // this.router.navigate(['/detail', { productID: cartItem.productID }]);
-    this.router.navigate(['/detail'], { queryParams: {  productID: cartItem.productID } });
+    // this.router.navigate(['/detail'], { queryParams: {  productID: cartItem.productID } });
+    this.cartService.addVisitHistory(cartItem.productID).subscribe(item => {
+      console.log(item);
+    })
   }
 
   updateQuantity(quantity: number, cartItem: CartItem) {

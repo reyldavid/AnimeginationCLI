@@ -7,6 +7,7 @@ import { Product, ApiProduct } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { UserFeedbackModel } from '../../models/userFeedbackModel';
 import { FeedbackType } from '../../models/feedbackType';
+import { CartService } from 'src/app/services/cart.service';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class ProductReviewComponent implements OnInit {
               private productService: ProductsService, 
               private feedbackService: UserFeedbackService, 
               private sessionService: SessionService, 
+              private cartService: CartService,
               private messageService: MessageService) { }
 
   ngOnInit() {
@@ -88,7 +90,10 @@ export class ProductReviewComponent implements OnInit {
 
   OnSelectProduct() {
     console.log('product ID: ' + this.product.ProductID);
-    this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
+    // this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
+    this.cartService.addVisitHistory(this.product.ProductID).subscribe(item => {
+      console.log(item);
+    })
   }
 
   getRating(rating: number) {

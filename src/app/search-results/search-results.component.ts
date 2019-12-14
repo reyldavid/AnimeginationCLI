@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiProduct } from '../models/product';
 import { SearchService } from '../services/search.service';
 import { MessageService } from '../services/message.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-search-results',
@@ -19,6 +20,7 @@ export class SearchResultsComponent implements OnInit {
   constructor(private _router: Router, 
       private _route: ActivatedRoute, 
       private _searchService: SearchService, 
+      private _cartService: CartService, 
       private _messageService: MessageService ) {
    }
 
@@ -61,8 +63,11 @@ export class SearchResultsComponent implements OnInit {
   }
 
   OnSelectProduct(product: ApiProduct) {
-    console.log('product ID: ' + product.ProductID);
-    this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+    console.log('MEGUMI product ID: ' + product.ProductID, product.ProductTitle);
+    // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+    this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+      console.log(item);
+    })
   }
 
 }

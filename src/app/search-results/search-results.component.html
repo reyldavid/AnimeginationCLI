@@ -6,8 +6,8 @@
     <h2>Showing {{count}} results for <span class="anime-orig-color">{{searchText}}</span></h2>
     
     <ul class="list-inline">
-        <li *ngFor="let prod of products" 
-          [routerLink]="['/detail']" [queryParams]="{ productID: prod?.ProductID }">
+        <li *ngFor="let prod of products" (click)="OnSelectProduct(prod)">
+          <!-- [routerLink]="['/detail']" [queryParams]="{ productID: prod?.ProductID }"> -->
             <a>
               <div class="card frame card-max">
                 <img src="https://reydavid.blob.core.windows.net/anime/{{prod?.ProductCode}}.jpg"

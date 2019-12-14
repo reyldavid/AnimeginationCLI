@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApiProduct } from '../models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SimilarsService } from '../services/similars.service';
+import { CartService } from '../services/cart.service';
 declare var $: any;
 
 @Component({
@@ -28,13 +29,17 @@ export class SimilarsComponent implements OnInit {
   public apiProducts: ApiProduct[] = [];
 
   constructor(private _router: Router, private _route: ActivatedRoute, 
-              private _similarsService: SimilarsService) { 
+              private _similarsService: SimilarsService, 
+              private _cartService: CartService ) { 
                 console.log('similars slider construct');
   }
 
   OnSelectProduct(product: ApiProduct) {
       console.log('similars product ID: ' + product.ProductID);
-      this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+      // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+      this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+        console.log(item);
+      })
   }
 
   GetProductsSlideByID(productID: number) {

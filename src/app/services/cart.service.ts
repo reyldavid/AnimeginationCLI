@@ -1,7 +1,7 @@
 /**
 * Created by reynaldodavid on 10/05/18.
 */
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError } from "rxjs/operators";
 import { Injectable } from '@angular/core';
@@ -15,6 +15,9 @@ import { TokenModel } from '../models/tokenmodel';
 import { MessageService } from './message.service';
 import { AddItem } from '../models/addItemModel';
 import { OrderItem } from '../models/orderItemModel';
+import { Router } from '@angular/router';
+import { SessionService } from './session.service';
+import { andObservables } from '@angular/router/src/utils/collection';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +27,8 @@ import { OrderItem } from '../models/orderItemModel';
     constructor(private http: HttpClient, 
         private globals: Globals, 
         private helper: HttpHelper, 
+        private router: Router,
+        private sessionService: SessionService, 
         private messageService: MessageService ) {
     }
 
@@ -44,7 +49,9 @@ import { OrderItem } from '../models/orderItemModel';
             return this.getCartItemsStatic();
         }
         else {
-            this.messageService.setSpinner(true);
+            if (cartType != CartType.recentlyVisited) {
+                this.messageService.setSpinner(true);
+            }
             let endpoint = this.helper.getSearchEndPoint(ServiceName.cartItems, cartType);
 
             let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
@@ -78,5 +85,29 @@ import { OrderItem } from '../models/orderItemModel';
 
             return observables;
         }
+    }
+
+    addVisitHistory(productId: number): Observable<OrderItem> {
+
+        if (this.sessionService.isAuthenticated()) {
+            let token = this.sessionService.UserToken;
+      
+            let endpoint = this.helper.getCompoundIdEndPoint(
+                ServiceName.addItem, productId, CartType.recentlyVisited);
+
+            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+            let observables = this.http.get<OrderItem>(
+                endpoint, { headers: headers, observe: 'response'}
+                )
+                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+            this.router.navigate(['/detail'], { queryParams: { productID: productId } });
+            
+            this.messageService.setHistory(productId);
+
+            return observables;
+        }
+
     }
 }

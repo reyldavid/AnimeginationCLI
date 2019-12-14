@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
 import { MessageService } from '../services/message.service';
+import { CartService } from '../services/cart.service';
 declare var $: any;
 
 @Component({
@@ -35,15 +36,18 @@ export class ProductSlideComponent implements OnInit {
   constructor(private _router: Router, private _route: ActivatedRoute, 
               private _listingService: ListingService, 
               private _listTypeService: ListTypeService, 
+              private _cartService: CartService, 
               private _messageService: MessageService ) { 
                 console.log('product slider construct');
   }
 
   OnSelectProduct(product: ApiProduct) {
       console.log('product slide product ID: ' + product.ProductID);
-      // this._router.navigate(['/detail', { productID: product.ProductID }]);
-      this._router.navigate(['/detail'], { queryParams: {  productID: product.ProductID } });
-    }
+      // this._router.navigate(['/detail'], { queryParams: {  productID: product.ProductID } });
+      this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+        console.log(item);
+      })
+  }
 
   GetProductsSlideByType(listTypeID: number) {
       this._listingService.getAnimeListing(listTypeID)
@@ -56,12 +60,16 @@ export class ProductSlideComponent implements OnInit {
   }
 
   GetProductListType(listTypeID: number) {
+      var __this = this;
       this._listTypeService.getAnimeListType(listTypeID)
           .subscribe((listType: ListType) => {
               this.listType = listType;
 
-              this.SetupListeners();
-
+              // this.SetupListeners();
+              setTimeout(function() {
+                __this.SetupListeners();
+              }, 500);
+  
               this._messageService.setSpinner(false);
           });
   }

@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
 import { MessageService } from '../services/message.service';
+import { CartService } from '../services/cart.service';
 declare var $: any;
 
 @Component({
@@ -28,7 +29,8 @@ export class ProductsSliceComponent implements OnInit {
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _listingService: ListingService, 
-                private _listTypeService: ListTypeService, 
+                private _listTypeService: ListTypeService,
+                private _cartService: CartService,  
                 private _messageService: MessageService ) { 
                   console.log('product slice construct');
     }
@@ -37,7 +39,10 @@ export class ProductsSliceComponent implements OnInit {
         //this.currentProduct = product;
         //this.productSelected.emit(product);
         console.log('product slice product ID: ' + product.ProductID);
-        this._router.navigate(['/detail', { productID: product.ProductID }]);
+        // this._router.navigate(['/detail', { productID: product.ProductID }]);
+        this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+            console.log(item);
+        })
     }
 
     GetProductsSlice(listTypeID: number) {

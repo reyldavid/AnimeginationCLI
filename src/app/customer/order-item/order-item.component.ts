@@ -4,6 +4,7 @@ import { Product, ApiProduct } from '../../models/product';
 import { OrderItem } from '../../models/orderItemModel';
 import { ProductsService } from '../../services/products.service';
 import { MessageService } from '../../services/message.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-order-item',
@@ -24,6 +25,7 @@ export class OrderItemComponent implements OnInit {
 
   constructor( private router: Router, 
     private productService: ProductsService, 
+    private cartService: CartService, 
     private messageService: MessageService ) { 
   }
 
@@ -44,12 +46,18 @@ export class OrderItemComponent implements OnInit {
 
   OnSelectProduct() {
     console.log('product ID: ' + this.product.ProductID);
-    this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
+    // this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
+    this.cartService.addVisitHistory(this.product.ProductID).subscribe(item => {
+      console.log(item);
+    })
   }
 
   BuyAgain(product: Product) {
     console.log('product ID: ', product);
-    this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
+    // this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
+    this.cartService.addVisitHistory(this.product.ProductID).subscribe(item => {
+      console.log(item);
+    })
   }
 
   WriteReview(product: Product) {

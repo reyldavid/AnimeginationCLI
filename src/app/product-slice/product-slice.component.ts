@@ -5,6 +5,7 @@ import { EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
+import { CartService } from '../services/cart.service';
 declare var $: any;
 
 @Component({
@@ -23,13 +24,17 @@ export class ProductSliceComponent implements OnInit {
 
     constructor(private _router: Router, private _route: ActivatedRoute, 
                 private _listingService: ListingService, 
-                private _listTypeService: ListTypeService) { 
+                private _listTypeService: ListTypeService, 
+                private _cartService: CartService ) { 
                     console.log('product slice construct');
     }
 
     OnSelectProduct(product: ApiProduct) {
         console.log('product slice product ID: ' + product.ProductID);
-        this._router.navigate(['/detail', { productID: product.ProductID }]);
+        // this._router.navigate(['/detail', { productID: product.ProductID }]);
+        this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+            console.log(item);
+        })
     }
 
     GetProductSlice(listTypeID: number) {

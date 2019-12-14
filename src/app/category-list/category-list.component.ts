@@ -4,6 +4,7 @@ import { CategoryService } from '../services/categories.service';
 import { Category } from '../models/category';
 import { ApiProduct } from '../models/product';
 import { MessageService } from '../services/message.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-category-list',
@@ -18,6 +19,7 @@ export class CategoryListComponent implements OnInit {
   constructor(private _router: Router, 
       private _route: ActivatedRoute, 
       private _categoryService: CategoryService, 
+      private _cartService: CartService, 
       private _messageService: MessageService ) {
    }
 
@@ -38,9 +40,17 @@ export class CategoryListComponent implements OnInit {
   }
 
   OnSelectProduct(product: ApiProduct) {
-    console.log('category product ID: ' + product.ProductID);
-    this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
-  }
+    console.log('AYA category product ID: ' + product.ProductID);
+    // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+
+    this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+      console.log(item);
+    }, (error) => {
+      console.log(error);
+    })
+
+
+}
 
   GetCategory(categoryID: number) {
       this._categoryService.getAnimeCategory(categoryID)

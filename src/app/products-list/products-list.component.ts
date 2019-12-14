@@ -5,6 +5,7 @@ import { ListType } from '../models/listtype';
 import { ListingService } from '../services/listings.service';
 import { ListTypeService } from '../services/listtypes.service';
 import { MessageService } from '../services/message.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-products-list',
@@ -21,6 +22,7 @@ export class ProductsListComponent implements OnInit {
       private _route: ActivatedRoute, 
       private _listingService: ListingService, 
       private _listTypeService: ListTypeService, 
+      private _cartService: CartService,  
       private _messageService: MessageService ) {
    }
 
@@ -70,7 +72,10 @@ export class ProductsListComponent implements OnInit {
   
   OnSelectProduct(product: ApiProduct) {
     console.log('list type product ID: ' + product.ProductID);
-    this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+    // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
+    this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
+      console.log(item);
+    })
   }
 
 }
