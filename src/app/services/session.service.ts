@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { TokenModel } from '../models/tokenmodel';
 import { UserAccountModel } from '../models/userAccountModel';
 import { Order } from "../models/orderModel";
+import * as _ from 'lodash';
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +20,8 @@ export class SessionService {
     };
     private _order: Order;
     private _isAdmin: boolean = false;
+
+    private _visited: number[] = [];
 
     isAuthenticated(): boolean {
         // // We get the JWT from localStorage
@@ -86,5 +89,16 @@ export class SessionService {
     
     set IsAdmin(isAdmin: boolean) {
         this._isAdmin = isAdmin;
+    }
+
+    get VisitedProducts(): number[] {
+        return _.uniq(this._visited);
+    }
+
+    addVisitedProduct(productId: number) {
+        this._visited.push(productId);
+    }
+    clearVisitedProducts(): void {
+        this._visited = [];
     }
 }

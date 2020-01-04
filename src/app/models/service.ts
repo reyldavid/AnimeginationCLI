@@ -16,6 +16,7 @@ export enum ServiceName {
     address = 'address',
     cartItems = 'cartitems', 
     addItem = 'additem',
+    list = 'list',
     orders = 'orders',
     orderItems = 'orderitems',
     id = 'id',

@@ -1,7 +1,7 @@
 /**
 * Created by reynaldodavid on 10/05/18.
 */
-import { Observable, observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError } from "rxjs/operators";
 import { Injectable } from '@angular/core';
@@ -17,7 +17,6 @@ import { AddItem } from '../models/addItemModel';
 import { OrderItem } from '../models/orderItemModel';
 import { Router } from '@angular/router';
 import { SessionService } from './session.service';
-import { andObservables } from '@angular/router/src/utils/collection';
 
 @Injectable({
     providedIn: 'root'
@@ -52,16 +51,37 @@ import { andObservables } from '@angular/router/src/utils/collection';
             if (cartType != CartType.recentlyVisited) {
                 this.messageService.setSpinner(true);
             }
-            let endpoint = this.helper.getSearchEndPoint(ServiceName.cartItems, cartType);
+            if (cartType == CartType.recentlyVisited && !this.sessionService.isAuthenticated()) {
+                if (this.sessionService.VisitedProducts.length > this.globals.minHistoryVisitsToShow ) {
 
-            let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+                    let endpoint = this.helper.getCompoundEndPoint(ServiceName.cartItems, ServiceName.list);
 
-            let observables = this.http.get<CartItem>(
-                endpoint, { headers: headers, observe: 'response'}
-                )
-                .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+                    let headers: HttpHeaders = this.helper.getContentHeaders();
+                    let body = JSON.stringify(this.sessionService.VisitedProducts);
 
-            return observables;
+                    let observables = this.http.post<CartItem[]>(
+                        endpoint, body, { headers: headers, observe: 'response'}
+                        )
+                        .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+                    return observables;
+                }
+                else {
+                    return of([]);
+                }
+            }
+            else {
+                let endpoint = this.helper.getSearchEndPoint(ServiceName.cartItems, cartType);
+
+                let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
+
+                let observables = this.http.get<CartItem>(
+                    endpoint, { headers: headers, observe: 'response'}
+                    )
+                    .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+
+                return observables;
+            }
         }
     }
 
@@ -87,7 +107,9 @@ import { andObservables } from '@angular/router/src/utils/collection';
         }
     }
 
-    addVisitHistory(productId: number): Observable<OrderItem> {
+    addVisitHistory(productId: number, skipInfiniteLoop?: number): Observable<OrderItem> {
+
+        let observables = null;
 
         if (this.sessionService.isAuthenticated()) {
             let token = this.sessionService.UserToken;
@@ -97,17 +119,23 @@ import { andObservables } from '@angular/router/src/utils/collection';
 
             let headers: HttpHeaders = this.helper.getSecureContentHeaders(token);
 
-            let observables = this.http.get<OrderItem>(
+            observables = this.http.get<OrderItem>(
                 endpoint, { headers: headers, observe: 'response'}
                 )
                 .pipe( map ( HttpHelper.extractData), catchError( HttpHelper.handleError ));
+        }
+        else {
+            this.sessionService.addVisitedProduct(productId);
+        }
+        this.router.navigate(['/detail'], { queryParams: { productID: productId } });
 
-            this.router.navigate(['/detail'], { queryParams: { productID: productId } });
-            
+        if (skipInfiniteLoop && skipInfiniteLoop == 1) {
+            // do not fall for infinite loop
+        }
+        else {
             this.messageService.setHistory(productId);
-
-            return observables;
         }
 
+        return observables;
     }
 }

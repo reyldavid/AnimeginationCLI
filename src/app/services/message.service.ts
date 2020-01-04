@@ -21,6 +21,7 @@ export class MessageService {
     private orderId = new Subject<number>();
     private roles = new Subject<string[]>();
     private history = new Subject<number>();
+    private visits = new Subject<boolean>();
 
     selectToken(token: TokenModel) {
         this.token.next(token);
@@ -132,6 +133,16 @@ export class MessageService {
     }
     clearHistory() {
         this.history.next();
+    }
+
+    setVisits() {
+        this.visits.next(true);
+    }
+    getVisits(): Observable<boolean> {
+        return this.visits.asObservable();
+    }
+    clearVisits() {
+        this.visits.next();
     }
 
 }

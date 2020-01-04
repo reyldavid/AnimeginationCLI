@@ -11,4 +11,5 @@ export class Globals {
     rssFeedUrl: string ="http://www.animenewsnetwork.com/all/rss.xml";
     rss2JsonServiceUrl: string ="https://rss2json.com/api.json?rss_url=";
     // proxyServerUrl: string = "https://cors-anywhere.herokuapp.com/";
+    minHistoryVisitsToShow: number = 6;
 }

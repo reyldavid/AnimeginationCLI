@@ -6,6 +6,7 @@ import { CartType } from '../../models/carttype';
 import { CartItem } from '../../models/cartItemModel';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
+import { Globals } from 'src/app/globals';
 import * as _ from 'lodash';
 declare var $: any;
 
@@ -24,16 +25,28 @@ export class HistoryComponent implements OnInit, OnDestroy {
   cartProducts: CartItem[] = [];
   initial: boolean = true;
   historySubscription: Subscription;
+  visitsSubscription: Subscription;
 
   constructor(private _router: Router, private _route: ActivatedRoute, 
+              private _globals: Globals,
               private _cartService: CartService, 
               private _messageService: MessageService,
               private _sessionService: SessionService ) { 
-                console.log('similars slider construct');
+    var _self = this;
+    console.log('history construct');
 
     this.historySubscription = this._messageService.getHistory().subscribe(productId => {
       console.log("history Product ID: ", productId);
+      this.PostCachedVisits();
       this.GetVisitedProducts();
+    })
+
+    this.visitsSubscription = this._messageService.getVisits().subscribe(carryover => {
+      if (carryover) {
+        _.forEach(this.cartProducts, function(cp) {
+          _self._sessionService.addVisitedProduct(cp.productID);
+        })
+      }
     })
   }
 
@@ -54,29 +67,47 @@ export class HistoryComponent implements OnInit, OnDestroy {
       })
     }
 
+  PostCachedVisits() {
+    var ____this = this;
+    let productIds = this._sessionService.VisitedProducts;
+
+    if (productIds.length && this._sessionService.isAuthenticated()) {
+        _.forEach(productIds, function(prodId) {
+            ____this._cartService.addVisitHistory(prodId, 1).subscribe(item => {
+              console.log(item);
+            }, (error) => {
+              console.log(error);
+            })
+        })
+
+        this._sessionService.clearVisitedProducts();
+    }
+  }
+
   GetVisitedProducts() {
     this.showButtons = false;
-    var __this = this;
+    var ___this = this;
 
-    if (this._sessionService.isAuthenticated()) {
+    // if (this._sessionService.isAuthenticated()) {
 
       this._cartService.getCartItems(this._sessionService.UserToken, CartType.recentlyVisited)
         .subscribe( items => {
           console.log('visited items');
           console.log(items);
-          this.cartProducts = _.reverse(items);
+          // this.cartProducts = _.reverse(items);
+          this.cartProducts = items;
 
-          this.showButtons = (items && items.length > 5);
+          this.showButtons = (items && items.length > this._globals.minHistoryVisitsToShow);
 
           // if (this.showButtons && this.initial) {
           if (this.showButtons) {
             this.initial = false;
             setTimeout(function() {
-              __this.SetupListeners();
+              ___this.SetupListeners();
             }, 1000);
           }
       })
-    }
+    // }
   }
 
   // RemoveListeners(productID: string) {
@@ -87,7 +118,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   // }
 
   SetupListeners() {
-    var _this = this;
+    var __this = this;
     this.title = "Your Browsing History";
 
     // PREVIOUS BUTTON
@@ -99,17 +130,17 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
     $(buttonPrevId).on('click', function() {
 
-      // var _this = this;
-      let wrapperId = "#wrap".concat(_this.idName, ".slide-wrapper ul");
+      // var __this = this;
+      let wrapperId = "#wrap".concat(__this.idName, ".slide-wrapper ul");
 
       let scrollPosition = $(wrapperId).scrollLeft();
       console.log('aya prev');
       console.log(scrollPosition);
 
-      if (scrollPosition == 0 && _this.outerWidth > 0) {
+      if (scrollPosition == 0 && __this.outerWidth > 0) {
 
         $(wrapperId).animate({
-          scrollLeft: _this.outerWidth
+          scrollLeft: __this.outerWidth
         }, 500, 'swing');
       }
       else {
@@ -118,8 +149,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
         }, 300, 'swing');
       }
 
-      if (scrollPosition > _this.outerWidth) {
-        _this.outerWidth = scrollPosition;
+      if (scrollPosition > __this.outerWidth) {
+        __this.outerWidth = scrollPosition;
       }
 
     });
@@ -133,7 +164,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
     $(buttonNextId).on('click', function() {
 
-      let wrapperId = "#wrap".concat(_this.idName, ".slide-wrapper ul");
+      let wrapperId = "#wrap".concat(__this.idName, ".slide-wrapper ul");
 
       // let scrollPosition = $('#wrap5.slide-wrapper ul').scrollLeft();
       let scrollPosition = $(wrapperId).scrollLeft();
@@ -141,7 +172,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
       console.log(scrollPosition);
 
       let remainder = scrollPosition % 200;
-      if (scrollPosition > 0 && scrollPosition == _this.outerWidth && remainder > 0) {
+      if (scrollPosition > 0 && scrollPosition == __this.outerWidth && remainder > 0) {
 
         $(wrapperId).animate({
           scrollLeft: '0'
@@ -153,13 +184,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
         }, 300, 'swing');
       }
 
-      if (scrollPosition > _this.outerWidth) {
-        _this.outerWidth = scrollPosition;
+      if (scrollPosition > __this.outerWidth) {
+        __this.outerWidth = scrollPosition;
       }
     });        
 
     $(window).resize(function() {
-      _this.outerWidth = 0;
+      __this.outerWidth = 0;
     })
   }
 

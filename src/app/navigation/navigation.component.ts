@@ -123,7 +123,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     //   let returnUrl = window.location.pathname;
     //   this._router.navigateByUrl(returnUrl);
     //   this._router.navigate([returnUrl]);
-       this._router.navigate(['/home'])
+    // We will clear the Visits History and not retain them
+    // this._messageService.setVisits();
+    this._router.navigate(['/home'])
   }
 
   login() {
