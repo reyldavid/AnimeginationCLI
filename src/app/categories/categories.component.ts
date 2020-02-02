@@ -19,7 +19,6 @@ export class CategoriesComponent implements OnInit {
     }
 
     OnSelectCategory(category: Category) {
-        console.log('category: ' + category.Description);
         this._router.navigate(['/category-list'], { queryParams: {  categoryID: category.CategoryID } });
         // this._router.navigate(['/category-list']);
     }
@@ -35,7 +34,6 @@ export class CategoriesComponent implements OnInit {
     }
 
     ngOnInit(): any {
-        console.log('categories init');
         this.GetCategories();
     }
 }

@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 export class ContactUsComponent implements OnInit {
 
   constructor(private router: Router) { 
-      console.log('contact us construct');
-}
+  }
 
   ngOnInit() {
   }

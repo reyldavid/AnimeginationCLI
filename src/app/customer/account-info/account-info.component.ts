@@ -44,7 +44,6 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
         private _sessionService: SessionService, 
         private _messageService: MessageService )
     {
-        console.log('account info construct');
         // We get the JWT from localStorage
         // this.token.token = localStorage.getItem('jwt');
         // this.token = _sessionService.UserToken;
@@ -68,7 +67,6 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): any {
-        console.log('account info init');
         this.recentPurchases = 'You Don\'t Have Any Purchases In Your Account Right Now';
         this.missingAddressBook = 'We have no default address on file for this account';
         this.incompleteAddressBook = "The default address on file is incomplete";

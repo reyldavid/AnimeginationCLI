@@ -27,7 +27,6 @@ export class GenreEditComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('genre edit init');
     this.route.paramMap.subscribe(params => {
       let genreIDparam = Number(params.get('categoryID'));
 
@@ -62,7 +61,6 @@ export class GenreEditComponent implements OnInit, OnDestroy {
 
       this.genreService.updateCategory(token, this.genreModel)
         .subscribe(genre => {
-          console.log("aya genre ", genre);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

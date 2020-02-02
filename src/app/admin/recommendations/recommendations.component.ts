@@ -28,7 +28,6 @@ export class RecommendationsComponent implements OnInit {
   }
 
   OnEditRecommend(recommend: Recommendation) {
-    console.log('recommend ID: ' + recommend.recommendId);
     this.router.navigate(['/recommend-edit'], { queryParams: { recommendID: recommend.recommendId } });
   }
 
@@ -38,7 +37,6 @@ export class RecommendationsComponent implements OnInit {
 
       this.recommendsService.deleteRecommend(token, recommend).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted recommend ", item);
       })
     }
   }

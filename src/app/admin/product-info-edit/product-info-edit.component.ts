@@ -69,7 +69,6 @@ export class ProductInfoEditComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('product edit init');
     this.route.paramMap.subscribe(params => {
       let productIDparam = params.get('productID');
 
@@ -135,7 +134,6 @@ export class ProductInfoEditComponent implements OnInit {
 
       this.productsService.updateProduct(token, this.product)
         .subscribe(product => {
-          console.log("aya product ", product);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

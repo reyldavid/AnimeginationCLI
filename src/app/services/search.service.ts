@@ -62,8 +62,6 @@ import { MessageService } from '../services/message.service';
         else {
             if (this._animeSearch && this._animeSearch[searchText]) {
 
-                console.log('aya Anime Search results cached');
-                
                 return of(this._animeSearch[searchText]);
             }
             else {
@@ -90,8 +88,6 @@ import { MessageService } from '../services/message.service';
         else {
             if (this._animeSimilars && this._animeSimilars[productId]) {
 
-                console.log('aya Anime Similars results cached');
-                
                 return of(this._animeSimilars[productId]);
             }
             else {

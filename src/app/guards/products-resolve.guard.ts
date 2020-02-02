@@ -14,10 +14,8 @@ export class ProductsResolve implements Resolve<ApiProduct> {
 
     resolve (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): ApiProduct {
 
-        console.log("aya in resolve guard");
         this.productsService.getAnimeProducts().subscribe(products => {
             this.productsService.setProductsCache(products);
-            console.log("aya cached products from resolve");
         })
 
         let sProductID = route.paramMap.get('productID');
@@ -29,6 +27,3 @@ export class ProductsResolve implements Resolve<ApiProduct> {
         return null;
     }
 }
-
-
-

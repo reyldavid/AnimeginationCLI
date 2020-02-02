@@ -26,14 +26,11 @@ export class ProductSliceComponent implements OnInit {
                 private _listingService: ListingService, 
                 private _listTypeService: ListTypeService, 
                 private _cartService: CartService ) { 
-                    console.log('product slice construct');
     }
 
     OnSelectProduct(product: ApiProduct) {
-        console.log('product slice product ID: ' + product.ProductID);
         // this._router.navigate(['/detail', { productID: product.ProductID }]);
         this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
-            console.log(item);
         })
     }
 
@@ -55,7 +52,6 @@ export class ProductSliceComponent implements OnInit {
     }
 
     ngOnInit(): any {
-        console.log('product slice init');
         this._route.paramMap.subscribe(params => {
             this.listTypeIDparam = params.get('listTypeID');
 

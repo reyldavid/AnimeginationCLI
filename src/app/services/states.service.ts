@@ -59,8 +59,6 @@ import 'rxjs/Rx';
         else {
             if (this._states && this._states.length) {
 
-                console.log('aya Anime Statess cached');
-                
                 return of(this._states);
             }
             else {

@@ -50,7 +50,6 @@ export class PublishersService {
     }
     else {
       if (this._publishers && (this._publishers.length > 0)) {
-          console.log('aya Anime Publishers cached');
           return of(this._publishers);
       }
       else {

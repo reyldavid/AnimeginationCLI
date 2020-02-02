@@ -46,7 +46,6 @@ import 'rxjs/Rx';
                     }; 
         }
         let shipDate = this.formatDate(tmpDate);
-        console.log("aya ship date ", shipDate)
         return shipDate;
     }
 

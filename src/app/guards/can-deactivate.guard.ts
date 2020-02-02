@@ -18,7 +18,6 @@ export class CanDeactivateGuard implements CanDeactivate<ProductComponent> {
     state: RouterStateSnapshot 
   ): Observable<boolean> | boolean {
 
-    console.log(state.url);
     this.messageService.selectFooter(true);
 
     return true;

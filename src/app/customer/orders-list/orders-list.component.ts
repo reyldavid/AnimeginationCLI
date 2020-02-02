@@ -32,7 +32,6 @@ export class OrdersListComponent implements OnInit {
    }
 
    ngOnInit() {
-    console.log('orders list init');
     this.getOrders();
   }
 
@@ -50,7 +49,6 @@ export class OrdersListComponent implements OnInit {
         if (this.orders.length > 0) {
           this.isEmpty = false;
         }
-        console.log("aya orders ", this.orders);
         this._messageService.setSpinner(false);
     });
   }

@@ -46,7 +46,6 @@ export class RecommendAddComponent implements OnInit {
 
       this.recommendsService.addRecommend(token, this.recommendModel)
         .subscribe(recommend => {
-          console.log("aya new recommend ", recommend);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

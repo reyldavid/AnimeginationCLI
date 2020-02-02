@@ -77,7 +77,6 @@ export class ListingAddComponent implements OnInit {
   onEffectiveDateChange(newDate) {
     this.dateEffective = newDate.toISOString();
     this.listing.Effective = this.dateEffective;
-    console.log(this.listing);
   }
 
   onSubmit() {
@@ -90,7 +89,6 @@ export class ListingAddComponent implements OnInit {
 
       this.listingService.addListing(token, this.listing)
         .subscribe(listing => {
-          console.log("aya new listing ", listing);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

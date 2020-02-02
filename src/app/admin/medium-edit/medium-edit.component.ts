@@ -26,7 +26,6 @@ export class MediumEditComponent implements OnInit {
               }
 
   ngOnInit() {
-    console.log('medium edit init');
     this.route.paramMap.subscribe(params => {
       let mediumIDparam = Number(params.get('mediumID'));
 
@@ -60,7 +59,6 @@ export class MediumEditComponent implements OnInit {
 
       this.mediaService.updateMedium(token, this.mediumModel)
         .subscribe(medium => {
-          console.log("aya medium ", medium);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

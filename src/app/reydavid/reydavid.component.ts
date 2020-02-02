@@ -23,7 +23,6 @@ export class ReydavidComponent implements OnInit {
       private employmentService: EmploymentService ) { }
 
   ngOnInit() {
-    console.log("aya reydavid init ");
     this.recommendsService.getRecommends().subscribe(recommends => {
       this.recommends = recommends;
       this.recommendsService.setRecommendsCache(recommends);

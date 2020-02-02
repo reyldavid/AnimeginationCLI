@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                         this.accountsService.getUserClaim(token)
                         .subscribe((claim: ClaimModel) => {
-                          console.log("aya claim ", claim);
                           let roles = claim.roles;
                           this.messageService.setRoles(roles);
                           this.messageService.setHistory();
@@ -85,7 +84,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                       } else if (error.includes("404")) {
                         //this.unauthorized = true;
                       } else {
-                        console.log('account info get user error: ' + error);
+                        console.log('Error getting user account info: ' + error);
                       }
                       this.messageService.setSpinner(false);
                     }
@@ -98,15 +97,13 @@ export class LoginComponent implements OnInit, OnDestroy {
               } else if (error.includes("404")) {
                     //this.unauthorized = true;
               } else {
-                console.log('user login error: ' + error);
+                console.log('Error getting user account info: ' + error);
               }
               this.messageService.setSpinner(false);
             });
     }
 
     ngOnInit(): any {
-        console.log('login init');
-
         this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
     }
 

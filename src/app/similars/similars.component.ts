@@ -31,14 +31,11 @@ export class SimilarsComponent implements OnInit {
   constructor(private _router: Router, private _route: ActivatedRoute, 
               private _similarsService: SimilarsService, 
               private _cartService: CartService ) { 
-                console.log('similars slider construct');
   }
 
   OnSelectProduct(product: ApiProduct) {
-      console.log('similars product ID: ' + product.ProductID);
       // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
       this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
-        console.log(item);
       })
   }
 
@@ -53,16 +50,13 @@ export class SimilarsComponent implements OnInit {
 
           setTimeout(function() {
             __this.SetupListeners();
-          }, 1000);
+          }, 1400);
         });
   }
 
   ngOnInit(): any {
-    console.log('similars init');
     this._route.paramMap.subscribe(params => {
       this.productIDparam = params.get('productID');
-      console.log('aya productID');
-      console.log(this.productIDparam);
 
       if (this.productID) {
         this.RemoveListeners(this.productID.toString());
@@ -110,19 +104,14 @@ export class SimilarsComponent implements OnInit {
 
       slidePrev.className = classesPrev.join(" ").trim();
       // slidePrev.classList.add(prodClassPrev);
-      console.log('aya prev className ' + slidePrev.className);
   
       let buttonPrevId = ".slide-prev".concat(".", prodClassPrev);
       buttonPrevId = "#" + prevId;
-      console.log(buttonPrevId);  
 
       $(buttonPrevId).on('click', function() {
 
         let wrapperId = "#wrap".concat(_this.productID.toString(), ".slide-wrapper ul");
-  
         let scrollPosition = $(wrapperId).scrollLeft();
-        console.log('aya prev ' + buttonPrevId + '  ' + wrapperId);
-        console.log(scrollPosition);
   
         if (scrollPosition == 0 && _this.outerWidth > 0) {
   
@@ -160,11 +149,9 @@ export class SimilarsComponent implements OnInit {
 
     slideNext.className = classesNext.join(" ").trim();
     // slideNext.classList.add(prodClassNext);
-    console.log('aya next className ' + slideNext.className);
 
     let buttonNextId = ".slide-next".concat(".", prodClassNext);
     buttonNextId = "#" + nextId;
-    console.log(buttonNextId);
 
     $(buttonNextId).on('click', function() {
 
@@ -173,8 +160,6 @@ export class SimilarsComponent implements OnInit {
 
       // let scrollPosition = $('#wrap5.slide-wrapper ul').scrollLeft();
       let scrollPosition = $(wrapperId).scrollLeft();
-      console.log('aya next ' + buttonNextId + '  ' + wrapperId);
-      console.log(scrollPosition + ' : ' + _this.lastScrollPos + ' : ' + _this.outerWidth);
 
       let remainder = scrollPosition % 200;
       if (scrollPosition > 0 && scrollPosition == _this.outerWidth && remainder > 0) {

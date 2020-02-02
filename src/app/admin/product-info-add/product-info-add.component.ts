@@ -82,7 +82,6 @@ export class ProductInfoAddComponent implements OnInit {
 
       this.productsService.addProduct(token, this.product)
         .subscribe(product => {
-          console.log("aya new product ", product);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

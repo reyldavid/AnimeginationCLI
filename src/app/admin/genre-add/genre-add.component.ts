@@ -30,7 +30,6 @@ export class GenreAddComponent implements OnInit {
 
       this.genreService.addCategory(token, this.genreModel)
         .subscribe(genre => {
-          console.log("aya new genre ", genre);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

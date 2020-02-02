@@ -29,7 +29,6 @@ export class GenreComponent implements OnInit {
   }
 
   OnEditGenre(genre: Category) {
-    console.log('category ID: ' + genre.CategoryID);
     this.router.navigate(['/genre-edit'], { queryParams: {  categoryID: genre.CategoryID } });
   }
 
@@ -39,7 +38,6 @@ export class GenreComponent implements OnInit {
 
       this.categoryService.deleteCategory(token, genre).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted genre ", item);
       })
     }
   }

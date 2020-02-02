@@ -52,8 +52,6 @@ import 'rxjs/Rx';
         else {
             if (this._animeProducts && this._animeProducts[productID]) {
 
-                console.log('aya Similar Products cached');
-                
                 return of(this._animeProducts[productID]);
             }
             else {

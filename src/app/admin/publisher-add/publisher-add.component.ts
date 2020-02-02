@@ -30,7 +30,6 @@ export class PublisherAddComponent implements OnInit {
 
       this.publishersService.addPublisher(token, this.publisherModel)
         .subscribe(publisher => {
-          console.log("aya new publisher ", publisher);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

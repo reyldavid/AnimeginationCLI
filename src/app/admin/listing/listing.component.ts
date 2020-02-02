@@ -28,7 +28,6 @@ export class ListingComponent implements OnInit {
   }
 
   OnEditListing(listing: Listing) {
-    console.log('listing ID: ' + listing.ListingID);
     this.router.navigate(['/listing-edit'], { queryParams: {  listingID: listing.ListingID } });
   }
 
@@ -38,7 +37,6 @@ export class ListingComponent implements OnInit {
 
       this.listingsService.deleteListing(token, listing).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted listing ", item);
       })
     }
   }

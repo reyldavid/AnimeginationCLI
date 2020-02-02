@@ -28,7 +28,6 @@ export class PublisherComponent implements OnInit {
   }
 
   OnEditPublisher(publisher: Publisher) {
-    console.log('publisher ID: ' + publisher.PublisherID);
     this.router.navigate(['/publisher-edit'], { queryParams: {  publisherID: publisher.PublisherID } });
   }
 
@@ -38,7 +37,6 @@ export class PublisherComponent implements OnInit {
 
       this.publishersService.deletePublisher(token, publisher).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted publisher ", item);
       })
     }
   }

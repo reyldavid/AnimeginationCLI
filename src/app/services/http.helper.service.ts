@@ -45,7 +45,7 @@ export class HttpHelper {
                     error.url ? error.url :
                         error.error ? error.error.message :
                             'Server error';
-        console.log('API error: ' + errMsg);
+        console.log("API error: " + errMsg);
         console.log(error);
         return Observable.throw(error.error ? error.error : errMsg);
     }
@@ -91,7 +91,6 @@ export class HttpHelper {
             endpoint = '/v1/' + service;
             endpoint = id ? endpoint + '/' + id : endpoint;
         }
-        console.log('service: ' + service + '    endpoint: ' + endpoint);
         return endpoint;
     }
 
@@ -104,7 +103,6 @@ export class HttpHelper {
         if (environment.useNgProxy) {
             endpoint = '/v1/' + service + '/' + searchText;
         }
-        console.log('service: ' + service + '    endpoint: ' + endpoint);
         return endpoint;
     }
 
@@ -119,7 +117,6 @@ export class HttpHelper {
             endpoint = '/v1/' + segment;
             endpoint = id ? endpoint + '/' + id : endpoint;
         }
-        console.log('service: ' + segment + '    endpoint: ' + endpoint);
         return endpoint;
     }
 
@@ -131,7 +128,6 @@ export class HttpHelper {
         if (environment.useNgProxy) {
             endpoint = '/v1/' + segment;
         }
-        console.log('service: ' + segment + '    endpoint: ' + endpoint);
         return endpoint;
     }
 
@@ -144,7 +140,6 @@ export class HttpHelper {
         if (environment.useNgProxy) {
             endpoint = '/v1/' + segment;
         }
-        console.log('service: ' + segment + '    endpoint: ' + endpoint);
         return endpoint;
     }
 

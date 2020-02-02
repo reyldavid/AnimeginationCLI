@@ -25,7 +25,6 @@ export class ListTypeComponent implements OnInit {
   }
 
   OnEditListType(listType: ListType) {
-    console.log('listType ID: ' + listType.ListTypeID);
     this.router.navigate(['/list-type-edit'], { queryParams: {  listTypeID: listType.ListTypeID } });
   }
 

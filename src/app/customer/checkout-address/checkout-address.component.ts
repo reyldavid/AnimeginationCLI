@@ -25,18 +25,14 @@ export class CheckoutAddressComponent implements OnInit {
         private _sessionService: SessionService, 
         private _messageService: MessageService )
     {
-        console.log('account info construct');
-
         this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
             this.userAccount = userAccount;
             
             this._messageService.setSpinner(false);
       })
-
     }
 
     ngOnInit(): any {
-        console.log('checkout address init');
         this.userAccount = this._sessionService.UserAccount;
     }
 

@@ -30,7 +30,6 @@ export class MediumAddComponent implements OnInit {
 
       this.mediaService.addMedium(token, this.mediumModel)
         .subscribe(medium => {
-          console.log("aya new medium ", medium);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

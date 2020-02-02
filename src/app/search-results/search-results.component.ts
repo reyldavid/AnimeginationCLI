@@ -25,14 +25,10 @@ export class SearchResultsComponent implements OnInit {
    }
 
   ngOnInit(): any {
-    console.log('search results init');
-
     this._route.queryParams.subscribe(params => {
 
       if (params.searchText) {
         this.searchText = params.searchText;
-        console.log('aya search text');
-        console.log(this.searchText);
   
         this.GetProducts(this.searchText);
         }
@@ -63,10 +59,8 @@ export class SearchResultsComponent implements OnInit {
   }
 
   OnSelectProduct(product: ApiProduct) {
-    console.log('MEGUMI product ID: ' + product.ProductID, product.ProductTitle);
     // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
     this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
-      console.log(item);
     })
   }
 

@@ -15,7 +15,6 @@ export class ReviewComponent implements OnInit {
 
   @Input() set review(review: Recommendation) {
     this.recommendation = review;
-    console.log("recommendation ", review);
   }
 
   constructor() { }

@@ -184,7 +184,6 @@
 
 //       this.fillAttrs();
 
-//       console.log("aya Paginate Event");
 //       console.log(event);
 //       console.log(this.pageRange);
 //       console.log(this.eventDetailsGraph.length);

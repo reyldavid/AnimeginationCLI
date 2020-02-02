@@ -54,8 +54,6 @@ export class RegisterComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit(): any {
-      console.log('register init');
-
       this.registerForm = new FormGroup({
         username: new FormControl("", [Validators.required, Validators.minLength(3)]), 
         firstname: new FormControl("", [Validators.required]), 
@@ -95,8 +93,6 @@ export class RegisterComponent implements OnInit {
 
       this.accountService.createUser(this.registerInput).subscribe(createdUser => {
         this.registerInput.UserId = createdUser.id;
-        console.log("aya created user");
-        console.log(this.registerInput);
 
         let sessionAccount = this.sessionService.UserAccount;
         sessionAccount.userId = this.registerInput.UserId;
@@ -160,8 +156,6 @@ export class RegisterComponent implements OnInit {
 }
 
   // this.accountService.userLogin('megumi', 'Chikush0').subscribe( token => {
-  //   console.log('user login');
-  //   console.log(token);
   // })
 
   //   let registerModel1: RegisterModel = {

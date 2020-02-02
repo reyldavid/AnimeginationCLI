@@ -39,7 +39,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
               private _productsService: ProductsService,
               private _globals: Globals ) {
         
-        console.log("navigation construct");
         _loginService.userLoggedIn.subscribe(firstName => {
             this.userFirstName = firstName;
         });
@@ -80,15 +79,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
         _productsService.getAnimeProducts().subscribe(products => {
             _productsService.setProductsCache(products);
-      
-            console.log("aya products cached");
         })
   }
 
   ngOnInit(): any {
       this.isAdmin = false;
       this._sessionService.IsAdmin = false;
-      console.log('navigation init');
     //   this.showFooter = true;
     if (this._sessionService.isAuthenticated()) {
         this.orderSubscription = this._orderService.getOrderTotals(
@@ -108,7 +104,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   onSearch(searchText: string) {
-      console.log('onSearch ' + searchText);
       this._router.navigate(['/search'], { queryParams: { searchText: searchText } });
   }
 

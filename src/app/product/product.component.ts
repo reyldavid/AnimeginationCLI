@@ -28,7 +28,6 @@ export class ProductComponent implements OnInit {
                 private _cartServce: CartService, 
                 private _sessionService: SessionService,
                 private _cdr: ChangeDetectorRef ) { 
-                  console.log('product details construct');
     }
 
     GetProduct(productID: number) {
@@ -46,7 +45,6 @@ export class ProductComponent implements OnInit {
     }
 
     ngOnInit(): any {
-        console.log('product details init');
         this._route.paramMap.subscribe(params => {
           let productIDparam = Number(params.get('productID'));
 
@@ -75,10 +73,9 @@ export class ProductComponent implements OnInit {
         }
 
         this._cartServce.addCartItem(this._sessionService.UserToken, cartItem).subscribe(item => {
-          console.log(item);
           this._router.navigate(['/cart']);
         }, (error) => {
-          console.log(error);
+          console.log("Error adding to cart ", error);
           this._router.navigate(['/cart']);
           this._messageService.setSpinner(false);
         })
@@ -93,7 +90,6 @@ export class ProductComponent implements OnInit {
     }
 
     WriteReview() {
-      console.log('product ID: ', this.productID);
       this._router.navigate(['/product-review'], { queryParams: {  productID: this.productID } });
     }
 }

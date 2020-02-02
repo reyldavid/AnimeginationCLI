@@ -24,13 +24,8 @@ export class CategoryListComponent implements OnInit {
    }
 
   ngOnInit(): any {
-    console.log('category list init');
-
     this._route.queryParams.subscribe(params => {
       let categoryID = params.categoryID;
-
-      console.log('aya categoryID');
-      console.log(categoryID);
 
       if (categoryID) {
         this.GetCategory(categoryID);
@@ -40,13 +35,11 @@ export class CategoryListComponent implements OnInit {
   }
 
   OnSelectProduct(product: ApiProduct) {
-    console.log('AYA category product ID: ' + product.ProductID);
     // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
 
     this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
-      console.log(item);
     }, (error) => {
-      console.log(error);
+      console.log("Error adding history", error);
     })
 
 

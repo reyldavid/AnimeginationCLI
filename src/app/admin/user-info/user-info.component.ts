@@ -33,7 +33,6 @@ export class UserInfoComponent implements OnInit {
   }
 
   OnEditUserAccount(userAccount: UserAccountModel) {
-    console.log('userAccount ID: ' + userAccount.userId);
     this.router.navigate(['/user-info-edit'], { queryParams: {  userAccountID: userAccount.userId } });
   }
 

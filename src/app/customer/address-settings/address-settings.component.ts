@@ -37,8 +37,6 @@ export class AddressSettingsComponent implements OnInit {
       private _messageService: MessageService, 
       private _statesService: StatesService )
   {
-      console.log('address settings construct');
-
       this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
           this.addressInput = userAccount;
 
@@ -47,8 +45,6 @@ export class AddressSettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('address settings init');
-
     if (this._sessionService.isAuthenticated()) {
       this.addressInput = this._sessionService.UserAccount;
     }
@@ -100,7 +96,7 @@ export class AddressSettingsComponent implements OnInit {
         (error: string) => {
           this.isSuccess = false;
           this.isFailure = true;
-          console.log("Updating user address: ", error);
+          console.log("Error updating user address: ", error);
           this._messageService.setSpinner(false);
         })  
       }

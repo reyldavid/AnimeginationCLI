@@ -29,7 +29,6 @@ export class ProductInfoComponent implements OnInit {
   }
 
   OnEditProduct(product: ApiProduct) {
-    console.log('product ID: ' + product.ProductID);
     this.router.navigate(['/product-edit'], { queryParams: {  productID: product.ProductID } });
   }
 
@@ -39,7 +38,6 @@ export class ProductInfoComponent implements OnInit {
 
       this.productsService.deleteProduct(token, product.ProductID).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted product ", item);
         this.router.navigate(['/product-info']);
       })
     }

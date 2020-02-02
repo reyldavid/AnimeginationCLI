@@ -40,7 +40,6 @@ export class ProductReviewComponent implements OnInit {
               private messageService: MessageService) { }
 
   ngOnInit() {
-    console.log('product review init');
     this.route.paramMap.subscribe(params => {
       let productIDparam = Number(params.get('productID'));
 
@@ -65,7 +64,6 @@ export class ProductReviewComponent implements OnInit {
       let token = this.sessionService.UserToken;
     
       this.feedbackService.addUserFeedback(token, this.ratingModel).subscribe(feedback => {
-        console.log("aya feedback ", feedback);
         this.messageService.setSpinner(false);
       },
       (error) => {
@@ -89,15 +87,12 @@ export class ProductReviewComponent implements OnInit {
   }
 
   OnSelectProduct() {
-    console.log('product ID: ' + this.product.ProductID);
     // this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
     this.cartService.addVisitHistory(this.product.ProductID).subscribe(item => {
-      console.log(item);
     })
   }
 
   getRating(rating: number) {
-    console.log("Rating: ", rating);
     this.ratingModel.ratingId = rating;
   }
 

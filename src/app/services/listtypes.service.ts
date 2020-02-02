@@ -70,8 +70,6 @@ import 'rxjs/Rx';
         }
         else {
             if (this._listTypes && this._listTypes.length > 0) {
-
-                console.log('aya Anime List Type cached');
                 
                 return of(this._listTypes);
             }
@@ -98,8 +96,6 @@ import 'rxjs/Rx';
         }
         else {
             if (this._animeListType && this._animeListType[listTypeID]) {
-
-                console.log('aya Anime List Type cached');
                 
                 return of(this._animeListType[listTypeID]);
             }

@@ -50,13 +50,11 @@ export class OrdersSummaryComponent implements OnInit {
   }
 
   @Input() set order(order: Order) {
-    console.log("order ID ", order.orderID);
     this.orderID = order.orderID;
     this.getOrder(order);  
   }
 
   ngOnInit() {
-    console.log('order summary init');
     this.userAccount = this._sessionService.UserAccount;
   }
 
@@ -74,8 +72,6 @@ export class OrdersSummaryComponent implements OnInit {
 
     this.trackingNumber = order.trackingNumber;
     this.getOrderItems(order);
-
-    console.log("aya order ", order);
   }
 
   getOrderItems(order: Order) {
@@ -99,7 +95,6 @@ export class OrdersSummaryComponent implements OnInit {
   }
 
   seeDetails() {
-    console.log('order ID: ' + this.orderID);
     this._router.navigate(['/orders-details'], { queryParams: {  orderID: this.orderID } });
   }
 

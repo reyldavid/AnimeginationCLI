@@ -53,7 +53,6 @@ export class ListingEditComponent implements OnInit {
             private helper: UtilityService ) { }
   
   ngOnInit() {
-    console.log('listing edit init');
     this.route.paramMap.subscribe(params => {
       let listingIDparam = params.get('listingID');
 
@@ -110,7 +109,6 @@ export class ListingEditComponent implements OnInit {
   // onEffectiveDateChange(newDate) {
   //   this.dateEffective = newDate.toISOString();
   //   this.listing.Effective = this.dateEffective;
-  //   console.log(this.listing);
   // }
 
   onSubmit() {
@@ -123,7 +121,6 @@ export class ListingEditComponent implements OnInit {
 
       this.listingService.editListing(token, this.listing)
         .subscribe(listing => {
-          console.log("aya updated listing ", listing);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

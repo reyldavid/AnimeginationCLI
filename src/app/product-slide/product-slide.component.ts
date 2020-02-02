@@ -38,14 +38,11 @@ export class ProductSlideComponent implements OnInit {
               private _listTypeService: ListTypeService, 
               private _cartService: CartService, 
               private _messageService: MessageService ) { 
-                console.log('product slider construct');
   }
 
   OnSelectProduct(product: ApiProduct) {
-      console.log('product slide product ID: ' + product.ProductID);
       // this._router.navigate(['/detail'], { queryParams: {  productID: product.ProductID } });
       this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
-        console.log(item);
       })
   }
 
@@ -68,14 +65,13 @@ export class ProductSlideComponent implements OnInit {
               // this.SetupListeners();
               setTimeout(function() {
                 __this.SetupListeners();
-              }, 500);
+              }, 1400);
   
               this._messageService.setSpinner(false);
           });
   }
 
   ngOnInit(): any {
-      console.log('product slide init');
       this._route.paramMap.subscribe(params => {
         this.listTypeIDparam = params.get('listTypeID');
 
@@ -98,10 +94,12 @@ export class ProductSlideComponent implements OnInit {
 
     // PREVIOUS BUTTON
     var slidePrev = document.getElementById("prev" + this.listTypeID);
+    if (!slidePrev) {
+      return;
+    }
     slidePrev.classList.add(this.listType.ListTypeName);
 
     let buttonPrevId = ".slide-prev".concat(".", this.listType.ListTypeName);
-    console.log(buttonPrevId);
 
     $(buttonPrevId).on('click', function() {
 
@@ -109,8 +107,6 @@ export class ProductSlideComponent implements OnInit {
       let wrapperId = "#wrap".concat(_this.listTypeID.toString(), ".slide-wrapper ul");
 
       let scrollPosition = $(wrapperId).scrollLeft();
-      console.log('aya prev');
-      console.log(scrollPosition);
 
       if (scrollPosition == 0 && _this.outerWidth > 0) {
 
@@ -135,7 +131,6 @@ export class ProductSlideComponent implements OnInit {
     slideNext.classList.add(this.listType.ListTypeName);
 
     let buttonNextId = ".slide-next".concat(".", this.listType.ListTypeName);
-    console.log(buttonNextId);
 
     $(buttonNextId).on('click', function() {
 
@@ -144,8 +139,6 @@ export class ProductSlideComponent implements OnInit {
 
       // let scrollPosition = $('#wrap5.slide-wrapper ul').scrollLeft();
       let scrollPosition = $(wrapperId).scrollLeft();
-      console.log('aya next');
-      console.log(scrollPosition);
 
       let remainder = scrollPosition % 200;
       if (scrollPosition > 0 && scrollPosition == _this.outerWidth && remainder > 0) {

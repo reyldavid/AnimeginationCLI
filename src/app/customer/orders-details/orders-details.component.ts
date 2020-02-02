@@ -50,7 +50,6 @@ export class OrdersDetailsComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    console.log('order details init');
     this.userAccount = this._sessionService.UserAccount;
     this.shipDate = this._utils.getShippingDate();
 
@@ -92,8 +91,6 @@ export class OrdersDetailsComponent implements OnInit, OnDestroy {
         this.trackingNumber = this.order.trackingNumber;
 
         this.getOrderItems(orderID)
-
-        console.log("aya order ", this.order);
     });
   }
 

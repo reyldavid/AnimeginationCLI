@@ -14,7 +14,6 @@ export class EmploymentComponent implements OnInit {
   @Input() set experience(employment: Employment) {
     this.employment = employment;
     this.details = employment.Details;
-    console.log("employment ", employment);
   }
 
   constructor() { }

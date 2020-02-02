@@ -39,7 +39,6 @@ export class CustomerNoteComponent implements OnInit {
 
       this.userNotesService.deleteUserNote(token, customerNote.noteId).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted user Note ", item);
       }, 
       (error) => {
         this.messageService.setSpinner(false);

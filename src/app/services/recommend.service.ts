@@ -49,7 +49,6 @@ export class RecommendsService {
     }
     else {
       if (this._recommends && (this._recommends.length > 0)) {
-          console.log('aya Anime Recommends cached');
           return of(this._recommends);
       }
       else {

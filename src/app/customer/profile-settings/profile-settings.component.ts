@@ -32,8 +32,6 @@ export class ProfileSettingsComponent implements OnInit {
       private _sessionService: SessionService, 
       private _messageService: MessageService )
   {
-      console.log('profile settings construct');
-
       this.accountSubscription = _messageService.getUserAccount().subscribe( userAccount => {
           this.profileInput = userAccount;
         })
@@ -41,8 +39,6 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('profile settings init');
-
     if (this._sessionService.isAuthenticated()) {
       this.profileInput = this._sessionService.UserAccount;
     }
@@ -80,7 +76,7 @@ export class ProfileSettingsComponent implements OnInit {
         (error: string) => {
           this.isSuccess = false;
           this.isFailure = true;
-          console.log("Updating user profile: ", error);
+          console.log("Error updating user profile: ", error);
           this._messageService.setSpinner(false);
         })  
       }

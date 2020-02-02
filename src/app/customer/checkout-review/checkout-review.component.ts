@@ -38,26 +38,21 @@ export class CheckoutReviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('checkout review init');
     this.userAccount = this._sessionService.UserAccount;
     this.shipDate = this._utils.getShippingDate();
 }
 
   placeOrder() {
-    console.log('Update Order!');
     this._sessionService.Order.trackingNumber = this._utils.getTrackingNumber();
     this._sessionService.Order.isPurchased = true;
     this._sessionService.Order.orderType = "History";
     this._orderService.updateOrder(this._sessionService.UserToken, this._sessionService.Order)
       .subscribe( response => {
-        console.log('updated response: ');
-        console.log(response);
-
         this._messageService.setOrder(null);
         this._messageService.setSpinner(false);
     },  
     (error: string) => {
-      console.log(error);
+      console.log("Error placing order ", error);
       this._messageService.setSpinner(false);
     });
     this._router.navigate(['/checkout-thankyou']);

@@ -41,8 +41,6 @@ export class WishListComponent implements OnInit {
 
       this.cartService.getCartItems(this.sessionService.UserToken, CartType.wishList)
         .subscribe( items => {
-          console.log('cart items');
-          console.log(items);
           this.cartProducts = items;
 
           this.getTotals();
@@ -55,8 +53,6 @@ export class WishListComponent implements OnInit {
       .subscribe( order => {
 
         if (order.orderID) {
-          console.log('order totals');
-          console.log(order);
           this.order = order;
           this.isEmpty = false;  
         }

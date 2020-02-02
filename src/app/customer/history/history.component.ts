@@ -33,10 +33,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
               private _messageService: MessageService,
               private _sessionService: SessionService ) { 
     var _self = this;
-    console.log('history construct');
 
     this.historySubscription = this._messageService.getHistory().subscribe(productId => {
-      console.log("history Product ID: ", productId);
       this.PostCachedVisits();
       this.GetVisitedProducts();
     })
@@ -51,7 +49,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): any {
-    console.log('history init');
     this.GetVisitedProducts();
   }
 
@@ -60,10 +57,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   OnSelectProduct(product: CartItem) {
-      console.log('history product ID: ' + product.productID);
       // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
       this._cartService.addVisitHistory(product.productID).subscribe(item => {
-        console.log(item);
       })
     }
 
@@ -74,9 +69,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
     if (productIds.length && this._sessionService.isAuthenticated()) {
         _.forEach(productIds, function(prodId) {
             ____this._cartService.addVisitHistory(prodId, 1).subscribe(item => {
-              console.log(item);
             }, (error) => {
-              console.log(error);
+              console.log("Error posting visits ", error);
             })
         })
 
@@ -92,8 +86,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
       this._cartService.getCartItems(this._sessionService.UserToken, CartType.recentlyVisited)
         .subscribe( items => {
-          console.log('visited items');
-          console.log(items);
           // this.cartProducts = _.reverse(items);
           this.cartProducts = items;
 
@@ -104,7 +96,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.initial = false;
             setTimeout(function() {
               ___this.SetupListeners();
-            }, 1000);
+            }, 1400);
           }
       })
     // }
@@ -123,10 +115,14 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
     // PREVIOUS BUTTON
     var slidePrev = document.getElementById("prev" + this.idName);
+
+    if (!slidePrev) {
+      return;
+    }
+
     slidePrev.classList.add(this.idName);
 
     let buttonPrevId = ".slide-prev".concat(".", this.idName);
-    console.log(buttonPrevId);
 
     $(buttonPrevId).on('click', function() {
 
@@ -134,8 +130,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
       let wrapperId = "#wrap".concat(__this.idName, ".slide-wrapper ul");
 
       let scrollPosition = $(wrapperId).scrollLeft();
-      console.log('aya prev');
-      console.log(scrollPosition);
 
       if (scrollPosition == 0 && __this.outerWidth > 0) {
 
@@ -160,7 +154,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
     slideNext.classList.add(this.idName);
 
     let buttonNextId = ".slide-next".concat(".", this.idName);
-    console.log(buttonNextId);
 
     $(buttonNextId).on('click', function() {
 
@@ -168,8 +161,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
       // let scrollPosition = $('#wrap5.slide-wrapper ul').scrollLeft();
       let scrollPosition = $(wrapperId).scrollLeft();
-      console.log('aya next');
-      console.log(scrollPosition);
 
       let remainder = scrollPosition % 200;
       if (scrollPosition > 0 && scrollPosition == __this.outerWidth && remainder > 0) {

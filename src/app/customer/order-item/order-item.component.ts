@@ -14,7 +14,6 @@ import { CartService } from 'src/app/services/cart.service';
 export class OrderItemComponent implements OnInit {
 
   @Input() set orderItem(orderItem: OrderItem) {
-    console.log("order Item ", orderItem);
     this.GetProduct(orderItem);
     this.quantity = orderItem.Quantity;
   }
@@ -45,23 +44,18 @@ export class OrderItemComponent implements OnInit {
   }
 
   OnSelectProduct() {
-    console.log('product ID: ' + this.product.ProductID);
     // this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
     this.cartService.addVisitHistory(this.product.ProductID).subscribe(item => {
-      console.log(item);
     })
   }
 
   BuyAgain(product: Product) {
-    console.log('product ID: ', product);
     // this.router.navigate(['/detail'], { queryParams: {  productID: this.product.ProductID } });
     this.cartService.addVisitHistory(this.product.ProductID).subscribe(item => {
-      console.log(item);
     })
   }
 
   WriteReview(product: Product) {
-    console.log('product ID: ', product);
     this.router.navigate(['/product-review'], { queryParams: {  productID: this.product.ProductID } });
   }
 }

@@ -64,7 +64,6 @@ import { TokenModel } from '../models/tokenmodel';
         }
         else {
           if (this._listings && (this._listings.length > 0)) {
-              console.log('aya Anime Listings cached');
               return of(this._listings);
           }
           else {
@@ -89,8 +88,6 @@ import { TokenModel } from '../models/tokenmodel';
         }
         else {
             if (this._animeListing && this._animeListing[listTypeID]) {
-
-                console.log('aya Anime Listings cached');
                 
                 return of(this._animeListing[listTypeID]);
             }

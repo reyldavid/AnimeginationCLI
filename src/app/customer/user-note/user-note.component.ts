@@ -46,7 +46,6 @@ export class UserNoteComponent implements OnInit {
       let token = this.sessionService.UserToken;
     
       this.userNoteService.addUserNote(token, this.noteModel).subscribe(userNote => {
-        console.log("aya user note ", userNote);
         this.messageService.setSpinner(false);
       }, 
       (error) => {

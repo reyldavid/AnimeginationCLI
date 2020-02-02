@@ -27,13 +27,8 @@ export class ProductsListComponent implements OnInit {
    }
 
   ngOnInit(): any {
-    console.log('products list init');
-
     this._route.queryParams.subscribe(params => {
       let listTypeId = params.listTypeId % 10;
-
-      console.log('aya listTypeId');
-      console.log(listTypeId);
 
       this.GetProductListType(listTypeId);
       // this.GetProducts(listTypeId);
@@ -71,10 +66,8 @@ export class ProductsListComponent implements OnInit {
   }
   
   OnSelectProduct(product: ApiProduct) {
-    console.log('list type product ID: ' + product.ProductID);
     // this._router.navigate(['/detail'], { queryParams: { productID: product.ProductID } });
     this._cartService.addVisitHistory(product.ProductID).subscribe(item => {
-      console.log(item);
     })
   }
 

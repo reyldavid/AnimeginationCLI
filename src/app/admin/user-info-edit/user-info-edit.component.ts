@@ -37,7 +37,6 @@ export class UserInfoEditComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('user account edit init');
     this.route.paramMap.subscribe(params => {
       let userIDparam = params.get('userAccountID');
 
@@ -91,7 +90,6 @@ export class UserInfoEditComponent implements OnInit {
 
       this.userAccountsService.updateUserAccount(token, this.userAccount)
         .subscribe(user => {
-          console.log("aya user ", user);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

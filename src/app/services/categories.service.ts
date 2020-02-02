@@ -92,8 +92,6 @@ import { MessageService } from '../services/message.service';
         }
         else {
             if (this._animeCategory && this._animeCategory[categoryId]) {
-
-                console.log('aya Anime Category cached');
                 
                 return of(this._animeCategory[categoryId]);
             }
@@ -120,8 +118,6 @@ import { MessageService } from '../services/message.service';
         }
         else {
             if (this._animeCategories && this._animeCategories[0]) {
-
-                console.log('aya Anime Categories cached');
                 
                 return of(this._animeCategories);
             }
@@ -148,8 +144,6 @@ import { MessageService } from '../services/message.service';
         }
         else {
             if (this._animeCategoryList && this._animeCategoryList[categoryId]) {
-
-                console.log('aya Anime CategoryList results cached');
                 
                 return of(this._animeCategoryList[categoryId]);
             }

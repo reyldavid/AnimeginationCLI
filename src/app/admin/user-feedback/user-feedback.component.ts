@@ -40,7 +40,6 @@ export class UserFeedbackComponent implements OnInit {
 
       this.feedbackService.deleteUserFeedback(token, feedback.feedbackId).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted user Feedback ", item);
       }, 
       (error) => {
         this.messageService.setSpinner(false);

@@ -53,8 +53,6 @@ export class BuyListComponent implements OnInit {
 
       this.cartService.getCartItems(this.sessionService.UserToken, CartType.shoppingCart)
         .subscribe( items => {
-          console.log('cart items');
-          console.log(items);
           this.cartProducts = items;
 
           this.isEmpty = !(items && items.length > 0);
@@ -69,8 +67,6 @@ export class BuyListComponent implements OnInit {
   //     .subscribe( order => {
 
   //       if (order.orderID) {
-  //         console.log('order totals');
-  //         console.log(order);
   //         this.order = order;
   //         this.isEmpty = false;
   

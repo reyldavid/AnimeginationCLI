@@ -28,7 +28,6 @@ export class MediumComponent implements OnInit {
   }
 
   OnEditMedium(medium: Medium) {
-    console.log('medium ID: ' + medium.MediumID);
     this.router.navigate(['/medium-edit'], { queryParams: {  mediumID: medium.MediumID } });
   }
 
@@ -38,7 +37,6 @@ export class MediumComponent implements OnInit {
 
       this.mediaService.deleteMedium(token, medium).subscribe(item => {
         this.messageService.setSpinner(false);
-        console.log("aya deleted medium ", item);
       })
     }
   }

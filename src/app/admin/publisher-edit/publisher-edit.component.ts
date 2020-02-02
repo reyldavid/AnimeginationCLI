@@ -26,7 +26,6 @@ export class PublisherEditComponent implements OnInit {
               }
 
   ngOnInit() {
-    console.log('publisher edit init');
     this.route.paramMap.subscribe(params => {
       let publisherIDparam = Number(params.get('publisherID'));
 
@@ -60,7 +59,6 @@ export class PublisherEditComponent implements OnInit {
 
       this.publishersService.updatePublisher(token, this.publisherModel)
         .subscribe(publisher => {
-          console.log("aya publisher ", publisher);
           this.messageService.setSpinner(false);
         }, 
         (error) => {

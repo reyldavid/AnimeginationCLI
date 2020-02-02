@@ -93,8 +93,6 @@ import * as _ from 'lodash';
         }
         else {
             if (this._animeProducts && this._animeProducts[0]) {
-
-                console.log('aya Anime Products cached');
                 
                 return of(this._animeProducts[0]);
             }
@@ -123,8 +121,6 @@ import * as _ from 'lodash';
         }
         else {
             if (this._animeProduct && this._animeProduct[productID]) {
-
-                console.log('aya Anime Product cached');
                 
                 return of(this._animeProduct[productID]);
             }
