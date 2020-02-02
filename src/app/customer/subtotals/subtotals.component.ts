@@ -55,8 +55,6 @@ export class SubtotalsComponent implements OnInit {
   }
 
   mapOrderItems(order: Order) {
-    console.log('order totals');
-    console.log(order);
     this.order = order;
 
     this.isFreeShipping = this.order.subTotal > 0 && 
@@ -64,7 +62,7 @@ export class SubtotalsComponent implements OnInit {
 
     this.isDiscount = this.order.discounts > 0 ? true : false;
 
-    this.address.city = this.sessionService.UserAccount.cellPhone;
+    this.address.city = this.sessionService.UserAccount.city;
     this.address.state = this.sessionService.UserAccount.state;
   }
 
@@ -105,7 +103,7 @@ export class SubtotalsComponent implements OnInit {
         this.messageService.setSpinner(false);
       },  
       (error: string) => {
-        console.log(error);
+        console.log("Error computing totals ", error);
         this.messageService.setSpinner(false);
     })
   }
@@ -123,7 +121,7 @@ export class SubtotalsComponent implements OnInit {
         this.messageService.setSpinner(false);
       },  
       (error: string) => {
-        console.log(error);
+        console.log("Error retrieving totals ", error);
         this.messageService.setSpinner(false);
     })
   }

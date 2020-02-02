@@ -1,6 +1,7 @@
 
 ul {
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     white-space: nowrap;
     display: block;
     list-style: none;

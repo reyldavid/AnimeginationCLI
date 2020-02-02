@@ -42,12 +42,9 @@ export class MediaService {
     this._media = media;
   }
 
-            // if (this._animeCategory && this._animeCategory[categoryId]) {
-
-            //     console.log('aya Anime Category cached');
-                
-            //     return of(this._animeCategory[categoryId]);
-            // }
+  // if (this._animeCategory && this._animeCategory[categoryId]) {
+  //     return of(this._animeCategory[categoryId]);
+  // }
 
   getMediaTypes(): Observable<Medium[]> {
     if (this.globals.localData) {
@@ -55,7 +52,6 @@ export class MediaService {
     }
     else {
       if (this._media && (this._media.length > 0)) {
-          console.log('aya Anime Media cached');
           return of(this._media);
       }
       else {

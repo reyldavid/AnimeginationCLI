@@ -109,7 +109,7 @@ import { SessionService } from './session.service';
 
     addVisitHistory(productId: number, skipInfiniteLoop?: number): Observable<OrderItem> {
 
-        let observables = null;
+        let observables = of(null);
 
         if (this.sessionService.isAuthenticated()) {
             let token = this.sessionService.UserToken;
