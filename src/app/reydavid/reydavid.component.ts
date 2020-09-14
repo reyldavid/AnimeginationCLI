@@ -17,8 +17,9 @@ export class ReydavidComponent implements OnInit {
   educations: Employment[] = [];
   ratingsCount: number = 0;
   ratingsAverage: number = 0;
+  coverIntro: string;
 
-  constructor( private router: Router, 
+  constructor( private router: Router,
       private recommendsService: RecommendsService,
       private employmentService: EmploymentService ) { }
 
@@ -32,6 +33,7 @@ export class ReydavidComponent implements OnInit {
 
     this.employments = this.employmentService.Employments;
     this.educations = this.employmentService.Educations;
+    this.coverIntro = this.employmentService.CoverIntro;
   }
 
   AddToCart() {

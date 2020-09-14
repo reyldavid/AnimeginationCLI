@@ -9,21 +9,21 @@
           <label for="productcode">Code <span class="anime-color">*</span></label>
           <input type="text" required
                 name="productcode"
-                class="form-control" id="productcode" 
+                class="form-control" id="productcode"
                 [(ngModel)]="product.productcode" />
       </div>
       <div class="form-group">
         <label for="producttitle">Title <span class="anime-color">*</span></label>
         <input type="text" required
               name="producttitle"
-              class="form-control" id="producttitle" 
+              class="form-control" id="producttitle"
               [(ngModel)]="product.producttitle" />
       </div>
       <div class="form-group">
         <label for="productdescription">Description <span class="anime-color">*</span></label>
         <textarea rows="5" required
               name="productdescription"
-              class="form-control" id="productdescription" 
+              class="form-control" id="productdescription"
               [(ngModel)]="product.productdescription">
         </textarea>
       </div>
@@ -31,22 +31,22 @@
         <label for="unitprice">Unit Price <span class="anime-color">*</span></label>
         <input type="number" min="0" max="1000" required
               name="unitprice"
-              class="form-control" id="unitprice" 
+              class="form-control" id="unitprice"
               [(ngModel)]="product.unitprice" />
       </div>
       <div class="form-group">
         <label for="yourprice">Your Price <span class="anime-color">*</span></label>
         <input type="number" min="0" max="1000" required
               name="yourprice"
-              class="form-control" id="yourprice" 
+              class="form-control" id="yourprice"
               [(ngModel)]="product.yourprice" />
       </div>
       <div class="form-group">
         <label for="genre">Genre</label>
-        <select (change)="selectGenre($event.target.value)" 
+        <select (change)="selectGenre($event.target.value)"
           class="form-control" id="genre" name="genre">
-            <option *ngFor="let genre of genres" 
-                value={{genre.CategoryID}} 
+            <option *ngFor="let genre of genres"
+                value={{genre.CategoryID}}
                 [selected]="genre.CategoryID == product.categoryid">
                     {{genre.CategoryName}}
             </option>
@@ -56,29 +56,29 @@
         <label for="productagerating">Age Rating <span class="anime-color">*</span></label>
         <input type="text" required
               name="productagerating"
-              class="form-control" id="productagerating" 
+              class="form-control" id="productagerating"
               [(ngModel)]="product.productagerating" />
       </div>
       <div class="form-group">
         <label for="productlength">Length <span class="anime-color">*</span></label>
         <input type="number" min="1" max="600" required
               name="productlength"
-              class="form-control" id="productlength" 
+              class="form-control" id="productlength"
               [(ngModel)]="product.productlength" />
       </div>
       <div class="form-group">
         <label for="productyearcreated">Year Created <span class="anime-color">*</span></label>
         <input type="number" min="1950" max="2050" required
               name="productyearcreated"
-              class="form-control" id="productyearcreated" 
+              class="form-control" id="productyearcreated"
               [(ngModel)]="product.productyearcreated" />
       </div>
       <div class="form-group">
         <label for="medium">Medium</label>
-        <select (change)="selectMedium($event.target.value)" 
+        <select (change)="selectMedium($event.target.value)"
           class="form-control" id="medium" name="medium">
-            <option *ngFor="let medium of media" 
-                value={{medium.MediumID}} 
+            <option *ngFor="let medium of media"
+                value={{medium.MediumID}}
                 [selected]="medium.MediumID == product.mediumid">
                     {{medium.Description}}
             </option>
@@ -86,10 +86,10 @@
       </div>
       <div class="form-group">
         <label for="publisher">Publisher</label>
-        <select (change)="selectPublisher($event.target.value)" 
+        <select (change)="selectPublisher($event.target.value)"
           class="form-control" id="publisher" name="publisher">
-            <option *ngFor="let publisher of publishers" 
-                value={{publisher.PublisherID}} 
+            <option *ngFor="let publisher of publishers"
+                value={{publisher.PublisherID}}
                 [selected]="publisher.PublisherID == product.publisherid">
                     {{publisher.PublisherName}}
             </option>
@@ -97,21 +97,20 @@
       </div>
       <div class="form-group">
         <label for="productimageurl">Image URL <span class="anime-color">*</span></label>
-        <input type="text" 
+        <input type="text"
               name="productimageurl"
-              class="form-control" id="productimageurl" 
-              [(ngModel)]="product.productimageurl" />
+              class="form-control" id="productimageurl" />
       </div>
       <div class="form-group">
         <label for="ratingid">Rating <span class="anime-color">*</span></label>
         <input type="number" min="0" max="5" step="1" required
               name="ratingid"
-              class="form-control" id="ratingid" 
+              class="form-control" id="ratingid"
               [(ngModel)]="product.ratingid" />
       </div>
 
       <div class="py-3">
-        <button class="btn btn-block anime-button-lg font-em-10" 
+        <button class="btn btn-block anime-button-lg font-em-10"
             type="submit"
             [disabled]="!productForm.valid">Submit
           </button>
@@ -126,5 +125,5 @@
           Your message was successfully submitted.  Thank you.
       </div>
     </form>
-  </div> 
+  </div>
 </div>

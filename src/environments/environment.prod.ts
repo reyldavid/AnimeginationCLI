@@ -3,7 +3,7 @@ export const environment = {
   useAzure: true, 
   useNgProxy: false,
   proxyUrl: '',
-  requestUrl: 'https://animegination2.azurewebsites.net/api/',
+  requestUrl: 'https://animeginationapi.azurewebsites.net/api/',
   localHostUrl: '',
-  azureHostUrl: 'https://animegination2.azurewebsites.net/api/'
+  azureHostUrl: 'https://animeginationapi.azurewebsites.net/api/'
 };

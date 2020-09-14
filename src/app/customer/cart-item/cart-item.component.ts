@@ -17,8 +17,8 @@ import { OrderItem } from '../../models/orderItemModel';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input() 
-  cartItem: Product;
+  @Input()
+  cartItem: CartItem;
 
   @Input()
   cartType: CartType;
@@ -27,11 +27,11 @@ export class CartItemComponent implements OnInit {
 
   moveLabel: string = "";
 
-  constructor( private router: Router, 
+  constructor( private router: Router,
                private messageService: MessageService,
-               private sessionService: SessionService,  
-               private orderService: OrderService, 
-               private cartService: CartService ) { 
+               private sessionService: SessionService,
+               private orderService: OrderService,
+               private cartService: CartService ) {
     }
 
   ngOnInit() {
@@ -77,24 +77,24 @@ export class CartItemComponent implements OnInit {
           this.orderService.updateOrderItem(this.sessionService.UserToken, orderItem)
             .subscribe( response => {
               this.messageService.setCartItem(response);
-            },  
+            },
             (error: string) => {
               console.log("Error with update ", error);
               this.messageService.setSpinner(false);
             });
-      },  
+      },
       (error: string) => {
         console.log("Error with update ", error);
         this.messageService.setSpinner(false);
       });
     }
-    
+
     deleteItem(cartItem) {
 
       this.orderService.deleteOrderItem(this.sessionService.UserToken, cartItem.orderItemID)
         .subscribe( orderItem => {
           this.messageService.setCartItem( orderItem );
-        },  
+        },
         (error: string) => {
           console.log("Error with update ", error);
           this.messageService.setSpinner(false);
@@ -103,14 +103,14 @@ export class CartItemComponent implements OnInit {
 
     moveItem(cartItem: CartItem) {
 
-      this.orderService.moveOrderItem(this.sessionService.UserToken, 
+      this.orderService.moveOrderItem(this.sessionService.UserToken,
         cartItem.orderItemID, this.moveToType)
           .subscribe( item => {
             this.messageService.setCartItem( item );
-        },  
+        },
         (error: string) => {
           console.log("Error with update ", error);
           this.messageService.setCartItem(this.orderItem);
         })
-    }  
+    }
 }
